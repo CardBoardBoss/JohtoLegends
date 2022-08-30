@@ -51,6 +51,7 @@ AlphabeticalMoveList::
 	dw CIRCLE_THROW
 	dw CLAMP
 	dw CLOSE_COMBAT
+	dw COIL
 	dw COMET_PUNCH
 	dw CONFUSE_RAY
 	dw CONFUSION
@@ -378,6 +379,7 @@ AlphabeticalMoveList::
 	dw VICEGRIP
 	dw VINE_WHIP
 	dw VITAL_THROW
+	dw VOLT_SWITCH
 	dw VOLT_TACKLE
 	dw WATERFALL
 	dw WATER_GUN

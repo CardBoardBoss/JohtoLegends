@@ -145,7 +145,6 @@ INCLUDE "engine/pokemon/print_move_description.asm"
 INCLUDE "data/moves/descriptions.asm"
 INCLUDE "engine/events/pokerus/pokerus.asm"
 INCLUDE "engine/battle/start_battle.asm"
-INCLUDE "engine/events/hidden_power_guru.asm"
 
 SECTION "Enemy Trainers", ROMX
 
@@ -413,8 +412,6 @@ INCLUDE "engine/events/trainer_scripts.asm"
 
 
 SECTION "bank32", ROMX
-
-INCLUDE "data/moves/animations.asm"
 
 TheEndGFX::
 INCBIN "gfx/credits/theend.2bpp"
@@ -730,3 +727,8 @@ INCLUDE "engine/events/poisonstep_pals.asm"
 INCLUDE "engine/link/time_capsule.asm"
 INCLUDE "engine/battle/shiny_swarm.asm"
 INCLUDE "engine/events/move_relearner.asm"
+INCLUDE "engine/events/hidden_power_guru.asm"
+
+SECTION "Move Animation 2", ROMX
+
+INCLUDE "data/moves/animations.asm"

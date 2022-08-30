@@ -892,11 +892,11 @@ TotodileEvosAttacks:
 	dbw 15, SCARY_FACE
 	dbw 20, ICE_FANG
 	dbw 22, FLAIL
-	dbw 27, CRUNCH
+	dbw 27, WATERFALL
 	dbw 29, HEADBUTT
 	dbw 34, SLASH
 	dbw 36, SCREECH
-	dbw 41, THRASH
+	dbw 41, CRUNCH
 	dbw 43, AQUA_TAIL
 	dbw 48, SUPERPOWER
 	dbw 50, HYDRO_PUMP
@@ -913,11 +913,11 @@ CroconawEvosAttacks:
 	dbw 15, SCARY_FACE
 	dbw 21, ICE_FANG
 	dbw 24, FLAIL
-	dbw 30, CRUNCH
+	dbw 30, WATERFALL
 	dbw 33, HEADBUTT
 	dbw 39, SLASH
 	dbw 42, SCREECH
-	dbw 48, THRASH
+	dbw 48, CRUNCH
 	dbw 51, AQUA_TAIL
 	dbw 57, SUPERPOWER
 	dbw 60, HYDRO_PUMP
@@ -935,11 +935,9 @@ FeraligatrEvosAttacks:
 	dbw 15, SCARY_FACE
 	dbw 21, ICE_FANG
 	dbw 24, FLAIL
-	dbw 32, CRUNCH
+	dbw 32, WATERFALL
 	dbw 37, HEADBUTT
-	dbw 45, SLASH
-	dbw 50, SCREECH
-	dbw 58, THRASH
+	dbw 45, CRUNCH
 	dbw 63, AQUA_TAIL
 	dbw 71, SUPERPOWER
 	dbw 76, HYDRO_PUMP
@@ -949,6 +947,7 @@ FeraligatrEvosAttacks:
 SentretEvosAttacks:
 	dbbw EVOLVE_LEVEL, 15, FURRET
 	db 0 ; no more evolutions
+	dbw 1, COIL
 	dbw 1, SCRATCH
 	dbw 1, FORESIGHT
 	dbw 4, DEFENSE_CURL
@@ -1434,7 +1433,7 @@ HoppipEvosAttacks:
 	dbw 28, ACROBATICS
 	dbw 31, SUNNY_DAY
 	dbw 34, COTTON_SPORE
-	dbw 37, QUIVER_DANCE
+	dbw 37, U_TURN
 	dbw 40, AIR_SLASH
 	dbw 43, GIGA_DRAIN
 	dbw 46, HURRICANE
@@ -1462,7 +1461,7 @@ SkiploomEvosAttacks:
 	dbw 32, ACROBATICS
 	dbw 36, SUNNY_DAY
 	dbw 40, COTTON_SPORE
-	dbw 44, QUIVER_DANCE
+	dbw 44, U_TURN
 	dbw 48, AIR_SLASH
 	dbw 52, GIGA_DRAIN
 	dbw 56, HURRICANE
@@ -1491,7 +1490,7 @@ JumpluffEvosAttacks:
 	dbw 34, ACROBATICS
 	dbw 39, SUNNY_DAY
 	dbw 44, COTTON_SPORE
-	dbw 49, QUIVER_DANCE
+	dbw 49, U_TURN
 	dbw 54, AIR_SLASH
 	dbw 59, GIGA_DRAIN
 	dbw 64, HURRICANE
@@ -1588,12 +1587,12 @@ YanmaEvosAttacks:
 	dbw 17, DETECT
 	dbw 22, SUPERSONIC
 	dbw 27, HYPER_VOICE
-	dbw 30, PURSUIT
+	dbw 30, SIGNAL_BEAM
 	dbw 33, ANCIENTPOWER
 	dbw 38, HYPNOSIS
 	dbw 43, AIR_CUTTER
 	dbw 46, SCREECH
-	dbw 49, SIGNAL_BEAM
+	dbw 49, U_TURN
 	dbw 54, AIR_SLASH
 	dbw 57, BUG_BUZZ
 	db 0 ; no more level-up moves
@@ -1610,11 +1609,11 @@ YanmegaEvosAttacks:
 	dbw 17, DETECT
 	dbw 22, SUPERSONIC
 	dbw 27, HYPER_VOICE
-	dbw 30, PURSUIT
+	dbw 30, SIGNAL_BEAM
 	dbw 38, HYPNOSIS
 	dbw 43, POWER_GEM
 	dbw 46, NASTY_PLOT
-	dbw 49, SIGNAL_BEAM
+	dbw 49, U_TURN
 	dbw 54, AIR_SLASH
 	dbw 57, BUG_BUZZ
 	db 0 ; no more level-up moves
@@ -1827,7 +1826,7 @@ DunsparceEvosAttacks:
 	dbw 23, DRILL_RUN
 	dbw 26, ROOST
 	dbw 28, DRAININGKISS
-	dbw 31, DRAGON_DANCE
+	dbw 31, COIL
 	dbw 33, DIG
 	dbw 36, GLARE
 	dbw 38, DOUBLE_EDGE
@@ -1851,7 +1850,7 @@ GligarEvosAttacks:
 	dbw 19, BULLDOZE
 	dbw 22, ACROBATICS
 	dbw 27, SLASH
-	dbw 30, NIGHT_SLASH
+	dbw 30, U_TURN
 	dbw 35, SCREECH
 	dbw 40, X_SCISSOR
 	dbw 45, BRICK_BREAK
@@ -1871,7 +1870,7 @@ GliscorEvosAttacks:
 	dbw 19, BULLDOZE
 	dbw 22, ACROBATICS
 	dbw 27, SLASH
-	dbw 30, NIGHT_SLASH
+	dbw 30, U_TURN
 	dbw 35, SCREECH
 	dbw 40, X_SCISSOR
 	dbw 45, BRICK_BREAK
