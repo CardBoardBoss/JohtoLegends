@@ -77,6 +77,7 @@ RuinsOfAlphHoOhChamberPuzzle:
 	end
 
 RuinsOfAlphCynthiaScript:
+	playmusic MUSIC_CYNTHIA_ENCOUNTER
 	faceplayer
 	opentext
 	writetext HowIsGibleDoingText
@@ -92,18 +93,27 @@ RuinsOfAlphCynthiaScript:
 	writetext GibleIsNotHappyText
 	waitbutton
 	closetext
+	special RestartMapMusic
+	waitsfx
+	playmapmusic
 	end
 
 .ShowMeLater
 	writetext ShowMeLaterText
 	waitbutton
 	closetext
+	special RestartMapMusic
+	waitsfx
+	playmapmusic
 	end
 
 .wrong
 	writetext GibleIsNotHereText
 	waitbutton
 	closetext
+	special RestartMapMusic
+	waitsfx
+	playmapmusic
 	end
 
 .superhappy
@@ -116,7 +126,12 @@ RuinsOfAlphCynthiaScript:
 	disappear RUINSOFALPH_CYNTHIA
 	pause 15
 	setevent EVENT_RUINS_OF_ALPH_CYNTHIA
+	clearevent EVENT_CHERRYGROVE_CYNTHIA
 	special FadeInQuickly
+	pause 15
+	special RestartMapMusic
+	waitsfx
+	playmapmusic
 	end
 
 RuinsOfAlphHoOhChamberAncientReplica:
@@ -237,6 +252,28 @@ GibleIsNotHereText:
 	cont "have Gible."
 	done
 
+CynthiaWouldLikeToBattleText:
+	text "………………"
+
+	para "I would like to"
+	line "battle with you"
+	cont "again, please."
+
+	para "This will help me"
+	line "to better"
+	cont "understand you."
+	done
+
+CynthiaRuinsVictory:
+	text "Looks like I was"
+	line "right."
+	done
+
+CynthiaRuinsDefeat:
+	text "Looks like I was"
+	line "wrong."
+	done
+
 GibleIsVeryHappyText:
 	text "………………"
 
@@ -253,12 +290,16 @@ GibleIsVeryHappyText:
 	line "with you."
 
 	para "I hope that it"
-	line "continue to grow"
+	line "continues to grow"
 	cont "alongside the"
 	cont "trainer it loves."
 
 	para "Perhaps we will"
 	line "meet again later."
+
+	para "And when we do"
+	line "meet again, I'd"
+	cont "like to battle."
 
 	para "Farewell…"
 	done

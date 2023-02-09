@@ -124,7 +124,7 @@
 	const HARD_STONE   ; 7d
 	const LUCKY_EGG    ; 7e
 	const BATTLE_CARD  ; 7f
-	const MACHINE_PART ; 80
+	const STRANGE_HAIR ; 80
 	const POWER_BAND   ; 81
 	const CHOICE_SCARF ; 82
 	const STARDUST     ; 83
@@ -150,7 +150,7 @@
 	const MOON_BALL    ; a5
 	const LOVE_BALL    ; a6
 	const ZINC         ; a7
-	const GORGEOUS_BOX ; a8
+	const SOOTHE_BELL  ; a8
 	const SUN_STONE    ; a9
 	const POLKADOT_BOW ; aa
 	const UP_GRADE     ; ac

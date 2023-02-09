@@ -4,31 +4,31 @@ JohtoWaterWildMons:
 
 	map_id RUINS_OF_ALPH_OUTSIDE
 	db 2 percent ; encounter rate
-	dbw 15, WOOPER
-	dbw 20, QUAGSIRE
-	dbw 15, QUAGSIRE
-	dbw 15, QUAGSIRE
+	dbw 40, POLIWHIRL
+	dbw 43, AZUMARILL
+	dbw 45, GOLDUCK
+	dbw 45, QUAGSIRE
 
 	map_id UNION_CAVE_1F
 	db 2 percent ; encounter rate
-	dbw 15, WOOPER
-	dbw 20, QUAGSIRE
-	dbw 15, QUAGSIRE
-	dbw 15, QUAGSIRE
+	dbw 40, GOLBAT
+	dbw 42, QUAGSIRE
+	dbw 42, TENTACRUEL
+	dbw 45, QUAGSIRE
 
 	map_id UNION_CAVE_B1F
 	db 2 percent ; encounter rate
-	dbw 15, WOOPER
-	dbw 20, QUAGSIRE
-	dbw 15, QUAGSIRE
-	dbw 15, QUAGSIRE
+	dbw 40, GOLBAT
+	dbw 42, QUAGSIRE
+	dbw 42, TENTACRUEL
+	dbw 45, QUAGSIRE
 
 	map_id UNION_CAVE_B2F
 	db 4 percent ; encounter rate
-	dbw 15, TENTACOOL
-	dbw 20, QUAGSIRE
-	dbw 20, TENTACRUEL
-	dbw 20, TENTACRUEL
+	dbw 40, GOLBAT
+	dbw 42, QUAGSIRE
+	dbw 42, TENTACRUEL
+	dbw 45, QUAGSIRE
 
 	map_id SLOWPOKE_WELL_B1F
 	db 2 percent ; encounter rate
@@ -102,24 +102,24 @@ JohtoWaterWildMons:
 
 	map_id DARK_CAVE_VIOLET_ENTRANCE
 	db 2 percent ; encounter rate
-	dbw 15, MAGIKARP
-	dbw 10, MAGIKARP
-	dbw 5, MAGIKARP
-	dbw 5, MAGIKARP
+	dbw 45, MAGIKARP
+	dbw 45, MAGIKARP
+	dbw 50, MAGIKARP
+	dbw 50, GYARADOS
 
 	map_id DARK_CAVE_BLACKTHORN_ENTRANCE
 	db 2 percent ; encounter rate
-	dbw 15, MAGIKARP
-	dbw 10, MAGIKARP
-	dbw 5, MAGIKARP
-	dbw 5, MAGIKARP
+	dbw 45, MAGIKARP
+	dbw 45, MAGIKARP
+	dbw 50, MAGIKARP
+	dbw 50, GYARADOS
 
 	map_id DRAGONS_DEN_B1F
 	db 4 percent ; encounter rate
-	dbw 15, MAGIKARP
-	dbw 10, MAGIKARP
-	dbw 10, DRATINI
-	dbw 5, MAGIKARP
+	dbw 40, MAGIKARP
+	dbw 45, MAGIKARP
+	dbw 45, DRATINI
+	dbw 50, GYARADOS
 
 	map_id OLIVINE_PORT
 	db 2 percent ; encounter rate
@@ -130,52 +130,52 @@ JohtoWaterWildMons:
 
 	map_id ROUTE_30
 	db 2 percent ; encounter rate
-	dbw 25, POLIWAG
-	dbw 20, POLIWAG
-	dbw 25, POLIWHIRL
-	dbw 25, POLIWHIRL
+	dbw 45, GOLDUCK
+	dbw 45, GOLDUCK
+	dbw 50, POLIWHIRL
+	dbw 50, POLIWHIRL
 
 	map_id ROUTE_31
 	db 2 percent ; encounter rate
-	dbw 20, POLIWAG
-	dbw 15, POLIWAG
-	dbw 25, POLIWHIRL
-	dbw 25, POLIWHIRL
+	dbw 45, GOLDUCK
+	dbw 45, GOLDUCK
+	dbw 50, POLIWHIRL
+	dbw 50, POLIWHIRL
 
 	map_id ROUTE_32
 	db 6 percent ; encounter rate
-	dbw 15, TENTACOOL
-	dbw 20, QUAGSIRE
-	dbw 20, TENTACRUEL
-	dbw 20, POLIWHIRL
+	dbw 40, TENTACRUEL
+	dbw 45, QUAGSIRE
+	dbw 45, POLIWRATH
+	dbw 45, POLITOED
 
 	map_id ROUTE_34
 	db 6 percent ; encounter rate
 	dbw 27, TENTACOOL
-	dbw 22, TENTACOOL
-	dbw 27, TENTACRUEL
-	dbw 27, POLIWHIRL
+	dbw 28, TENTACOOL
+	dbw 30, TENTACRUEL
+	dbw 29, POLIWHIRL
 
 	map_id ROUTE_35
 	db 4 percent ; encounter rate
-	dbw 25, PSYDUCK
-	dbw 20, PSYDUCK
-	dbw 25, GOLDUCK
-	dbw 25, GOLDUCK
+	dbw 29, PSYDUCK
+	dbw 29, PSYDUCK
+	dbw 30, GOLDUCK
+	dbw 30, GOLDUCK
 
 	map_id ROUTE_40
 	db 6 percent ; encounter rate
-	dbw 20, TENTACOOL
-	dbw 15, CORSOLA
-	dbw 20, REMORAID
-	dbw 20, TENTACRUEL
+	dbw 21, TENTACOOL
+	dbw 22, CORSOLA
+	dbw 23, REMORAID
+	dbw 24, TENTACRUEL
 
 	map_id ROUTE_41
 	db 6 percent ; encounter rate
-	dbw 20, TENTACOOL
-	dbw 20, SHELLDER
-	dbw 20, STARYU
-	dbw 20, MANTINE
+	dbw 21, TENTACOOL
+	dbw 22, SHELLDER
+	dbw 23, STARYU
+	dbw 24, MANTINE
 
 	map_id ROUTE_42
 	db 4 percent ; encounter rate
@@ -207,31 +207,31 @@ JohtoWaterWildMons:
 
 	map_id NEW_BARK_TOWN
 	db 6 percent ; encounter rate
-	dbw 20, TENTACOOL
-	dbw 15, TENTACOOL
-	dbw 20, TENTACRUEL
-	dbw 20, TENTACRUEL
+	dbw 45, SEADRA
+	dbw 50, SEAKING
+	dbw 45, CURSOLA
+	dbw 50, TENTACRUEL
 
 	map_id CHERRYGROVE_CITY
 	db 6 percent ; encounter rate
-	dbw 20, TENTACOOL
-	dbw 15, TENTACOOL
-	dbw 20, TENTACRUEL
-	dbw 20, TENTACRUEL
+	dbw 45, SEADRA
+	dbw 50, SEAKING
+	dbw 45, CURSOLA
+	dbw 50, TENTACRUEL
 
 	map_id VIOLET_CITY
 	db 2 percent ; encounter rate
-	dbw 20, POLIWAG
-	dbw 15, POLIWAG
-	dbw 20, POLIWHIRL
-	dbw 20, POLIWHIRL
+	dbw 45, GOLDUCK
+	dbw 45, GOLDUCK
+	dbw 50, POLIWHIRL
+	dbw 50, POLIWHIRL
 
 	map_id CIANWOOD_CITY
 	db 6 percent ; encounter rate
-	dbw 20, TENTACOOL
-	dbw 15, TENTACOOL
-	dbw 20, TENTACRUEL
-	dbw 20, TENTACRUEL
+	dbw 21, TENTACOOL
+	dbw 22, SHELLDER
+	dbw 23, STARYU
+	dbw 24, MANTINE
 
 	map_id OLIVINE_CITY
 	db 6 percent ; encounter rate

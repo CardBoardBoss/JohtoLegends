@@ -189,35 +189,35 @@ SwarmGrassWildMons:
 	dbw 5, SNEASEL
 
 ; Magcargo swarm
-	map_id BURNED_TOWER_2F
+	map_id BURNED_TOWER_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	dbw 22, MAGCARGO
-	dbw 22, MAGCARGO
-	dbw 22, MAGBY
-	dbw 23, MAGCARGO
-	dbw 23, MAGCARGO
-	dbw 23, DUSKULL
-	dbw 24, DUSKULL
-	dbw 24, MAGCARGO
+	dbw 13, SLUGMA
+	dbw 14, MISDREAVUS
+	dbw 15, MAGBY
+	dbw 14, MISDREAVUS
+	dbw 15, MISDREAVUS
+	dbw 15, DUSKULL
+	dbw 15, DUSKULL
+	dbw 15, MISDREAVUS
 	; day
-	dbw 22, MAGCARGO
-	dbw 22, MAGCARGO
-	dbw 22, MAGBY
-	dbw 23, MAGCARGO
-	dbw 23, MAGCARGO
-	dbw 23, DUSKULL
-	dbw 24, DUSKULL
-	dbw 24, MAGCARGO
+	dbw 13, SLUGMA
+	dbw 14, MISDREAVUS
+	dbw 15, MAGBY
+	dbw 14, MISDREAVUS
+	dbw 15, MISDREAVUS
+	dbw 15, DUSKULL
+	dbw 15, DUSKULL
+	dbw 15, MISDREAVUS
 	; nite
-	dbw 22, MAGCARGO
-	dbw 22, MAGCARGO
-	dbw 22, MAGBY
-	dbw 23, MAGCARGO
-	dbw 23, MAGCARGO
-	dbw 23, DUSKULL
-	dbw 24, DUSKULL
-	dbw 24, MAGCARGO
+	dbw 13, SLUGMA
+	dbw 14, MISDREAVUS
+	dbw 15, MAGBY
+	dbw 14, MISDREAVUS
+	dbw 15, MISDREAVUS
+	dbw 15, DUSKULL
+	dbw 15, DUSKULL
+	dbw 15, MISDREAVUS
 
 ; Pinsir swarm
 	map_id NATIONAL_PARK
@@ -254,7 +254,7 @@ SwarmGrassWildMons:
 	map_id ROUTE_38
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	dbw 16, MILTANK
+	dbw 16, SCYTHER
 	dbw 16, TAUROS
 	dbw 16, BUTTERFREE
 	dbw 17, SCYTHER
@@ -263,7 +263,7 @@ SwarmGrassWildMons:
 	dbw 18, SCYTHER
 	dbw 18, SCYTHER
 	; day
-	dbw 16, MILTANK
+	dbw 16, SCYTHER
 	dbw 16, TAUROS
 	dbw 16, BUTTERFREE
 	dbw 17, SCYTHER
@@ -272,7 +272,7 @@ SwarmGrassWildMons:
 	dbw 18, SCYTHER
 	dbw 18, SCYTHER
 	; nite
-	dbw 16, MILTANK
+	dbw 16, SCYTHER
 	dbw 16, TAUROS
 	dbw 16, BEEDRILL
 	dbw 17, SCYTHER
@@ -280,5 +280,98 @@ SwarmGrassWildMons:
 	dbw 17, SCYTHER
 	dbw 18, SCYTHER
 	dbw 18, SCYTHER
+
+;Aron swarm
+	map_id MOUNT_MORTAR_1F_OUTSIDE
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
+	; morn
+	dbw  9, ARON
+	dbw  9, MARILL
+	dbw  9, ARON
+	dbw 10, SANDSHREW
+	dbw 10, ARON
+	dbw 10, SANDSHREW
+	dbw 11, ARON
+	dbw 11, ARON
+	; day
+	dbw  9, ARON
+	dbw  9, MARILL
+	dbw  9, ARON
+	dbw 10, SANDSHREW
+	dbw 10, ARON
+	dbw 10, SANDSHREW
+	dbw 11, ARON
+	dbw 11, ARON
+	; nite
+	dbw  9, ARON
+	dbw  9, MARILL
+	dbw  9, ARON
+	dbw 10, SANDSHREW
+	dbw 10, ARON
+	dbw 10, SANDSHREW
+	dbw 11, ARON
+	dbw 11, ARON
+
+; Ralts Swarm
+	map_id ROUTE_43
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	dbw  8, RALTS
+	dbw  8, TOTODILE
+	dbw  8, PSYDUCK
+	dbw  9, RALTS
+	dbw  9, RALTS
+	dbw  9, RALTS
+	dbw 10, TOTODILE
+	dbw 10, TOTODILE
+	; day
+	dbw  8, RALTS
+	dbw  8, TOTODILE
+	dbw  8, PSYDUCK
+	dbw  9, RALTS
+	dbw  9, RALTS
+	dbw  9, RALTS
+	dbw 10, TOTODILE
+	dbw 10, TOTODILE
+	; nite
+	dbw  8, RALTS
+	dbw  8, TOTODILE
+	dbw  8, PSYDUCK
+	dbw  9, RALTS
+	dbw  9, RALTS
+	dbw  9, RALTS
+	dbw 10, TOTODILE
+	dbw 10, TOTODILE
+
+; Croagunk Swarm
+	map_id LAKE_OF_RAGE
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	dbw  8, MIME__JR
+	dbw  8, CROAGUNK
+	dbw  8, ELECTRIKE
+	dbw  9, CROAGUNK
+	dbw  9, ELECTRIKE
+	dbw  9, CROAGUNK
+	dbw 10, CROAGUNK
+	dbw 10, CROAGUNK
+	; day
+	dbw  8, MIME__JR
+	dbw  8, CROAGUNK
+	dbw  8, ELECTRIKE
+	dbw  9, CROAGUNK
+	dbw  9, ELECTRIKE
+	dbw  9, CROAGUNK
+	dbw 10, CROAGUNK
+	dbw 10, CROAGUNK
+	; nite
+	dbw  8, MIME__JR
+	dbw  8, CROAGUNK
+	dbw  8, ELECTRIKE
+	dbw  9, CROAGUNK
+	dbw  9, ELECTRIKE
+	dbw  9, CROAGUNK
+	dbw 10, CROAGUNK
+	dbw 10, CROAGUNK
 
 	db -1 ; end

@@ -68,6 +68,7 @@ INCLUDE "maps/PokecomCenterAdminOfficeMobile.asm"
 INCLUDE "maps/IlexForestAzaleaGate.asm"
 INCLUDE "maps/Route34IlexForestGate.asm"
 INCLUDE "maps/DayCare.asm"
+INCLUDE "maps/BillsFamilysHouse.asm"
 
 
 SECTION "Map Scripts 5", ROMX
@@ -86,7 +87,6 @@ INCLUDE "maps/Route35NationalParkGate.asm"
 INCLUDE "maps/Route36RuinsOfAlphGate.asm"
 INCLUDE "maps/Route36NationalParkGate.asm"
 INCLUDE "maps/TrainerHouse1F.asm"
-INCLUDE "maps/BillsFamilysHouse.asm"
 
 
 SECTION "Map Scripts 6", ROMX
@@ -122,6 +122,11 @@ INCLUDE "maps/Route16FuchsiaSpeechHouse.asm"
 INCLUDE "maps/Route16Gate.asm"
 INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route17Route18Gate.asm"
+INCLUDE "maps/LakeOfRagePokecenter1F.asm"
+INCLUDE "maps/LakeOfRageMart.asm"
+INCLUDE "maps/SootheBellHouse.asm"
+INCLUDE "maps/GhostHouse.asm"
+INCLUDE "maps/CherrygroveFisherHouse.asm"
 
 
 SECTION "Map Scripts 8", ROMX
@@ -370,13 +375,12 @@ INCLUDE "maps/OaksLab.asm"
 
 SECTION "Map Scripts 20", ROMX
 
-INCLUDE "maps/CherrygroveCity.asm"
 INCLUDE "maps/Route35.asm"
 INCLUDE "maps/Route43.asm"
 INCLUDE "maps/Route44.asm"
 INCLUDE "maps/Route45.asm"
-INCLUDE "maps/Route19.asm"
-INCLUDE "maps/Route25.asm"
+INCLUDE "maps/MastersHouse1F.asm"
+INCLUDE "maps/HoOhLugiaRoom.asm"
 
 
 SECTION "Map Scripts 21", ROMX
@@ -392,19 +396,20 @@ INCLUDE "maps/PewterGym.asm"
 INCLUDE "maps/PewterMart.asm"
 INCLUDE "maps/PewterPokecenter1F.asm"
 INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
+INCLUDE "maps/CherrygroveCity.asm"
 
 
 SECTION "Map Scripts 22", ROMX
 
 INCLUDE "maps/EcruteakCity.asm"
-INCLUDE "maps/BlackthornCity.asm"
 INCLUDE "maps/Route26.asm"
 INCLUDE "maps/Route28.asm"
 INCLUDE "maps/Route31.asm"
 INCLUDE "maps/Route39.asm"
 INCLUDE "maps/Route40.asm"
 INCLUDE "maps/Route41.asm"
-INCLUDE "maps/MastersHouse1F.asm"
+INCLUDE "maps/RocketLairHallway3.asm"
+INCLUDE "maps/RocketLairBossRoom.asm"
 
 
 SECTION "Map Scripts 23", ROMX
@@ -420,10 +425,8 @@ INCLUDE "maps/CeladonCity.asm"
 INCLUDE "maps/Route15.asm"
 INCLUDE "maps/VermilionCity.asm"
 INCLUDE "maps/Route9.asm"
-INCLUDE "maps/CinnabarPokecenter1F.asm"
-INCLUDE "maps/Route19FuchsiaGate.asm"
-INCLUDE "maps/SeafoamGym.asm"
 INCLUDE "maps/MastersHouse2F.asm"
+INCLUDE "maps/BlackthornCity.asm"
 
 
 SECTION "Map Scripts 24", ROMX
@@ -453,23 +456,25 @@ INCLUDE "maps/SilverCavePokecenter1F.asm"
 INCLUDE "maps/Route28SteelWingHouse.asm"
 INCLUDE "maps/Route12SuperRodHouse.asm"
 INCLUDE "maps/WildAreaOutside.asm"
+INCLUDE "maps/RocketLairHallway1.asm"
 
 
 SECTION "Map Scripts 25", ROMX
 
+INCLUDE "maps/RocketLairHallway2.asm"
 INCLUDE "maps/BattleTower1F.asm"
 INCLUDE "maps/BattleTowerHallway.asm"
 INCLUDE "maps/BattleTowerElevator.asm"
 INCLUDE "maps/BattleTowerBattleRoom.asm"
 INCLUDE "maps/LighthouseElevator.asm"
 INCLUDE "maps/RivalsHouse2F.asm"
-INCLUDE "maps/Route12.asm"
 
 
 SECTION "Map Scripts 26", ROMX
 
+
+INCLUDE "maps/GoldenrodJail.asm"
 INCLUDE "maps/EcruteakMoveTutorHouse.asm"
-INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/Route40BattleTowerGate.asm"
 INCLUDE "maps/DarkCaveNewEntrance.asm"
 INCLUDE "maps/VictoryRoadGate.asm"
@@ -478,19 +483,18 @@ INCLUDE "maps/ViridianPokecenter1F.asm"
 INCLUDE "maps/TrainerHouseB1F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
 INCLUDE "maps/Route48.asm"
-INCLUDE "maps/WildAreaMart.asm"
-INCLUDE "maps/WildArea1.asm"
-INCLUDE "maps/WildArea23.asm"
-INCLUDE "maps/WildAreaCave.asm"
 INCLUDE "maps/WildArea4.asm"
-INCLUDE "maps/WildArea5.asm"
 
 
 SECTION "Map Scripts 27", ROMX
 
+INCLUDE "maps/WildAreaMart.asm"
+INCLUDE "maps/WildArea1.asm"
+INCLUDE "maps/WildArea23.asm"
+INCLUDE "maps/WildAreaCave.asm"
+INCLUDE "maps/WildArea5.asm"
 INCLUDE "maps/GoldenrodFlowerShop.asm"
 INCLUDE "maps/GoldenrodBikeShop.asm"
-INCLUDE "maps/GoldenrodJail.asm"
 INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/FossilHouse.asm"
 INCLUDE "maps/PokemonMansion1F.asm"
@@ -504,4 +508,15 @@ INCLUDE "maps/PokeSeersHouse.asm"
 INCLUDE "maps/BurnedTower2F.asm"
 INCLUDE "maps/Route2Gate.asm"
 INCLUDE "maps/Route47.asm"
-INCLUDE "maps/HoOhLugiaRoom.asm"
+INCLUDE "maps/Route19.asm"
+INCLUDE "maps/Route25.asm"
+INCLUDE "maps/RocketLairBreakRoom.asm"
+INCLUDE "maps/Route10North.asm"
+INCLUDE "maps/Route12.asm"
+
+
+SECTION "Map Scripts 28", ROMX
+
+INCLUDE "maps/CinnabarPokecenter1F.asm"
+INCLUDE "maps/Route19FuchsiaGate.asm"
+INCLUDE "maps/SeafoamGym.asm"

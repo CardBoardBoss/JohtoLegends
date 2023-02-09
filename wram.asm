@@ -170,7 +170,8 @@ wScriptVar:: db ; c2dd
 
 wPlayerNextMovement:: db
 wPlayerMovement:: db
-	ds 2
+wLinkOtherPlayerGender:: db
+	ds 1
 wc2e2::
 wMovementObject::
 	db
@@ -2065,7 +2066,7 @@ wUsedSprites:: ds SPRITE_GFX_LIST_CAPACITY * 2
 wUsedSpritesEnd::
 
 NEXTU ; d154
-	ds 31
+	ds SPRITE_GFX_LIST_CAPACITY - 1
 wd173:: db ; related to command queue type 3
 ENDU ; d194
 
@@ -2651,7 +2652,7 @@ wBattleTowerHallwaySceneID::                      db ; d9a1
 wBattleTowerOutsideSceneID::                      db ; d9a2
 wRoute43GateSceneID::                             db ; d9a3
 wMountMoonSceneID::                               db ; d9a4
-wSproutTower3FSceneID::                           db ; d9a5
+wRoute31VioletGateSceneID::                       db ; d9a5
 wTinTower1FSceneID::                              db ; d9a6
 wBurnedTower1FSceneID::                           db ; d9a7
 wBurnedTowerB1FSceneID::                          db ; d9a8
@@ -2703,8 +2704,11 @@ wOlivineGym2FSceneID::                            db
 wOlivineGym3FSceneID::                            db
 wOlivineGym4FSceneID::                            db
 wTinTowerRoofSceneID::                            db
+wVioletGymSceneID::                               db
+wRocketLairHallwaySceneID::                       db
+wRocketLairBossRoomSceneID::                      db
 
-	ds 25
+	ds 22
 
 ; fight counts
 wJackFightCount::    db ; d9f2

@@ -17,7 +17,7 @@ Idain, Rangi, WasabiRaptor for EVS.
 
 Rangi and Idain for Evening time.
 
-Idain for the Hidden Power Guru and Gen 6+ Exp. Share.
+Idain for the Hidden Power Guru, Soothe Bell and Gen 6+ Exp. Share.
 
 Rangi and aaaaaa123456789 for items from smashing rocks
 
@@ -29,7 +29,13 @@ Focus Sash, Power Band, SpecialSpecs, Wide Lens, Life Orb, Choice Band, Choice S
 
 New Swarming System: Dragon Arbock
 
-Puddles: Rangi
+Cardboardbox: Battle Tower Prize List fix.
+
+Puddles and mid-battle quotes: Rangi
+
+Damien: Surf sprite color correction, AI Improvements, max walking sprite increase.
+
+landesherr: AI Improvements.
 
 Snow graphics: Prism Team
 
@@ -41,11 +47,15 @@ U-turn effect and animation and Coil animation: TheSeaTree
 
 Sucker Punch, Work Up, Aqua Jet, Muddy Water, Rock Blast, Heat Wave, Brick Break, Hurricane, Leaf Blade, Lava Plume Animation: chattycrystal team
 
+Fixing Move Effects: Nayru62
+
+Rangi and ElfinHilon10: Moonblast animation
+
+Unique Poke Ball sprites and animations: Idain
+
 Move Steel Slice: Mskd.
 
-Rangi for Route 47 and 48 maps and the Town Map expansion.
-
-Ambipom original sprites from Chaos Rush's 64x64 project.
+Rangi and the Polished Crystal team for Route 47 and 48 maps, Cherry Tree and the Town Map expansion and many overworld sprites.
 
 Ambipom back sprite: ShadowOne333
 
@@ -61,7 +71,16 @@ Beta Wooper back sprite made by 64BitWonder.
 
 Sneasel, Tyranitar, Dragonite, Moltres, Heracross,
 Teddiursa, Ursaring, Phanpy, Umbreon, Feraligatr,
-Houndoom- SoupPotato
+Houndoom, Slowbro, Hitmonchan, Xatu, Pidgeot,
+Nidoking, Entei, Ho-Oh, Exeggutor, Starmie- SoupPotato
+
+Korotora, Raitora graphics and game data: SoupPotato, GS 97 Reforged Team, Game Freak
+
+Gorotora front sprite: Helix Chamber
+
+Gorotora back sprite: Adam Shaman
+
+Ambipom Sprite and animation: InternetGoblin
 
 Idain and Bronzeswagger for Weather Icons.
 
@@ -78,6 +97,8 @@ Aron and Lairon sprites: Nukkiie
 
 Ein trainer sprite: Sindorman
 
+Walker sprites: Kage
+
 Dragon Tamer Male sprite: JustinNuggets
 
 Dragon Tamer Female base sprite: Rangi
@@ -85,6 +106,8 @@ Dragon Tamer Female base sprite: Rangi
 Ariana, Archer and Giovanni trainer and overworld sprite: SirWhibbles
 
 Ampharos overworld sprite: Prism Team
+
+Gible line sprites: Blue Emerald
 
 Lance and Cynthia overworld sprites: Rangi and the Polished Crystal Team.
 
@@ -138,12 +161,11 @@ Mewtwo Battle - ShockSlayer
 WildAreaOutside/JohtoSafariZoneGate - Mmmmmmmmmmmmmmmmm
 WildArea/JohtoSafariZone - Mmmmmmmmmmmmmmmmm
 Route 47 - Mmmmmmmmmmmmmmmmm
-Cinnabar Mansion - Dannye
-NightTime coding and songs, Friendly Shop, Cynthia Battle and FRLG Gym Leader Song: Tritehexagon
+Cinnabar Mansion, Rocket Lair - Dannye
+NightTime coding and songs, Friendly Shop, Cynthia Battle, FRLG Gym Leader Song and Giovanni Theme: TriteHexagon
 Lugia Battle: Pigu
 Kanto Legend Battle XY: GACT and Pigu
 Ho-Oh Battle: Pigu
 Megalovania: Shockslayer, Radiation
 Unwavering Heart MIDI: LyricWulf
 Marnie's Theme/Dahlia's Theme MIDI: ryanisthebomb203
-Giovanni Battle Theme/Madame Boss Theme MIDI: CynthiaCelestic

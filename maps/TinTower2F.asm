@@ -19,7 +19,7 @@ TinTower2FRocket1Script:
 	end
 
 TinTower2FRocket2Script:
-	trainer GRUNTM, GRUNTF_10, EVENT_BEAT_ROCKET_GRUNTF_10, GruntF10SeenText, GruntF10BeatenText, 0, .Script
+	trainer GRUNTF, GRUNTF_10, EVENT_BEAT_ROCKET_GRUNTF_10, GruntF10SeenText, GruntF10BeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -79,4 +79,4 @@ TinTower2F_MapEvents:
 
 	db 2 ; object events
 	object_event 12,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TinTower2FRocket1Script, EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	object_event  9, 11, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 2, TinTower2FRocket2Script, EVENT_TIN_TOWER_1F_WISE_TRIO_1
+	object_event  9, 11, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 2, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TinTower2FRocket2Script, EVENT_TIN_TOWER_1F_WISE_TRIO_1

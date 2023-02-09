@@ -1,6 +1,6 @@
 BattleCommand_Encore:
 ; encore
-
+	ld b,b
 	ld hl, wEnemyMonMoves
 	ld de, wEnemyEncoreCount
 	ldh a, [hBattleTurn]
@@ -14,7 +14,7 @@ BattleCommand_Encore:
 	ld b, a
 	push hl
 	ld hl, .invalid_moves
-	call CheckMoveInList
+	farcall CheckMoveInList
 	pop hl
 	jp c, .failed
 

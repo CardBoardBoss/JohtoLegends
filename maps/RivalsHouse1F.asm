@@ -10,12 +10,30 @@ RivalsHouse1F_MapScripts:
 RivalsDadScript:
 	faceplayer
 	opentext
+	checkevent EVENT_BEAT_RIVALS_HOUSE_RIVAL
+	iftrue .RivalIsGone
+	checkevent EVENT_RIVALS_HOUSE_RIVAL
+	iffalse .WhatHappenedToRival
 	writetext RivalsDadText
 	waitbutton
 	closetext
 	end
 
+.RivalIsGone:
+	writetext RivalIsGoneText
+	waitbutton
+	closetext
+	end
+
+.WhatHappenedToRival:
+	writetext WhatHappenedToRivalText
+	waitbutton
+	closetext
+	end
+
 RivalsMomScript:
+	faceplayer
+	opentext
 	checkevent EVENT_ICE_PATH_B1F_RIVAL1
 	iftrue .KeepAnEyeOnThem
 	checkflag ENGINE_PLAYER_IS_FEMALE
@@ -28,15 +46,21 @@ RivalsMomScript:
 	end
 
 .Female:
-	faceplayer
-	opentext
 	writetext RivalsMom2Text
 	waitbutton
 	closetext
 	end
 
 .KeepAnEyeOnThem:
+	checkevent EVENT_RIVALS_HOUSE_RIVAL
+	iffalse .HopeTheyreOk
 	writetext KeepAnEyeOnThemText
+	waitbutton
+	closetext
+	end
+
+.HopeTheyreOk:
+	writetext HopeTheyreOkText
 	waitbutton
 	closetext
 	end
@@ -79,10 +103,40 @@ RivalsMom2Text:
 	para "Have fun!"
 	done
 
+WhatHappenedToRivalText:
+	text "<RIVAL> just came"
+	line "home and looks"
+	cont "pretty upset."
+
+	para "What happened out"
+	line "there?"
+	done
+
+RivalIsGoneText:
+	text "And just like"
+	line "that, <RIVAL>"
+	cont "is gone again."
+
+	para "You kids sure"
+	line "have a lot more"
+	cont "energy than me!"
+	done
+
 KeepAnEyeOnThemText:
 	text "Keep an eye on my"
 	line "<RIVAL> for me,"
 	cont "alright?"
+	done
+
+HopeTheyreOkText:
+	text "<RIVAL> is"
+	line "upstairs, and"
+	cont "didn't seem"
+	cont "happy."
+
+	para "I hope nothing"
+	line "serious has"
+	cont "happened."
 	done
 
 RivalsHouse1F_MapEvents:

@@ -91,7 +91,7 @@ ItemEffects:
 	dw NoEffect            ; KINGS_ROCK
 	dw BitterBerryEffect   ; BITTER_BERRY
 	dw StatusHealingEffect ; MINT_BERRY
-	dw NoEffect            ; RED_APRICORN
+	dw EvoStoneEffect      ; DAWN_STONE
 	dw NoEffect            ; TINYMUSHROOM
 	dw NoEffect            ; BIG_MUSHROOM
 	dw NoEffect            ; SILVERPOWDER
@@ -157,7 +157,7 @@ ItemEffects:
 	dw PokeBallEffect      ; MOON_BALL
 	dw PokeBallEffect      ; LOVE_BALL
 	dw VitaminEffect       ; ZINC
-	dw GorgeousBoxEffect   ; GORGEOUS_BOX
+	dw NoEffect            ; SOOTHE_BELL
 	dw EvoStoneEffect      ; SUN_STONE
 	dw NoEffect            ; POLKADOT_BOW
 	dw EvoStoneEffect      ; UP_GRADE

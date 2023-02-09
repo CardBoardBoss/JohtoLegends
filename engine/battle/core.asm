@@ -2396,6 +2396,10 @@ WinTrainerBattle:
 	ld a, [wBattleType]
 	cp BATTLETYPE_CANLOSE
 	jr nz, .skip_heal
+	cp BATTLETYPE_HO_OH
+	jr nz, .skip_heal
+	cp BATTLETYPE_LUGIA
+	jr nz, .skip_heal
 	predef HealParty
 .skip_heal
 	ld a, [wDebugFlags]
@@ -2615,6 +2619,10 @@ IsDepressedRival:
 
 IsEliteFour:
 	ld hl, EliteFour
+	jr IsGymLeaderCommon
+
+IsVillainBoss:
+	ld hl, VillainBosses
 	jr IsGymLeaderCommon
 
 IsGymLeader:
@@ -2948,25 +2956,25 @@ LostBattle:
 	dec a ; wild?
 	jr z, .no_loss_text
 
-	ld hl, wLossTextPointer
-	ld a, [hli]
-	ld h, [hl]
-	or h
-	jr z, .no_loss_text
+;	ld hl, wLossTextPointer
+;	ld a, [hli]
+;	ld h, [hl]
+;	or h
+;	jr z, .no_loss_text
 
 ; Remove the enemy from the screen.
-	hlcoord 0, 0
-	lb bc, 8, 21
-	call ClearBox
-	call BattleWinSlideInEnemyTrainerFrontpic
+;	hlcoord 0, 0
+;	lb bc, 8, 21
+;	call ClearBox
+;	call BattleWinSlideInEnemyTrainerFrontpic
 
-	ld c, 40
-	call DelayFrames
+;	ld c, 40
+;	call DelayFrames
 
-	ld a, [wDebugFlags]
-	bit DEBUG_BATTLE_F, a
-	jr nz, .skip_win_loss_text
-	call PrintWinLossText
+;	ld a, [wDebugFlags]
+;	bit DEBUG_BATTLE_F, a
+;	jr nz, .skip_win_loss_text
+;	call PrintWinLossText
 .skip_win_loss_text
 	ret
 
@@ -3174,6 +3182,7 @@ EnemySwitch:
 	call ClearEnemyMonBox
 	call Function_BattleTextEnemySentOut
 	call Function_SetEnemyMonAndSendOutAnimation
+	call FinalPkmnAnimation
 	pop af
 	ret c
 	; If we're here, then we're switching too
@@ -3198,7 +3207,8 @@ EnemySwitch_SetMode:
 	ld [wEnemyIsSwitching], a
 	call ClearEnemyMonBox
 	call Function_BattleTextEnemySentOut
-	jp Function_SetEnemyMonAndSendOutAnimation
+	call Function_SetEnemyMonAndSendOutAnimation
+	jp FinalPkmnAnimation
 
 CheckWhetherSwitchmonIsPredetermined:
 ; returns carry if: ???
@@ -3501,6 +3511,49 @@ LoadEnemyMonToSwitchTo:
 	ld [wEnemyHPAtTimeOfPlayerSwitch + 1], a
 	ret
 
+FinalPkmnAnimation:
+	ld a, [wLinkMode]
+	and a
+	ret nz
+
+	ld hl, wLossTextPointer
+	ld a, [hli]
+	ld h, [hl]
+	and h
+	ret z
+
+	farcall FindAliveEnemyMons
+	ret nz
+
+	call EmptyBattleTextbox
+	ld c, 20
+	call DelayFrames
+	hlcoord 18, 0
+	ld a, 8
+	call SlideBattlePicOut
+
+	ld a, [wTempEnemyMonSpecies]
+	push af
+	call BattleWinSlideInEnemyTrainerFrontpic
+	ld hl, wLossTextPointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call GetMapScriptsBank
+	call FarPrintText
+	call WaitBGMap
+	call WaitPressAorB_BlinkCursor
+	pop af
+	ld [wTempEnemyMonSpecies], a
+	call EmptyBattleTextbox
+	call WaitBGMap
+	hlcoord 18, 0
+	ld a, 8
+	call SlideBattlePicOut
+	ld c, 10
+	call DelayFrames
+	jp FinalPkmnSlideInEnemyMonFrontpic
+
 CheckWhetherToAskSwitch:
 	ld a, [wBattleHasJustStarted]
 	dec a
@@ -3734,6 +3787,10 @@ TryToRunAwayFromBattle:
 	cp BATTLETYPE_SUICUNE
 	jp z, .cant_escape
 	cp BATTLETYPE_MEWTWO
+	jp z, .cant_escape
+	cp BATTLETYPE_HO_OH
+	jp z, .cant_escape
+	cp BATTLETYPE_LUGIA
 	jp z, .cant_escape
 
 	ld a, [wLinkMode]
@@ -6160,12 +6217,20 @@ LoadEnemyMon:
 	jp .Happiness
 
 .InitDVs:
-	farcall GetTrainerDVs
-
 	ld a, [wBattleMode]
 	dec a
-	jp nz, .UpdateDVs
+	jr z, .WildDVs
 
+; TrainerDVs
+	ld a, [wCurPartyMon]
+	ld hl, wOTPartyMon1DVs
+	call GetPartyLocation
+	ld b, [hl]
+	inc hl
+	ld c, [hl]
+	jp .UpdateDVs
+
+.WildDVs:
 ; Wild DVs
 ; Here's where the fun starts
 
@@ -6374,14 +6439,14 @@ LoadEnemyMon:
 	ld de, wEnemyMonMaxHP
 	ld b, FALSE
 	ld hl, wEnemyMonDVs - (MON_DVS - MON_EVS + 1) ; wLinkBattleRNs + 7 ; ?
-;	ld a, [wBattleMode]
-;	cp TRAINER_BATTLE
-;	jr nz, .no_evs
-;	ld a, [wCurPartyMon]
-;	ld hl, wOTPartyMon1EVs - 1
-;	call GetPartyLocation
-;	ld b, TRUE
-;.no_evs
+	ld a, [wBattleMode]
+	cp TRAINER_BATTLE
+	jr nz, .no_evs
+	ld a, [wCurPartyMon]
+	ld hl, wOTPartyMon1EVs - 1
+	call GetPartyLocation
+	ld b, TRUE
+.no_evs
 	predef CalcMonStats
 
 ; If we're in a trainer battle,
@@ -6400,7 +6465,7 @@ LoadEnemyMon:
 
 .TreeMon:
 ; If we're headbutting trees, some monsters enter battle asleep
-	call CheckSleepingTreeMon
+	farcall CheckSleepingTreeMon
 	ld a, TREEMON_SLEEP_TURNS
 	jr c, .UpdateStatus
 ; Otherwise, no status
@@ -6576,6 +6641,66 @@ LoadEnemyMon:
 	ld bc, wEnemyMonStatsEnd - wEnemyMonStats
 	call CopyBytes
 
+	ret
+
+FinalPkmnSlideInEnemyMonFrontpic:
+	call FinishBattleAnim
+	farcall GetEnemyMonFrontpic
+	hlcoord 19, 0
+	ld c, 0
+
+.outer_loop
+	inc c
+	ld a, c
+	cp 9
+	ret z
+	xor a
+	ld [hBGMapMode], a
+	ld [hBGMapThird], a
+	ld d, $0
+	push bc
+	push hl
+
+.inner_loop
+	call .CopyColumn
+	inc hl
+	ld a, 7
+	add d
+	ld d, a
+	dec c
+	jr nz, .inner_loop
+
+	ld a, $1
+	ld [hBGMapMode], a
+	ld c, 4
+	call DelayFrames
+	pop hl
+	pop bc
+	dec hl
+	jr .outer_loop
+
+.CopyColumn:
+	push hl
+	push de
+	push bc
+	ld e, 7
+
+.loop
+	ld a, d
+	cp 7 * 7
+	jr c, .ok
+	ld a, " "
+.ok
+	ld [hl], a
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	inc d
+	dec e
+	jr nz, .loop
+
+	pop bc
+	pop de
+	pop hl
 	ret
 
 CheckSleepingTreeMon:
@@ -7309,7 +7434,9 @@ GiveExperiencePoints:
 	dec a
 	call nz, BoostExp
 ; Boost experience for battle participants
-	ld a, [wGivingExperienceToExpShareHolders]
+;	ld a, [wGivingExperienceToExpShareHolders]
+;	and a
+	ld a, [wExpShareToggle]
 	and a
 	call nz, HalveExp
 ; Boost experience for Lucky Egg

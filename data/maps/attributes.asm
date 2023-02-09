@@ -712,3 +712,13 @@ ENDM
 	map_attributes OlivineGym4F, OLIVINE_GYM_4F, $00, 0
 	map_attributes PokemonMansion1F, POKEMON_MANSION_1F, $00, 0
 	map_attributes HoOhLugiaRoom, HO_OH_LUGIA_ROOM, $00, 0
+	map_attributes LakeOfRagePokecenter1F, LAKE_OF_RAGE_POKECENTER_1F, $00, 0
+	map_attributes LakeOfRageMart, LAKE_OF_RAGE_MART, $00, 0
+	map_attributes SootheBellHouse, SOOTHE_BELL_HOUSE, $00, 0
+	map_attributes GhostHouse, GHOST_HOUSE, $00, 0
+	map_attributes CherrygroveFisherHouse, CHERRYGROVE_FISHER_HOUSE, $00, 0
+	map_attributes RocketLairHallway1, ROCKET_LAIR_HALLWAY_1, $00, 0
+	map_attributes RocketLairBreakRoom, ROCKET_LAIR_BREAK_ROOM, $00, 0
+	map_attributes RocketLairHallway2, ROCKET_LAIR_HALLWAY_2, $00, 0
+	map_attributes RocketLairHallway3, ROCKET_LAIR_HALLWAY_3, $00, 0
+	map_attributes RocketLairBossRoom, ROCKET_LAIR_BOSS_ROOM, $00, 0

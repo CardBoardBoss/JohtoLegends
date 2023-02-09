@@ -127,9 +127,22 @@
 	const SPRITE_CYNTHIA
 	const SPRITE_CHRIS_ITEM
 	const SPRITE_KRIS_ITEM
+	const SPRITE_BIKER_BOSS
+	const SPRITE_BIRD_KEEPER
+	const SPRITE_BOARDER
+	const SPRITE_CAMPER
+	const SPRITE_FIREBREATHER
+	const SPRITE_JUGGLER
+	const SPRITE_PICNICKER
+	const SPRITE_POKEMANIAC
+	const SPRITE_PSYCHIC
+	const SPRITE_SCHOOLBOY
+	const SPRITE_SKIER
+	const SPRITE_GRAMPS_STANDING
+	const SPRITE_OFFICER_STANDING
 
 ; SpriteMons indexes (see data/sprites/sprite_mons.asm)
-	const_def $80
+	const_def $90
 SPRITE_POKEMON EQU const_value
 	const SPRITE_UNOWN ; 80
 	const SPRITE_GEODUDE ; 81
@@ -182,6 +195,19 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_SWINUB
 	const SPRITE_SNEASEL
 	const SPRITE_MILTANK
+	const SPRITE_RAICHU
+	const SPRITE_CLEFAIRY_P
+	const SPRITE_DUSKNOIR
+	const SPRITE_PICHU
+	const SPRITE_RAIKOU_P
+	const SPRITE_SUICUNE_P
+	const SPRITE_ENTEI_P
+	const SPRITE_ARTICUNO
+	const SPRITE_ZAPDOS
+	const SPRITE_MOLTRES_P
+	const SPRITE_MACHAMP
+	const SPRITE_PORYGON_Z
+	const SPRITE_QUAGSIRE
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)
 	const_def $e0
@@ -205,3 +231,4 @@ SPRITE_VARS EQU const_value
 	const SPRITE_COPYCAT ; fb
 	const SPRITE_JANINE_IMPERSONATOR ; fc
 	const SPRITE_RIVAL ; fd
+	const SPRITE_LINK_TRAINER ;fe

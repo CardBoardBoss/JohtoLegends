@@ -312,11 +312,12 @@ Script_UseFlash:
 	reloadmappart
 	special UpdateTimePals
 	refreshscreen
-	pokepic GOLEM
-	cry GOLEM
+	pokepic VOLTORB
+	cry VOLTORB
 	pause 10
 	closepokepic
 	closetext
+	opentext
 	writetext UnknownText_0xc8f3
 	callasm BlindingFlash
 	closetext
@@ -412,6 +413,9 @@ UsedSurfScript:
 	closetext
 
 	callasm .empty_fn ; empty function
+
+	setval (PAL_NPC_BLUE << 4)
+	special SetPlayerPalette
 
 	readmem wBuffer2
 	writevar VAR_MOVEMENT
@@ -618,6 +622,7 @@ FlyFunction:
 	callasm FlyFromAnim
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
+	callasm ResetPlayerPalette
 	callasm DelayLoadingNewSprites
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY

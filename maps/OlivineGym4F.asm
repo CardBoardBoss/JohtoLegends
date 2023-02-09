@@ -1,17 +1,35 @@
 	object_const_def ; object_event constants
+	const OLIVINEGYM4F_BYRON
 
 OlivineGym4F_MapScripts:
 	db 2 ; scene_scripts
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .WednesdayByron
 
 .DummyScene0:
 	end
 
 .DummyScene1:
 	end
+
+.WednesdayByron:
+	checkevent EVENT_BEAT_BYRON
+	iftrue .IsItWednesday
+	appear OLIVINEGYM4F_BYRON
+	return
+
+.IsItWednesday:
+	readvar VAR_WEEKDAY
+	ifequal WEDNESDAY, .DisappearByron
+	appear OLIVINEGYM4F_BYRON
+	return
+
+.DisappearByron:
+	disappear OLIVINEGYM4F_BYRON
+	return
 
 OlivineGym1FByronScript:
 	faceplayer
@@ -36,7 +54,6 @@ OlivineGym1FByronScript:
 	waitsfx
 	setflag ENGINE_MINERALBADGE
 	readvar VAR_BADGES
-	scall OlivineGym1FActivateRockets
 	setflag ENGINE_BEAT_BYRON
 .FightDone:
 	checkflag ENGINE_BEAT_BYRON
@@ -74,13 +91,13 @@ OlivineGym1FByronScript:
 	ifequal 6, .ByronBattle3
 	ifequal 7, .ByronBattle4
 	ifequal 8, .ByronBattle5
-	end
+	sjump .ByronBattle5
 
 .ByronBattle1:
 	writetext ByronRematchText
 	waitbutton
 	closetext
-	winlosstext Byron1F_Beaten, Byron1F_SteelyDetermination
+	winlosstext Byron1F_Clang, Byron1F_SteelyDetermination
 	loadtrainer BYRON, BYRON1
 	startbattle
 	reloadmapafterbattle
@@ -90,8 +107,8 @@ OlivineGym1FByronScript:
 	writetext ByronRematchText
 	waitbutton
 	closetext
-	winlosstext Byron1F_Beaten, Byron1F_SteelyDetermination
-	loadtrainer BYRON, BYRON2
+	winlosstext Byron1F_Clang, Byron1F_SteelyDetermination
+	loadtrainer BYRON_2, BYRON2
 	startbattle
 	reloadmapafterbattle
 	sjump AfterByronRematch
@@ -100,8 +117,8 @@ OlivineGym1FByronScript:
 	writetext ByronRematchText
 	waitbutton
 	closetext
-	winlosstext Byron1F_Beaten, Byron1F_SteelyDetermination
-	loadtrainer BYRON, BYRON3
+	winlosstext Byron1F_Clang, Byron1F_SteelyDetermination
+	loadtrainer BYRON_2, BYRON3
 	startbattle
 	reloadmapafterbattle
 	sjump AfterByronRematch
@@ -110,8 +127,8 @@ OlivineGym1FByronScript:
 	writetext ByronRematchText
 	waitbutton
 	closetext
-	winlosstext Byron1F_Beaten, Byron1F_SteelyDetermination
-	loadtrainer BYRON, BYRON4
+	winlosstext Byron1F_Clang, Byron1F_SteelyDetermination
+	loadtrainer BYRON_2, BYRON4
 	startbattle
 	reloadmapafterbattle
 	sjump AfterByronRematch
@@ -120,8 +137,8 @@ OlivineGym1FByronScript:
 	writetext ByronRematchText
 	waitbutton
 	closetext
-	winlosstext Byron1F_Beaten, Byron1F_SteelyDetermination
-	loadtrainer BYRON, BYRON5
+	winlosstext Byron1F_Clang, Byron1F_SteelyDetermination
+	loadtrainer BYRON_2, BYRON5
 	startbattle
 	reloadmapafterbattle
 	sjump AfterByronRematch
@@ -133,17 +150,6 @@ AfterByronRematch:
 	closetext
 	setflag ENGINE_BEAT_BYRON
 	end
-
-OlivineGym1FActivateRockets:
-	ifequal 7, .RadioTower1FRockets
-	ifequal 6, .Goldenrod1FRockets
-	end
-
-.Goldenrod1FRockets:
-	jumpstd goldenrodrockets
-
-.RadioTower1FRockets:
-	jumpstd radiotowerrockets
 
 EleventhElevator:
 	special FadeBlackQuickly
@@ -203,9 +209,8 @@ Byron1F_Clang:
 	done
 
 Byron1F_SteelyDetermination:
-	text "Steely determin-"
-	line "ation wins every"
-	cont "time!"
+	text "Steel doesn't bend"
+	line "so easily!"
 	done
 
 Byron1F_Beaten:

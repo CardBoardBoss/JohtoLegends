@@ -38,7 +38,7 @@ TrainerGruntM15:
 	end
 
 TrainerArcher2:
-	trainer ARCHER, ARCHER_2, EVENT_BEAT_GOLDENROD_TOWER_ARCHER, Archer2SeenText, Archer2BeatenText, 0, .Script
+	trainer ARCHER, ARCHER_2, EVENT_BEAT_GOLDENROD_TOWER_ARCHER, Archer2SeenText, Archer2BeatenText, Archer2LastMonText, .Script
 
 .Script:
 	endifjustbattled
@@ -61,6 +61,13 @@ TrainerGruntF9:
 
 RadioTower4FSurfTM:
 	itemball TM_SURF
+
+Archer2LastMonText:
+	text "Were we wrong?"
+
+	para "Is this not"
+	line "enough?"
+	done
 
 RadioTower4FEngineerText:
 	text "This is only the"
@@ -187,4 +194,4 @@ RadioTower4F_MapEvents:
 	object_event  3,  3, SPRITE_ROCKET, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGruntM15, EVENT_GOLDENROD_TOWER_TAKEOVER
 	object_event  3,  8, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerArcher2, EVENT_GOLDENROD_TOWER_TAKEOVER
 	object_event 11,  7, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerGruntF9, EVENT_GOLDENROD_TOWER_TAKEOVER
-	object_event  8,  7, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RadioTower4FSurfTM, EVENT_GOT_TM49_SURF
+	object_event  8,  7, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_ITEMBALL, 0, RadioTower4FSurfTM, EVENT_GOT_TM49_SURF

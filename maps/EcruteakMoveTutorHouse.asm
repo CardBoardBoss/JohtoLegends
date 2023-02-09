@@ -10,6 +10,8 @@ EcruteakMoveTutorHouseMoveTutorScript:
 	faceplayer
 	opentext
 	writetext EcruteakMoveTutorHouseAskTeachAMoveText
+	checkmoney YOUR_MONEY, 800
+	ifequal HAVE_LESS, .Refused
 	yesorno
 	iffalse .Refused
 	writetext EcruteakMoveTutorHouseWhichMoveShouldITeachText
@@ -25,6 +27,7 @@ EcruteakMoveTutorHouseMoveTutorScript:
 .FireFang:
 	loadmoveindex FIRE_FANG
 	writetext TeachMoveText2
+	waitbutton
 	special MoveTutor
 	ifequal FALSE, .TeachMove
 	sjump .Incompatible
@@ -32,6 +35,7 @@ EcruteakMoveTutorHouseMoveTutorScript:
 .ThunderFang:
 	loadmoveindex THUNDER_FANG
 	writetext TeachMoveText2
+	waitbutton
 	special MoveTutor
 	ifequal FALSE, .TeachMove
 	sjump .Incompatible
@@ -39,6 +43,7 @@ EcruteakMoveTutorHouseMoveTutorScript:
 .IceFang:
 	loadmoveindex ICE_FANG
 	writetext TeachMoveText2
+	waitbutton
 	special MoveTutor
 	ifequal FALSE, .TeachMove
 	sjump .Incompatible
@@ -46,6 +51,7 @@ EcruteakMoveTutorHouseMoveTutorScript:
 .DracoFang:
 	loadmoveindex DRACO_FANG
 	writetext TeachMoveText2
+	waitbutton
 	special MoveTutor
 	ifequal FALSE, .TeachMove
 	sjump .Incompatible
@@ -73,6 +79,7 @@ EcruteakMoveTutorHouseMoveTutorScript:
 
 .TeachMove:
 	writetext NiceMoveText
+	takemoney YOUR_MONEY, 800
 	buttonsound
 	writetext GoodLuckText
 	waitbutton
@@ -96,6 +103,8 @@ EcruteakMoveTutorHouseAskTeachAMoveText:
 	para "Would you like me"
 	line "to teach one a"
 	cont "new move?"
+
+	para "It's only ¥800."
 	done
 
 EcruteakMoveTutorHouseWhichMoveShouldITeachText:

@@ -14,8 +14,8 @@ TinTower1F_MapScripts:
 	scene_script .FaceSuicune ; SCENE_DEFAULT
 	scene_script .DummyScene ; SCENE_FINISHED
 
-	db 3 ; callbacks
-	callback MAPCALLBACK_OBJECTS, .NPCsCallback
+	db 2 ; callbacks
+;	callback MAPCALLBACK_OBJECTS, .NPCsCallback
 	callback MAPCALLBACK_TILES, .StairsCallback
 	callback MAPCALLBACK_NEWMAP, .LoadReservedIDs
 
@@ -25,21 +25,21 @@ TinTower1F_MapScripts:
 .DummyScene:
 	end
 
-.NPCsCallback:
-	checkevent EVENT_GOT_RAINBOW_WING
-	iftrue .GotRainbowWing
-	checkevent EVENT_BEAT_ELITE_FOUR
-	iffalse .FaceBeasts
-	special BeastsCheck
-	iffalse .FaceBeasts
-	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
-	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
-.GotRainbowWing:
-	checkevent EVENT_FOUGHT_HO_OH
-	iffalse .Done
-	appear TINTOWER1F_EUSINE
-.Done:
-	return
+;.NPCsCallback:
+;	checkevent EVENT_GOT_RAINBOW_WING
+;	iftrue .GotRainbowWing
+;	checkevent EVENT_BEAT_ELITE_FOUR
+;	iffalse .FaceBeasts
+;	special BeastsCheck
+;	iffalse .FaceBeasts
+;	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
+;	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
+;.GotRainbowWing:
+;	checkevent EVENT_FOUGHT_HO_OH
+;	iffalse .Done
+;	appear TINTOWER1F_EUSINE
+;.Done:
+;	return
 
 .LoadReservedIDs:
 	loadmonindex 1, RAIKOU
@@ -203,36 +203,7 @@ TinTower1FRocket3Script:
 	jumptextfaceplayer TinTower1FRocket3Text
 
 TinTower1FSage5Script:
-	faceplayer
-	opentext
-	checkevent EVENT_FOUGHT_HO_OH
-	iftrue .FoughtHoOh
-	checkevent EVENT_GOT_RAINBOW_WING
-	iftrue .GotRainbowWing
-	writetext TinTower1FSage5Text1
-	buttonsound
-	verbosegiveitem RAINBOW_WING
-	closetext
-	refreshscreen
-	earthquake 72
-	waitsfx
-	playsound SFX_STRENGTH
-	changeblock 10, 2, $20 ; stairs
-	reloadmappart
-	setevent EVENT_GOT_RAINBOW_WING
-	closetext
-	opentext
-.GotRainbowWing:
-	writetext TinTower1FSage5Text2
-	waitbutton
-	closetext
-	end
-
-.FoughtHoOh:
-	writetext TinTower1FSage5Text3
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer TinTower1FSage5Text2
 
 TinTower1FSage6Script:
 	checkevent EVENT_FOUGHT_HO_OH
@@ -269,10 +240,10 @@ TinTower1FPersianScript:
 TinTowerEusine:
 	faceplayer
 	opentext
+	checkevent EVENT_CLEARED_TIN_TOWER
+	iftrue .HoOhIsGone
 	checkevent EVENT_OPEN_ILEX_FOREST
 	iftrue .TinTowerSage
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .TinTowerSageFemale
 	writetext TinTowerEusineHoOhText
 	waitbutton
 	closetext
@@ -295,13 +266,10 @@ TinTowerEusine:
 	closetext
 	end
 
-.TinTowerSageFemale:
-	writetext TinTowerEusineHoOhTextFemale
+.HoOhIsGone:
+	writetext HoOhIsGoneText
 	waitbutton
 	closetext
-	setevent EVENT_OPEN_ILEX_FOREST
-	clearevent EVENT_AZALEA_TOWN_SLOWPOKES
-	clearevent EVENT_ILEX_FOREST_FARFETCHD
 	end
 
 TinTowerPlayerMovement1:
@@ -518,16 +486,20 @@ TinTower1FSage5Text1:
 	done
 
 TinTower1FSage5Text2:
-	text "Now, go."
+	text "Man, Legendary"
+	line "#mon poached…"
+
+	para "It's hard to"
+	line "believe."
 	done
 
 TinTower1FSage6Text1:
-	text "I believe you are"
-	line "being tested."
+	text "We'll find them,"
+	line "and free those"
+	cont "#mon."
 
-	para "Free your mind"
-	line "from uncertainty,"
-	cont "and advance."
+	para "Just continue on"
+	line "your journey."
 	done
 
 TinTowerEusineHoOhText:
@@ -535,7 +507,7 @@ TinTowerEusineHoOhText:
 	line "trainer."
 
 	para "Your friend,"
-	line "Dahlia told me"
+	line "<RIVAL> told me"
 	cont "you'd come."
 
 	para "You wish to know"
@@ -813,6 +785,16 @@ TinTowerSageHelpUsText:
 	text "Please…"
 
 	para "Help us…"
+	done
+
+HoOhIsGoneText:
+	text "Ho-Oh is gone…"
+
+	para "Taken by those"
+	line "monsters…"
+
+	para "I hope we can"
+	line "free it…"
 	done
 
 TinTower1F_MapEvents:

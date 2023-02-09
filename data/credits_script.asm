@@ -58,7 +58,9 @@ CreditsScript:
 	db CREDITS_WAIT, 12
 
 	db     PROGRAMMING_HELP, 0
-	db            AZUREKEYS, 2
+	db            AZUREKEYS, 1
+	db        DAMIEN_CREDIT, 2
+	db           LANDESHERR, 3
 
 	db CREDITS_WAIT, 12
 
@@ -95,6 +97,7 @@ CreditsScript:
 	db          LAKEOFDANCE, 1
 	db          FERROPEXOLA, 2
 	db             FROGTOES, 3
+	db       INTERNETGOBLIN, 4
 
 	db CREDITS_WAIT, 12
 
@@ -140,7 +143,8 @@ CreditsScript:
 	db      TRAINER_SPRITES, 0
 	db        JUSTINNUGGETS, 1
 	db            SINDORMAN, 2
-	db          FERROPEXOLA, 3
+	db                 KAGE, 3
+	db          FERROPEXOLA, 4
 
 	db CREDITS_WAIT, 12
 

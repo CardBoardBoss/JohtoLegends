@@ -16,7 +16,7 @@ CreditsStrings:
 	dw .SCMidna
 	dw .Nukkiie
 	dw .Frogtoes
-	dw .MorikazuAoki
+	dw .landesherr
 	dw .Chamber
 	dw .Pikachu
 	dw .EmiMonserrate
@@ -24,11 +24,11 @@ CreditsStrings:
 	dw .TilesetDesign
 	dw .ElfinHilon
 	dw .BlueEmerald
-	dw .NclSuperMarioClub
+	dw .InternetGoblin
 	dw .Sarugakucho
 	dw .AkitoMori
-	dw .TakahiroHarada
-	dw .TohruHashimoto
+	dw .Kage
+	dw .Damien
 	dw .PresentedBy
 	dw .TakehiroIzushi
 	dw .TakashiKawaguchi
@@ -142,7 +142,7 @@ CreditsStrings:
 .SCMidna:             db "      SCMidna@"        ; "よしだ　ひろのぶ@"
 .Nukkiie:             db "      Nukkiie@"         ; "いわした　あすか@"
 .Frogtoes:            db "      Frogtoes@"           ; "いちのせ　ごう@"
-.MorikazuAoki:        db "   MORIKAZU AOKI@"          ; "あおき　もりかず@"
+.landesherr:          db "     landesherr@"          ; "あおき　もりかず@"
 .Chamber:             db "      Chamber@"          ; "にしの　こうじ@"
 .Pikachu:             db "     Pikachu25@"        ; "まつしま　けんじ@"
 .EmiMonserrate:       db "   Emi Monserrate@"       ; "まつみや　としのぶ@"
@@ -150,11 +150,11 @@ CreditsStrings:
 .TilesetDesign:       db "   Tileset Design@"          ; "せや　のぶひろ@"
 .ElfinHilon:          db "    ElfinHilon10@"         ; "せきね　かずひと@"
 .BlueEmerald:         db "    Blue Emerald@"          ; "おおた　てつじ@"
-.NclSuperMarioClub:   db "NCL SUPER MARIO CLUB@"      ; "スーパーマりオクラブ@"
+.InternetGoblin:      db "   InternetGoblin@"      ; "スーパーマりオクラブ@"
 .Sarugakucho:         db "    SARUGAKUCHO@"           ; "さるがくちょう@"
 .AkitoMori:           db "     AKITO MORI@"           ; "もり　あきと@"
-.TakahiroHarada:      db "  TAKAHIRO HARADA@"         ; "はらだ　たかひろ@"
-.TohruHashimoto:      db "  TOHRU HASHIMOTO@"         ; "はしもと　とおる@"
+.Kage:                db "        Kage@"         ; "はらだ　たかひろ@"
+.Damien:              db "       Damien@"         ; "はしもと　とおる@"
 .PresentedBy:         db "    Presented By@"        ; "まつもと　のぼる@"
 .TakehiroIzushi:      db "  TAKEHIRO IZUSHI@"         ; "いずし　たけひろ@"
 .TakashiKawaguchi:    db " TAKASHI KAWAGUCHI@"        ; "かわぐち　たかし@"

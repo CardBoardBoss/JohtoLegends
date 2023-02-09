@@ -1887,22 +1887,22 @@ SneaselSwarmText::
 	cont "Sneasel!"
 	done
 
-MagcargoSwarmText::
+MisdreavusSwarmText::
 	text "………………………"
 
 	para "Ah!"
 
-	para "In the 2F of the"
+	para "In the 1F of the"
 	line "Burned Tower,"
 	cont "there is a swarm"
-	cont "of Magcargo!"
+	cont "of Misdreavus!"
 
 	para "Now's your chance,"
 	line "trainers!"
 
 	para "Head to Burned"
 	line "Tower and catch a"
-	cont "Magcargo!"
+	cont "Misdreavus!"
 	done
 
 ScytherSwarmText::
@@ -2066,8 +2066,9 @@ SkarminiOakText::
 	line "and continues to"
 	cont "improve its wings"
 
-	para "by brushing them up"
-	line "against bramble."
+	para "by brushing them"
+	line "up against"
+	cont "bramble."
 
 	para "The existence of"
 	line "this #mon was"

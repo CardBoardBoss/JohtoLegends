@@ -12,7 +12,8 @@ OlivineLighthouse6F_MapScripts:
 	scene_script .MeetBoss ; SCENE_DEFAULT
 	scene_script .Dummy0 ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .WednesdayByronLighthouse
 
 .MeetBoss:
 	playmusic MUSIC_ROCKET_ENCOUNTER
@@ -33,6 +34,7 @@ OlivineLighthouse6F_MapScripts:
 	waitbutton
 	closetext
 	winlosstext Miyamoto1WinText, Miyamoto1LossText
+	setlasttalked OLIVINELIGHTHOUSE6F_MIYAMOTO
 	loadtrainer MYSTERIOUS, MIYAMOTO
 	startbattle
 	dontrestartmapmusic
@@ -72,7 +74,10 @@ OlivineLighthouse6F_MapScripts:
 	special FadeInQuickly
 	setevent EVENT_BEAT_LIGHTHOUSE_MIYAMOTO
 	waitsfx
-	playmapmusic
+	pause 15
+	special FadeOutMusic
+	pause 15
+	special RestartMapMusic
 	opentext
 	writetext DangSmokeBombsText
 	waitbutton
@@ -247,6 +252,28 @@ OlivineLighthouse6F_MapScripts:
 .Dummy0:
 	end
 
+.WednesdayByronLighthouse:
+	checkevent EVENT_BEAT_LIGHTHOUSE_MIYAMOTO
+	iftrue .WillByronAppear
+	appear OLIVINELIGHTHOUSE6F_BYRON
+	return
+
+.WillByronAppear:
+	checkevent EVENT_BEAT_BYRON
+	iftrue .IsItWednesdayLighthouse
+	disappear OLIVINELIGHTHOUSE6F_BYRON
+	return
+
+.IsItWednesdayLighthouse:
+	readvar VAR_WEEKDAY
+	ifequal WEDNESDAY, .AppearByron
+	disappear OLIVINELIGHTHOUSE6F_BYRON
+	return
+
+.AppearByron:
+	appear OLIVINELIGHTHOUSE6F_BYRON
+	return
+
 OlivineLighthouseAmphy:
 	faceplayer
 	refreshscreen
@@ -262,6 +289,14 @@ OlivineLighthouseAmphy:
 	special FadeInPalettes
 	special FadeOutPalettes
 	special FadeInPalettes
+	end
+
+OlivineLighthouse6FByron:
+	faceplayer
+	opentext
+	writetext KeepingRosaCompanyText
+	waitbutton
+	closetext
 	end
 
 OlivineLighthouse6FSuperPotion:
@@ -376,9 +411,8 @@ Miyamoto1WinText:
 	done
 
 Miyamoto1LossText:
-	text "You're not as good"
-	line "as I thought you"
-	cont "were."
+	text "A miscalcutation,"
+	line "to be sure."
 	done
 
 WeArentDoneYetText:
@@ -697,6 +731,19 @@ ReceivedLaprasCallText:
 	line "Lapras CallA."
 	done
 
+KeepingRosaCompanyText:
+	text "How've you been,"
+	line "hero?"
+
+	para "I like to be here"
+	line "to keep Rosa"
+	cont "company sometimes."
+
+	para "It can be lonely"
+	line "up here, after"
+	cont "all!"
+	done
+
 OlivineLighthouse6F_MapEvents:
 	db 0, 0 ; filler
 
@@ -709,7 +756,7 @@ OlivineLighthouse6F_MapEvents:
 	db 0 ; bg events
 
 	db 7 ; object events
-	object_event  9,  8, SPRITE_BYRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	object_event  9,  8, SPRITE_BYRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, OlivineLighthouse6FByron, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 	object_event  8,  9, SPRITE_AMPHAROS_P, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineLighthouseAmphy, EVENT_LIGHTHOUSE_MONSTER
 	object_event  3,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse6FSuperPotion, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
 	object_event  9, 10, SPRITE_MIYAMOTO, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_LIGHTHOUSE_MIYAMOTO

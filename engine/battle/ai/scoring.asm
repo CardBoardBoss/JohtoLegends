@@ -392,6 +392,8 @@ AI_Smart:
 	dbw EFFECT_ROOST,            AI_Smart_Roost
 	dbw EFFECT_FAKE_OUT,         AI_Smart_Fake_Out
 	dbw EFFECT_ACROBATICS,       AI_Smart_Acrobatics
+	dbw EFFECT_DEFENSE_CURL,     AI_Smart_DefenseCurl
+	dbw EFFECT_U_TURN,           AI_Smart_BatonPass
 	db -1 ; end
 
 AI_Smart_Sleep:
@@ -1687,6 +1689,11 @@ AI_Smart_Thief:
 	ret
 
 AI_Smart_Disable:
+; 80% chance to greatly encourage this move if the player is Encored.
+	ld a, [wPlayerSubStatus5]
+	and 1 << SUBSTATUS_ENCORED
+	jr nz, .encourage
+
 	call AICompareSpeed
 	jr nc, .asm_38df3
 
@@ -1701,6 +1708,14 @@ AI_Smart_Disable:
 	call Random
 	cp 39 percent + 1
 	ret c
+	dec [hl]
+	ret
+
+.encourage
+	call AI_80_20
+	ret c
+	dec [hl]
+	dec [hl]
 	dec [hl]
 	ret
 
@@ -1887,7 +1902,7 @@ AI_Smart_Protect:
 
 	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_CHARGED, a
-	jr nz, .asm_38f0d
+	jr nz, .greatly_encourage
 
 	ld a, [wPlayerSubStatus5]
 	bit SUBSTATUS_TOXIC, a
@@ -1909,6 +1924,12 @@ AI_Smart_Protect:
 .asm_38f0d
 	call AI_80_20
 	ret c
+	dec [hl]
+	ret
+
+.greatly_encourage
+	dec [hl]
+	dec [hl]
 	dec [hl]
 	ret
 
@@ -2135,6 +2156,21 @@ AI_Smart_FuryCutter:
 
 	; fallthrough
 
+AI_Smart_DefenseCurl:
+; Encourage this move if the enemy has Rollout
+	ld b, EFFECT_ROLLOUT
+	call AIHasMoveEffect
+	ret nc
+
+; But not if already curled
+	ld a, [wEnemySubStatus2]
+	bit SUBSTATUS_CURLED, a
+	ret nz
+
+	dec [hl]
+	dec [hl]
+	ret
+
 AI_Smart_Rollout:
 ; Rollout, Fury Cutter
 
@@ -2151,6 +2187,16 @@ AI_Smart_Rollout:
 	bit PAR, a
 	jr nz, .asm_39020
 
+; If the mon has Defense Curl, and hasn't used it yet,
+; don't encourage Rollout
+	ld b, EFFECT_DEFENSE_CURL
+	call AIHasMoveEffect
+	jr nc, .no_defense_curl
+	ld a, [wEnemySubStatus2]
+	bit SUBSTATUS_CURLED, a
+	ret z
+
+.no_defense_curl
 ; 80% chance to discourage this move if the enemy's HP is below 25%,
 ; or if accuracy or evasion modifiers favour the player.
 	call AICheckEnemyQuarterHP
@@ -2651,10 +2697,15 @@ AI_Smart_Solarbeam:
 
 	ld a, [wBattleWeather]
 	cp WEATHER_SUN
-	cp WEATHER_HAIL
 	jr z, .asm_3921e
 
 	cp WEATHER_RAIN
+	ret nz
+
+	cp WEATHER_HAIL
+	ret nz
+
+	cp WEATHER_SANDSTORM
 	ret nz
 
 	call Random

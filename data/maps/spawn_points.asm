@@ -21,11 +21,12 @@ SpawnPoints:
 	spawn CELADON_CITY,               29, 10
 	spawn FUCHSIA_CITY,               19, 28
 	spawn CINNABAR_ISLAND,            11, 12
+	spawn ROUTE_26,                    7,  6
 	spawn ROUTE_23,                    9,  6
 
 	spawn BLACKTHORN_CITY,            23, 30
 	spawn MAHOGANY_TOWN,              15, 14
-	spawn LAKE_OF_RAGE,               21, 29
+	spawn LAKE_OF_RAGE,                5, 20
 	spawn ECRUTEAK_CITY,              23, 28
 	spawn OLIVINE_CITY,               13, 22
 	spawn CIANWOOD_CITY,              23, 44

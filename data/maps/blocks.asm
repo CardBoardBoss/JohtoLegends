@@ -177,6 +177,8 @@ CherrygroveGymSpeechHouse_Blocks:
 GuideGentsHouse_Blocks:
 CherrygroveEvolutionSpeechHouse_Blocks:
 Route30BerryHouse_Blocks:
+SootheBellHouse_Blocks:
+CherrygroveFisherHouse_Blocks:
 	INCBIN "maps/House1.blk"
 
 SafariZoneFuchsiaGateBeta_Blocks:
@@ -312,6 +314,7 @@ ViridianMart_Blocks:
 SaffronMart_Blocks:
 CherrygroveMart_Blocks:
 WildAreaMart_Blocks:
+LakeOfRageMart_Blocks:
 	INCBIN "maps/Mart.blk"
 
 Route10North_Blocks:
@@ -342,6 +345,7 @@ ViridianPokecenter1F_Blocks:
 SaffronPokecenter1F_Blocks:
 CherrygrovePokecenter1F_Blocks:
 WildAreaPokecenter_Blocks:
+LakeOfRagePokecenter1F_Blocks:
 	INCBIN "maps/Pokecenter1F.blk"
 
 BetaPewterMuseumOfScience1F_Blocks:
@@ -427,6 +431,7 @@ EcruteakItemfinderHouse_Blocks:
 VioletNicknameSpeechHouse_Blocks:
 VioletKylesHouse_Blocks:
 EcruteakMoveTutorHouse_Blocks:
+GhostHouse_Blocks:
 	INCBIN "maps/House2.blk"
 
 BetaUnionCave_Blocks:
@@ -1078,3 +1083,18 @@ PokemonMansion1F_Blocks:
 
 HoOhLugiaRoom_Blocks:
 	INCBIN "maps/HoOhLugiaRoom.blk"
+
+RocketLairHallway1_Blocks:
+	INCBIN "maps/RocketLairHallway1.blk"
+
+RocketLairBreakRoom_Blocks:
+	INCBIN "maps/RocketLairBreakRoom.blk"
+
+RocketLairHallway2_Blocks:
+	INCBIN "maps/RocketLairHallway2.blk"
+
+RocketLairHallway3_Blocks:
+	INCBIN "maps/RocketLairHallway3.blk"
+
+RocketLairBossRoom_Blocks:
+	INCBIN "maps/RocketLairBossRoom.blk"

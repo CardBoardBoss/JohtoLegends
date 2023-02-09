@@ -14,7 +14,8 @@ EcruteakGym_MapScripts:
 	scene_script .ForcedToLeave ; SCENE_DEFAULT
 	scene_script .DummyScene ; SCENE_FINISHED
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .EnokiThursdayGym
 
 .ForcedToLeave:
 	prioritysjump EcruteakGymClosed
@@ -22,6 +23,28 @@ EcruteakGym_MapScripts:
 
 .DummyScene:
 	end
+
+.EnokiThursdayGym:
+	checkevent EVENT_BELLCHIME_PATH_ENOKI_PANIC
+	iftrue .EnokiCanAppearGym
+	disappear ECRUTEAKGYM_ENOKI
+	return
+
+.EnokiCanAppearGym:
+	checkevent EVENT_CLEARED_RADIO_TOWER
+	iftrue .IsItThursdayGym
+	appear ECRUTEAKGYM_ENOKI
+	return
+
+.IsItThursdayGym:
+	 readvar VAR_WEEKDAY
+	 ifequal THURSDAY, .EnokiDisappears
+	 appear ECRUTEAKGYM_ENOKI
+	 return
+
+.EnokiDisappears:
+	disappear ECRUTEAKGYM_ENOKI
+	return
 
 EcruteakGymEnokiScript:
 	faceplayer
@@ -31,8 +54,11 @@ EcruteakGymEnokiScript:
 	writetext EnokiIntroText
 	waitbutton
 	closetext
+	checkflag ENGINE_FLYPOINT_OLIVINE
+	iftrue .EnokiAlternateBattle
 	winlosstext EnokiWinLossText, EnokiWinText
 	loadtrainer ENOKI, ENOKI1
+.StartEnokiBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ENOKI
@@ -91,6 +117,11 @@ EcruteakGymEnokiScript:
 	closetext
 	end
 
+.EnokiAlternateBattle:
+	winlosstext EnokiWinLossText, EnokiWinText
+	loadtrainer ENOKI, ENOKI_ALTERNATE
+	sjump .StartEnokiBattle
+
 .EnokiRematch:
 	readvar VAR_BADGES
 	ifequal 2, .EnokiBattle1
@@ -100,14 +131,14 @@ EcruteakGymEnokiScript:
 	ifequal 6, .EnokiBattle5
 	ifequal 7, .EnokiBattle6
 	ifequal 8, .EnokiBattle7
-	end
+	sjump .EnokiBattle7
 
 .EnokiBattle1:
 	writetext EnokiReadyForARematchText
 	waitbutton
 	closetext
 	winlosstext EnokiWinLossText, EnokiWinText
-	loadtrainer ENOKI, ENOKI1
+	loadtrainer ENOKI, ENOKI_ALTERNATE
 	startbattle
 	reloadmapafterbattle
 	sjump AfterEnokiRematch
@@ -329,8 +360,7 @@ EnokiWinLossText:
 	done
 
 EnokiWinText:
-	text "Return once you've"
-	line "become stronger."
+	text "Only one remains…"
 	done
 
 BeatenEnokiText:

@@ -24,6 +24,7 @@ CheckPlayerMoveTypeMatchups:
 
 	ld hl, wEnemyMonType
 	call CheckTypeMatchup
+
 	ld a, [wTypeMatchup]
 	cp EFFECTIVE + 1 ; 1.0 + 0.1
 	jr nc, .super_effective
@@ -189,7 +190,7 @@ CheckAbleToSwitch:
 	jr nz, .not_2
 
 	ld a, [wEnemyAISwitchScore]
-	add $30 ; maximum chance
+	add $20 ; maximum chance
 	ld [wEnemySwitchMonParam], a
 	ret
 
@@ -368,6 +369,7 @@ FindEnemyMonsImmuneToLastCounterMove:
 	; and the Pokemon is immune to it...
 	ld hl, wBaseType
 	call CheckTypeMatchup
+
 	ld a, [wTypeMatchup]
 	and a
 	jr nz, .next
@@ -548,6 +550,7 @@ FindEnemyMonsThatResistPlayer:
 	ld a, [wBattleMonType1]
 	ld hl, wBaseType
 	call CheckTypeMatchup
+
 	ld a, [wTypeMatchup]
 	cp 10 + 1
 	jr nc, .dont_choose_mon

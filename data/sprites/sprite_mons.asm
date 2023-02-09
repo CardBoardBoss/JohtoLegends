@@ -51,3 +51,16 @@ SpriteMons:
 	dw SWINUB
 	dw SNEASEL
 	dw MILTANK
+	dw RAICHU
+	dw CLEFAIRY
+	dw DUSKNOIR
+	dw PICHU
+	dw RAIKOU
+	dw SUICUNE
+	dw ENTEI
+	dw ARTICUNO
+	dw ZAPDOS
+	dw MOLTRES
+	dw MACHAMP
+	dw PORYGON_Z
+	dw QUAGSIRE

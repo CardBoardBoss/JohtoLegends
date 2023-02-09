@@ -400,6 +400,10 @@ MoveDescriptions1:
 	dw AcrobaticsDescription
 	dw UTurnDescription
 	dw CoilDescription
+	dw PincirFlurryDescription
+	dw BubblebeamDescription
+	dw SignalWaveDescription
+	dw DoubleEdgeDescription
 ;	dw WakeUpSlapDescription
 
 InvalidMoveDescription:
@@ -730,8 +734,8 @@ StringShotDescription:
 	next "the foe's Speed.@"
 
 DragonRageDescription:
-	db   "Always inflicts"
-	next "40HP damage.@"
+	db   "User attacks with"
+	next "full rage.@"
 
 FireSpinDescription:
 	db   "Traps foe in fire"
@@ -1866,8 +1870,8 @@ RockPolishDescription:
 	next "increase Speed.@"
 
 GyroBallDescription:
-	db   "The user's level"
-	next "equals damage HP.@"
+	db   "User spins and"
+	next "deals damage.@"
 
 SlackOffDescription:
 	db	 "Slacks off and re-"
@@ -1944,3 +1948,11 @@ AcrobaticsDescription:
 CoilDescription:
 	db   "Raises ATK, DEF"
 	line "and Accuracy.@"
+
+PincirFlurryDescription:
+	db   "A barrage of"
+	line "angry pincirs.@"
+
+SignalWaveDescription:
+	db   "Signals that can"
+	line "cause confusion.@"

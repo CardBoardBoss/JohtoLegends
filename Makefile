@@ -75,9 +75,9 @@ endif
 
 
 johtolegendsv0.1.gbc: $(crystal_obj) pokecrystal.link
-	$(RGBLINK) -n pokecrystal.sym -m pokecrystal.map -l pokecrystal.link -o $@ $(crystal_obj)
+	$(RGBLINK) -n johtolegendsv0.1.sym -m johtolegendsv0.1.map -l pokecrystal.link -o $@ $(crystal_obj)
 	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
-	tools/sort_symfile.sh pokecrystal.sym
+	tools/sort_symfile.sh johtolegendsv0.1.sym
 
 %.lz: %
 	tools/lzcomp -- $< $@
@@ -144,11 +144,25 @@ gfx/battle_anims/lightning.2bpp: tools/gfx += --remove-whitespace
 gfx/battle_anims/misc.2bpp: tools/gfx += --remove-duplicates --remove-xflip
 gfx/battle_anims/noise.2bpp: tools/gfx += --remove-whitespace
 gfx/battle_anims/objects.2bpp: tools/gfx += --remove-whitespace --remove-xflip
-gfx/battle_anims/pokeball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
 gfx/battle_anims/reflect.2bpp: tools/gfx += --remove-whitespace
 gfx/battle_anims/rocks.2bpp: tools/gfx += --remove-whitespace
 gfx/battle_anims/skyattack.2bpp: tools/gfx += --remove-whitespace
 gfx/battle_anims/status.2bpp: tools/gfx += --remove-whitespace
+
+gfx/battle_balls/background.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/poke_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/great_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/ultra_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/master_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/level_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/lure_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/moon_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/friend_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/fast_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/heavy_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/love_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/park_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
+gfx/battle_balls/dusk_ball.2bpp: tools/gfx += --remove-xflip --keep-whitespace
 
 gfx/player/chris.2bpp: rgbgfx += -h
 gfx/player/chris_back.2bpp: rgbgfx += -h

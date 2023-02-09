@@ -401,6 +401,10 @@
 	const ACROBATICS
 	const VOLT_SWITCH
 	const COIL
+	const PINCIRFLURRY
+	const JURASSICBEAM
+	const SIGNAL_WAVE
+	const WAVE_CRASH
 ;	const WAKE_UP_SLAP
 NUM_ATTACKS EQU const_value + -1
 

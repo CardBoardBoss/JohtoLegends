@@ -509,7 +509,7 @@ TeamRocketBaseB1FSecurityCamera:
 	jumptext TeamRocketBaseB1FSecurityCameraText
 
 TeamRocketBaseB1FBookshelf:
-	jumpstd teamrocketoath
+	jumptext NinjaBookText2
 
 TeamRocketBaseB1FSecretSwitch:
 	jumptext TeamRocketBaseB1FSecretSwitchText
@@ -638,8 +638,8 @@ HideoutRivalDefeatedText:
 	done
 
 HideoutRivalLostText:
-	text "…Maybe I'm strong"
-	line "after all…"
+	text "…I'm going to lose"
+	line "again, aren't I?"
 	done
 
 DahliaSilentAgainText:
@@ -752,6 +752,13 @@ TeamRocketBaseB1FSwitchOffText:
 	line "turned off."
 	done
 
+NinjaBookText2:
+	text "There are a bunch"
+	line "of books about"
+	cont "ninjas on the"
+	cont "shelves here."
+	done
+
 TeamRocketBaseB1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -806,6 +813,6 @@ TeamRocketBaseB1F_MapEvents:
 	object_event 18, 12, SPRITE_NINJA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerMNinjaM6, EVENT_HIDEOUT_NINJA11
 	object_event 27,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, TeamRocketBaseB1FHyperPotion, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
 	object_event 19,  6, SPRITE_NINJA, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 1, TrainerMNinjaF6, EVENT_HIDEOUT_NINJA12
-	object_event 21, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, TeamRocketBaseB1FSludgeBomb, EVENT_GOT_TM_SLUDGE_BOMB
+	object_event 21, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_ITEMBALL, 0, TeamRocketBaseB1FSludgeBomb, EVENT_GOT_TM_SLUDGE_BOMB
 	object_event 23,  2, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_HIDEOUT_B1F_RIVAL
 	object_event 25,  2, SPRITE_MIYAMOTO, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_HIDEOUT_BF1_MIYAMOTO

@@ -1,5 +1,5 @@
 	object_const_def ; object_event constants
-	const ROUTE37_YOUNGSTER
+	const ROUTE37_POKEFAN_F
 	const ROUTE37_FRUIT_TREE1
 	const ROUTE37_SUNNY
 	const ROUTE37_FRUIT_TREE2

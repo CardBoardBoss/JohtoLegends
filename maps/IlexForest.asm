@@ -18,7 +18,7 @@ IlexForest_MapScripts:
 	callback MAPCALLBACK_OBJECTS, .FarfetchDAppears
 
 .FarfetchDAppears:
-	checkflag ENGINE_ILEX_FOREST_FARFETCHD
+	checkevent EVENT_BEAT_FARFETCHD
 	iftrue .FarfetchDWillNotAppear
 	readvar VAR_WEEKDAY
 	ifequal MONDAY, .FarfetchDWillAppear
@@ -65,7 +65,7 @@ IlexForestFarfetchdScript:
 	cry FARFETCH_D
 	waitbutton
 	closetext
-	loadwildmon FARFETCH_D, 35
+	loadwildmon FARFETCH_D, 40
 	loadvar VAR_BATTLETYPE, BATTLETYPE_SHINY
 	startbattle
 	ifequal LOSE, .NotBeaten
@@ -78,37 +78,10 @@ IlexForestFarfetchdScript:
 
 .CaughtFarfetchd:
 	setevent EVENT_CAUGHT_FARFETCHD
-	setflag ENGINE_ILEX_FOREST_FARFETCHD
 	end
 
 .NotBeaten:
 	reloadmapafterbattle
-	end
-
-IlexForestCharcoalMasterScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_SCYTHER_CALL
-	iftrue .AlreadyGotCut
-	writetext Text_CharcoalMasterIntro
-	buttonsound
-	verbosegiveitem SCYTHER_CALL
-	setevent EVENT_GOT_SCYTHER_CALL
-	writetext Text_CharcoalMasterOutro
-	waitbutton
-	closetext
-	setevent EVENT_ILEX_FOREST_FARFETCHD
-	setevent EVENT_ILEX_FOREST_APPRENTICE
-	setevent EVENT_ILEX_FOREST_CHARCOAL_MASTER
-	clearevent EVENT_CHARCOAL_KILN_FARFETCH_D
-	clearevent EVENT_CHARCOAL_KILN_APPRENTICE
-	clearevent EVENT_CHARCOAL_KILN_BOSS
-	end
-
-.AlreadyGotCut:
-	writetext Text_CharcoalMasterTalkAfter
-	waitbutton
-	closetext
 	end
 
 IlexForestDarkPulseGirlScript:
@@ -221,7 +194,7 @@ IlexForestShrineScript:
 	pause 20
 	clearflag ENGINE_FOREST_IS_RESTLESS
 	special CelebiShrineEvent
-	loadwildmon CELEBI, 30
+	loadwildmon CELEBI, 50
 	startbattle
 	reloadmapafterbattle
 	pause 20

@@ -118,7 +118,7 @@ ItemDescriptions:
 	dw HardStoneDesc
 	dw LuckyEggDesc
 	dw BattleCardDesc
-	dw MachinePartDesc
+	dw StrangeHairDesc
 	dw PowerBandDesc
 	dw ChoiceScarfDesc
 	dw StardustDesc
@@ -144,7 +144,7 @@ ItemDescriptions:
 	dw MoonBallDesc
 	dw LoveBallDesc
 	dw ZincDesc
-	dw GorgeousBoxDesc
+	dw SootheBellDesc
 	dw SunStoneDesc
 	dw PolkadotBowDesc
 	dw UpGradeDesc
@@ -723,9 +723,9 @@ BattleCardDesc:
 	db   "Stores Battle"
 	next "Points (Max 95)@"
 
-MachinePartDesc:
-	db   "A machine part for"
-	next "the Power Plant.@"
+StrangeHairDesc:
+	db   "A mysterious pink"
+	next "#mon hair.@"
 
 PowerBandDesc:
 	db   "Increases holder's"
@@ -827,9 +827,9 @@ ZincDesc:
 	db   "Ups Spcl.Def stat"
 	next "of one #mon.@"
 
-GorgeousBoxDesc:
-	db   "Open it and see"
-	next "what's inside.@"
+SootheBellDesc:
+	db   "Makes a #mon"
+	next "happier. (Hold)@"
 
 SunStoneDesc:
 	db   "Evolves certain"

@@ -162,7 +162,6 @@ ENDM
 	map_const ECRUTEAK_GYM,                                 5,  9 ;  7
 	map_const ECRUTEAK_ITEMFINDER_HOUSE,                    4,  4 ;  8
 	map_const ECRUTEAK_CITY,                               20, 18 ;  9
-	map_const BELLCHIME_PATH,                              14,  7 ; 10
 	map_const ECRUTEAK_MOVE_TUTOR_HOUSE,                    4,  4 ; 11
 
 	newgroup                                                      ;  5
@@ -181,6 +180,11 @@ ENDM
 	map_const MASTERS_HOUSE_2F,                             5,  6 ; 12
 	map_const RIVALS_HOUSE_2F,                              4,  3 ; 13
 	map_const HO_OH_LUGIA_ROOM,                             6,  6 ; 14
+	map_const ROCKET_LAIR_HALLWAY_1,                        5, 11 ; 15
+	map_const ROCKET_LAIR_BREAK_ROOM,                       5,  4 ; 16
+	map_const ROCKET_LAIR_HALLWAY_2,                       10,  9 ; 17
+	map_const ROCKET_LAIR_HALLWAY_3,                        5,  8 ; 18
+	map_const ROCKET_LAIR_BOSS_ROOM,                        9,  9 ; 19
 
 	newgroup                                                      ;  6
 
@@ -229,6 +233,9 @@ ENDM
 	map_const ROUTE_43_GATE,                                5,  4 ;  4
 	map_const ROUTE_43,                                    10, 27 ;  5
 	map_const LAKE_OF_RAGE,                                20, 18 ;  6
+	map_const LAKE_OF_RAGE_POKECENTER_1F,                   5,  4 ;  7
+	map_const LAKE_OF_RAGE_MART,                            6,  4 ;  8
+	map_const SOOTHE_BELL_HOUSE,                            4,  4 ;  9
 
 	newgroup                                                      ; 10
 
@@ -249,6 +256,7 @@ ENDM
 	map_const ROUTE_35_NATIONAL_PARK_GATE,                  4,  4 ; 15
 	map_const ROUTE_36_RUINS_OF_ALPH_GATE,                  5,  4 ; 16
 	map_const ROUTE_36_NATIONAL_PARK_GATE,                  5,  4 ; 17
+	map_const GHOST_HOUSE,                                  4,  4 ; 18
 
 	newgroup                                                      ; 11
 
@@ -493,6 +501,7 @@ ENDM
 	map_const ROUTE_30_BERRY_HOUSE,                         4,  4 ;  9
 	map_const MR_POKEMONS_HOUSE,                            4,  4 ; 10
 	map_const ROUTE_31_VIOLET_GATE,                         5,  4 ; 11
+	map_const CHERRYGROVE_FISHER_HOUSE,                     4,  4 ; 12
 
 	newgroup
 
@@ -507,3 +516,7 @@ ENDM
 	map_const WILD_AREA_CAVE,                               7,  7 ; 9
 	map_const WILD_AREA_4,                                  7,  7 ; 10
 	map_const WILD_AREA_5,                                  7,  7 ; 11
+
+	newgroup
+
+	map_const BELLCHIME_PATH,                              14,  7 ; 10

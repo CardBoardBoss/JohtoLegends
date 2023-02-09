@@ -10,7 +10,24 @@
 AzaleaGym_MapScripts:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .KurtSaturdayGym
+
+.KurtSaturdayGym:
+	checkevent EVENT_BEAT_KURT
+	iftrue .IsItSaturdayGym
+	appear AZALEAGYM_KURT
+	return
+
+.IsItSaturdayGym:
+	readvar VAR_WEEKDAY
+	ifequal SATURDAY, .KurtDisappears
+	appear AZALEAGYM_KURT
+	return
+
+.KurtDisappears:
+	disappear AZALEAGYM_KURT
+	return
 
 AzaleaGymKurtScript:
 	faceplayer
@@ -43,9 +60,9 @@ AzaleaGymKurtScript:
 	checkevent EVENT_GOT_TM60_X_SCISSOR
 	iftrue .GotFuryCutter
 	setevent EVENT_BEAT_TWINS_GINGER_AND_SAM
-	setevent EVENT_BEAT_BUG_CATCHER_ELMER
-	setevent EVENT_BEAT_BUG_CATCHER_AL
-	setevent EVENT_BEAT_BUG_CATCHER_BUZZY
+	setevent EVENT_BEAT_BUG_CATCHER_MARTY
+	setevent EVENT_BEAT_BUG_CATCHER_NAT
+	setevent EVENT_BEAT_BUG_CATCHER_PETE
 	writetext KurtText_HiveBadgeSpeech
 	buttonsound
 	verbosegiveitem TM_X_SCISSOR
@@ -68,7 +85,7 @@ AzaleaGymKurtScript:
 	ifequal 6, .KurtBattle1
 	ifequal 7, .KurtBattle2
 	ifequal 8, .KurtBattle3
-	end
+	sjump .KurtBattle3
 
 .KurtBattle1:
 	writetext KurtText_Rematch
@@ -192,7 +209,7 @@ AzaleaGymGuyScript:
 	end
 
 AzaleaGymStatue:
-	checkevent EVENT_CLEARED_TIN_TOWER_ROCKETS
+	checkevent EVENT_CLEARED_TIN_TOWER
 	iftrue .RivalBeatGym
 	checkflag ENGINE_HIVEBADGE
 	iftrue .Beaten
@@ -428,10 +445,12 @@ KurtText_Rematch:
 	done
 
 KurtText_Respect:
-	text "Ha!"
+	text "Huh?"
 
-	para "That'll teach you"
-	line "some respect!"
+	para "Only 1 left?"
+
+	para "What nonsense is"
+	line "this?"
 	done
 
 KurtText_BeatenAgain:
@@ -458,7 +477,7 @@ AzaleaGym_MapEvents:
 	bg_event  6, 13, BGEVENT_READ, AzaleaGymStatue
 
 	db 7 ; object events
-	object_event  5,  1, SPRITE_KURT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, AzaleaGymKurtScript, -1
+	object_event  5,  1, SPRITE_KURT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, AzaleaGymKurtScript, EVENT_AZALEA_GYM_KURT
 	object_event  5,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherMarty, -1
 	object_event  8,  2, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherNat, -1
 	object_event  5,  4, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBugCatcherPete, -1

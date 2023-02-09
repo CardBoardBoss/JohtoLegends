@@ -54,6 +54,7 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_ICE_BEAM
 	const ANIM_OBJ_RAZOR_LEAF
 	const ANIM_OBJ_POKE_BALL
+	const ANIM_OBJ_POKE_BALL_BG
 	const ANIM_OBJ_POKE_BALL_BLOCKED
 	const ANIM_OBJ_17
 	const ANIM_OBJ_18
@@ -238,6 +239,9 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_GRASSWHISTLE
 	const ANIM_OBJ_AQUA_RING
 	const ANIM_OBJ_COIL
+	const ANIM_OBJ_MOON
+	const ANIM_OBJ_BULLET_SEED
+	const ANIM_OBJ_SLUDGE_WAVE
 
 ; DoBattleAnimFrame arguments (see engine/battle_anims/functions.asm)
 	const_def
@@ -260,6 +264,7 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const BATTLEANIMFUNC_10
 	const BATTLEANIMFUNC_11
 	const BATTLEANIMFUNC_12
+	const BATTLEANIMFUNC_POKEBALL_BG
 	const BATTLEANIMFUNC_13
 	const BATTLEANIMFUNC_14
 	const BATTLEANIMFUNC_15
@@ -798,6 +803,7 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_GFX_ROCKS
 	const ANIM_GFX_ICE
 	const ANIM_GFX_POKE_BALL
+	const ANIM_GFX_POKE_BALL_BG
 	const ANIM_GFX_POISON
 	const ANIM_GFX_BUBBLE
 	const ANIM_GFX_NOISE
@@ -828,6 +834,7 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_GFX_AEROBLAST
 	const ANIM_GFX_PLAYERHEAD
 	const ANIM_GFX_ENEMYFEET
+	const ANIM_GFX_MOON
 
 ; battle_bg_effect struct members (see macros/wram.asm)
 	const_def

@@ -40,14 +40,21 @@ Marts:
 	dw MartOlivineTMs
 	dw MartBlackthornTMs
 	dw MartAzaleaTMs
+	dw MartVioletTMs
+	dw MartLakeOfRage
 .End
 
 MartCherrygrove:
-	db 4 ; # items
-	db POTION
-	db ANTIDOTE
-	db PARLYZ_HEAL
-	db AWAKENING
+	db 9 ; # items
+	db ULTRA_BALL
+	db HYPER_POTION
+	db ESCAPE_ROPE
+	db REVIVE
+	db FULL_HEAL
+	db MAX_REPEL
+	db MAX_POTION
+	db FULL_RESTORE
+	db FLOWER_MAIL
 	db -1 ; end
 
 MartCherrygroveDex:
@@ -60,16 +67,14 @@ MartCherrygroveDex:
 	db -1 ; end
 
 MartViolet:
-	db 10 ; # items
-	db POKE_BALL
-	db POTION
+	db 8 ; # items
+	db ULTRA_BALL
+	db HYPER_POTION
 	db ESCAPE_ROPE
-	db ANTIDOTE
-	db PARLYZ_HEAL
-	db AWAKENING
-	db X_DEFEND
-	db X_ATTACK
-	db X_SPEED
+	db REVIVE
+	db FULL_HEAL
+	db MAX_REPEL
+	db MAX_POTION
 	db FLOWER_MAIL
 	db -1 ; end
 
@@ -163,16 +168,17 @@ MartGoldenrodBlackMarket1:
 	db -1 ; end
 
 MartGoldenrodBlackMarket2:
-	db 9 ; # items
+	db 10 ; # items
 	db DRAGON_SCALE
-	db RAZOR_CLAW
-	db RAZOR_FANG
 	db LINK_CABLE
-	db PROTECTOR
 	db UP_GRADE
-	db DUBIOUSDISK
 	db ROYAL_ROCK
 	db METAL_COAT
+	db RAZOR_CLAW
+	db RAZOR_FANG
+	db PROTECTOR
+	db ELECTIRIZER
+	db MAGMARIZER
 	db -1 ; end
 
 MartGoldenrodBlackMarket3:
@@ -351,10 +357,9 @@ MartCeladon2F2:
 	db -1 ; end
 
 MartCeladon3F:
-	db 4 ; # items
+	db 3 ; # items
 	db TM_GIGA_IMPACT
 	db TM_FOCUS_BLAST
-	db TM_DREAM_EATER
 	db TM_HYPER_BEAM
 	db -1 ; end
 
@@ -481,13 +486,32 @@ MartBlackthornTMs:
 MartAzaleaTMs:
 	db 4
 	db TM_SUNNY_DAY
-	db TM_FLAMETHROWER
+	db TM_ROCK_SLIDE
 	db TM_BULLDOZE
 	db TM_REST
+	db -1 ; end
+
+MartVioletTMs:
+	db 4
+	db TM_THUNDERBOLT
+	db TM_ICE_BEAM
+	db TM_FLAMETHROWER
+	db TM_STEEL_WING
 	db -1 ; end
 
 DefaultMart:
 	db 2 ; # items
 	db POKE_BALL
 	db POTION
+	db -1 ; end
+
+MartLakeOfRage:
+	db 7 ; # items
+	db POKE_BALL
+	db POTION
+	db ANTIDOTE
+	db PARLYZ_HEAL
+	db AWAKENING
+	db ESCAPE_ROPE
+	db REPEL
 	db -1 ; end

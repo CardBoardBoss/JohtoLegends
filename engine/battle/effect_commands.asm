@@ -1884,10 +1884,11 @@ BattleCommand_EffectChance:
 	jr z, .got_move_chance
 	ld hl, wEnemyMoveStruct + MOVE_CHANCE
 .got_move_chance
-
-	; BUG: 1/256 chance to fail even for a 100% effect chance,
-	; since carry is not set if BattleRandom == [hl] == 255
-	call BattleRandom
+	ld a, [hl]
+	sub 100 percent
+	; If chance was 100%, RNG won't be called (carry not set)
+	; Thus chance will be subtracted from 0, guaranteeing a carry
+	call c, BattleRandom
 	cp [hl]
 	pop hl
 	ret c
@@ -2151,7 +2152,7 @@ BattleCommand_ApplyDamage:
 	bit SUBSTATUS_ENDURE, a
 	jr z, .check_item
 
-	call BattleCommand_FalseSwipe
+	farcall BattleCommand_FalseSwipe
 	ld b, 0
 	jr nc, .damage
 	ld b, 1
@@ -2172,7 +2173,7 @@ BattleCommand_ApplyDamage:
 ; check if target is at full HP
 	farcall CheckOpponentFullHP
 	jr nz, .damage
-	call BattleCommand_FalseSwipe
+	farcall BattleCommand_FalseSwipe
 	ld b, 0
 	jr nc, .damage
 	callfar ConsumeHeldItem
@@ -2183,7 +2184,7 @@ BattleCommand_ApplyDamage:
 	call BattleRandom
 	cp c
 	jr nc, .damage
-	call BattleCommand_FalseSwipe
+	farcall BattleCommand_FalseSwipe
 	ld b, 0
 	jr nc, .damage
 	ld b, 2
@@ -2621,6 +2622,8 @@ PlayerAttackDamage:
 	ld b, a
 	ld c, [hl]
 
+	call HailDefBoost
+
 	ld a, [wEnemyScreens]
 	bit SCREENS_REFLECT, a
 	jr z, .physicalcrit
@@ -2645,8 +2648,8 @@ PlayerAttackDamage:
 	ld b, a
 	ld c, [hl]
 
-
 	call SandstormSpDefBoost
+
 	ld a, [wEnemyScreens]
 	bit SCREENS_LIGHT_SCREEN, a
 	jr z, .specialcrit
@@ -2873,6 +2876,8 @@ EnemyAttackDamage:
 	ld b, a
 	ld c, [hl]
 
+	call HailDefBoost
+
 	ld a, [wPlayerScreens]
 	bit SCREENS_REFLECT, a
 	jr z, .physicalcrit
@@ -2897,8 +2902,8 @@ EnemyAttackDamage:
 	ld b, a
 	ld c, [hl]
 
-
 	call SandstormSpDefBoost
+
 	ld a, [wPlayerScreens]
 	bit SCREENS_LIGHT_SCREEN, a
 	jr z, .specialcrit
@@ -4823,10 +4828,6 @@ GetStatName:
 	ld bc, wStringBuffer3 - wStringBuffer2
 	jp CopyBytes
 
-INCLUDE "data/battle/stat_names.asm"
-
-INCLUDE "data/battle/stat_multipliers.asm"
-
 BattleCommand_AllStatsUp:
 ; allstatsup
 
@@ -5244,7 +5245,7 @@ BattleCommand_ForceSwitch:
 	jp .succeed
 
 .trainer
-	call FindAliveEnemyMons
+	farcall FindAliveEnemyMons
 	jr c, .switch_fail
 	ld a, [wEnemyGoesFirst]
 	and a
@@ -6267,8 +6268,6 @@ EndRechargeOpp:
 
 INCLUDE "engine/battle/move_effects/rage.asm"
 
-INCLUDE "engine/battle/move_effects/venoshock.asm"
-
 INCLUDE "engine/battle/move_effects/mimic.asm"
 
 INCLUDE "engine/battle/move_effects/leech_seed.asm"
@@ -6276,8 +6275,6 @@ INCLUDE "engine/battle/move_effects/leech_seed.asm"
 INCLUDE "engine/battle/move_effects/splash.asm"
 
 INCLUDE "engine/battle/move_effects/disable.asm"
-
-INCLUDE "engine/battle/move_effects/pay_day.asm"
 
 INCLUDE "engine/battle/move_effects/conversion.asm"
 
@@ -6696,14 +6693,6 @@ BattleCommand_CheckSafeguard:
 	call StdBattleTextbox
 	jp EndMoveEffect
 
-INCLUDE "engine/battle/move_effects/magnitude.asm"
-
-INCLUDE "engine/battle/move_effects/baton_pass.asm"
-
-INCLUDE "engine/battle/move_effects/pursuit.asm"
-
-INCLUDE "engine/battle/move_effects/rapid_spin.asm"
-
 BattleCommand_HealMorn:
 ; healmorn
 	ld b, MORN_F
@@ -7097,8 +7086,6 @@ SandstormSpDefBoost:
 	ld c, l
 	ret
 
-INCLUDE "engine/battle/move_effects/aqua_ring.asm"
-
 ApplyChoiceScarfOnSpeed:
 	Call GetOpponentItem
 	ld a, b
@@ -7161,4 +7148,34 @@ ApplyChoiceScarfOnSpeed:
 	ld [hli], a
 	ldh a, [hQuotient + 3]
 	ld [hl], a
+	ret
+
+HailDefBoost: 
+; First, check if Hail is active.
+	ld a, [wBattleWeather]
+	cp WEATHER_HAIL
+	ret nz
+
+; Then, check the opponent's types.
+	ld hl, wEnemyMonType1
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld hl, wBattleMonType1
+.ok
+	ld a, [hli]
+	cp ICE
+	jr z, .start_boost
+	ld a, [hl]
+	cp ICE
+	ret nz
+
+.start_boost
+	ld h, b
+	ld l, c
+	srl b
+	rr c
+	add hl, bc
+	ld b, h
+	ld c, l
 	ret

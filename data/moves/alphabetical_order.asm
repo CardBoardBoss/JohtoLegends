@@ -180,6 +180,7 @@ AlphabeticalMoveList::
 	dw IRON_HEAD
 	dw IRON_TAIL
 	dw JUMP_KICK
+	dw JURASSICBEAM
 	dw KARATE_CHOP
 	dw KINESIS
 	dw KNOCK_OFF
@@ -237,6 +238,7 @@ AlphabeticalMoveList::
 	dw PERISH_SONG
 	dw PETAL_BLIZZ
 	dw PETAL_DANCE
+	dw PINCIRFLURRY
 	dw PIN_MISSILE
 	dw PIXIE_PUNCH
 	dw PLAY_NICE
@@ -303,6 +305,7 @@ AlphabeticalMoveList::
 	dw SHEER_COLD
 	dw SHELL_SMASH
 	dw SIGNAL_BEAM
+	dw SIGNAL_WAVE
 	dw SILVER_WIND
 	dw SING
 	dw SKETCH
@@ -384,6 +387,7 @@ AlphabeticalMoveList::
 	dw WATERFALL
 	dw WATER_GUN
 	dw WATER_PULSE
+	dw WAVE_CRASH
 	dw WHIRLPOOL
 	dw WHIRLWIND
 	dw WING_ATTACK

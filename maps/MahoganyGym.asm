@@ -10,13 +10,30 @@ MahoganyGym_MapScripts:
 	scene_script .DummyScene0 ; SCENE_DEFAULT
 	scene_script .DummyScene1 ; SCENE_GYM_GUIDE_STOPS_YOU
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, .PryceMondayGym
 
 .DummyScene0:
 	end
 
 .DummyScene1:
 	end
+
+.PryceMondayGym:
+	checkevent EVENT_BEAT_PRYCE
+	iftrue .IsItMondayGym
+	appear MAHOGANYGYM_PRYCE
+	return
+
+.IsItMondayGym:
+	readvar VAR_WEEKDAY
+	ifequal MONDAY, .PryceDisappears
+	appear MAHOGANYGYM_PRYCE
+	return
+
+.PryceDisappears:
+	disappear MAHOGANYGYM_PRYCE
+	return
 
 MahoganyGymPryceScript:
 	faceplayer
@@ -27,7 +44,8 @@ MahoganyGymPryceScript:
 	waitbutton
 	closetext
 	winlosstext PryceText_Blizzard, PryceText_StillGotIt
-	loadtrainer PRYCE, PRYCE1
+	loadtrainer PRYCE, PRYCE_ALTERNATE
+.StartPryceBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PRYCE
@@ -72,14 +90,14 @@ MahoganyGymPryceScript:
 	ifequal 6, .PryceBattle6
 	ifequal 7, .PryceBattle7
 	ifequal 8, .PryceBattle8
-	end
+	sjump .PryceBattle8
 
 .PryceBattle1:
 	writetext PryceText_WelcomeBack
 	waitbutton
 	closetext
 	winlosstext PryceText_Blizzard, PryceText_StillGotIt
-	loadtrainer PRYCE, PRYCE1
+	loadtrainer PRYCE, PRYCE_ALTERNATE
 	startbattle
 	reloadmapafterbattle
 	sjump AfterPryceRematch
@@ -129,7 +147,7 @@ MahoganyGymPryceScript:
 	waitbutton
 	closetext
 	winlosstext PryceText_Blizzard, PryceText_StillGotIt
-	loadtrainer PRYCE_3, PRYCE6
+	loadtrainer PRYCE_2, PRYCE6
 	startbattle
 	reloadmapafterbattle
 	sjump AfterPryceRematch
@@ -338,11 +356,11 @@ PryceText_Intro:
 	line "affect how irresi-"
 	cont "stible I am to the"
 
-	para "ladies...Sorry,"
-	line "just thinking out"
-	cont "loud. I am Pryce,"
+	para "ladies…Sorry, just"
+	line "thinking out loud."
+	cont "I am Pryce, the"
 
-	para "the Gym Leader of"
+	para "Gym Leader of"
 	line "Mahogany Town,"
 	cont "although I'm sure"
 
@@ -366,8 +384,9 @@ PryceText_Blizzard:
 	done
 
 PryceText_StillGotIt:
-	text "Told ya' I still"
-	line "got it!"
+	text "Winter is harsh,"
+	line "but we can bear"
+	cont "it!"
 	done
 
 PryceText_After:
@@ -427,7 +446,7 @@ PryceText_GoodLooks:
 	para "I enter my senior"
 	line "years!"
 
-	para "...Hopefully."
+	para "…Hopefully."
 	done
 
 PryceText_WelcomeBack:
@@ -533,7 +552,7 @@ SkierPamAfterBattleText:
 	done
 
 MahoganyGymGuyText:
-	text "Hows it going,"
+	text "How's it going,"
 	line "champ in the"
 	cont "making?"
 
@@ -578,8 +597,8 @@ ByTheWay1Text:
 
 	para "tell you:"
 
-	para "Meet me at the"
-	line "Lake of Rage!"
+	para "Meet me in front"
+	line "of Lake of Rage!"
 
 	para "You better go see"
 	line "her."
@@ -592,8 +611,8 @@ ByTheWay2Text:
 
 	para "tell you:"
 
-	para "Meet me at the"
-	line "Lake of Rage!"
+	para "Meet me in front"
+	line "of Lake of Rage!"
 
 	para "You better go see"
 	line "him."
@@ -603,8 +622,8 @@ MahoganyGym_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  4, 17, MAHOGANY_TOWN, 3
-	warp_event  5, 17, MAHOGANY_TOWN, 3
+	warp_event  4, 17, LAKE_OF_RAGE, 3
+	warp_event  5, 17, LAKE_OF_RAGE, 3
 
 	db 2 ; coord events
 	coord_event 4, 17, SCENE_GYM_GUIDE_STOPS_YOU, GymGuyStopsYou1Script
@@ -615,8 +634,8 @@ MahoganyGym_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, MahoganyGymStatue
 
 	db 5 ; object events
-	object_event  5,  3, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, -1
-	object_event  5,  9, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierBrandy, -1
-	object_event  9, 17, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierPam, -1
-	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderSonny, -1
+	object_event  5,  3, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, EVENT_MAHOGANY_GYM_PRYCE
+	object_event  5,  9, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierBrandy, -1
+	object_event  9, 17, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierPam, -1
+	object_event  2,  4, SPRITE_BOARDER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderSonny, -1
 	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MahoganyGymGuyScript, -1

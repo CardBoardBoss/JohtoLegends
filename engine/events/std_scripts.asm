@@ -513,7 +513,6 @@ InitializeEventsScript:
 	setevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	setevent EVENT_INITIALIZED_EVENTS
-	setevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_BUG_CATCHING_CONTESTANT_1A
 	setevent EVENT_BUG_CATCHING_CONTESTANT_2A
 	setevent EVENT_BUG_CATCHING_CONTESTANT_3A
@@ -655,6 +654,14 @@ InitializeEventsScript:
 	setevent EVENT_VICTORY_ROAD_GATE_RIVAL
 	setmapscene PLAYERS_HOUSE_1F, SCENE_GRANDMA_GIVES_YOU_WATCH
 	setevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
+	setevent EVENT_BELLCHIME_PATH_ENOKI_WALK
+	setevent EVENT_BELLCHIME_PATH_ENOKI_PANIC
+	setevent EVENT_ICE_PATH_1F_PRYCE
+	setevent EVENT_RIVALS_HOUSE_RIVAL
+	setevent EVENT_RIVAL_NEW_BARK_TOWN
+	setevent EVENT_CHERRYGROVE_CYNTHIA
+	setevent EVENT_ROUTE_47_SUICUNE
+	setevent EVENT_BURNED_TOWER_B1F_ENTEI
 	return
 
 AskNumber1MScript:
@@ -662,9 +669,7 @@ AskNumber1MScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
-	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_FISHER_RALPH, .Ralph
 	ifequal PHONE_HIKER_ANTHONY, .Anthony
@@ -687,14 +692,8 @@ AskNumber1MScript:
 .Huey:
 	farwritetext HueyAskNumber1Text
 	end
-.Gaven:
-	farwritetext GavenAskNumber1Text
-	end
 .Jose:
 	farwritetext JoseAskNumber1Text
-	end
-.Joey:
-	farwritetext JoeyAskNumber1Text
 	end
 .Wade:
 	farwritetext WadeAskNumber1Text
@@ -747,9 +746,7 @@ AskNumber2MScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
-	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_FISHER_RALPH, .Ralph
 	ifequal PHONE_HIKER_ANTHONY, .Anthony
@@ -772,14 +769,8 @@ AskNumber2MScript:
 .Huey:
 	farwritetext HueyAskNumber2Text
 	end
-.Gaven:
-	farwritetext GavenAskNumber2Text
-	end
 .Jose:
 	farwritetext JoseAskNumber2Text
-	end
-.Joey:
-	farwritetext JoeyAskNumber2Text
 	end
 .Wade:
 	farwritetext WadeAskNumber2Text
@@ -838,9 +829,7 @@ NumberAcceptedMScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
-	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_FISHER_RALPH, .Ralph
 	ifequal PHONE_HIKER_ANTHONY, .Anthony
@@ -867,18 +856,8 @@ NumberAcceptedMScript:
 	waitbutton
 	closetext
 	end
-.Gaven:
-	farwritetext GavenNumberAcceptedText
-	waitbutton
-	closetext
-	end
 .Jose:
 	farwritetext JoseNumberAcceptedText
-	waitbutton
-	closetext
-	end
-.Joey:
-	farwritetext JoeyNumberAcceptedText
 	waitbutton
 	closetext
 	end
@@ -962,9 +941,7 @@ NumberDeclinedMScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
-	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_FISHER_RALPH, .Ralph
 	ifequal PHONE_HIKER_ANTHONY, .Anthony
@@ -991,18 +968,8 @@ NumberDeclinedMScript:
 	waitbutton
 	closetext
 	end
-.Gaven:
-	farwritetext GavenNumberDeclinedText
-	waitbutton
-	closetext
-	end
 .Jose:
 	farwritetext JoseNumberDeclinedText
-	waitbutton
-	closetext
-	end
-.Joey:
-	farwritetext JoeyNumberDeclinedText
 	waitbutton
 	closetext
 	end
@@ -1086,9 +1053,7 @@ PhoneFullMScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
-	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_FISHER_RALPH, .Ralph
 	ifequal PHONE_HIKER_ANTHONY, .Anthony
@@ -1115,18 +1080,8 @@ PhoneFullMScript:
 	waitbutton
 	closetext
 	end
-.Gaven:
-	farwritetext GavenPhoneFullText
-	waitbutton
-	closetext
-	end
 .Jose:
 	farwritetext JosePhoneFullText
-	waitbutton
-	closetext
-	end
-.Joey:
-	farwritetext JoeyPhoneFullText
 	waitbutton
 	closetext
 	end
@@ -1210,9 +1165,7 @@ RematchMScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
-	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_FISHER_RALPH, .Ralph
 	ifequal PHONE_HIKER_ANTHONY, .Anthony
@@ -1236,18 +1189,8 @@ RematchMScript:
 	waitbutton
 	closetext
 	end
-.Gaven:
-	farwritetext GavenRematchText
-	waitbutton
-	closetext
-	end
 .Jose:
 	farwritetext JoseRematchText
-	waitbutton
-	closetext
-	end
-.Joey:
-	farwritetext JoeyRematchText
 	waitbutton
 	closetext
 	end
@@ -1355,7 +1298,6 @@ PackFullMScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
 	ifequal PHONE_POKEFANM_DEREK, .Derek
@@ -1372,11 +1314,6 @@ PackFullMScript:
 	end
 .Jose:
 	farwritetext JosePackFullText
-	waitbutton
-	closetext
-	end
-.Joey:
-	farwritetext JoeyPackFullText
 	waitbutton
 	closetext
 	end
@@ -1425,16 +1362,11 @@ RematchGiftMScript:
 	opentext
 	readvar VAR_CALLERID
 	ifequal PHONE_SAILOR_HUEY, .Huey
-	ifequal PHONE_YOUNGSTER_JOEY, .Joey
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
 	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Huey:
 	farwritetext HueyRematchGiftText
-	buttonsound
-	end
-.Joey:
-	farwritetext JoeyRematchGiftText
 	buttonsound
 	end
 .Vance:
@@ -1453,7 +1385,6 @@ AskNumber1FScript:
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
 	ifequal PHONE_PICNICKER_LIZ, .Liz
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 	ifequal PHONE_PICNICKER_ERIN, .Erin
 
@@ -1472,9 +1403,6 @@ AskNumber1FScript:
 .Gina:
 	farwritetext GinaAskNumber1Text
 	end
-.Dana:
-	farwritetext DanaAskNumber1Text
-	end
 .Tiffany:
 	farwritetext TiffanyAskNumber1Text
 	end
@@ -1489,7 +1417,6 @@ AskNumber2FScript:
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
 	ifequal PHONE_PICNICKER_LIZ, .Liz
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 	ifequal PHONE_PICNICKER_ERIN, .Erin
 
@@ -1507,9 +1434,6 @@ AskNumber2FScript:
 	end
 .Gina:
 	farwritetext GinaAskNumber2Text
-	end
-.Dana:
-	farwritetext DanaAskNumber2Text
 	end
 .Tiffany:
 	farwritetext TiffanyAskNumber2Text
@@ -1532,7 +1456,6 @@ NumberAcceptedFScript:
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
 	ifequal PHONE_PICNICKER_LIZ, .Liz
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 	ifequal PHONE_PICNICKER_ERIN, .Erin
 
@@ -1561,11 +1484,6 @@ NumberAcceptedFScript:
 	waitbutton
 	closetext
 	end
-.Dana:
-	farwritetext DanaNumberAcceptedText
-	waitbutton
-	closetext
-	end
 .Tiffany:
 	farwritetext TiffanyNumberAcceptedText
 	waitbutton
@@ -1584,7 +1502,6 @@ NumberDeclinedFScript:
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
 	ifequal PHONE_PICNICKER_LIZ, .Liz
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 	ifequal PHONE_PICNICKER_ERIN, .Erin
 
@@ -1613,11 +1530,6 @@ NumberDeclinedFScript:
 	waitbutton
 	closetext
 	end
-.Dana:
-	farwritetext DanaNumberDeclinedText
-	waitbutton
-	closetext
-	end
 .Tiffany:
 	farwritetext TiffanyNumberDeclinedText
 	waitbutton
@@ -1636,7 +1548,6 @@ PhoneFullFScript:
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
 	ifequal PHONE_PICNICKER_LIZ, .Liz
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 	ifequal PHONE_PICNICKER_ERIN, .Erin
 
@@ -1665,11 +1576,6 @@ PhoneFullFScript:
 	waitbutton
 	closetext
 	end
-.Dana:
-	farwritetext DanaPhoneFullText
-	waitbutton
-	closetext
-	end
 .Tiffany:
 	farwritetext TiffanyPhoneFullText
 	waitbutton
@@ -1687,7 +1593,6 @@ RematchFScript:
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
 	ifequal PHONE_PICNICKER_LIZ, .Liz
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 	ifequal PHONE_PICNICKER_ERIN, .Erin
 
@@ -1711,11 +1616,6 @@ RematchFScript:
 	waitbutton
 	closetext
 	end
-.Dana:
-	farwritetext DanaRematchText
-	waitbutton
-	closetext
-	end
 .Tiffany:
 	farwritetext TiffanyRematchText
 	waitbutton
@@ -1731,7 +1631,6 @@ GiftFScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 
 .Beverly:
@@ -1740,10 +1639,6 @@ GiftFScript:
 	end
 .Gina:
 	farwritetext GinaGiftText
-	buttonsound
-	end
-.Dana:
-	farwritetext DanaGiftText
 	buttonsound
 	end
 .Tiffany:
@@ -1755,7 +1650,6 @@ PackFullFScript:
 	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_PICNICKER_GINA, .Gina
-	ifequal PHONE_LASS_DANA, .Dana
 	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 	ifequal PHONE_PICNICKER_ERIN, .Erin
 
@@ -1766,11 +1660,6 @@ PackFullFScript:
 	end
 .Gina:
 	farwritetext GinaPackFullText
-	waitbutton
-	closetext
-	end
-.Dana:
-	farwritetext DanaPackFullText
 	waitbutton
 	closetext
 	end
@@ -1976,13 +1865,13 @@ Movement_ContestResults_WalkAfterWarp:
 	step_end
 
 StaticPokemonRefresh:
-	checkevent EVENT_CAUGHT_FARFETCHD
-	iffalse .refreshfarfetchd
+	checkevent EVENT_BEAT_FARFETCHD
+	iftrue .refreshfarfetchd
 	return
 
 .refreshfarfetchd:
-	clearflag ENGINE_ILEX_FOREST_FARFETCHD
-	return
+	clearevent EVENT_BEAT_FARFETCHD
+	sjump StaticPokemonRefresh
 
 TelevisionScript:
 	readvar VAR_WEEKDAY
@@ -2208,48 +2097,58 @@ SwarmScript:
 	opentext
 	checkflag ENGINE_SWARM
 	iftrue .skiprandomswarm
-	checkflag ENGINE_FOGBADGE
-	iftrue .Badges2Swarm
 	checkflag ENGINE_MINERALBADGE
 	iftrue .Badges4Swarm
+	checkflag ENGINE_FOGBADGE
+	iftrue .Badges2Swarm
 	farwritetext WhatSwarmTodayText
 	waitbutton
-	random 5
+	random 8
 	ifequal 0, .noswarm
 	ifequal 1, .yanma
 	ifequal 2, .dunsparce
 	ifequal 3, .sneasel
 	ifequal 4, .scyther
+	ifequal 5, .aron
+	ifequal 6, .ralts
+	ifequal 7, .croagunk
 
 .Badges2Swarm:
 	farwritetext WhatSwarmTodayText
 	waitbutton
-	random 9
-	ifequal 0, .noswarm
-	ifequal 1, .yanma
-	ifequal 2, .dunsparce
-	ifequal 3, .qwilfish
-	ifequal 4, .eevee
-	ifequal 5, .kangaskhan
-	ifequal 6, .gible
-	ifequal 7, .sneasel
-	ifequal 8, .scyther
+	random 13
+	ifequal 0,  .noswarm
+	ifequal 1,  .yanma
+	ifequal 2,  .dunsparce
+	ifequal 3,  .qwilfish
+	ifequal 4,  .eevee
+	ifequal 5,  .kangaskhan
+	ifequal 6,  .gible
+	ifequal 7,  .sneasel
+	ifequal 8,  .scyther
+	ifequal 9,  .misdreavus
+	ifequal 10, .aron
+	ifequal 11, .ralts
+	ifequal 12, .croagunk
 
 .Badges4Swarm:
 	farwritetext WhatSwarmTodayText
 	waitbutton
-	random 11
-	ifequal 0, .noswarm
-	ifequal 1, .yanma
-	ifequal 2, .dunsparce
-	ifequal 3, .qwilfish
-	ifequal 4, .eevee
-	ifequal 5, .kangaskhan
-	ifequal 6, .gible
-	ifequal 7, .sneasel
-	ifequal 8, .magcargo
-	ifequal 9, .scyther
+	random 14
+	ifequal 0,  .noswarm
+	ifequal 1,  .yanma
+	ifequal 2,  .dunsparce
+	ifequal 3,  .qwilfish
+	ifequal 4,  .eevee
+	ifequal 5,  .kangaskhan
+	ifequal 6,  .gible
+	ifequal 7,  .sneasel
+	ifequal 8,  .misdreavus
+	ifequal 9,  .scyther
 	ifequal 10, .pinsir
+	ifequal 11, .aron
+	ifequal 12, .ralts
+	ifequal 13, .croagunk
 
 .noswarm
 	setflag ENGINE_SWARM
@@ -2315,17 +2214,17 @@ SwarmScript:
 	closetext
 	sjump .endswarmchannel
 
-.magcargo
+.misdreavus
 	setflag ENGINE_SWARM
-	swarm BURNED_TOWER_2F
-	farwritetext MagcargoSwarmText
+	swarm BURNED_TOWER_1F
+	farwritetext MisdreavusSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
 .scyther
 	setflag ENGINE_SWARM
-	swarm NATIONAL_PARK
+	swarm ROUTE_38
 	farwritetext ScytherSwarmText
 	waitbutton
 	closetext
@@ -2333,8 +2232,32 @@ SwarmScript:
 
 .pinsir
 	setflag ENGINE_SWARM
-	swarm ROUTE_38
+	swarm NATIONAL_PARK
 	farwritetext PinsirSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.aron
+	setflag ENGINE_SWARM
+	swarm MOUNT_MORTAR_1F_OUTSIDE
+	farwritetext AronSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.ralts
+	setflag ENGINE_SWARM
+	swarm ROUTE_43
+	farwritetext RaltsSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.croagunk
+	setflag ENGINE_SWARM
+	swarm LAKE_OF_RAGE
+	farwritetext CroagunkSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel

@@ -163,11 +163,6 @@ SECTION "Battle Core 2", ROMX
 INCLUDE "data/battle/effect_command_pointers.asm"
 
 
-SECTION "Battle Core 3", ROMX
-
-INCLUDE "engine/battle/effect_command_files.asm"
-
-
 SECTION "bank10", ROMX
 
 INCLUDE "data/moves/moves.asm"
@@ -382,11 +377,9 @@ INCLUDE "engine/phone/scripts/elm.asm"
 INCLUDE "engine/phone/scripts/jack.asm"
 INCLUDE "engine/phone/scripts/beverly.asm"
 INCLUDE "engine/phone/scripts/huey.asm"
-INCLUDE "engine/phone/scripts/gaven.asm"
 INCLUDE "engine/phone/scripts/beth.asm"
 INCLUDE "engine/phone/scripts/jose.asm"
 INCLUDE "engine/phone/scripts/reena.asm"
-INCLUDE "engine/phone/scripts/joey.asm"
 INCLUDE "engine/phone/scripts/wade.asm"
 INCLUDE "engine/phone/scripts/ralph.asm"
 INCLUDE "engine/phone/scripts/liz.asm"
@@ -396,7 +389,6 @@ INCLUDE "engine/phone/scripts/gina.asm"
 INCLUDE "engine/phone/scripts/irwin.asm"
 INCLUDE "engine/phone/scripts/arnie.asm"
 INCLUDE "engine/phone/scripts/alan.asm"
-INCLUDE "engine/phone/scripts/dana.asm"
 INCLUDE "engine/phone/scripts/chad.asm"
 INCLUDE "engine/phone/scripts/derek.asm"
 INCLUDE "engine/phone/scripts/tully.asm"
@@ -419,7 +411,6 @@ INCBIN "gfx/credits/theend.2bpp"
 
 SECTION "Move Animations", ROMX
 
-INCLUDE "engine/events/bug_contest/display_stats.asm"
 INCLUDE "engine/battle_anims/anim_commands.asm"
 INCLUDE "engine/battle_anims/core.asm"
 INCLUDE "data/battle_anims/objects.asm"
@@ -491,7 +482,6 @@ INCLUDE "engine/battle_anims/bg_effects.asm"
 SECTION "bank3E", ROMX
 
 INCLUDE "engine/gfx/load_font.asm"
-INCLUDE "engine/events/name_rater.asm"
 INCLUDE "engine/events/play_slow_cry.asm"
 INCLUDE "engine/pokedex/new_pokedex_entry.asm"
 INCLUDE "engine/link/time_capsule_2.asm"
@@ -657,7 +647,6 @@ INCLUDE "data/items/names.asm"
 INCLUDE "engine/items/print_item_description.asm"
 INCLUDE "data/moves/names.asm"
 INCLUDE "engine/overworld/landmarks.asm"
-INCLUDE "mobile/mobile_menu.asm"
 
 
 SECTION "bank77", ROMX
@@ -670,6 +659,7 @@ INCLUDE "engine/pokemon/search.asm"
 INCLUDE "engine/events/poisonstep.asm"
 INCLUDE "engine/events/sweet_scent.asm"
 INCLUDE "engine/events/sacred_ash.asm"
+INCLUDE "mobile/mobile_menu.asm"
 
 
 SECTION "bank77_2", ROMX
@@ -692,7 +682,6 @@ SECTION "Battle Tower Trainer Data", ROMX
 INCLUDE "data/battle_tower/unknown.asm"
 INCLUDE "engine/battle/ai/scoring.asm"
 INCLUDE "engine/events/field_moves.asm"
-
 
 SECTION "Mobile News Data", ROMX
 
@@ -728,7 +717,13 @@ INCLUDE "engine/link/time_capsule.asm"
 INCLUDE "engine/battle/shiny_swarm.asm"
 INCLUDE "engine/events/move_relearner.asm"
 INCLUDE "engine/events/hidden_power_guru.asm"
+INCLUDE "engine/events/bug_contest/display_stats.asm"
+INCLUDE "engine/events/name_rater.asm"
 
 SECTION "Move Animation 2", ROMX
 
 INCLUDE "data/moves/animations.asm"
+
+SECTION "Battle Core 3", ROMX
+
+INCLUDE "engine/battle/effect_command_files.asm"

@@ -17,6 +17,8 @@ GymLeaders:
 	db PRYCE_3
 	db ENOKI_2
 	db ENOKI_3
+	db CHIGUSA_2
+	db BYRON_2
 EliteFour:
 	db FLORINA
 	db MARTHA
@@ -34,6 +36,12 @@ KantoGymLeaders:
 	db SABRINA
 	db BLAINE
 	db GIOVANNI
+VillainBosses:
+	db ARIANA
+	db MIYAMOTO
+	db ARCHER
+	db MADAME_BOSS
+	db FED_LEADER
 	db -1
 
 DepressedRivals:
