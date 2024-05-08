@@ -58,6 +58,8 @@ StdScripts::
 	dba StaticPokemonRefresh
 	dba TelevisionScript
 	dba SwarmScript
+	dba GetDecoEvent
+	dba GymStatue5Script
 
 PokecenterNurseScript:
 ; EVENT_WELCOMED_TO_POKECOM_CENTER is never set
@@ -487,7 +489,6 @@ BugContestResults_CopyContestantsToResults:
 	end
 
 InitializeEventsScript:
-	setevent EVENT_EARLS_ACADEMY_EARL
 	setevent EVENT_GOLDENROD_TOWER_TAKEOVER
 	setevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	setevent EVENT_RADIO_TOWER_CIVILIANS_AFTER
@@ -601,10 +602,10 @@ InitializeEventsScript:
 	variablesprite SPRITE_WEIRD_TREE, SPRITE_SUDOWOODO
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_ROCKET
 	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_ROCKET
-	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_JANINE
-	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_JANINE
-	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_JANINE
-	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_JANINE
+	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_OFFICER_JENNY
+	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_OFFICER_JENNY
+	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_OFFICER_JENNY
+	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_OFFICER_JENNY
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_LASS
 	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
@@ -614,7 +615,6 @@ InitializeEventsScript:
 	setevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	setevent EVENT_COPYCATS_HOUSE_2F_DOLL
 	setevent EVENT_VIRIDIAN_GYM_BLUE
-	setevent EVENT_SEAFOAM_GYM_GYM_GUY
 	setevent EVENT_ECRUTEAK_GYM_KIDS
 	setevent EVENT_TIN_TOWER_ENTRANCE_ROCKET
 	setevent EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_SHERLES
@@ -662,6 +662,9 @@ InitializeEventsScript:
 	setevent EVENT_CHERRYGROVE_CYNTHIA
 	setevent EVENT_ROUTE_47_SUICUNE
 	setevent EVENT_BURNED_TOWER_B1F_ENTEI
+	setevent EVENT_VICTORY_ROAD_GATE_RIVAL_2
+	setmapscene VICTORY_ROAD_GATE, SCENE_VICTORY_ROAD_GATE_GUARD
+	setevent EVENT_VICTORY_ROAD_GATE_GUARD_2
 	return
 
 AskNumber1MScript:
@@ -1862,15 +1865,111 @@ Movement_ContestResults_WalkAfterWarp:
 	step RIGHT
 	step DOWN
 	turn_head UP
-	step_end
+	step_resume
+
+GetDecoEvent:
+	setevent EVENT_DECO_TOTODILE_DOLL
+	setevent EVENT_DECO_GENGAR_DOLL
+	setevent EVENT_DECO_BULBASAUR_DOLL
+	setevent EVENT_DECO_CHARMANDER_DOLL
+	setevent EVENT_DECO_CHIKORITA_DOLL
+	setevent EVENT_DECO_CYNDAQUIL_DOLL
+	setevent EVENT_DECO_SQUIRTLE_DOLL
+	setevent EVENT_DECO_BIG_SALAMENCE_DOLL
+	setevent EVENT_DECO_PLANT_3
+	setevent EVENT_DECO_CARPET_1
+	setevent EVENT_DECO_PIKACHU_DOLL
+	setevent EVENT_DECO_POSTER_3
+	setevent EVENT_DECO_SILVER_TROPHY
+	return
 
 StaticPokemonRefresh:
 	checkevent EVENT_BEAT_FARFETCHD
 	iftrue .refreshfarfetchd
+	checkevent EVENT_BEAT_RAIKOU
+	iftrue .refreshraikou
+	checkevent EVENT_BEAT_ENTEI
+	iftrue .refreshentei
+	checkevent EVENT_BEAT_SUICUNE
+	iftrue .refreshsuicune
+	checkevent EVENT_BEAT_DUSKNOIR
+	iftrue .refreshdusknoir
+	checkevent EVENT_BEAT_CELEBI
+	iftrue .refreshcelebi
+	checkevent EVENT_BEAT_MOLTRES
+	iftrue .refreshmoltres
+	checkevent EVENT_BEAT_ZAPDOS
+	iftrue .refreshzapdos
+	checkevent EVENT_BEAT_SNORLAX
+	iftrue .refreshsnorlax
+	checkevent EVENT_BEAT_MISSINGNO
+	iftrue .refreshmissingno
+	checkevent EVENT_BEAT_MEWTWO
+	iftrue .refreshmewtwo
+	checkevent EVENT_BEAT_MEW
+	iftrue .refreshmew
+	checkevent EVENT_BEAT_LUGIA
+	iftrue .refreshlugia
+	checkevent EVENT_BEAT_HO_OH
+	iftrue .refreshhooh
 	return
 
 .refreshfarfetchd:
 	clearevent EVENT_BEAT_FARFETCHD
+	sjump StaticPokemonRefresh
+
+.refreshraikou:
+	clearevent EVENT_BEAT_RAIKOU
+	sjump StaticPokemonRefresh
+
+.refreshentei:
+	clearevent EVENT_BEAT_ENTEI
+	sjump StaticPokemonRefresh
+
+.refreshsuicune:
+	clearevent EVENT_BEAT_SUICUNE
+	sjump StaticPokemonRefresh
+
+.refreshdusknoir:
+	clearevent EVENT_BEAT_DUSKNOIR
+	sjump StaticPokemonRefresh
+
+.refreshcelebi:
+	setevent EVENT_FOREST_IS_RESTLESS
+	clearevent EVENT_BEAT_CELEBI
+	sjump StaticPokemonRefresh
+
+.refreshmoltres:
+	clearevent EVENT_BEAT_MOLTRES
+	sjump StaticPokemonRefresh
+
+.refreshzapdos:
+	clearevent EVENT_BEAT_ZAPDOS
+	sjump StaticPokemonRefresh
+
+.refreshsnorlax:
+	clearevent EVENT_BEAT_SNORLAX
+	clearevent EVENT_VERMILION_CITY_SNORLAX
+	sjump StaticPokemonRefresh
+
+.refreshmewtwo:
+	clearevent EVENT_BEAT_MEWTWO
+	sjump StaticPokemonRefresh
+
+.refreshmissingno:
+	clearevent EVENT_BEAT_MISSINGNO
+	sjump StaticPokemonRefresh
+
+.refreshmew:
+	clearevent EVENT_BEAT_MEW
+	sjump StaticPokemonRefresh
+
+.refreshlugia:
+	clearevent EVENT_BEAT_LUGIA
+	sjump StaticPokemonRefresh
+
+.refreshhooh:
+	clearevent EVENT_BEAT_HO_OH
 	sjump StaticPokemonRefresh
 
 TelevisionScript:
@@ -2097,44 +2196,10 @@ SwarmScript:
 	opentext
 	checkflag ENGINE_SWARM
 	iftrue .skiprandomswarm
-	checkflag ENGINE_MINERALBADGE
-	iftrue .Badges4Swarm
-	checkflag ENGINE_FOGBADGE
-	iftrue .Badges2Swarm
 	farwritetext WhatSwarmTodayText
 	waitbutton
-	random 8
-	ifequal 0, .noswarm
-	ifequal 1, .yanma
-	ifequal 2, .dunsparce
-	ifequal 3, .sneasel
-	ifequal 4, .scyther
-	ifequal 5, .aron
-	ifequal 6, .ralts
-	ifequal 7, .croagunk
-
-.Badges2Swarm:
-	farwritetext WhatSwarmTodayText
-	waitbutton
-	random 13
-	ifequal 0,  .noswarm
-	ifequal 1,  .yanma
-	ifequal 2,  .dunsparce
-	ifequal 3,  .qwilfish
-	ifequal 4,  .eevee
-	ifequal 5,  .kangaskhan
-	ifequal 6,  .gible
-	ifequal 7,  .sneasel
-	ifequal 8,  .scyther
-	ifequal 9,  .misdreavus
-	ifequal 10, .aron
-	ifequal 11, .ralts
-	ifequal 12, .croagunk
-
-.Badges4Swarm:
-	farwritetext WhatSwarmTodayText
-	waitbutton
-	random 14
+.SwarmReroll:
+	random 21
 	ifequal 0,  .noswarm
 	ifequal 1,  .yanma
 	ifequal 2,  .dunsparce
@@ -2148,7 +2213,14 @@ SwarmScript:
 	ifequal 10, .pinsir
 	ifequal 11, .aron
 	ifequal 12, .ralts
-	ifequal 13, .croagunk
+	ifequal 13, .kotora
+	ifequal 14, .parasect
+	ifequal 15, .gligar
+	ifequal 16, .toxicroak
+	ifequal 17, .murkrow
+	ifequal 18, .ditto
+	ifequal 19, .slowpoke
+	ifequal 20, .ponyta
 
 .noswarm
 	setflag ENGINE_SWARM
@@ -2160,7 +2232,9 @@ SwarmScript:
 .yanma
 	setflag ENGINE_SWARM
 	swarm ROUTE_39
-	farwritetext YanmaSwarmText
+	getlandmarkname STRING_BUFFER_5, ROUTE_39
+	getmonname STRING_BUFFER_3, YANMA
+	farwritetext RouteSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
@@ -2168,40 +2242,58 @@ SwarmScript:
 .dunsparce
 	setflag ENGINE_SWARM
 	swarm DARK_CAVE_NEW_ENTRANCE
-	farwritetext DunsparceSwarmText
+	getlandmarkname STRING_BUFFER_5, DARK_CAVE
+	getmonname STRING_BUFFER_3, DUNSPARCE
+	farwritetext CaveSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
 .qwilfish
+	checkflag ENGINE_FOGBADGE
+	iffalse .SwarmReroll
 	setflag ENGINE_SWARM
 	setval FISHSWARM_QWILFISH
 	special ActivateFishingSwarm
-	farwritetext QwilfishSwarmText
+	getlandmarkname STRING_BUFFER_5, WILD_AREA_OUTSIDE
+	getmonname STRING_BUFFER_3, QWILFISH
+	farwritetext CaveSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
 .eevee
+	checkflag ENGINE_FOGBADGE
+	iffalse .SwarmReroll
 	setflag ENGINE_SWARM
 	swarm WILD_AREA_2_3
-	farwritetext EeveeSwarmText
+	getlandmarkname STRING_BUFFER_5, WILD_AREA_OUTSIDE
+	getmonname STRING_BUFFER_3, EEVEE
+	farwritetext CaveSwarmVowelText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
 .kangaskhan
+	checkflag ENGINE_FOGBADGE
+	iffalse .SwarmReroll
 	setflag ENGINE_SWARM
 	swarm WILD_AREA_CAVE
-	farwritetext KangaskhanSwarmText
+	getlandmarkname STRING_BUFFER_5, WILD_AREA_OUTSIDE
+	getmonname STRING_BUFFER_3, KANGASKHAN
+	farwritetext CaveSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
 .gible
+	checkflag ENGINE_FOGBADGE
+	iffalse .SwarmReroll
 	setflag ENGINE_SWARM
 	swarm WILD_AREA_4
-	farwritetext GibleSwarmText
+	getlandmarkname STRING_BUFFER_5, WILD_AREA_OUTSIDE
+	getmonname STRING_BUFFER_3, GIBLE
+	farwritetext CaveSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
@@ -2209,15 +2301,21 @@ SwarmScript:
 .sneasel
 	setflag ENGINE_SWARM
 	swarm ICE_PATH_B1F
-	farwritetext SneaselSwarmText
+	getlandmarkname STRING_BUFFER_5, ICE_PATH
+	getmonname STRING_BUFFER_3, SNEASEL
+	farwritetext CaveSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
 .misdreavus
+	checkflag ENGINE_FOGBADGE
+	iffalse .SwarmReroll
 	setflag ENGINE_SWARM
 	swarm BURNED_TOWER_1F
-	farwritetext MisdreavusSwarmText
+	getlandmarkname STRING_BUFFER_5, BURNED_TOWER
+	getmonname STRING_BUFFER_3, MISDREAVUS
+	farwritetext CaveSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
@@ -2225,12 +2323,16 @@ SwarmScript:
 .scyther
 	setflag ENGINE_SWARM
 	swarm ROUTE_38
-	farwritetext ScytherSwarmText
+	getlandmarkname STRING_BUFFER_5, ROUTE_38
+	getmonname STRING_BUFFER_3, SCYTHER
+	farwritetext RouteSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
 .pinsir
+	checkflag ENGINE_MINERALBADGE
+	iffalse .SwarmReroll
 	setflag ENGINE_SWARM
 	swarm NATIONAL_PARK
 	farwritetext PinsirSwarmText
@@ -2241,7 +2343,9 @@ SwarmScript:
 .aron
 	setflag ENGINE_SWARM
 	swarm MOUNT_MORTAR_1F_OUTSIDE
-	farwritetext AronSwarmText
+	getlandmarkname STRING_BUFFER_5, MT_MORTAR
+	getmonname STRING_BUFFER_3, ARON
+	farwritetext CaveSwarmVowelText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
@@ -2249,15 +2353,95 @@ SwarmScript:
 .ralts
 	setflag ENGINE_SWARM
 	swarm ROUTE_43
-	farwritetext RaltsSwarmText
+	getlandmarkname STRING_BUFFER_5, ROUTE_43
+	getmonname STRING_BUFFER_3, RALTS
+	farwritetext RouteSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
 
-.croagunk
+.kotora
 	setflag ENGINE_SWARM
 	swarm LAKE_OF_RAGE
-	farwritetext CroagunkSwarmText
+	farwritetext LakeOfRageSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.parasect
+	checkflag ENGINE_HIVEBADGE
+	iffalse .SwarmReroll
+	setflag ENGINE_SWARM
+	swarm ILEX_FOREST
+	getlandmarkname STRING_BUFFER_5, ILEX_FOREST
+	getmonname STRING_BUFFER_3, PARASECT
+	farwritetext CaveSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.gligar
+	checkflag ENGINE_HIVEBADGE
+	iffalse .SwarmReroll
+	setflag ENGINE_SWARM
+	swarm UNION_CAVE_1F
+	getlandmarkname STRING_BUFFER_5, UNION_CAVE
+	getmonname STRING_BUFFER_3, GLIGAR
+	farwritetext CaveSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.toxicroak
+	checkflag ENGINE_HIVEBADGE
+	iffalse .SwarmReroll
+	setflag ENGINE_SWARM
+	swarm ROUTE_32
+	getlandmarkname STRING_BUFFER_5, ROUTE_32
+	getmonname STRING_BUFFER_3, TOXICROAK
+	farwritetext RouteSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.murkrow
+	setflag ENGINE_SWARM
+	swarm ROUTE_37
+	getlandmarkname STRING_BUFFER_5, ROUTE_37
+	getmonname STRING_BUFFER_3, MURKROW
+	farwritetext RouteSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.ditto
+	checkflag ENGINE_MINERALBADGE
+	iffalse .SwarmReroll
+	setflag ENGINE_SWARM
+	swarm ROUTE_35
+	getlandmarkname STRING_BUFFER_5, ROUTE_35
+	getmonname STRING_BUFFER_3, DITTO
+	farwritetext RouteSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.slowpoke
+	setflag ENGINE_SWARM
+	swarm ROUTE_44
+	getlandmarkname STRING_BUFFER_5, ROUTE_44
+	getmonname STRING_BUFFER_3, SLOWPOKE
+	farwritetext RouteSwarmText
+	waitbutton
+	closetext
+	sjump .endswarmchannel
+
+.ponyta
+	setflag ENGINE_SWARM
+	swarm ROUTE_42
+	getlandmarkname STRING_BUFFER_5, ROUTE_42
+	getmonname STRING_BUFFER_3, PONYTA
+	farwritetext RouteSwarmText
 	waitbutton
 	closetext
 	sjump .endswarmchannel
@@ -2272,4 +2456,14 @@ SwarmScript:
 	special FadeOutMusic
 	pause 15
 	special RestartMapMusic
+	end
+
+GymStatue5Script:
+	getcurlandmarkname STRING_BUFFER_3
+	opentext
+	farwritetext GymStatue_CityGymText
+	buttonsound
+	farwritetext GymStatue_WinningTrainers5Text
+	waitbutton
+	closetext
 	end

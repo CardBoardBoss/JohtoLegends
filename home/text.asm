@@ -105,7 +105,13 @@ TextboxPalette::
 	inc b
 	inc c
 	inc c
+;	ld a, [wBattleMode]
+;	and a
+;	jr nz, .battle
 	ld a, PAL_BG_TEXT
+;	jr .col
+;.battle
+;	ld a, PAL_BATTLE_BG_PLAYER
 .col
 	push bc
 	push hl
@@ -468,6 +474,13 @@ _ContText::
 	; fallthrough
 
 _ContTextNoPause::
+	ld a, [wOptions]
+	and TEXT_DELAY_MASK
+	cp TEXT_DELAY_FAST
+	jr nz, .not_instant
+	ld c, 15
+	call DelayFrames
+.not_instant
 	push de
 	call TextScroll
 	call TextScroll

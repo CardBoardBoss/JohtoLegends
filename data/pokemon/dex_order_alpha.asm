@@ -6,8 +6,10 @@ AlphabeticalPokedexOrder:
 	dw AGGRON
 	dw AIPOM
 	dw ALAKAZAM
+	dw ALTARIA
 	dw AMBIPOM
 	dw AMPHAROS
+	dw ANNIHILAPE
 	dw ARBOK
 	dw ARCANINE
 	dw ARIADOS
@@ -60,6 +62,7 @@ AlphabeticalPokedexOrder:
 	dw DRAGONITE
 	dw DRATINI
 	dw DROWZEE
+	dw DUDUNSPARS
 	dw DUGTRIO
 	dw DUNSPARCE
 	dw DUSCLOPS
@@ -77,6 +80,7 @@ AlphabeticalPokedexOrder:
 	dw EXEGGCUTE
 	dw EXEGGUTOR
 	dw FARFETCH_D
+	dw FARIGIRAF
 	dw FEAROW
 	dw FERALIGATR
 	dw FLAAFFY
@@ -102,6 +106,7 @@ AlphabeticalPokedexOrder:
 	dw GOLDEEN
 	dw GOLDUCK
 	dw GOLEM
+	dw GOROTORA
 	dw GRANBULL
 	dw GRAVELER
 	dw GRIMER
@@ -136,6 +141,7 @@ AlphabeticalPokedexOrder:
 	dw KINGLER
 	dw KIRLIA
 	dw KOFFING
+	dw KOTORA
 	dw KRABBY
 	dw LAIRON
 	dw LANTURN
@@ -146,6 +152,9 @@ AlphabeticalPokedexOrder:
 	dw LEDYBA
 	dw LICKILICKY
 	dw LICKITUNG
+	dw LOMBRE
+	dw LOTAD
+	dw LUDICOLO
 	dw LUGIA
 	dw MACHAMP
 	dw MACHOKE
@@ -190,6 +199,7 @@ AlphabeticalPokedexOrder:
 	dw NIDORINO
 	dw NINETALES
 	dw NOCTOWL
+	dw NOWN
 	dw OCTILLERY
 	dw ODDISH
 	dw OMANYTE
@@ -223,6 +233,7 @@ AlphabeticalPokedexOrder:
 	dw QWILFISH
 	dw RAICHU
 	dw RAIKOU
+	dw RAITORA
 	dw RALTS
 	dw RAPIDASH
 	dw RATICATE
@@ -269,7 +280,7 @@ AlphabeticalPokedexOrder:
 	dw SUICUNE
 	dw SUNFLORA
 	dw SUNKERN
-;	dw SWABLU
+	dw SWABLU
 	dw SYLVEON
 	dw SWINUB
 	dw TANGELA
@@ -288,6 +299,7 @@ AlphabeticalPokedexOrder:
 	dw TYROGUE
 	dw UMBREON
 	dw UNOWN
+	dw URSALUNA
 	dw URSARING
 	dw VAPOREON
 	dw VENOMOTH
@@ -306,6 +318,7 @@ AlphabeticalPokedexOrder:
 	dw WOBBUFFET
 	dw WOOPER
 	dw WYNAUT
+	dw WYRDEER
 	dw XATU
 	dw YANMA
 	dw YANMEGA

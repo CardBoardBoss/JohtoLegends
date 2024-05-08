@@ -42,6 +42,7 @@ AzaleaGymKurtScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KURT
+	setevent EVENT_DECO_CYNDAQUIL_DOLL
 	opentext
 	writetext BeatenKurtText
 	waitbutton
@@ -51,6 +52,7 @@ AzaleaGymKurtScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_HIVEBADGE
+	loadmem wLevelCap, 51
 	readvar VAR_BADGES
 	setmapscene AZALEA_TOWN, SCENE_AZALEATOWN_RIVAL_BATTLE
 	setflag ENGINE_BEAT_KURT
@@ -81,6 +83,8 @@ AzaleaGymKurtScript:
 	end
 
 .Rematch:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .PostGameKurt
 	readvar VAR_BADGES
 	ifequal 6, .KurtBattle1
 	ifequal 7, .KurtBattle2
@@ -113,6 +117,16 @@ AzaleaGymKurtScript:
 	closetext
 	winlosstext KurtText_NoRespect, KurtText_Respect
 	loadtrainer KURT, KURT3
+	startbattle
+	reloadmapafterbattle
+	sjump AfterKurtRematch
+
+.PostGameKurt:
+	writetext KurtText_PostGame
+	waitbutton
+	closetext
+	winlosstext KurtText_NoRespect, KurtText_Respect
+	loadtrainer KURT, KURT4
 	startbattle
 	reloadmapafterbattle
 	sjump AfterKurtRematch
@@ -219,7 +233,7 @@ AzaleaGymStatue:
 	jumpstd gymstatue3
 .RivalBeatGym:
 	gettrainername STRING_BUFFER_4, KURT, KURT1
-	jumpstd gymstatue2
+	jumpstd gymstatue5
 
 KurtText_DangSilph:
 	text "Humph. I'm Kurt,"
@@ -463,6 +477,18 @@ KurtText_BeatenAgain:
 	cont "before."
 	done
 
+KurtText_PostGame:
+	text "Champion, huh?"
+
+	para "That doesn't mean"
+	line "much to me!"
+
+	para "I'm still your"
+	line "elder, so I'd hope"
+	cont "you'd still have"
+	cont "respect!"
+	done
+
 AzaleaGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -478,7 +504,7 @@ AzaleaGym_MapEvents:
 
 	db 7 ; object events
 	object_event  5,  1, SPRITE_KURT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, AzaleaGymKurtScript, EVENT_AZALEA_GYM_KURT
-	object_event  5,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherMarty, -1
+	object_event  5,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBugCatcherMarty, -1
 	object_event  8,  2, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBugCatcherNat, -1
 	object_event  5,  4, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBugCatcherPete, -1
 	object_event  1, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsGingerandsam1, -1

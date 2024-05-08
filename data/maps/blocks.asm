@@ -247,6 +247,7 @@ Route39_Blocks:
 	INCBIN "maps/Route39.blk"
 
 PlayersHouse1F_Blocks:
+GoldCrystalHouse_Blocks:
 	INCBIN "maps/PlayersHouse1F.blk"
 
 Route38EcruteakGate_Blocks:
@@ -315,6 +316,7 @@ SaffronMart_Blocks:
 CherrygroveMart_Blocks:
 WildAreaMart_Blocks:
 LakeOfRageMart_Blocks:
+CinnabarIslandMart_Blocks:
 	INCBIN "maps/Mart.blk"
 
 Route10North_Blocks:
@@ -476,6 +478,7 @@ RuinsOfAlphHoOhChamber_Blocks:
 RuinsOfAlphKabutoChamber_Blocks:
 RuinsOfAlphOmanyteChamber_Blocks:
 RuinsOfAlphAerodactylChamber_Blocks:
+NownPuzzleRoom_Blocks:
 	INCBIN "maps/RuinsOfAlphPuzzleChamber.blk"
 
 SproutTower1F_Blocks:
@@ -865,7 +868,7 @@ MrFujisHouse_Blocks:
 	INCBIN "maps/MrFujisHouse.blk"
 
 LavRadioTower1F_Blocks:
-	INCBIN "maps/LavRadioTower1F.blk"
+	INCBIN "maps/PokemonTower1F.blk"
 
 SilverCaveItemRooms_Blocks:
 	INCBIN "maps/SilverCaveItemRooms.blk"
@@ -1098,3 +1101,96 @@ RocketLairHallway3_Blocks:
 
 RocketLairBossRoom_Blocks:
 	INCBIN "maps/RocketLairBossRoom.blk"
+
+NownRoom_Blocks:
+	INCBIN "maps/NownRoom.blk"
+
+ViridianForest_Blocks:
+	INCBIN "maps/ViridianForest.blk"
+
+CeruleanBikeShop_Blocks:
+	INCBIN "maps/CeruleanBikeShop.blk"
+
+PokemonMansion2F_Blocks:
+	INCBIN "maps/PokemonMansion2F.blk"
+
+PokemonMansion3F_Blocks:
+	INCBIN "maps/PokemonMansion3F.blk"
+
+PokemonMansionB1F_Blocks:
+	INCBIN "maps/PokemonMansionB1F.blk"
+
+CinnabarVolcano1F_Blocks:
+	INCBIN "maps/CinnabarVolcano1F.blk"
+
+CinnabarVolcanoB1F_Blocks:
+	INCBIN "maps/CinnabarVolcanoB1F.blk"
+
+CinnabarVolcanoB2F_Blocks:
+	INCBIN "maps/CinnabarVolcanoB2F.blk"
+
+CinnabarIslandGym_Blocks:
+	INCBIN "maps/CinnabarIslandGym.blk"
+
+GlitchCity_Blocks:
+	INCBIN "maps/GlitchCity.blk"
+
+SeafoamIsland1F_Blocks:
+	INCBIN "maps/SeafoamIsland1F.blk"
+
+SeafoamIslandB1F_Blocks:
+	INCBIN "maps/SeafoamIslandB1F.blk"
+
+SeafoamIslandB2F_Blocks:
+	INCBIN "maps/SeafoamIslandB2F.blk"
+
+SeafoamIslandB3F_Blocks:
+	INCBIN "maps/SeafoamIslandB3F.blk"
+
+SeafoamIslandB4F_Blocks:
+	INCBIN "maps/SeafoamIslandB4F.blk"
+
+CeruleanCave1F_Blocks:
+	INCBIN "maps/CeruleanCave1F.blk"
+
+CeruleanCaveB1F_Blocks:
+	INCBIN "maps/CeruleanCaveB1F.blk"
+
+CeruleanCave2F_Blocks:
+	INCBIN "maps/CeruleanCave2F.blk"
+
+FedHideout1F_Blocks:
+	INCBIN "maps/FedHideout1F.blk"
+
+FedHideoutB1F_Blocks:
+	INCBIN "maps/FedHideoutB1F.blk"
+
+FedHideoutB2F_Blocks:
+	INCBIN "maps/FedHideoutB2F.blk"
+
+FedHideoutB3F_Blocks:
+	INCBIN "maps/FedHideoutB3F.blk"
+
+FedHideoutB4F_Blocks:
+	INCBIN "maps/FedHideoutB4F.blk"
+
+FedHideoutElevator_Blocks:
+	INCBIN "maps/FedHideoutElevator.blk"
+
+CliffCaveB1F_Blocks:
+	INCBIN "maps/CliffCaveB1F.blk"
+
+EmbeddedTower_Blocks:
+	INCBIN "maps/EmbeddedTower.blk"
+
+SilverCaveRestRoom_Blocks:
+	INCBIN "maps/SilverCaveRestRoom.blk"
+
+SilverCaveSummitOutside_Blocks:
+	INCBIN "maps/SilverCaveSummitOutside.blk"
+
+MtSilverSummit_Blocks:
+	INCBIN "maps/MtSilverSummit.blk"
+
+SilverCaveMewRoom_Blocks:
+	INCBIN "maps/SilverCaveMewRoom.blk"

@@ -142,6 +142,18 @@ SherlesAppearsGoldenrodTower:
 RadioTower1FRivalScript:
 	faceplayer
 	opentext
+	writetext IllHealYouGoldenrodTowerText
+	waitbutton
+	closetext
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	special StubbedTrainerRankings_Healings
+	playmusic MUSIC_HEAL
+	special HealParty
+	pause 60
+	special FadeInQuickly
+	special RestartMapMusic
+	opentext
 	writetext RadioTower1FRivalText
 	waitbutton
 	closetext
@@ -288,7 +300,7 @@ SherlesMovesIntoPlaceMovement:
 	step RIGHT
 	step RIGHT
 	step RIGHT
-	step_end
+	step_resume
 
 RainbowOrSilverWingMenu:
 	db MENU_BACKUP_TILES ; flags
@@ -304,7 +316,7 @@ RainbowOrSilverWingMenu:
 
 DirectorMovesUpMovement:
 	step UP
-	step_end
+	step_resume
 
 RadioTower1FRivalText:
 	text "Don't worry, I got"
@@ -591,6 +603,10 @@ YouAgainText:
 
 	para "Stay out of this,"
 	line "got it?"
+	done
+
+IllHealYouGoldenrodTowerText:
+	text "Need some healing?"
 	done
 
 RadioTower1F_MapEvents:

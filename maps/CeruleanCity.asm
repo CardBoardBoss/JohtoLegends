@@ -1,10 +1,13 @@
 	object_const_def ; object_event constants
-	const CERULEANCITY_COOLTRAINER_M
+	const CERULEANCITY_BIKER
 	const CERULEANCITY_SUPER_NERD
 	const CERULEANCITY_SLOWPOKE
-	const CERULEANCITY_COOLTRAINER_F
+	const CERULEANCITY_DELINQUENT
 	const CERULEANCITY_FISHER
-	const CERULEANCITY_YOUNGSTER
+	const CERULEANCITY_DAISY
+	const CERULEANCITY_VIOLET
+	const CERULEANCITY_LILY
+	const CERULEANCITY_FISHER2
 
 CeruleanCity_MapScripts:
 	db 0 ; scene scripts
@@ -16,108 +19,90 @@ CeruleanCity_MapScripts:
 	setflag ENGINE_FLYPOINT_CERULEAN
 	return
 
-CeruleanCityCooltrainerMScript:
+CeruleanCityBikerScript:
 	faceplayer
 	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
-	writetext CeruleanCityCooltrainerMText1
+	checkevent EVENT_BEAT_SENSATIONAL_SISTERS
+	iftrue .CeruleanCityBiker2
+	writetext CeruleanCityBikerText1
 	waitbutton
 	closetext
 	end
 
-.ReturnedMachinePart:
-	writetext CeruleanCityCooltrainerMText2
+.CeruleanCityBiker2:
+	writetext CeruleanCityBikerText2
 	waitbutton
 	closetext
 	end
 
-CeruleanCitySuperNerdScript:
-	jumptextfaceplayer CeruleanCitySuperNerdText
+CeruleanCityPokefanMScript:
+	jumptextfaceplayer CeruleanCityPokefanMText
 
-CeruleanCitySlowbro:
-	opentext
-	writetext CeruleanCitySlowbroText
-	cry SLOWBRO
-	waitbutton
-	closetext
-	end
+CeruleanCityPokefanFScript:
+	jumptextfaceplayer CeruleanCityPokefanFText
 
-CeruleanCityCooltrainerFScript:
+CeruleanCityDelinquentScript:
 	faceplayer
 	opentext
-	writetext CeruleanCityCooltrainerFText1
+	checkevent EVENT_BEAT_SENSATIONAL_SISTERS
+	iftrue .CeruleanCityDelinquent2
+	writetext CeruleanCityDelinquentText1
 	waitbutton
 	closetext
-	turnobject CERULEANCITY_COOLTRAINER_F, LEFT
-	opentext
-	writetext CeruleanCityCooltrainerFText2
-	waitbutton
-	closetext
-	opentext
-	writetext CeruleanCitySlowbroText
-	cry SLOWBRO
-	waitbutton
-	closetext
-	opentext
-	writetext CeruleanCityCooltrainerFText3
+	end
+
+.CeruleanCityDelinquent2:
+	writetext CeruleanCityDelinquentText2
 	waitbutton
 	closetext
 	end
 
 CeruleanCityFisherScript:
+	jumptextfaceplayer CeruleanCityFisherText
+
+CeruleanCityDaisyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
-	checkevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
-	iftrue .MetCeruleanRocket
-.ReturnedMachinePart:
-	writetext CeruleanCityFisherText
+	writetext CeruleanCityDaisyText
 	waitbutton
 	closetext
+	clearevent EVENT_CERULEAN_GYM_DAISY
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	disappear CERULEANCITY_DAISY
+	appear CERULEANCITY_VIOLET
+	pause 15
+	special FadeInQuickly
 	end
 
-.MetCeruleanRocket:
-	writetext CeruleanCityFisherRocketTipText
-	waitbutton
-	closetext
-	end
-
-CeruleanCityYoungsterScript:
+CeruleanCityVioletScript:
 	faceplayer
 	opentext
-	writetext CeruleanCityYoungsterText1
+	writetext CeruleanCityVioletText
 	waitbutton
 	closetext
-	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
-	iffalse .BerserkGenePingsItemfinder
+	clearevent EVENT_CERULEAN_GYM_VIOLET
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	disappear CERULEANCITY_VIOLET
+	appear CERULEANCITY_LILY
+	pause 15
+	special FadeInQuickly
 	end
 
-.BerserkGenePingsItemfinder:
-	waitsfx
-	playsound SFX_SECOND_PART_OF_ITEMFINDER
-	waitsfx
-	playsound SFX_TRANSACTION
-	waitsfx
-	playsound SFX_SECOND_PART_OF_ITEMFINDER
-	waitsfx
-	playsound SFX_TRANSACTION
-	waitsfx
-	playsound SFX_SECOND_PART_OF_ITEMFINDER
-	waitsfx
-	playsound SFX_TRANSACTION
-	waitsfx
-	playsound SFX_SECOND_PART_OF_ITEMFINDER
-	waitsfx
-	playsound SFX_TRANSACTION
-	waitsfx
-	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
-	turnobject CERULEANCITY_YOUNGSTER, LEFT
+CeruleanCityLilyScript:
+	faceplayer
 	opentext
-	writetext CeruleanCityYoungsterText2
+	writetext CeruleanCityLilyText
 	waitbutton
 	closetext
+	clearevent EVENT_CERULEAN_GYM_LILY
+	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	disappear CERULEANCITY_LILY
+	pause 15
+	special FadeInQuickly
 	end
 
 CeruleanCitySign:
@@ -138,92 +123,153 @@ CeruleanCapeSign:
 CeruleanLockedDoor:
 	jumptext CeruleanLockedDoorText
 
+CeruleanCityFisherScript2:
+	jumptextfaceplayer CeruleanCityFisherText2
+
+CeruleanOriginalGymSign:
+	jumptext CeruleanOriginalGymText
+
 CeruleanCityPokecenterSign:
 	jumpstd pokecentersign
 
 CeruleanCityMartSign:
 	jumpstd martsign
 
-CeruleanCityHiddenBerserkGene:
-	hiddenitem BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
+CeruleanCityBikerText1:
+	text "The pool's the"
+	line "place to be!"
 
-CeruleanCityCooltrainerMText1:
-	text "KANTO's POWER"
-	line "PLANT?"
-
-	para "It's near the end"
-	line "of ROUTE 9, the"
-
-	para "road that heads"
-	line "east from here."
-
-	para "I think there was"
-	line "an accident of"
-	cont "some sort there."
+	para "I get a nice view"
+	line "of the ladies!"
 	done
 
-CeruleanCityCooltrainerMText2:
-	text "You're collecting"
-	line "every single kind"
-	cont "of #MON?"
+CeruleanCityBikerText2:
+	text "I'm not going to"
+	line "the pool now."
 
-	para "That must be quite"
-	line "a challenge, but"
-	cont "it sounds fun too."
+	para "The kids there are"
+	line "too tough."
 	done
 
-CeruleanCitySuperNerdText:
-	text "The CAPE in the"
-	line "north is a good"
+CeruleanCityPokefanMText:
+	text "It feels good to"
+	line "go outside!"
 
-	para "place for dates."
-	line "Girls like it!"
+	para "It's been a"
+	line "while!"
 	done
 
-CeruleanCitySlowbroText:
-	text "SLOWBRO: Yarah?"
+CeruleanCityPokefanFText:
+	text "Those young girls"
+	line "will do great"
+	cont "things for us!"
+
+	para "I wish we had the"
+	line "strength to take"
+	cont "on the Feds"
+	cont "ourselves."
 	done
 
-CeruleanCityCooltrainerFText1:
-	text "My SLOWBRO and I"
-	line "make an awesome"
-	cont "combination!"
+CeruleanCityDelinquentText1:
+	text "That one Biker"
+	line "always stares at"
+	cont "me at the pool."
+
+	para "I'm gonna clock"
+	line "him if he keeps"
+	cont "it up."
 	done
 
-CeruleanCityCooltrainerFText2:
-	text "SLOWBRO, show me"
-	line "your CONFUSION!"
-	done
+CeruleanCityDelinquentText2:
+	text "Those girls…"
 
-CeruleanCityCooltrainerFText3:
-	text "…"
+	para "I think I"
+	line "remember them."
+
+	para "It's probably"
+	line "time to skip"
+	cont "town…"
 	done
 
 CeruleanCityFisherText:
-	text "I'm a huge fan of"
-	line "CERULEAN GYM's"
-	cont "MISTY."
+	text "Looks like I can"
+	line "start fishin'"
+	cont "again!"
+
+	para "Yeehaw!"
 	done
 
-CeruleanCityFisherRocketTipText:
-	text "I saw this shady"
-	line "guy go off toward"
-	cont "CERULEAN's CAPE."
+CeruleanCityDaisyText:
+	text "Daisy: Shhh!"
+
+	para "I'm hiding from my"
+	line "sisters!"
+
+	para "…You wanna battle"
+	line "us?"
+
+	para "You want us to"
+	line "fight the Feds?"
+
+	para "Cool! I'll head to"
+	line "the pool!"
 	done
 
-CeruleanCityYoungsterText1:
-	text "There used to be a"
-	line "cave here that had"
+CeruleanCityVioletText:
+	text "Violet: Go away!"
 
-	para "horribly powerful"
-	line "#MON in it."
+	para "We're playing hide"
+	line "and seek!"
+
+	para "…Wait, you think"
+	line "I'm strong, and"
+	cont "that I can take on"
+	cont "the Federation?"
+
+	para "Teehee, thanks!"
+
+	para "So, you wanna"
+	line "battle?"
+
+	para "Alrighty!"
+
+	para "Come to the pool"
+	line "for the battle!"
 	done
 
-CeruleanCityYoungsterText2:
-	text "Ayuh?"
+CeruleanCityLilyText:
+	text "Lily: Eeeek!"
 
-	para "My ITEMFINDER is"
-	line "responding…"
+	para "…Oh, I'm sorry."
+
+	para "I thought you were"
+	line "someone else."
+
+	para "C-can I help you?"
+
+	para "…You think I can"
+	line "fight the Feds?"
+
+	para "…The Feds…"
+
+	para "………………………………"
+
+	para "…You know…"
+
+	para "The Feds were the"
+	line "who killed our"
+	cont "parents…"
+
+	para "My sisters try to"
+	line "forget that day,"
+
+	para "but I can't…"
+
+	para "I want to make"
+	line "them pay…"
+
+	para "…I'll be at the"
+	line "pool…"
 	done
 
 CeruleanCitySignText:
@@ -239,12 +285,10 @@ CeruleanGymSignText:
 	done
 
 CeruleanBikeShopSignText:
-	text "There's a notice"
-	line "here…"
+	text "Miracle Bicycle"
 
-	para "The BIKE SHOP has"
-	line "moved to GOLDENROD"
-	cont "CITY in JOHTO…"
+	para "Trendsetter of the"
+	line "Bicycle Boom!"
 	done
 
 CeruleanPoliceSignText:
@@ -253,9 +297,12 @@ CeruleanPoliceSignText:
 	done
 
 CeruleanOriginalGymText:
-	text "The sign is"
-	line "covered in"
-	cont "graffiti…"
+	text "Cerulean City"
+	line "#mon Gym"
+	cont "Leader: …"
+
+	para "The rest of the"
+	line "text is illegible…"
 	done
 
 CeruleanCapeSignText:
@@ -267,35 +314,42 @@ CeruleanLockedDoorText:
 	text "It's locked…"
 	done
 
+CeruleanCityFisherText2:
+	text "Man, we got a lot"
+	line "work to do fixing"
+	cont "up this bridge…"
+	done
+
 CeruleanCity_MapEvents:
 	db 0, 0 ; filler
 
 	db 6 ; warp events
 	warp_event  7, 15, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
-	warp_event 28, 17, CERULEAN_POLICE_STATION, 1
 	warp_event 13, 19, CERULEAN_TRADE_SPEECH_HOUSE, 1
 	warp_event 19, 21, CERULEAN_POKECENTER_1F, 1
 	warp_event 30, 23, CERULEAN_GYM, 1
 	warp_event 25, 29, CERULEAN_MART, 2
+	warp_event 14, 29, CERULEAN_BIKE_SHOP, 1
 
 	db 0 ; coord events
 
-	db 10 ; bg events
+	db 8 ; bg events
 	bg_event 23, 23, BGEVENT_READ, CeruleanCitySign
 	bg_event 27, 25, BGEVENT_READ, CeruleanGymSign
 	bg_event 11, 29, BGEVENT_READ, CeruleanBikeShopSign
 	bg_event 30, 17, BGEVENT_READ, CeruleanPoliceSign
 	bg_event 23,  7, BGEVENT_READ, CeruleanCapeSign
-	bg_event 14, 29, BGEVENT_READ, CeruleanLockedDoor
 	bg_event 20, 21, BGEVENT_READ, CeruleanCityPokecenterSign
 	bg_event 26, 29, BGEVENT_READ, CeruleanCityMartSign
-	bg_event  2, 12, BGEVENT_ITEM, CeruleanCityHiddenBerserkGene
-	bg_event 25, 17, BGEVENT_READ, CeruleanOriginalGymText
+	bg_event 25, 17, BGEVENT_READ, CeruleanOriginalGymSign
 
-	db 6 ; object events
-	object_event 15, 23, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerMScript, -1
-	object_event 23, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCitySuperNerdScript, -1
-	object_event 20, 24, SPRITE_SLOWPOKE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanCitySlowbro, -1
-	object_event 21, 24, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerFScript, -1
-	object_event 30, 26, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
-	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
+	db 9 ; object events
+	object_event 11, 23, SPRITE_BIKER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityBikerScript, EVENT_SAFFRON_CITY_FEDS
+	object_event 23, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanCityPokefanMScript, EVENT_CERULEAN_CITY_CIVILLIANS
+	object_event  7, 27, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeruleanCityPokefanFScript, EVENT_CERULEAN_CITY_CIVILLIANS
+	object_event 20, 25, SPRITE_DAISY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanCityDelinquentScript, EVENT_SAFFRON_CITY_FEDS
+	object_event 30, 26, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, EVENT_CERULEAN_CITY_CIVILLIANS
+	object_event 11, 10, SPRITE_SENSATIONAL_BLONDE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityDaisyScript, EVENT_CERULEAN_CITY_DAISY
+	object_event  5, 33, SPRITE_SENSATIONAL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityVioletScript, EVENT_CERULEAN_CITY_VIOLET
+	object_event 27,  8, SPRITE_SENSATIONAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityLilyScript, EVENT_CERULEAN_CITY_LILY
+	object_event 21,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript2, EVENT_CERULEAN_CITY_CIVILLIANS

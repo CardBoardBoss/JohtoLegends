@@ -45,14 +45,19 @@ FlorinaScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_FLORINA
 	iftrue FlorinaScript_AfterBattle
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue RematchFlorina
 	writetext FlorinaScript_FlorinaBeforeText
 	waitbutton
 	closetext
-	winlosstext FlorinaScript_FlorinaBeatenText, 0
+BattleFlorina:
+	winlosstext FlorinaScript_FlorinaBeatenText, FlorinaLastMonText
 	loadtrainer FLORINA, FLORINA1
+FlorinaReconvene:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_FLORINA
+	setevent EVENT_DECO_PLANT_3
 	opentext
 	writetext FlorinaScript_FlorinaDefeatText
 	waitbutton
@@ -64,6 +69,19 @@ FlorinaScript_Battle:
 	setevent EVENT_FLORINAS_ROOM_EXIT_OPEN
 	waitsfx
 	end
+
+RematchFlorina:
+	writetext FlorinaScript_FlorinaBeforeText2
+	waitbutton
+	closetext
+	checkevent EVENT_COMPLETED_EPILOGUE
+	iftrue Florina2
+	sjump BattleFlorina
+
+Florina2:
+	winlosstext FlorinaScript_FlorinaBeatenText, FlorinaLastMonText
+	loadtrainer FLORINA, FLORINA2
+	sjump FlorinaReconvene
 
 FlorinaScript_AfterBattle:
 	writetext FlorinaScript_FlorinaDefeatText
@@ -77,6 +95,10 @@ FlorinasRoom_EnterMovement:
 	step UP
 	step UP
 	step_end
+
+FlorinaLastMonText:
+	text "We can't wilt yet!"
+	done
 
 FlorinaScript_FlorinaBeforeText:
 	text "Welcome to #mon"
@@ -123,6 +145,20 @@ FlorinaScript_FlorinaDefeatText:
 
 	para "challenging, so"
 	line "go on."
+	done
+
+FlorinaScript_FlorinaBeforeText2:
+	text "Florina: Welcome"
+	line "back to the"
+	cont "#mon League,"
+	cont "Champion <PLAYER>."
+
+	para "I am your first"
+	line "opponent yet"
+	cont "again."
+
+	para "Shall we battle"
+	line "among the flowers?"
 	done
 
 WillsRoom_MapEvents:

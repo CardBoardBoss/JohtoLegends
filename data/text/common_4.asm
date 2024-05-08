@@ -122,9 +122,9 @@ CacneaOakText::
 	line "areas such as"
 	cont "deserts."
 
-	para "Any Cacnea found in"
-	line "the wild in Johto"
-	cont "are relocated to"
+	para "Any Cacnea found"
+	line "in the wild are"
+	cont "relocated to"
 	cont "the Wild Area."
 
 	para "Getting a hug from"
@@ -480,52 +480,45 @@ _ObtainedFiveFruitText::
 	line "berries!"
 	done
 
-AronSwarmText::
-	text "………………………"
+MooMooMilk_IntroText::
+	text "Howdy!"
 
-	para "Ah!"
+	para "Would ya like some"
+	line "MooMoo Milk?"
 
-	para "In Mt.Mortar,"
-	line "there is a swarm"
-	cont "of Aron!"
-
-	para "Now's your chance,"
-	line "trainers!"
-
-	para "Head to Mt.Mortar"
-	line "and catch an"
-	cont "Aron!"
+	para "Give it to #mon"
+	line "to restore HP!"
 	done
 
-RaltsSwarmText::
-	text "………………………"
-
-	para "Ah!"
-
-	para "On Route 43,"
-	line "there is a swarm"
-	cont "of Ralts!"
-
-	para "Now's your chance,"
-	line "trainers!"
-
-	para "Head to Route 43"
-	line "and catch a Ralts!"
+MooMooMilk_ComeAgainText::
+	text "Y'all come back"
+	line "now!"
 	done
 
-CroagunkSwarmText::
-	text "………………………"
+MooMooMilk_HowManyText::
+	text "How many bottles?"
+	done
 
-	para "Ah!"
+MooMooMilk_CostsThisMuchText::
+	text "That'll be"
+	line "¥@"
+	text_decimal hMoneyTemp, 3, 6
+	text ", Sugar."
+	done
 
-	para "At the Lake of"
-	line "Rage, there is a"
-	cont "swarm of Croagunk!"
+MooMooMilk_InsufficientFundsText::
+	text "Sorry, hun."
 
-	para "Now's your chance,"
-	line "trainers!"
+	para "Looks like you"
+	line "don't have enough."
+	done
 
-	para "Head to the Lake"
-	line "of Rage and catch"
-	cont "a Croagunk!"
+MooMooMilk_BagFullText::
+	text "I reckon yer"
+	line "Pack's full."
+	done
+
+MooMooMilk_HereYouGoText::
+	text "Here ya go, honey!"
+	line "Drink up'n enjoy!"
 	done

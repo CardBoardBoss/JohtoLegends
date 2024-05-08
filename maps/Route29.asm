@@ -63,15 +63,19 @@ TrainerTeacherCharlene:
 	closetext
 	end
 
-TrainerCooltrainermEmile:
-	trainer COOLTRAINERM, EMILE, EVENT_BEAT_COOLTRAINERM_EMILE, CooltrainermEmileSeenText, CooltrainermEmileBeatenText, 0, .Script
+TrainerCooltrainermJrose:
+	trainer COOLTRAINERM, EMILE, EVENT_BEAT_COOLTRAINERM_EMILE, CooltrainermJroseSeenText, CooltrainermJroseBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext CooltrainermEmileAfterText
+	writetext CooltrainermJroseAfterText
 	waitbutton
 	closetext
+	winlosstext CooltrainermJroseBeatenText, 0
+	loadtrainer COOLTRAINERM, EMILE
+	startbattle
+	reloadmapafterbattle
 	end
 
 TrainerCooltrainerfReese:
@@ -100,7 +104,7 @@ TuscanyScript:
 .MetTuscany:
 	writetext TuscanyGivesGiftText
 	buttonsound
-	verbosegiveitem PINK_BOW
+	verbosegiveitem POLKADOT_BOW
 	iffalse TuscanyDoneScript
 	setevent EVENT_GOT_PINK_BOW_FROM_TUSCANY
 	writetext TuscanyGaveGiftText
@@ -231,16 +235,16 @@ Route29TeacherText:
 	line "the grass."
 	done
 
-CooltrainermEmileSeenText:
+CooltrainermJroseSeenText:
 	text "#mon are"
 	line "awesome!"
 	done
 
-CooltrainermEmileBeatenText:
+CooltrainermJroseBeatenText:
 	text "Don't you agree?"
 	done
 
-CooltrainermEmileAfterText:
+CooltrainermJroseAfterText:
 	text "I can't help but"
 	line "get excited when"
 	cont "I'm with #mon!"
@@ -254,16 +258,16 @@ MeetTuscanyText:
 
 TuscanyGivesGiftText:
 	text "Here, take this"
-	line "Pink Bow!"
+	line "Polkadot Bow!"
 	done
 
 TuscanyGaveGiftText:
 	text "Wouldn't you agree"
-	line "agree that it is"
+	line "that it is the"
 	cont "most adorable?"
 
 	para "It strengthens"
-	line "Normal-type moves."
+	line "Fairy-type moves."
 
 	para "I am certain it"
 	line "will be of use."
@@ -364,6 +368,6 @@ Route29_MapEvents:
 	object_event 25, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route29YoungsterScript, -1
 	object_event 15, 11, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerTeacherCharlene, -1
 	object_event 12,  2, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route29FruitTree, -1
-	object_event 26,  5, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermEmile, -1
+	object_event 26,  5, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainermJrose, -1
 	object_event 29, 12, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
 	object_event 48,  2, SPRITE_RAIKOU_P, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route29Raikou, EVENT_ROUTE_29_RAIKOU

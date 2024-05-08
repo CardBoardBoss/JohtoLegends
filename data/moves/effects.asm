@@ -3,6 +3,7 @@ INCLUDE "data/moves/effects_pointers.asm"
 MoveEffects: ; used only for BANK(MoveEffects)
 
 NormalHit:
+VitalThrow:
 	checkobedience
 	usedmovetext
 	doturn
@@ -855,10 +856,10 @@ MultiHit:
 	criticaltext
 	cleartext
 	supereffectivelooptext
-	kingsrock
 	checkfaint
 	buildopponentrage
 	endloop
+	kingsrock
 	raisesub
 	endmove
 
@@ -882,12 +883,12 @@ PoisonMultiHit:
 	criticaltext
 	cleartext
 	supereffectivelooptext
-	kingsrock
 	checkfaint
 	buildopponentrage
 	endloop
 	raisesub
 	poisontarget
+	kingsrock
 	endmove
 
 FlinchHit:
@@ -1411,11 +1412,11 @@ TripleKick:
 	criticaltext
 	cleartext
 	supereffectivelooptext
-	kingsrock
 	checkfaint
 	buildopponentrage
 	kickcounter
 	endloop
+	kingsrock
 	raisesub
 	endmove
 
@@ -1795,10 +1796,22 @@ FakeOut:
 	checkobedience
 	usedmovetext
 	doturn
-	checkhit
 	fakeout
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
 	moveanim
 	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	buildopponentrage
+	flinchtarget
 	endmove
 
 BellyDrum:
@@ -2468,15 +2481,15 @@ Hail:
 BrickBreak:
 	checkobedience
 	usedmovetext
-	breakscreens
 	doturn
-	checkhit
-	moveanim
+	breakscreens
 	critical
 	damagestats
 	damagecalc
 	stab
+	checkhit
 	damagevariation
+	moveanim
 	failuretext
 	applydamage
 	criticaltext

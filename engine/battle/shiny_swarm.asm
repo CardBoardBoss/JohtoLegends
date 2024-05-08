@@ -11,7 +11,7 @@ GenerateShinySwarm:
 	cp WILD_AREA_OUTSIDE
 	jr z, .wildarea
 	cp ICE_PATH
-	jr z, .sneasel
+	jp z, .sneasel
 	cp BURNED_TOWER
 	jp z, .misdreavus
 	cp NATIONAL_PARK
@@ -23,7 +23,21 @@ GenerateShinySwarm:
 	cp ROUTE_43
 	jp z, .ralts
 	cp LAKE_OF_RAGE
-	jp z, .croagunk
+	jp z, .kotora
+	cp ILEX_FOREST
+	jp z, .parasect
+	cp UNION_CAVE
+	jp z, .gligar
+	cp ROUTE_32
+	jp z, .toxicroak
+	cp ROUTE_37
+	jp z, .murkrow
+	cp ROUTE_35
+	jp z, .ditto
+	cp ROUTE_44
+	jp z, .slowpoke
+	cp ROUTE_42
+	jp z, .ponyta
 	jp .skipshineswarm
 
 .dunsparce
@@ -119,7 +133,7 @@ GenerateShinySwarm:
 		endc
 	endc
 	jr nz, .gible
-	jr .rollshiny
+	jp .rollshiny
 
 .gible
 	ld a, [wCurPartySpecies]
@@ -138,7 +152,7 @@ GenerateShinySwarm:
 		endc
 	endc
 	jp nz, .skipshineswarm
-	jr .rollshiny
+	jp .rollshiny
 
 .sneasel
 	ld a, [wCurPartySpecies]
@@ -156,8 +170,8 @@ GenerateShinySwarm:
 			cp HIGH(SNEASEL)
 		endc
 	endc
-	jr nz, .skipshineswarm
-	jr .rollshiny
+	jp nz, .skipshineswarm
+	jp .rollshiny
 
 .misdreavus
 	ld a, [wCurPartySpecies]
@@ -175,8 +189,8 @@ GenerateShinySwarm:
 			cp HIGH(MISDREAVUS)
 		endc
 	endc
-	jr nz, .skipshineswarm
-	jr .rollshiny
+	jp nz, .skipshineswarm
+	jp .rollshiny
 
 .pinsir
 	ld a, [wCurPartySpecies]
@@ -194,8 +208,8 @@ GenerateShinySwarm:
 			cp HIGH(PINSIR)
 		endc
 	endc
-	jr nz, .skipshineswarm
-	jr .rollshiny
+	jp nz, .skipshineswarm
+	jp .rollshiny
 
 .scyther
 	ld a, [wCurPartySpecies]
@@ -213,8 +227,8 @@ GenerateShinySwarm:
 			cp HIGH(SCYTHER)
 		endc
 	endc
-	jr nz, .skipshineswarm
-	jr .rollshiny
+	jp nz, .skipshineswarm
+	jp .rollshiny
 
 .aron
 	ld a, [wCurPartySpecies]
@@ -224,7 +238,7 @@ GenerateShinySwarm:
 	if HIGH(ARON) == 0
 		or h
 	else
-		jr nz, .skipshineswarm
+		jp nz, .skipshineswarm
 		if HIGH(ARON)
 			dec h
 		else
@@ -232,8 +246,8 @@ GenerateShinySwarm:
 			cp HIGH(ARON)
 		endc
 	endc
-	jr nz, .skipshineswarm
-	jr .rollshiny
+	jp nz, .skipshineswarm
+	jp .rollshiny
 
 .ralts
 	ld a, [wCurPartySpecies]
@@ -243,7 +257,7 @@ GenerateShinySwarm:
 	if HIGH(RALTS) == 0
 		or h
 	else
-		jr nz, .skipshineswarm
+		jp nz, .skipshineswarm
 		if HIGH(RALTS)
 			dec h
 		else
@@ -251,23 +265,156 @@ GenerateShinySwarm:
 			cp HIGH(RALTS)
 		endc
 	endc
-	jr nz, .skipshineswarm
+	jp nz, .skipshineswarm
 	jr .rollshiny
 
-.croagunk
+.kotora
 	ld a, [wCurPartySpecies]
 	call GetPokemonIndexFromID
 	ld a, l
-	sub LOW(CROAGUNK)
-	if HIGH(CROAGUNK) == 0
+	sub LOW(KOTORA)
+	if HIGH(KOTORA) == 0
 		or h
 	else
-		jr nz, .skipshineswarm
-		if HIGH(CROAGUNK)
+		jp nz, .skipshineswarm
+		if HIGH(KOTORA)
 			dec h
 		else
 			ld a, h
-			cp HIGH(CROAGUNK)
+			cp HIGH(KOTORA)
+		endc
+	endc
+	jp nz, .skipshineswarm
+	jr .rollshiny
+
+.parasect
+	ld a, [wCurPartySpecies]
+	call GetPokemonIndexFromID
+	ld a, l
+	sub LOW(PARASECT)
+	if HIGH(PARASECT) == 0
+		or h
+	else
+		jr nz, .skipshineswarm
+		if HIGH(PARASECT)
+			dec h
+		else
+			ld a, h
+			cp HIGH(PARASECT)
+		endc
+	endc
+	jr nz, .skipshineswarm
+	jr .rollshiny
+
+.gligar
+	ld a, [wCurPartySpecies]
+	call GetPokemonIndexFromID
+	ld a, l
+	sub LOW(GLIGAR)
+	if HIGH(GLIGAR) == 0
+		or h
+	else
+		jr nz, .skipshineswarm
+		if HIGH(GLIGAR)
+			dec h
+		else
+			ld a, h
+			cp HIGH(GLIGAR)
+		endc
+	endc
+	jr nz, .skipshineswarm
+	jr .rollshiny
+
+.toxicroak
+	ld a, [wCurPartySpecies]
+	call GetPokemonIndexFromID
+	ld a, l
+	sub LOW(TOXICROAK)
+	if HIGH(TOXICROAK) == 0
+		or h
+	else
+		jr nz, .skipshineswarm
+		if HIGH(TOXICROAK)
+			dec h
+		else
+			ld a, h
+			cp HIGH(TOXICROAK)
+		endc
+	endc
+	jr nz, .skipshineswarm
+	jr .rollshiny
+
+.murkrow
+	ld a, [wCurPartySpecies]
+	call GetPokemonIndexFromID
+	ld a, l
+	sub LOW(MURKROW)
+	if HIGH(MURKROW) == 0
+		or h
+	else
+		jr nz, .skipshineswarm
+		if HIGH(MURKROW)
+			dec h
+		else
+			ld a, h
+			cp HIGH(MURKROW)
+		endc
+	endc
+	jr nz, .skipshineswarm
+	jr .rollshiny
+
+.ditto
+	ld a, [wCurPartySpecies]
+	call GetPokemonIndexFromID
+	ld a, l
+	sub LOW(DITTO)
+	if HIGH(DITTO) == 0
+		or h
+	else
+		jr nz, .skipshineswarm
+		if HIGH(DITTO)
+			dec h
+		else
+			ld a, h
+			cp HIGH(DITTO)
+		endc
+	endc
+	jr nz, .skipshineswarm
+	jr .rollshiny
+
+.slowpoke
+	ld a, [wCurPartySpecies]
+	call GetPokemonIndexFromID
+	ld a, l
+	sub LOW(SLOWPOKE)
+	if HIGH(SLOWPOKE) == 0
+		or h
+	else
+		jr nz, .skipshineswarm
+		if HIGH(SLOWPOKE)
+			dec h
+		else
+			ld a, h
+			cp HIGH(SLOWPOKE)
+		endc
+	endc
+	jr nz, .skipshineswarm
+	jr .rollshiny
+
+.ponyta
+	ld a, [wCurPartySpecies]
+	call GetPokemonIndexFromID
+	ld a, l
+	sub LOW(PONYTA)
+	if HIGH(PONYTA) == 0
+		or h
+	else
+		jr nz, .skipshineswarm
+		if HIGH(PONYTA)
+			dec h
+		else
+			ld a, h
+			cp HIGH(PONYTA)
 		endc
 	endc
 	jr nz, .skipshineswarm

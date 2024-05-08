@@ -303,7 +303,7 @@ BattleText_UserHurtBySpikes:
 
 RecoveredUsingText:
 	text "<TARGET>"
-	line "recovered using a"
+	line "recovered with its"
 	cont "@"
 	text_ram wStringBuffer1
 	text "!"
@@ -319,7 +319,7 @@ BattleText_UsersStringBuffer1Activated:
 
 BattleText_ItemsCantBeUsedHere:
 	text "Items can't be"
-	line "used here."
+	line "used right now."
 	prompt
 
 BattleText_MonIsAlreadyOut:

@@ -63,6 +63,7 @@ OldPokedexOrder:
 	dw GOLDUCK
 	dw MANKEY
 	dw PRIMEAPE
+	dw ANNIHILAPE
 	dw GROWLITHE
 	dw ARCANINE
 	dw POLIWAG
@@ -126,6 +127,7 @@ OldPokedexOrder:
 	dw RHYHORN
 	dw RHYDON
 	dw RHYPERIOR
+	dw HAPPINY
 	dw CHANSEY
 	dw BLISSEY
 	dw TANGELA
@@ -138,6 +140,7 @@ OldPokedexOrder:
 	dw SEAKING
 	dw STARYU
 	dw STARMIE
+	dw MIME__JR
 	dw MR__MIME
 	dw SCYTHER
 	dw SCIZOR
@@ -172,6 +175,7 @@ OldPokedexOrder:
 	dw KABUTO
 	dw KABUTOPS
 	dw AERODACTYL
+	dw MUNCHLAX
 	dw SNORLAX
 	dw ARTICUNO
 	dw ZAPDOS
@@ -208,8 +212,10 @@ OldPokedexOrder:
 	dw MAREEP
 	dw FLAAFFY
 	dw AMPHAROS
+	dw AZURILL
 	dw MARILL
 	dw AZUMARILL
+	dw BONSLY
 	dw SUDOWOODO
 	dw HOPPIP
 	dw SKIPLOOM
@@ -230,9 +236,11 @@ OldPokedexOrder:
 	dw WYNAUT
 	dw WOBBUFFET
 	dw GIRAFARIG
+	dw FARIGIRAF
 	dw PINECO
 	dw FORRETRESS
 	dw DUNSPARCE
+	dw DUDUNSPARS
 	dw GLIGAR
 	dw GLISCOR
 	dw SNUBBULL
@@ -244,6 +252,7 @@ OldPokedexOrder:
 	dw WEAVILE
 	dw TEDDIURSA
 	dw URSARING
+	dw URSALUNA
 	dw SLUGMA
 	dw MAGCARGO
 	dw SWINUB
@@ -254,6 +263,7 @@ OldPokedexOrder:
 	dw REMORAID
 	dw OCTILLERY
 	dw DELIBIRD
+	dw MANTYKE
 	dw MANTINE
 	dw SKARMINI
 	dw SKARMORY
@@ -262,8 +272,12 @@ OldPokedexOrder:
 	dw PHANPY
 	dw DONPHAN
 	dw STANTLER
+	dw WYRDEER
 	dw SMEARGLE
 	dw MILTANK
+	dw KOTORA
+	dw RAITORA
+	dw GOROTORA
 	dw BUDEW
 	dw ROSELIA
 	dw ROSERADE
@@ -271,9 +285,14 @@ OldPokedexOrder:
 	dw MANECTRIC
 	dw CROAGUNK
 	dw TOXICROAK
+	dw SWABLU
+	dw ALTARIA
 	dw DUSKULL
 	dw DUSCLOPS
 	dw DUSKNOIR
+	dw LOTAD
+	dw LOMBRE
+	dw LUDICOLO
 	dw SNORUNT
 	dw GLALIE
 	dw FROSLASS
@@ -285,16 +304,23 @@ OldPokedexOrder:
 	dw KIRLIA
 	dw GARDEVOIR
 	dw GALLADE
+	dw ARON
+	dw LAIRON
+	dw AGGRON
 	dw RAIKOU
 	dw ENTEI
 	dw SUICUNE
 	dw LARVITAR
 	dw PUPITAR
 	dw TYRANITAR
+	dw GIBLE
+	dw GABITE
+	dw GARCHOMP
 	dw BAGON
 	dw SHELGON
 	dw SALAMENCE
 	dw LUGIA
 	dw HO_OH
 	dw CELEBI
+	dw NOWN
 	dw MISSINGNO

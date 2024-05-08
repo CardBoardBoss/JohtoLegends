@@ -37,7 +37,8 @@ NewPokedexOrder:
 	dw BUDEW
 	dw ROSELIA
 	dw ROSERADE
-;	dw SWABLU
+	dw SWABLU
+	dw ALTARIA
 	dw GEODUDE
 	dw GRAVELER
 	dw GOLEM
@@ -50,6 +51,10 @@ NewPokedexOrder:
 	dw SKARMORY
 	dw TEDDIURSA
 	dw URSARING
+	dw URSALUNA
+	dw KOTORA
+	dw RAITORA
+	dw GOROTORA
 	dw MUNCHLAX
 	dw SNORLAX
 	dw HORSEA
@@ -59,6 +64,9 @@ NewPokedexOrder:
 	dw TOXICROAK
 	dw WYNAUT
 	dw WOBBUFFET
+	dw LOTAD
+	dw LOMBRE
+	dw LUDICOLO
 	dw HOUNDOUR
 	dw HOUNDOOM
 	dw AZURILL
@@ -143,6 +151,7 @@ NewPokedexOrder:
 	dw HITMONCHAN
 	dw HITMONTOP
 	dw DUNSPARCE
+	dw DUDUNSPARS
 	dw PICHU
 	dw PIKACHU
 	dw RAICHU
@@ -185,6 +194,7 @@ NewPokedexOrder:
 	dw SUNFLORA
 	dw MANKEY
 	dw PRIMEAPE
+	dw ANNIHILAPE
 	dw TOGEPI
 	dw TOGETIC
 	dw TOGEKISS
@@ -228,7 +238,9 @@ NewPokedexOrder:
 	dw EXEGGCUTE
 	dw EXEGGUTOR
 	dw GIRAFARIG
+	dw FARIGIRAF
 	dw STANTLER
+	dw WYRDEER
 	dw KANGASKHAN
 	dw LICKITUNG
 	dw LICKILICKY
@@ -310,4 +322,5 @@ NewPokedexOrder:
 	dw MEWTWO
 	dw MEW
 	dw CELEBI
+	dw NOWN
 	dw MISSINGNO

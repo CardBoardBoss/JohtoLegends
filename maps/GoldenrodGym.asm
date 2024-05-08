@@ -50,6 +50,7 @@ GoldenrodGymMiltonScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MILTON
+	setevent EVENT_DECO_CHIKORITA_DOLL
 	scall GoldenrodRockets
 	opentext
 	writetext BeatenMiltonText
@@ -60,6 +61,7 @@ GoldenrodGymMiltonScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_PLAINBADGE
+	loadmem wLevelCap, 44
 	readvar VAR_BADGES
 	setflag ENGINE_BEAT_MILTON
 .FightDone:
@@ -82,6 +84,8 @@ GoldenrodGymMiltonScript:
 	end
 
 .GotAttract:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .AlreadyMetSister
 	checkevent EVENT_GOLDENROD_GYM_RIVAL_1
 	iffalse .ToughKid
 	writetext MiltonSisterText
@@ -97,7 +101,15 @@ GoldenrodGymMiltonScript:
 	turnobject GOLDENRODGYM_MILTON, DOWN
 	end
 
+.AlreadyMetSister:
+	writetext AlreadyMetSisterText
+	waitbutton
+	closetext
+	end
+
 .RematchMilton:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .PostGameMilton
 	readvar VAR_BADGES
 	ifequal 5, .MiltonBattle1
 	ifequal 6, .MiltonBattle2
@@ -153,6 +165,14 @@ GoldenrodGymMiltonScript:
 	reloadmapafterbattle
 	sjump AfterMiltonRematch
 
+.PostGameMilton:
+	writetext PostGameMiltonText
+	waitbutton
+	closetext
+	winlosstext MiltonText_HooWee, MiltonText_Yeehaw
+	loadtrainer MILTON, MILTON5
+	startbattle
+	reloadmapafterbattle
 AfterMiltonRematch:
 	opentext
 	writetext MiltonText_BeatenAgain
@@ -248,7 +268,7 @@ GoldenrodGymStatue:
 	jumpstd gymstatue3
 .RivalBeatGym:
 	gettrainername STRING_BUFFER_4, MILTON, MILTON1
-	jumpstd gymstatue2
+	jumpstd gymstatue5
 
 TowerInvaded1:
 	moveobject, GOLDENRODGYM_DAHLIA, 3, 17
@@ -594,6 +614,31 @@ BeatenMiltonAgainText:
 	line "alright!"
 	done
 
+PostGameMiltonText:
+	text "Ya met my sister,"
+	line "didn't ya?"
+
+	para "I told ya she's"
+	line "tough, but yer"
+	cont "somethin' else!"
+
+	para "Let's see how"
+	line "much tougher ya"
+	cont "are now!"
+	done
+
+AlreadyMetSisterText:
+	text "I'm really hopin'"
+	line "my sister will"
+	cont "have a kid soon."
+
+	para "I need someone to"
+	line "take over as Gym"
+	cont "Leader, and Mama"
+	cont "ain't too young"
+	cont "anymore!"
+	done
+
 GoldenrodGym_MapEvents:
 	db 0, 0 ; filler
 
@@ -611,9 +656,9 @@ GoldenrodGym_MapEvents:
 
 	db 7 ; object events
 	object_event 11,  3, SPRITE_MILTON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodGymMiltonScript, EVENT_GOLDENROD_GYM_MILTON
-	object_event  9, 13, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerBreederSarah, -1
+	object_event  9, 13, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerBreederEmily, -1
 	object_event  9,  6, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerBreederBridget, -1
-	object_event  5,  1, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerBreederEmily, -1
+	object_event  5,  1, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerBreederSarah, -1
 	object_event 18,  3, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerBreederNina, -1
 	object_event  5, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodGymGuyScript, -1
 	object_event 11,  4, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodGymRivalScript, EVENT_GOLDENROD_GYM_RIVAL_1

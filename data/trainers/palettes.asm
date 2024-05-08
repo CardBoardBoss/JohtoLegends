@@ -24,7 +24,7 @@ INCLUDE "gfx/trainers/agatha.pal"
 INCBIN "gfx/trainers/koga.gbcpal", middle_colors
 INCLUDE "gfx/trainers/kris.pal"
 INCLUDE "gfx/trainers/flint.pal"
-INCBIN "gfx/trainers/misty.gbcpal", middle_colors
+INCLUDE "gfx/trainers/violet.pal"
 INCLUDE "gfx/trainers/pvt_surge.pal"
 INCBIN "gfx/trainers/scientist.gbcpal", middle_colors
 INCLUDE "gfx/trainers/erika.pal"
@@ -103,6 +103,19 @@ INCLUDE "gfx/trainers/chigusa.pal"
 INCLUDE "gfx/trainers/byron.pal"
 INCLUDE "gfx/trainers/kris.pal"
 INCBIN "gfx/trainers/biker_boss.gbcpal", middle_colors
+INCLUDE "gfx/trainers/chris.pal"
+INCLUDE "gfx/player/kris.pal"
+INCLUDE "gfx/trainers/chris.pal"
+INCBIN "gfx/trainers/cynthia.gbcpal", middle_colors
+INCBIN "gfx/trainers/delinquent.gbcpal", middle_colors
+INCLUDE "gfx/trainers/daisy.pal"
+INCLUDE "gfx/trainers/lily.pal"
+INCBIN "gfx/trainers/roughneck.gbcpal", middle_colors
+INCBIN "gfx/trainers/soldier.gbcpal", middle_colors
+INCBIN "gfx/trainers/karate_king.gbcpal", middle_colors
+INCBIN "gfx/trainers/ninja_m.gbcpal", middle_colors
+INCBIN "gfx/trainers/ninja_f.gbcpal", middle_colors
+INCLUDE "gfx/trainers/ferropexola.pal"
 
 KrisPalette:
 INCLUDE "gfx/player/kris.pal"

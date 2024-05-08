@@ -12,7 +12,7 @@ LoadSGBLayout:
 	ld l, a
 	ld h, 0
 	add hl, hl
-	ld de, .Jumptable
+	ld de, SGBLayoutJumptable
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -21,7 +21,7 @@ LoadSGBLayout:
 	push de
 	jp hl
 
-.Jumptable:
+SGBLayoutJumptable:
 	dw .SGB_BattleGrayscale
 	dw .SGB_BattleColors
 	dw .SGB_PokegearPals
@@ -535,8 +535,8 @@ endr
 	jr z, .cave
 	cp DUNGEON
 	jr z, .cave
-	cp ENVIRONMENT_5
-	jr z, .env5
+	cp FOREST
+	jr z, .forest
 	cp GATE
 	jr z, .gate
 	ld a, [wMapGroup]
@@ -555,8 +555,8 @@ endr
 	ld a, PREDEFPAL_DUNGEONS
 	ret
 
-.env5
-	ld a, PREDEFPAL_VERMILION
+.forest
+	ld a, PREDEFPAL_00
 	ret
 
 .gate

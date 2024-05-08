@@ -12,112 +12,20 @@ Route39Farmhouse_MapScripts:
 FarmerFScript_SellMilk:
 	faceplayer
 	opentext
-	checkitem MOOMOO_MILK
-	iftrue FarmerFScript_Milking
-	writetext FarmerFText_BuyMilk
-	special PlaceMoneyTopRight
-	yesorno
-	iffalse FarmerFScript_NoSale
-	checkmoney YOUR_MONEY, ROUTE39FARMHOUSE_MILK_PRICE
-	ifequal HAVE_LESS, FarmerFScript_NoMoney
-	giveitem MOOMOO_MILK
-	iffalse FarmerFScript_NoRoom
-	takemoney YOUR_MONEY, ROUTE39FARMHOUSE_MILK_PRICE
-	special PlaceMoneyTopRight
-	waitsfx
-	playsound SFX_TRANSACTION
-	writetext FarmerFText_GotMilk
-	buttonsound
-	itemnotify
-	closetext
-	end
-
-FarmerFScript_NoMoney:
-	writetext FarmerFText_NoMoney
-	waitbutton
-	closetext
-	end
-
-FarmerFScript_NoRoom:
-	writetext FarmerFText_NoRoom
-	waitbutton
-	closetext
-	end
-
-FarmerFScript_NoSale:
-	writetext FarmerFText_NoSale
-	waitbutton
-	closetext
-	end
-
-FarmerFScript_Milking:
-	writetext FarmerFText_Milking
-	waitbutton
+	pokemart MARTTYPE_MOOMOO_MILK, MART_MOOMOO_MILK
 	closetext
 	end
 
 Route39FarmhouseGrannyScript:
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .Route39FarmhouseGranny2
 	jumptextfaceplayer GrannyText_InTrouble
+
+.Route39FarmhouseGranny2:
+	jumptextfaceplayer GrannyText_GoodJob
 
 FarmhouseBookshelf:
 	jumpstd picturebookshelf
-
-FarmerMText_SickCow:
-	text "My MILTANK ain't"
-	line "givin' me milk"
-	cont "n'more."
-
-	para "This here FARM's"
-	line "got famous milk."
-
-	para "Most everyone"
-	line "wants a drink."
-
-	para "It'll give me lots"
-	line "o' milk if'n I"
-
-	para "feed it lots o'"
-	line "BERRIES, I reckon."
-	done
-
-FarmerFText_BuyMilk:
-	text "Howdy!"
-
-	para "Would ya like some"
-	line "MooMoo Milk?"
-
-	para "Give it to #mon"
-	line "to restore HP!"
-
-	para "I'll give it to ya"
-	line "for just ¥500."
-	done
-
-FarmerFText_GotMilk:
-	text "Here ya go, honey!"
-	line "Drink up'n enjoy!"
-	done
-
-FarmerFText_NoMoney:
-	text "Sorry, there."
-	line "No cash, no sale!"
-	done
-
-FarmerFText_NoRoom:
-	text "I reckon yer"
-	line "Pack's full."
-	done
-
-FarmerFText_NoSale:
-	text "You don't want it?"
-	line "Come again, hear?"
-	done
-
-FarmerFText_Milking:
-	text "I'd best see if"
-	line "he's got any more"
-	cont "milk."
-	done
 
 GrannyText_InTrouble:
 	text "My son took over"
@@ -140,6 +48,19 @@ GrannyText_InTrouble:
 	line "I'd kick all their"
 	cont "butts so we could"
 	cont "sell milk again!"
+	done
+
+GrannyText_GoodJob:
+	text "I've heard you were"
+	line "the one who took"
+	cont "on those idiots in"
+	cont "Kanto."
+
+	para "Good on you!"
+
+	para "We can start"
+	line "selling milk there"
+	cont "again!"
 	done
 
 Route39Farmhouse_MapEvents:

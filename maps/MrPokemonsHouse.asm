@@ -52,6 +52,8 @@ MrPokemonsHouse_MrPokemonScript:
 .AlwaysNewDiscoveries:
 	checkitem STRANGE_HAIR
 	iftrue .GiveMeThatHair
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .MythicalPassword
 	writetext MrPokemonText_AlwaysNewDiscoveries
 	waitbutton
 	closetext
@@ -72,6 +74,12 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_Disappointed
 	waitbutton
 .full
+	closetext
+	end
+
+.MythicalPassword:
+	writetext MythicalPasswordText
+	waitbutton
 	closetext
 	end
 
@@ -125,19 +133,6 @@ MrPokemonsHouse_OakScript:
 	setmapscene ELMS_LAB, SCENE_ELMSLAB_MEET_OFFICER
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
-	checkevent EVENT_GOT_DRATINI_FROM_MASTER
-	iftrue .RivalTakesChikorita
-	checkevent EVENT_GOT_LARVITAR_FROM_MASTER
-	iftrue .RivalTakesCyndaquil
-	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	end
-
-.RivalTakesChikorita:
-	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
-	end
-
-.RivalTakesCyndaquil:
-	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	end
 
 .Female2:
@@ -399,6 +394,22 @@ MrPokemonsHouse_StrangeCoinsText:
 
 	para "Maybe they're from"
 	line "another country…"
+	done
+
+MythicalPasswordText:
+	text "I often wonder"
+	line "about this Strange"
+	cont "Hair…"
+
+	para "Where did it come"
+	line "from?"
+
+	para "Perhaps a MYTHICAL"
+	line "#mon dropped it"
+	cont "somewhere?"
+
+	para "It's quite a"
+	line "mystery…"
 	done
 
 MrPokemonsHouse_MapEvents:

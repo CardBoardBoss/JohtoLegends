@@ -793,24 +793,10 @@ CompareMovePriority:
 	ret
 
 GetMovePriority:
-; Return the priority (0-3) of move a.
+; Return the priority (0-5) of move a.
 
 	ld b, a
 
-	; Vital Throw goes last.
-	call GetMoveIndexFromID
-	ld a, h
-	if HIGH(VITAL_THROW)
-		cp HIGH(VITAL_THROW)
-	else
-		and a
-	endc
-	jr nz, .not_vital_throw
-	ld a, l
-	sub LOW(VITAL_THROW)
-	ret z
-
-.not_vital_throw
 	call GetMoveEffect
 	ld hl, MoveEffectPriorities
 .loop
@@ -2284,7 +2270,12 @@ FaintYourPokemon:
 	jp StdBattleTextbox
 
 FaintEnemyPokemon:
+	call StopDangerSound
 	call WaitSFX
+	ld a, $f0
+	ld [wCryTracks], a
+	ld a, [wTempEnemyMonSpecies]
+	call PlayStereoCry
 	ld de, SFX_KINESIS
 	call PlaySFX
 	call EnemyMonFaintedAnimation
@@ -2596,6 +2587,10 @@ PlayVictoryMusic:
 .trainer_victory
 	ld de, MUSIC_GYM_VICTORY
 	call IsGymLeader
+	jr c, .play_music
+
+	ld de, MUSIC_GYM_VICTORY
+	call IsVillainBoss
 	jr c, .play_music
 	ld de, MUSIC_TRAINER_VICTORY
 
@@ -3558,6 +3553,7 @@ CheckWhetherToAskSwitch:
 	ld a, [wBattleHasJustStarted]
 	dec a
 	jp z, .return_nc
+if !DEF(_CHALLENGE)
 	ld a, [wPartyCount]
 	dec a
 	jp z, .return_nc
@@ -3577,6 +3573,7 @@ CheckWhetherToAskSwitch:
 	ld [wCurPartyMon], a
 	jr c, .return_nc
 	scf
+endc
 	ret
 
 .return_nc
@@ -3791,6 +3788,8 @@ TryToRunAwayFromBattle:
 	cp BATTLETYPE_HO_OH
 	jp z, .cant_escape
 	cp BATTLETYPE_LUGIA
+	jp z, .cant_escape
+	cp BATTLETYPE_LEGENDARY
 	jp z, .cant_escape
 
 	ld a, [wLinkMode]
@@ -4603,6 +4602,10 @@ HandleStatBoostingHeldItems:
 	push bc
 	ld a, [bc]
 	ld b, a
+	push hl
+	call IsUserItemUsable
+	pop hl
+	jr nz, .finish
 	callfar GetItemHeldEffect
 	ld hl, HeldStatUpItems
 .loop
@@ -5056,6 +5059,16 @@ BattleMenu_Pack:
 	ld a, [wLinkMode]
 	and a
 	jp nz, .ItemsCantBeUsed
+
+if DEF(_CHALLENGE)
+	ld a, [wBattleType]
+	cp BATTLETYPE_CANLOSE
+	jp z, .ItemsCantBeUsed
+
+	ld a, [wBattleMode]
+	dec a
+	jp nz, .ItemsCantBeUsed
+endc
 
 	ld a, [wInBattleTowerBattle]
 	and a
@@ -6173,6 +6186,11 @@ LoadEnemyMon:
 	ld a, [wBaseItem1]
 	jr z, .UpdateItem
 
+	ld a, [wBattleType]
+	cp BATTLETYPE_MEWTWO
+	ld a, [wBaseItem1]
+	jr z, .UpdateItem
+
 ; Failing that, it's all up to chance
 ;  Effective chances:
 ;    75% None
@@ -6297,10 +6315,22 @@ LoadEnemyMon:
 
 .skipshine:
 ; Generate new random DVs
+	ld hl, wStatusFlags2
+	bit STATUSFLAGS2_UNUSED_5_F, [hl]
+	jr nz, .MaxDVs
 	call BattleRandom
 	ld b, a
 	call BattleRandom
 	ld c, a
+	jr .UpdateDVs
+
+.MaxDVs:
+;	call BattleRandom
+;	ld [hld], a
+	ld b, $ff
+;	call BattleRandom
+;	ld [hl], a
+	ld c, $ff
 
 .UpdateDVs:
 ; Input DVs in register bc
@@ -6376,7 +6406,7 @@ LoadEnemyMon:
 
 ; No reason to keep going if length > 1536 mm (i.e. if HIGH(length) > 6 feet)
 	ld a, [wMagikarpLength]
-	cp HIGH(1536) ; should be "cp 5", since 1536 mm = 5'0", but HIGH(1536) = 6
+	cp 5 ; should be "cp 5", since 1536 mm = 5'0", but HIGH(1536) = 6
 	jr nz, .CheckMagikarpArea
 
 ; 5% chance of skipping both size checks
@@ -6385,7 +6415,7 @@ LoadEnemyMon:
 	jr c, .CheckMagikarpArea
 ; Try again if length >= 1616 mm (i.e. if LOW(length) >= 4 inches)
 	ld a, [wMagikarpLength + 1]
-	cp LOW(1616) ; should be "cp 4", since 1616 mm = 5'4", but LOW(1616) = 80
+	cp 4 ; should be "cp 4", since 1616 mm = 5'4", but LOW(1616) = 80
 	jp nc, .GenerateDVs
 
 ; 20% chance of skipping this check
@@ -6394,7 +6424,7 @@ LoadEnemyMon:
 	jr c, .CheckMagikarpArea
 ; Try again if length >= 1600 mm (i.e. if LOW(length) >= 3 inches)
 	ld a, [wMagikarpLength + 1]
-	cp LOW(1600) ; should be "cp 3", since 1600 mm = 5'3", but LOW(1600) = 64
+	cp 3 ; should be "cp 3", since 1600 mm = 5'3", but LOW(1600) = 64
 	jp nc, .GenerateDVs
 
 .CheckMagikarpArea:
@@ -6413,24 +6443,29 @@ LoadEnemyMon:
 ; smaller than 4'0" may be caught by the filter, a lot more than intended.
 	ld a, [wMapGroup]
 	cp GROUP_LAKE_OF_RAGE
-	jr z, .Happiness
+	jr nz, .Happiness
 	ld a, [wMapNumber]
 	cp MAP_LAKE_OF_RAGE
-	jr z, .Happiness
+	jr nz, .Happiness
 ; 40% chance of not flooring
 	call Random
 	cp 40 percent - 2
 	jr c, .Happiness
 ; Try again if length < 1024 mm (i.e. if HIGH(length) < 3 feet)
 	ld a, [wMagikarpLength]
-	cp HIGH(1024) ; should be "cp 3", since 1024 mm = 3'4", but HIGH(1024) = 4
+	cp 3 ; should be "cp 3", since 1024 mm = 3'4", but HIGH(1024) = 4
 	jp c, .GenerateDVs ; try again
 
 ; Finally done with DVs
 
 .Happiness:
 ; Set happiness
+	ld a, [wBattleMode]
+	dec a
+	ld a, $ff
+	jr nz, .load_happiness
 	ld a, BASE_HAPPINESS
+.load_happiness
 	ld [wEnemyMonHappiness], a
 ; Set level
 	ld a, [wCurPartyLevel]
@@ -6640,8 +6675,12 @@ LoadEnemyMon:
 	ld de, wEnemyStats
 	ld bc, wEnemyMonStatsEnd - wEnemyMonStats
 	call CopyBytes
+	call ApplyStatusEffectOnEnemyStats
 
 	ret
+
+DVsPassword:
+	db "STRONGEST"
 
 FinalPkmnSlideInEnemyMonFrontpic:
 	call FinishBattleAnim
@@ -7053,95 +7092,6 @@ ApplyStatLevelMultiplier:
 
 INCLUDE "data/battle/stat_multipliers_2.asm"
 
-BadgeStatBoosts:
-; Raise the stats of the battle mon in wBattleMon
-; depending on which badges have been obtained.
-
-; Every other badge boosts a stat, starting from the first.
-
-; 	ZephyrBadge:  Attack
-; 	PlainBadge:   Speed
-; 	MineralBadge: Defense
-; 	GlacierBadge: Special Attack
-; 	RisingBadge:  Special Defense
-
-; The boosted stats are in order, except PlainBadge and MineralBadge's boosts are swapped.
-
-	ld a, [wLinkMode]
-	and a
-	ret nz
-
-	ld a, [wInBattleTowerBattle]
-	and a
-	ret nz
-
-	ld a, [wJohtoBadges]
-
-; Swap badges 3 (PlainBadge) and 5 (MineralBadge).
-	ld d, a
-	and (1 << PLAINBADGE)
-	add a
-	add a
-	ld b, a
-	ld a, d
-	and (1 << MINERALBADGE)
-	rrca
-	rrca
-	ld c, a
-	ld a, d
-	and ((1 << ZEPHYRBADGE) | (1 << HIVEBADGE) | (1 << FOGBADGE) | (1 << STORMBADGE) | (1 << GLACIERBADGE) | (1 << RISINGBADGE))
-	or b
-	or c
-	ld b, a
-
-	ld hl, wBattleMonAttack
-	ld c, 4
-.CheckBadge:
-	ld a, b
-	srl b
-	call c, BoostStat
-	inc hl
-	inc hl
-; Check every other badge.
-	srl b
-	dec c
-	jr nz, .CheckBadge
-; And the last one (RisingBadge) too.
-	srl a
-	call c, BoostStat
-	ret
-
-BoostStat:
-; Raise stat at hl by 1/8.
-
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hli], a
-
-; Cap at 999.
-	ld a, [hld]
-	sub LOW(MAX_STAT_VALUE)
-	ld a, [hl]
-	sbc HIGH(MAX_STAT_VALUE)
-	ret c
-	ld a, HIGH(MAX_STAT_VALUE)
-	ld [hli], a
-	ld a, LOW(MAX_STAT_VALUE)
-	ld [hld], a
-	ret
-
 _LoadBattleFontsHPBar:
 	callfar LoadBattleFontsHPBar
 	ret
@@ -7391,6 +7341,19 @@ GiveExperiencePoints:
 	ld b, a
 	jr .ev_loop
 .evs_done
+if DEF(_CHALLENGE)
+	pop bc
+	ld hl, MON_LEVEL
+	add hl, bc
+	ld a, [wLevelCap]
+	push bc
+	ld b, a
+	ld a, [hl]
+	cp b
+	pop bc
+	jp nc, .next_mon
+	push bc
+endc
 	pop bc
 	ld hl, MON_LEVEL
 	add hl, bc
@@ -7493,7 +7456,13 @@ GiveExperiencePoints:
 	ld [wCurSpecies], a
 	call GetBaseData
 	push bc
+if !DEF(_CHALLENGE)
 	ld d, MAX_LEVEL
+endc
+if DEF(_CHALLENGE)
+	ld a, [wLevelCap]
+	ld d, a
+endc
 	callfar CalcExpAtLevel
 	pop bc
 	ld hl, MON_EXP + 2
@@ -7528,8 +7497,19 @@ GiveExperiencePoints:
 	pop bc
 	ld hl, MON_LEVEL
 	add hl, bc
+if DEF(_CHALLENGE)
+	ld a, [wLevelCap]
+	push bc
+	ld b, a
+endc
 	ld a, [hl]
+if !DEF(_CHALLENGE)
 	cp MAX_LEVEL
+endc
+if DEF(_CHALLENGE)
+	cp b
+	pop bc
+endc
 	jp nc, .next_mon
 	cp d
 	jp z, .next_mon
@@ -7799,8 +7779,19 @@ AnimateExpBar:
 	cp [hl]
 	jp nz, .finish
 
+if DEF(_CHALLENGE)
+	ld a, [wLevelCap]
+	push bc
+	ld b, a
+endc
 	ld a, [wBattleMonLevel]
+if !DEF(_CHALLENGE)
 	cp MAX_LEVEL
+endc
+if DEF(_CHALLENGE)
+	cp b
+	pop bc
+endc
 	jp nc, .finish
 
 	ldh a, [hProduct + 3]
@@ -7837,7 +7828,13 @@ AnimateExpBar:
 	ld [hl], a
 
 .NoOverflow:
+if !DEF(_CHALLENGE)
 	ld d, MAX_LEVEL
+endc
+if DEF(_CHALLENGE)
+	ld a, [wLevelCap]
+	ld d, a
+endc
 	callfar CalcExpAtLevel
 	ldh a, [hProduct + 1]
 	ld b, a
@@ -7872,8 +7869,19 @@ AnimateExpBar:
 	ld d, a
 
 .LoopLevels:
+if DEF(_CHALLENGE)
+	ld a, [wLevelCap]
+	push bc
+	ld b, a
+endc
 	ld a, e
+if !DEF(_CHALLENGE)
 	cp MAX_LEVEL
+endc
+if DEF(_CHALLENGE)
+	cp b
+	pop bc
+endc
 	jr nc, .FinishExpBar
 	cp d
 	jr z, .FinishExpBar
@@ -8006,16 +8014,22 @@ SendOutMonText:
 	ld a, [hl]
 	ld [wEnemyHPAtTimeOfPlayerSwitch + 1], a
 	ldh [hMultiplicand + 2], a
-	ld a, 25
-	ldh [hMultiplier], a
-	call Multiply
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
 	ld b, [hl]
-	srl a
+	ld c, 100
+	and a
+	jr z, .shift_done
+.shift
+	rra
 	rr b
-	srl a
-	rr b
+	srl c
+	and a
+	jr nz, .shift
+.shift_done
+	ld a, c
+	ldh [hMultiplier], a
+	call Multiply
 	ld a, b
 	ld b, 4
 	ldh [hDivisor], a
@@ -8087,16 +8101,21 @@ WithdrawMonText:
 	ld a, [de]
 	sbc b
 	ldh [hMultiplicand + 1], a
-	ld a, 25
-	ldh [hMultiplier], a
-	call Multiply
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
 	ld b, [hl]
-	srl a
+	ld c, 100
+	and a
+	jr z, .shift_done
+.shift
+	rra
 	rr b
-	srl a
-	rr b
+	and a
+	jr nz, .shift
+.shift_done
+	ld a, c
+	ldh [hMultiplier], a
+	call Multiply
 	ld a, b
 	ld b, 4
 	ldh [hDivisor], a

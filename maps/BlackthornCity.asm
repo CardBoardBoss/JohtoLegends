@@ -194,16 +194,14 @@ BlackthornCityRivalsHouseSign:
 
 BlackthornCity_HikerStopsYou1:
 	turnobject BLACKTHORNCITY_HIKER, LEFT
-	opentext
-	writetext BlackthornCityHikerStopsYouText
-	waitbutton
-	closetext
-	applymovement PLAYER, HikerMovesYouMovement
-	end
+	sjump BlackthornCity_HikerConverge
 
 BlackthornCity_HikerStopsYou2:
 	turnobject BLACKTHORNCITY_HIKER, RIGHT
+BlackthornCity_HikerConverge:
 	opentext
+	checkevent EVENT_GOT_A_POKEMON_FROM_MASTER
+	iftrue BlackthornCity_HikerStopsYou3
 	writetext BlackthornCityHikerStopsYouText
 	waitbutton
 	closetext
@@ -211,9 +209,7 @@ BlackthornCity_HikerStopsYou2:
 	end
 
 BlackthornCity_HikerStopsYou3:
-	turnobject BLACKTHORNCITY_HIKER, RIGHT
-	opentext
-	writetext BlackthornCityHikerStopsYouText
+	writetext BlackthornCityHikerStopsYouText2
 	waitbutton
 	closetext
 	applymovement PLAYER, HikerMovesYouMovement
@@ -222,13 +218,17 @@ BlackthornCity_HikerStopsYou3:
 BlackthornHikerScript:
 	checkevent EVENT_GOT_JOURNAL
 	iftrue .Done
+	checkevent EVENT_GOT_A_POKEMON_FROM_MASTER
+	iftrue .GotJournal
 	jumptextfaceplayer BlackthornCityHikerStopsYouText
+.GotJournal:
+	jumptextfaceplayer BlackthornCityHikerStopsYouText2
 .Done
 	jumptextfaceplayer BlackthornHikerText
 
 HikerMovesYouMovement:
 	step UP
-	step_end
+	step_resume
 
 Text_ClairIsOut:
 	text "I am sorry."
@@ -357,9 +357,9 @@ ThatsExpShareText:
 	para "a #mon that is"
 	line "not in battle!"
 
-	para "Just give it to a"
-	line "#mon, and watch"
-	cont "the experience"
+	para "Just use it, and"
+	line "watch the"
+	cont "experience"
 
 	para "roll in!"
 	done
@@ -478,6 +478,17 @@ BlackthornCityHikerStopsYouText:
 	cont "protection!"
 	done
 
+BlackthornCityHikerStopsYouText2:
+	text "You got your own"
+	line "#mon, but you"
+	cont "still can't come"
+	cont "this way!"
+
+	para "Maybe go talk to"
+	line "your grandmother,"
+	cont "and come back."
+	done
+
 BlackthornHikerText:
 	text "Well, I can't stop"
 	line "you now, so good"
@@ -502,7 +513,7 @@ BlackthornCity_MapEvents:
 	db 3 ; coord events
 	coord_event 11, 35, SCENE_DEFAULT, BlackthornCity_HikerStopsYou1
 	coord_event 13, 35, SCENE_DEFAULT, BlackthornCity_HikerStopsYou2
-	coord_event 14, 35, SCENE_DEFAULT, BlackthornCity_HikerStopsYou3
+	coord_event 14, 35, SCENE_DEFAULT, BlackthornCity_HikerStopsYou2
 
 
 	db 9 ; bg events

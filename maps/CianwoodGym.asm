@@ -52,6 +52,7 @@ CianwoodGymChigusaScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CHIGUSA
+	setevent EVENT_DECO_BULBASAUR_DOLL
 	opentext
 	writetext BeatenChigusaText
 	waitbutton
@@ -61,6 +62,7 @@ CianwoodGymChigusaScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_STORMBADGE
+	loadmem wLevelCap, 31
 	readvar VAR_BADGES
 	scall CianwoodGymActivateRockets
 	setscene SCENE_FINISHED
@@ -73,7 +75,6 @@ CianwoodGymChigusaScript:
 	checkevent EVENT_GOT_TM08_BULK_UP
 	iftrue .AlreadyGotTM
 	setevent EVENT_BEAT_BLACKBELT_YOSHI
-	setevent EVENT_BEAT_BLACKBELT_LAO
 	setevent EVENT_BEAT_BLACKBELT_NOB
 	setevent EVENT_BEAT_BLACKBELT_LUNG
 	setevent EVENT_BEAT_CHUCK
@@ -95,6 +96,8 @@ CianwoodGymChigusaScript:
 	end
 
 .Rematch:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .PostGameChigusa
 	readvar VAR_BADGES
 	ifequal 3, .ChigusaBattle1
 	ifequal 4, .ChigusaBattle2
@@ -160,6 +163,16 @@ CianwoodGymChigusaScript:
 	closetext
 	winlosstext ChigusaLossText, ChigusaWinText
 	loadtrainer CHIGUSA_2, CHIGUSA6
+	startbattle
+	reloadmapafterbattle
+	sjump AfterChigusaRematch
+
+.PostGameChigusa:
+	writetext PostGameChigusaText
+	waitbutton
+	closetext
+	winlosstext ChigusaLossText, ChigusaWinText
+	loadtrainer CHIGUSA_2, CHIGUSA7
 	startbattle
 	reloadmapafterbattle
 	sjump AfterChigusaRematch
@@ -241,7 +254,7 @@ CianwoodGymStatue:
 	jumpstd gymstatue3
 .RivalBeaten:
 	gettrainername STRING_BUFFER_4, CHIGUSA, CHIGUSA1
-	jumpstd gymstatue2
+	jumpstd gymstatue5
 
 CianwoodGymDahliaScript:
 	faceplayer
@@ -580,6 +593,14 @@ CianwoodGymRivalText:
 	text "I didn't think"
 	line "this Leader would"
 	cont "be so tough!"
+	done
+
+PostGameChigusaText:
+	text "Wow, you're the"
+	line "new Champion!"
+
+	para "Let's see your"
+	line "elegance now!"
 	done
 
 CianwoodGym_MapEvents:

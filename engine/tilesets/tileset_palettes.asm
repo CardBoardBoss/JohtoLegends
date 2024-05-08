@@ -16,13 +16,21 @@ LoadSpecialMapPalette:
 	jr z, .ice_path
 	cp TILESET_HOUSE
 	jr z, .house
-	cp TILESET_RADIO_TOWER
-	jr z, .radio_tower
+;	cp TILESET_RADIO_TOWER
+;	jr z, .radio_tower
 	cp TILESET_MANSION
 	jr z, .mansion_mobile
 	cp TILESET_TOWER
-	jr z, .tower
-	jr .do_nothing
+	jp z, .tower
+	cp TILESET_KANTO
+	jp z, .kanto
+	cp TILESET_MART
+	jp z, .mart
+	cp TILESET_CAVE
+	jp z, .cave
+	cp TILESET_SUMMIT
+	jp z, .summit
+	jp .do_nothing
 
 .darkness
 	call LoadDarknessPalette
@@ -43,7 +51,7 @@ LoadSpecialMapPalette:
 	ld a, [wEnvironment]
 	and $7
 	cp INDOOR ; Hall of Fame
-	jr z, .do_nothing
+	jp z, .do_nothing
 	call LoadIcePathPalette
 	scf
 	ret
@@ -53,13 +61,29 @@ LoadSpecialMapPalette:
 	scf
 	ret
 
-.radio_tower
-	call LoadRadioTowerPalette
+;.radio_tower
+;	call LoadRadioTowerPalette
+;	scf
+;	ret
+
+.mansion_mobile
+	ld a, [wEnvironment]
+	and $7
+	cp DUNGEON
+	jr z, .LoadMansionRoofPalette
+	call LoadMansionPalette
 	scf
 	ret
 
-.mansion_mobile
-	call LoadMansionPalette
+.LoadMansionRoofPalette
+	ld hl, MansionRoofPalette
+	ld a, [wTimeOfDayPal]
+	maskbits NUM_DAYTIMES
+	ld bc, 8 palettes
+	call AddNTimes
+	ld de, wBGPals1
+	ld a, BANK(wBGPals1)
+	call FarCopyWRAM
 	scf
 	ret
 
@@ -87,9 +111,67 @@ LoadSpecialMapPalette:
 	scf
 	ret
 
+.kanto
+	ld hl, KantoPalette
+	ld a, [wTimeOfDayPal]
+	maskbits NUM_DAYTIMES
+	ld bc, 8 palettes
+	call AddNTimes
+	ld de, wBGPals1
+	ld a, BANK(wBGPals1)
+	call FarCopyWRAM
+	scf
+	ret
+
+.mart
+	ld a, [wEnvironment]
+	and $7
+	cp DUNGEON
+	jr z, .LoadMansionRoofPalette
+	and a
+	ret
+
+.cave
+	ld a, [wEnvironment]
+	and $7
+	cp CAVE ; Hall of Fame
+	jr z, .do_nothing
+	call LoadIcePathPalette
+	scf
+	ret
+
+.summit:
+	ld hl, SummitPalette
+	ld a, [wTimeOfDayPal]
+	maskbits NUM_DAYTIMES
+	ld bc, 8 palettes
+	call AddNTimes
+	ld de, wBGPals1
+	ld a, BANK(wBGPals1)
+	call FarCopyWRAM
+	scf
+	ret
+
 .do_nothing
 	and a
 	ret
+
+INCLUDE "gfx/tilesets/kanto.pal"
+
+INCLUDE "gfx/tilesets/mansion_roof.pal"
+
+INCLUDE "gfx/tilesets/summit.pal"
+
+LoadCaveRoomPalette:
+	ld a, BANK(wBGPals1)
+	ld de, wBGPals1
+	ld hl, CaveRoomPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+CaveRoomPalette:
+INCLUDE "gfx/tilesets/cave_room.pal"
 
 LoadDarknessPalette:
 	ld a, BANK(wBGPals1)
@@ -145,16 +227,16 @@ LoadHousePalette:
 HousePalette:
 INCLUDE "gfx/tilesets/house.pal"
 
-LoadRadioTowerPalette:
-	ld a, BANK(wBGPals1)
-	ld de, wBGPals1
-	ld hl, RadioTowerPalette
-	ld bc, 8 palettes
-	call FarCopyWRAM
-	ret
+;LoadRadioTowerPalette:
+;	ld a, BANK(wBGPals1)
+;	ld de, wBGPals1
+;	ld hl, RadioTowerPalette
+;	ld bc, 8 palettes
+;	call FarCopyWRAM
+;	ret
 
-RadioTowerPalette:
-INCLUDE "gfx/tilesets/radio_tower.pal"
+;RadioTowerPalette:
+;INCLUDE "gfx/tilesets/radio_tower.pal"
 
 MansionPalette1:
 INCLUDE "gfx/tilesets/mansion_1.pal"

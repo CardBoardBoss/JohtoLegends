@@ -150,7 +150,7 @@ ItemDescriptions:
 	dw UpGradeDesc
 	dw BerryDesc
 	dw GoldBerryDesc
-	dw SquirtBottleDesc
+	dw FlameDownDesc
 	dw ParkBallDesc
 	dw RainbowWingDesc
 	dw DuskStoneDesc
@@ -180,7 +180,7 @@ ItemDescriptions:
 	dw PortraitMailDesc
 	dw LovelyMailDesc
 	dw EonMailDesc
-	dw MorphMailDesc
+	dw CandyPouchDesc
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MewMailDesc
@@ -677,7 +677,7 @@ RageCandyBarDesc:
 
 GSBallDesc:
 	db   "The mysterious"
-	next "Ball.@"
+	next "Berry.@"
 
 DuskBallDesc:
 	db   "Catches #mon"
@@ -851,9 +851,9 @@ GoldBerryDesc:
 	db   "A self-restore"
 	next "item. (30HP, Hold)@"
 
-SquirtBottleDesc:
-	db   "A bottle used for"
-	next "watering plants.@"
+FlameDownDesc:
+	db   "Down from Moltres."
+	next "Feels nice & warm.@"
 
 ParkBallDesc:
 	db   "The Bug-Catching"
@@ -974,9 +974,9 @@ EonMailDesc:
 	db   "Eevee-print Mail."
 	next "(Hold)@"
 
-MorphMailDesc:
-	db   "Ditto-print Mail."
-	next "(Hold)@"
+CandyPouchDesc:
+	db   "Endlessly gives"
+	next "out Rare Candy.@"
 
 BlueSkyMailDesc:
 	db   "Sky-print Mail."

@@ -44,11 +44,12 @@ MahoganyGymPryceScript:
 	waitbutton
 	closetext
 	winlosstext PryceText_Blizzard, PryceText_StillGotIt
-	loadtrainer PRYCE, PRYCE_ALTERNATE
+	loadtrainer PRYCE, PRYCE1
 .StartPryceBattle:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PRYCE
+	setevent EVENT_DECO_TOTODILE_DOLL
 	opentext
 	writetext PryceText_After
 	waitbutton
@@ -58,6 +59,7 @@ MahoganyGymPryceScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_GLACIERBADGE
+	loadmem wLevelCap, 22
 	readvar VAR_BADGES
 	scall MahoganyGymActivateRockets
 	setflag ENGINE_BEAT_PRYCE
@@ -81,6 +83,8 @@ MahoganyGymPryceScript:
 	end
 
 .Rematch:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .PostGamePryce
 	readvar VAR_BADGES
 	ifequal 1, .PryceBattle1
 	ifequal 2, .PryceBattle2
@@ -147,7 +151,7 @@ MahoganyGymPryceScript:
 	waitbutton
 	closetext
 	winlosstext PryceText_Blizzard, PryceText_StillGotIt
-	loadtrainer PRYCE_2, PRYCE6
+	loadtrainer PRYCE_3, PRYCE6
 	startbattle
 	reloadmapafterbattle
 	sjump AfterPryceRematch
@@ -168,6 +172,16 @@ MahoganyGymPryceScript:
 	closetext
 	winlosstext PryceText_Blizzard, PryceText_StillGotIt
 	loadtrainer PRYCE_3, PRYCE8
+	startbattle
+	reloadmapafterbattle
+	sjump AfterPryceRematch
+
+.PostGamePryce:
+	writetext PryceText_WelcomeBackChampion
+	waitbutton
+	closetext
+	winlosstext PryceText_Blizzard, PryceText_StillGotIt
+	loadtrainer PRYCE_3, PRYCE9
 	startbattle
 	reloadmapafterbattle
 	sjump AfterPryceRematch
@@ -236,6 +250,9 @@ MahoganyGymGuyScript:
 	opentext
 	checkevent EVENT_BEAT_PRYCE
 	iftrue .MahoganyGymGuyWinScript
+if DEF(_FAITHFUL)
+	writetext MahoganyGymGuyFaithfulText
+endc
 	writetext MahoganyGymGuyText
 	waitbutton
 	closetext
@@ -331,13 +348,13 @@ GoesBackMovement1:
 	step RIGHT
 	step UP
 	step UP
-	step_end
+	step_resume
 
 GoesBackMovement2:
 	step RIGHT
 	step UP
 	step UP
-	step_end
+	step_resume
 
 PryceText_Intro:
 	text "Hurrmph! I heard"
@@ -616,6 +633,45 @@ ByTheWay2Text:
 
 	para "You better go see"
 	line "him."
+	done
+
+MahoganyGymGuyFaithfulText:
+	text "How's it going,"
+	line "champ in the"
+	cont "making?"
+
+	para "I'm the Gym Guide"
+	line "and I'm here to"
+	cont "help you out with"
+
+	para "your Challenge!"
+	line "Pryce loves his"
+	cont "Ice-Types, and"
+
+	para "he's quite ornery"
+	line "if you mention his"
+	cont "age!"
+	
+	para "Ice-Types are weak"
+	line "against Fire,"
+	cont "Rock, Steel, and"
+
+	para "Fighting Types!"
+	line "Dragon and Ground"
+	cont "Types don't do the"
+	cont "greatest."
+	done
+
+PryceText_WelcomeBackChampion:
+	text "So, you're the"
+	line "Chamion now!"
+
+	para "Pretty cool, if I"
+	line "do say so!"
+
+	para "Fancy showing this"
+	line "'old man' your new"
+	cont "strength?"
 	done
 
 MahoganyGym_MapEvents:

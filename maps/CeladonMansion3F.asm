@@ -14,7 +14,7 @@ GameFreakGameDesignerScript:
 	opentext
 	writetext GameFreakGameDesignerText
 	readvar VAR_DEXUNCAUGHT
-	ifless 3, .CompletedPokedex ; ignore Mew and Celebi
+	iffalse .CompletedPokedex ; ignore Mew and Celebi
 	waitbutton
 	closetext
 	end
@@ -32,6 +32,9 @@ GameFreakGameDesignerScript:
 	closetext
 	setevent EVENT_ENABLE_DIPLOMA_PRINTING
 	end
+
+mountvesuviusScript:
+	jumptextfaceplayer mountvesuviusText
 
 GameFreakGraphicArtistScript:
 	faceplayer
@@ -64,8 +67,11 @@ GameFreakGraphicArtistScript:
 	closetext
 	end
 
-GameFreakProgrammerScript:
-	jumptextfaceplayer GameFreakProgrammerText
+Ax6Script:
+	jumptextfaceplayer Ax6Text
+
+CardboardBoxScript:
+	jumptextfaceplayer CardboardBoxText
 
 GameFreakCharacterDesignerScript:
 	jumptextfaceplayer GameFreakCharacterDesignerText
@@ -82,21 +88,36 @@ CeladonMansion3FGameProgram:
 CeladonMansion3FReferenceMaterial:
 	jumptext CeladonMansion3FReferenceMaterialText
 
+RangiScript:
+	jumptextfaceplayer RangiText
+
 GameFreakGameDesignerText:
 	text "Is that right?"
 
-	para "I'm the GAME"
-	line "DESIGNER!"
+	para "I'm the Game"
+	line "Designer!"
 
 	para "Filling up your"
-	line "#DEX is tough,"
+	line "Journal is tough,"
 	cont "but don't give up!"
+
+	para "There is something"
+	line "that seems odd to"
+	cont "me."
+
+	para "I only remember"
+	line "251 #mon in"
+	cont "this game."
+
+	para "Where did all of"
+	line "these other ones"
+	cont "come from?"
 	done
 
 GameFreakGameDesignerCompletedPokedexText:
 	text "Wow! Excellent!"
 	line "You completed your"
-	cont "#DEX!"
+	cont "Journal!"
 
 	para "Congratulations!"
 	done
@@ -106,12 +127,23 @@ GameFreakGameDesignerPauseForDiplomaText:
 	done
 
 GameFreakGameDesignerAfterDiplomaText:
-	text "The GRAPHIC ARTIST"
-	line "will print out a"
-	cont "DIPLOMA for you."
+	text "As a reward, I'm"
+	line "going to tell you"
+	cont "a secret!"
 
-	para "You should go show"
-	line "it off."
+	para "Apparently, in the"
+	line "future, a method"
+	cont "to find Shiny"
+	cont "#mon more"
+	cont "easily will be"
+	cont "discovered!"
+
+	para "It's called the"
+	line "MASUDA Method!"
+
+	para "I don't think it"
+	line "will work in this"
+	cont "game, however."
 	done
 
 GameFreakGraphicArtistText:
@@ -126,7 +158,7 @@ GameFreakGraphicArtistPrintDiplomaText:
 	line "ARTIST."
 
 	para "Oh, you completed"
-	line "your #DEX?"
+	line "your #dex?"
 
 	para "Want me to print"
 	line "out your DIPLOMA?"
@@ -135,7 +167,7 @@ GameFreakGraphicArtistPrintDiplomaText:
 GameFreakGraphicArtistRefusedText:
 	text "Give me a shout if"
 	line "you want your"
-	cont "DIPLOMA printed."
+	cont "Diploma printed."
 	done
 
 GameFreakGraphicArtistErrorText:
@@ -144,12 +176,44 @@ GameFreakGraphicArtistErrorText:
 	cont "cel printing."
 	done
 
-GameFreakProgrammerText:
-	text "Who, me? I'm the"
-	line "PROGRAMMER."
+Ax6Text:
+	text "Who, me? I'm ax6!"
 
-	para "Play the slot"
-	line "machines!"
+	para "I made the 16-bit"
+	line "modifications to"
+	cont "#mon Crystal!"
+
+	para "You'd only have 253"
+	line "#mon and 254"
+	cont "moves without my"
+	cont "work!"
+	done
+
+CardboardBoxText:
+	text "I'm cardboardbox!"
+
+	para "We would have a"
+	line "lot of game-"
+	cont "breaking glitches"
+	cont "without me!"
+
+	para "I got the Physical"
+	line "Special Split to"
+	cont "work with 16-bit,"
+	cont "as well as the"
+	cont "evolution moves!"
+	done
+
+mountvesuviusText:
+	text "I'm mountvesuvius!"
+
+	para "I helped fix a few"
+	line "issues Ferropexola"
+	cont "wasn't smart enough"
+	cont "to handle!"
+
+	para "…Don't tell him I"
+	line "said that!"
 	done
 
 GameFreakCharacterDesignerText:
@@ -163,29 +227,73 @@ GameFreakCharacterDesignerText:
 	done
 
 CeladonMansion3FDevRoomSignText:
-	text "GAME FREAK"
-	line "DEVELOPMENT ROOM"
+	text "Johto Legends"
+	line "Development Room"
 	done
 
 CeladonMansion3FDrawingText:
-	text "It's a detailed"
-	line "drawing of a"
-	cont "pretty girl."
+	text "Dear <PLAYER>,"
+
+	para "I'm sorry I can't"
+	line "be in the"
+	cont "Development Room."
+
+	para "I am currently out"
+	line "on business."
+
+	para "I'm certain we'll"
+	line "meet in your"
+	cont "travels."
+
+	para "When we meet, we"
+	line "will see who is"
+	cont "more powerful."
+
+	para "I look forward to"
+	line "it."
+
+	para "Sincerely,"
+	line "Ferropexola."
 	done
 
 CeladonMansion3FGameProgramText:
-	text "It's the game"
-	line "program. Messing"
+	text "Note to self:"
 
-	para "with it could put"
-	line "a bug in the game!"
+	para "Nerf Geodude."
+
+	para "DemICE was having"
+	line "entirely too much"
+	cont "fun with it."
 	done
 
 CeladonMansion3FReferenceMaterialText:
-	text "It's crammed with"
-	line "reference materi-"
-	cont "als. There's even"
-	cont "a # DOLL."
+	text "It's a picture of"
+	line "an angry nerd with"
+	cont "the caption:"
+
+	para "What were they"
+	line "thinking?"
+
+	para "Seems like someone"
+	line "is annoyed at"
+	cont "their own design"
+	cont "choices."
+	done
+
+RangiText:
+	text "Hi, I'm Rangi!"
+
+	para "I helped Ferro out"
+	line "with some of the"
+	cont "code."
+
+	para "#mon Polished"
+	line "Crystal was a big"
+	cont "inspiration for"
+	cont "Johto Legends, so"
+	cont "you should play it"
+	cont "when you get the"
+	cont "chance!"
 	done
 
 CeladonMansion3F_MapEvents:
@@ -205,8 +313,9 @@ CeladonMansion3F_MapEvents:
 	bg_event  1,  6, BGEVENT_UP, CeladonMansion3FGameProgram
 	bg_event  1,  3, BGEVENT_UP, CeladonMansion3FReferenceMaterial
 
-	db 4 ; object events
-	object_event  3,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameFreakGameDesignerScript, -1
-	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GameFreakGraphicArtistScript, -1
-	object_event  0,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GameFreakProgrammerScript, -1
-	object_event  0,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameFreakCharacterDesignerScript, -1
+	db 5 ; object events
+	object_event  4,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, mountvesuviusScript, -1
+	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CardboardBoxScript, -1
+	object_event  0,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Ax6Script, -1
+	object_event  0,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameFreakGameDesignerScript, -1
+	object_event  1,  5, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RangiScript, -1

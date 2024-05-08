@@ -12,6 +12,8 @@ FossilHouse_MapScripts:
 ScientistScript:
 	faceplayer
 	opentext
+	checkevent EVENT_PASSWORD_SINGULAR
+	iftrue .CantGetFossil
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .YouNoPatient
 	checkevent EVENT_GAVE_OLD_AMBER
@@ -160,10 +162,16 @@ ScientistScript:
 	closetext
 	end
 
+.CantGetFossil:
+	writetext CantGetFossilText
+	waitbutton
+	closetext
+	end
+
 KimScript:
 	faceplayer
 	opentext
-	trade NPC_TRADE_KIM
+	trade NPC_TRADE_EMY
 	waitbutton
 	closetext
 	end
@@ -192,6 +200,9 @@ FossilHouse_BrokenComputer:
 
 FossilHouse_ComputerScreen:
 	jumptext FossilHouse_ComputerScreenText
+
+FossilHouse_FossilPasswordMagazine:
+	jumptext FossilHouse_FossilPasswordMagazineText
 
 FossilHouseScientistText:
 	text "Hi, hi!"
@@ -343,6 +354,28 @@ FossilHouse_ComputerScreenText:
 	line "screen…"
 	done
 
+CantGetFossilText:
+	text "Ah! So sorry am I!"
+
+	para "A solo run you are"
+	line "on!"
+
+	para "No fossil can I"
+	line "revive!"
+	done
+
+FossilHouse_FossilPasswordMagazineText:
+	text "Many species of"
+	line "#mon have gone"
+	cont "EXTINCT over the"
+	cont "years,"
+
+	para "but we are on the"
+	line "verge of being"
+	cont "to bring them back"
+	cont "to life!"
+	done
+
 FossilHouse_MapEvents:
 	db 0, 0 ; filler
 
@@ -353,10 +386,10 @@ FossilHouse_MapEvents:
 	db 0 ; coord events
 
 	db 5 ; bg events
-	bg_event  0,  1, BGEVENT_READ, FossilHouse_ScienceMagazines
+	bg_event  0,  1, BGEVENT_READ, FossilHouse_FossilPasswordMagazine
 	bg_event  1,  1, BGEVENT_READ, FossilHouse_ScienceMagazines
-	bg_event  6,  1, BGEVENT_READ, MrPokemonsHouse_BrokenComputer
-	bg_event  7,  1, BGEVENT_READ, MrPokemonsHouse_BrokenComputer
+	bg_event  6,  1, BGEVENT_READ, FossilHouse_BrokenComputer
+	bg_event  7,  1, BGEVENT_READ, FossilHouse_BrokenComputer
 	bg_event  6,  4, BGEVENT_READ, FossilHouse_ComputerScreen
 
 	db 4 ; object events

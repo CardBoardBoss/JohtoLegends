@@ -29,11 +29,30 @@ CheckShininess:
 	cp  SHINY_SPD_VAL << 4
 	jr nz, .NotShiny
 
+; Check if the shiny password is active.
+	push de
+	push hl
+	ld de, ShinyPassword
+	ld hl, wGreensName
+	ld c, 4
+	call CompareBytes
+	jr z, .AltSpecial
+	pop hl
+	pop de
+
 ; Special
 	ld a, [hl]
 	and $f
 	cp  SHINY_SPC_VAL
 	jr nz, .NotShiny
+	jr .Shiny
+
+.AltSpecial
+	pop hl
+	pop de
+	ld a, [hl]
+	and SHINY_ATK_BIT << 4
+	jr z, .NotShiny
 
 .Shiny:
 	scf
@@ -42,6 +61,9 @@ CheckShininess:
 .NotShiny:
 	and a
 	ret
+
+ShinyPassword:
+	db "MASUDA"
 
 Unused_CheckShininess:
 ; Return carry if the DVs at hl are all 10 or higher.
@@ -376,9 +398,19 @@ ApplyHPBarPals:
 	ret
 
 LoadStatsScreenPals:
+;	push de SGB colors work, but causes all pages to be blue otherwise
+;	push hl
+;	ld de, MonochromePasswordColor
+;	ld hl, wMomsName
+;	ld c, 4
+;	call CompareBytes
+;	jr z, .MonochromeStatsColor
+;	pop hl
+;	pop de
 	call CheckCGB
 	ret z
 	ld hl, StatsScreenPals
+.MonochromeStatsColorResume:
 	ld b, 0
 	add hl, bc
 	add hl, bc
@@ -397,6 +429,15 @@ LoadStatsScreenPals:
 	call ApplyPals
 	ld a, $1
 	ret
+
+.MonochromeStatsColor:
+	pop hl
+	pop de
+	ld hl, StatsScreenPalsSGB
+	jr .MonochromeStatsColorResume
+
+MonochromePasswordColor:
+	db "MONOCHROME"
 
 LoadMailPalettes:
 	ld l, e
@@ -515,19 +556,19 @@ LoadPalette_White_Col1_Col2_Black:
 ;	ld a, [wBattleTimeOfDay]
 ;	and a
 ;	jr z, .day
-
+;
 ;	ld a, LOW(PALRGB_NIGHT)
 ;	ld [de], a
 ;	inc de
 ;	ld a, HIGH(PALRGB_NIGHT)
 ;	ld [de], a
 ;	inc de
-
+;
 ;	call NightColors
 ;	ld c, 2 * PAL_COLOR_SIZE
-
+;
 ;	jr .black
-
+;
 ;.day
 	ld a, LOW(PALRGB_WHITE)
 	ld [de], a
@@ -1332,97 +1373,97 @@ LoadMapPals:
 	call FarCopyWRAM
 	ret
 
-NightColors:
-	call NightColorSwap
-
+;NightColors:
+;	call NightColorSwap
+;
 ; b = gggrrrrr, c = 0bbbbbGG
-.loop
-	ld a, b
-	ld [de], a
-	inc de
-	inc hl
-
-	ld a, c
-	ld [de], a
-	inc de
-	inc hl
-
-	call NightColorSwap
-
+;.loop
+;	ld a, b
+;	ld [de], a
+;	inc de
+;	inc hl
+;
+;	ld a, c
+;	ld [de], a
+;	inc de
+;	inc hl
+;
+;	call NightColorSwap
+;
 ; b gggrrrr, c = 0bbbbbGG
-.loop2
-	ld a, b
-	ld [de], a
-	inc hl
-	inc de
-
-	ld a, c
-	ld [de], a
-	inc hl
-	inc de
-
-	ret
-
-NightColorSwap:
-	push de
+;.loop2
+;	ld a, b
+;	ld [de], a
+;	inc hl
+;	inc de
+;
+;	ld a, c
+;	ld [de], a
+;	inc hl
+;	inc de
+;
+;	ret
+;
+;NightColorSwap:
+;	push de
 ; red
-	ld a, [hl] ; gggrrrrr
-	and $1f ; 00011111 -> 000rrrrr
-
-	ld e, a ; red in e
-
+;	ld a, [hl] ; gggrrrrr
+;	and $1f ; 00011111 -> 000rrrrr
+;
+;	ld e, a ; red in e
+;
 ; green
-	ld a, [hli] ; gggrrrrr
-	and $e0 ; 11100000 -> ggg00000
-	ld b, a
-	ld a, [hl] ; 0bbbbbGG
-	and 3 ; 00000011 -> 000000GG
-	or b ; 000000GG +ggg00000
-	swap a ; ggg0 00GG -> 00GGggg0
-	rrca ; 000GGggg
-
-	ld d, a ; green in d
-
+;	ld a, [hli] ; gggrrrrr
+;	and $e0 ; 11100000 -> ggg00000
+;	ld b, a
+;	ld a, [hl] ; 0bbbbbGG
+;	and 3 ; 00000011 -> 000000GG
+;	or b ; 000000GG +ggg00000
+;	swap a ; ggg0 00GG -> 00GGggg0
+;	rrca ; 000GGggg
+;
+;	ld d, a ; green in d
+;
 ; blue
-	ld a, [hld] ; 0bbbbbGG
-	and $7c ; 11111100 -> 0bbbbb00
-
-	ld c, a ; blue in c
-
+;	ld a, [hld] ; 0bbbbbGG
+;	and $7c ; 11111100 -> 0bbbbb00
+;
+;	ld c, a ; blue in c
+;
 ; modify colors here
-	srl e ; 1/2 red
-	srl d ; 1/2 green
-
+;	srl e ; 1/2 red
+;	srl d ; 1/2 green
+;
 ; 3/4 blue
-	ld a, c
-	rrca ; 1/2
-	ld b, a
-	rrca ; 1/4
-	add b ; 2/4 + 1/4 = 3/4
-	and %01111100 ; mask the blue bits
-	ld c, a
-
+;	ld a, c
+;	rrca ; 1/2
+;	ld b, a
+;	rrca ; 1/4
+;	add b ; 2/4 + 1/4 = 3/4
+;	and %01111100 ; mask the blue bits
+;	ld c, a
+;
 ; reassemble green
-	ld a, d
-	rlca
-	swap a
-	and $e0
-	ld b, a
-	ld a, d
-	rlca
-	swap a
-	and 3
-	ld d, a
-
+;	ld a, d
+;	rlca
+;	swap a
+;	and $e0
+;	ld b, a
+;	ld a, d
+;	rlca
+;	swap a
+;	and 3
+;	ld d, a
+;
 ; red in e, low green in b, high green in d, blue in c
-	ld a, e
-	or b
-	ld b, a
-	ld a, d
-	or c
-	ld c, a
-	pop de
-	ret
+;	ld a, e
+;	or b
+;	ld b, a
+;	ld a, d
+;	or c
+;	ld c, a
+;	pop de
+;	ret
 
 INCLUDE "data/maps/environment_colors.asm"
 
@@ -1464,3 +1505,12 @@ INCLUDE "gfx/beta_poker/beta_poker.pal"
 
 SlotMachinePals:
 INCLUDE "gfx/slots/slots.pal"
+
+LoadPokemonPalette:
+	ld a, [wCurPartySpecies]
+	; hl = palette
+	call GetMonPalettePointer
+	; load palette into de (set by caller)
+	ld bc, PAL_COLOR_SIZE * 2
+	ld a, BANK(wBGPals1)
+	jp FarCopyWRAM

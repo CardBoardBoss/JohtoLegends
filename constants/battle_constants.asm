@@ -18,7 +18,7 @@ REST_SLEEP_TURNS EQU 2
 TREEMON_SLEEP_TURNS EQU 7
 
 ; default move priority
-BASE_PRIORITY EQU 1
+BASE_PRIORITY EQU 3
 
 ; type effectiveness factors, scaled by 10
 SUPER_EFFECTIVE    EQU 20
@@ -100,6 +100,7 @@ SPDSPCDV_SHINY EQU $AA
 	const BATTLETYPE_MEWTWO
 	const BATTLETYPE_HO_OH
 	const BATTLETYPE_LUGIA
+	const BATTLETYPE_LEGENDARY
 
 ; BattleVarPairs indexes (see home/battle.asm)
 	const_def

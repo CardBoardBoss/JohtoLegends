@@ -62,6 +62,7 @@ PreviousEvolutionStage::
 	dw PSYDUCK
 	dw 0    ;38
 	dw MANKEY
+	dw PRIMEAPE
 	dw 0
 	dw GROWLITHE
 	dw 0
@@ -234,9 +235,11 @@ PreviousEvolutionStage::
 	dw 0
 	dw WYNAUT
 	dw 0
+	dw GIRAFARIG
 	dw 0
 	dw PINECO
 	dw 0
+	dw DUNSPARCE
 	dw 0
 	dw GLIGAR
 	dw 0
@@ -248,6 +251,7 @@ PreviousEvolutionStage::
 	dw SNEASEL
 	dw 0  ;d8
 	dw TEDDIURSA
+	dw URSARING
 	dw 0
 	dw SLUGMA
 	dw 0
@@ -267,8 +271,12 @@ PreviousEvolutionStage::
 	dw 0
 	dw PHANPY     ;e8
 	dw 0
+	dw STANTLER
 	dw 0     ;f0
 	dw 0
+	dw 0
+	dw KOTORA
+	dw RAITORA
 	dw 0
 	dw BUDEW
 	dw ROSELIA
@@ -276,10 +284,14 @@ PreviousEvolutionStage::
 	dw ELECTRIKE
 	dw 0
 	dw CROAGUNK
-;	dw 0
+	dw 0
+	dw SWABLU
 	dw 0
 	dw DUSKULL
 	dw DUSCLOPS
+	dw 0
+	dw LOTAD
+	dw LOMBRE
 	dw 0
 	dw SNORUNT
 	dw SNORUNT
@@ -306,6 +318,7 @@ PreviousEvolutionStage::
 	dw 0
 	dw BAGON
 	dw SHELGON
+	dw 0
 	dw 0
 	dw 0
 	dw 0

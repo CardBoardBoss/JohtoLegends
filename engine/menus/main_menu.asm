@@ -40,6 +40,15 @@ MainMenu:
 	dw PlaceMenuStrings
 	dw .Strings
 
+if DEF(_FRENCH)
+.Strings:
+	db "Continuer@"
+	db "Nouveau Jeu@"
+	db "Options@"
+	db "Cadeau Mystere@"
+	db "Mobile@"
+	db "Stade Mobile@"
+else
 .Strings:
 	db "Continue@"
 	db "New Game@"
@@ -47,6 +56,7 @@ MainMenu:
 	db "Mystery Gift@"
 	db "Mobile@"
 	db "Mobile Studium@"
+endc
 
 .Jumptable:
 	dw MainMenu_Continue
@@ -201,6 +211,9 @@ MainMenuJoypadLoop:
 	jr z, .b_button
 	cp A_BUTTON
 	jr z, .a_button
+	ld de, .build_string
+	hlcoord 1, 12
+	call PlaceString
 	jr .loop
 
 .a_button
@@ -211,6 +224,21 @@ MainMenuJoypadLoop:
 .b_button
 	scf
 	ret
+
+.build_string:
+if DEF(_CHALLENGEFRENCH)
+	db "V0.5.8 Défi@"
+elif DEF(_CHALLENGE)
+	db "V0.5.8 Challenge@"
+elif DEF(_FAITHFULFRENCH)
+	db "V0.5.8 Fidèle@"
+elif DEF(_FAITHFUL)
+	db "V0.5.8 Faithful@"
+elif DEF(_FRENCH)
+	db "V0.5.8 Originale@"
+elif DEF(_NORMAL)
+	db "V0.5.8 Original@"
+endc
 
 MainMenu_PrintCurrentTimeAndDay:
 	ld a, [wSaveFileExists]
@@ -277,8 +305,13 @@ MainMenu_PrintCurrentTimeAndDay:
 	call PlaceString
 	ret
 
+if DEF(_FRENCH)
+.TimeNotSet:
+	db "Regler Horloge@"
+else
 .TimeNotSet:
 	db "Time Not Set@"
+endc
 
 .UnusedText:
 	; Clock time unknown
@@ -300,6 +333,18 @@ MainMenu_PrintCurrentTimeAndDay:
 	call PlaceString
 	ret
 
+if DEF(_FRENCH)
+.Days:
+	db "Dimanche@"
+	db "Lundi@"
+	db "Mardi@"
+	db "Mercredi@"
+	db "Jeudi@"
+	db "Vendredi@"
+	db "Samedi@"
+.Day:
+	db "@"
+else
 .Days:
 	db "Sun@"
 	db "Mon@"
@@ -310,6 +355,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	db "Satur@"
 .Day:
 	db "day@"
+endc
 
 Function49ed0:
 	xor a

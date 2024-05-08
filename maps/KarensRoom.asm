@@ -45,15 +45,22 @@ AgathaScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_AGATHA
 	iftrue AgathaScript_AfterBattle
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue AgathaRematch
 	writetext AgathaScript_AgathaBeforeText
 	waitbutton
 	closetext
-	winlosstext AgathaScript_AgathaBeatenText, 0
+AgathaBattle:
+	winlosstext AgathaScript_AgathaBeatenText, AgathaLastMonText
 	loadtrainer AGATHA, AGATHA1
+AgathaReconvene:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_AGATHA
+	setevent EVENT_DECO_CARPET_1
 	opentext
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue AgathaRematchBeaten
 	writetext AgathaScript_AgathaDefeatText
 	waitbutton
 	closetext
@@ -65,10 +72,35 @@ AgathaScript_Battle:
 	waitsfx
 	end
 
+AgathaRematch:
+	writetext AgathaScript_AgathaBeforeText2
+	waitbutton
+	closetext
+	checkevent EVENT_COMPLETED_EPILOGUE
+	iftrue Agatha2
+	sjump AgathaBattle
+
+Agatha2:
+	winlosstext AgathaScript_AgathaBeatenText, AgathaLastMonText
+	loadtrainer AGATHA, AGATHA2
+	sjump AgathaReconvene
+
 AgathaScript_AfterBattle:
 	writetext AgathaScript_AgathaDefeatText
 	waitbutton
 	closetext
+	end
+
+AgathaRematchBeaten:
+	writetext AgathaScript_AgathaDefeatText2
+	waitbutton
+	closetext
+	playsound SFX_ENTER_DOOR
+	changeblock 4, 2, $7c ; open door
+	reloadmappart
+	closetext
+	setevent EVENT_AGATHAS_ROOM_EXIT_OPEN
+	waitsfx
 	end
 
 AgathasRoom_EnterMovement:
@@ -76,7 +108,14 @@ AgathasRoom_EnterMovement:
 	step UP
 	step UP
 	step UP
-	step_end
+	step_resume
+
+AgathaLastMonText:
+	text "Can it be?"
+
+	para "One as strong as"
+	line "he was?"
+	done
 
 AgathaScript_AgathaBeforeText:
 	text "I am Agatha of the"
@@ -109,10 +148,10 @@ AgathaScript_AgathaBeforeText:
 	line "to fiddle around"
 	cont "with research."
 
-	para "He's wrong! #-"
-	line "mon are for battl-"
-	cont "ing. I'll teach"
-	cont "this to you!"
+	para "He's wrong! #mon"
+	line "are for battling."
+	cont "I'll teach this"
+	cont "to you!"
 	done
 
 AgathaScript_AgathaBeatenText:
@@ -145,6 +184,39 @@ AgathaScript_AgathaDefeatText:
 	para "what kind of"
 	line "trainer you'll"
 	cont "face."
+	done
+
+AgathaScript_AgathaBeforeText2:
+	text "Agatha: Back again"
+	line "are you?"
+
+	para "The reigning Champ"
+	line "coming to defend"
+	cont "the title?"
+
+	para "Let's see if you've"
+	line "still got what it"
+	cont "takes!"
+	done
+
+AgathaScript_AgathaDefeatText2:
+	text "Agatha: You're"
+	line "really something,"
+	cont "child!"
+
+	para "You'd give Oak a"
+	line "run for his money"
+	cont "if he was still in"
+	cont "his prime!"
+
+	para "Go on!"
+
+	para "Your challenger"
+	line "should arrive"
+	cont "shortly,"
+
+	para "and then the real"
+	line "challenge begins!"
 	done
 
 KarensRoom_MapEvents:

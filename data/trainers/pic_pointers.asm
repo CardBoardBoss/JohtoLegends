@@ -19,7 +19,7 @@ TrainerPicPointers::
 	dba KogaPic
 	dba ChampionDahliaPic
 	dba FlintPic
-	dba MistyPic
+	dba VioletPic
 	dba LtSurgePic
 	dba ScientistPic
 	dba ErikaPic
@@ -98,3 +98,16 @@ TrainerPicPointers::
 	dba ByronPic
 	dba Rival3Pic
 	dba BikerBossPic
+	dba ChampionDracoPic
+	dba ChampionDahliaPic
+	dba ChampionDracoPic
+	dba CynthiaPic
+	dba DelinquentPic
+	dba DaisyPic
+	dba LilyPic
+	dba RoughneckPic
+	dba SoldierPic
+	dba KarateKingPic
+	dba MahoganyNinjaMPic
+	dba MahoganyNinjaFPic
+	dba FerropexolaPic

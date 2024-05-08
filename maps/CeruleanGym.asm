@@ -1,90 +1,231 @@
 	object_const_def ; object_event constants
-	const CERULEANGYM_ROCKET
-	const CERULEANGYM_MISTY
+	const CERULEANGYM_DAISY
+	const CERULEANGYM_LILY
 	const CERULEANGYM_SWIMMER_GIRL1
 	const CERULEANGYM_SWIMMER_GIRL2
 	const CERULEANGYM_SWIMMER_GUY
-	const CERULEANGYM_GYM_GUY
+	const CERULEANGYM_VIOLET
 
 CeruleanGym_MapScripts:
-	db 2 ; scene scripts
-	scene_script .DummyScene0 ; SCENE_CERULEANGYM_NOTHING
-	scene_script .GruntRunsOut ; SCENE_CERULEANGYM_GRUNT_RUNS_OUT
+	db 0 ; scene scripts
 
 	db 0 ; callbacks
 
-.DummyScene0:
-	end
+VioletLastMonText:
+	text "Not yet!"
+	done
 
-.GruntRunsOut:
-	prioritysjump .GruntRunsOutScript
-	end
+DaisyLastMonText:
+	text "Last one already?"
 
-.GruntRunsOutScript:
-	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntRunsDownMovement
-	playsound SFX_TACKLE
-	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntRunsIntoYouMovement
-	playmusic MUSIC_ROCKET_ENCOUNTER
-	opentext
-	writetext CeruleanGymGruntIntroText
-	waitbutton
-	closetext
-	showemote EMOTE_SHOCK, CERULEANGYM_ROCKET, 15
-	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntBacksAwayMovement
-	opentext
-	writetext CeruleanGymGruntBigMistakeText
-	waitbutton
-	closetext
-	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntMovesCloseMovement
-	opentext
-	writetext CeruleanGymGruntByeText
-	waitbutton
-	closetext
-	applymovement CERULEANGYM_ROCKET, CeruleanGymGruntRunsOutMovement
-	playsound SFX_EXIT_BUILDING
-	disappear CERULEANGYM_ROCKET
-	setevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
-	clearevent EVENT_ROUTE_24_ROCKET
-	clearevent EVENT_ROUTE_25_MISTY_BOYFRIEND
-	setscene SCENE_CERULEANGYM_NOTHING
-	setmapscene ROUTE_25, SCENE_ROUTE25_MISTYS_DATE
-	setmapscene POWER_PLANT, SCENE_POWERPLANT_NOTHING
-	waitsfx
-	special RestartMapMusic
-	pause 15
-	turnobject PLAYER, DOWN
-	pause 15
-	end
+	para "Man!"
+	done
 
-CeruleanGymMistyScript:
+LilyLastMonText:
+	text "…Last one, huh?"
+	done
+
+CeruleanGymVioletScript:
 	faceplayer
 	opentext
+	readvar VAR_FACING
+	ifequal DOWN, .PleaseGetOnTheDock
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .SensationalRematch
 	checkflag ENGINE_CASCADEBADGE
 	iftrue .FightDone
-	writetext MistyIntroText
+	checkevent EVENT_CERULEAN_GYM_LILY
+	iftrue .FindLily
+	writetext VioletIntroText
 	waitbutton
 	closetext
-	winlosstext MistyWinLossText, 0
-	loadtrainer MISTY, MISTY1
+	winlosstext VioletWinLossText, VioletLastMonText
+	loadtrainer SENSATIONAL1, VIOLET1
+	setlasttalked CERULEANGYM_VIOLET
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_MISTY
-	setevent EVENT_BEAT_SWIMMERF_DIANA
-	setevent EVENT_BEAT_SWIMMERF_BRIANA
-	setevent EVENT_BEAT_SWIMMERM_PARKER
+	pause 10
+	turnobject PLAYER, LEFT
+	opentext
+	writetext DaisyIntroText
+	waitbutton
+	closetext
+	winlosstext DaisyWinLossText, DaisyLastMonText
+	loadtrainer SENSATIONAL2, DAISY
+	setlasttalked CERULEANGYM_DAISY
+	startbattle
+	reloadmapafterbattle
+	pause 10
+	turnobject PLAYER, RIGHT
+	special FadeOutMusic
+	pause 10
+	opentext
+	writetext LilyIntroText
+	waitbutton
+	closetext
+	winlosstext LilyWinLossText2, LilyLastMonText
+	loadtrainer SENSATIONAL3, LILY
+	setlasttalked CERULEANGYM_LILY
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_SENSATIONAL_SISTERS
+	clearevent EVENT_CERULEAN_CITY_CIVILLIANS
+	setevent EVENT_BEAT_SWIMMERF_AQUA
+	setevent EVENT_BEAT_SWIMMERF_SHEILA
+	setevent EVENT_BEAT_SWIMMERM_TANNER
 	opentext
 	writetext ReceivedCascadeBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
-.FightDone:
+	setevent EVENT_DECO_CARPET_2
 	writetext MistyFightDoneText
+	sjump .EndViolet
+
+.FightDone:
+	writetext VioletAfterText
+	sjump .EndViolet
+
+.FindLily:
+	writetext FindLilyText
+	sjump .EndViolet
+
+.PleaseGetOnTheDock:
+	writetext PleaseGetOnTheDockText
+.EndViolet:
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_VIOLET, DOWN
+	end
+
+.SensationalRematch:
+	checkflag ENGINE_HUEY
+	iffalse .VioletPost
+	writetext VioletRematchText
+	waitbutton
+	closetext
+	winlosstext VioletWinLossText, VioletLastMonText
+	loadtrainer SENSATIONAL1, VIOLET1
+	setlasttalked CERULEANGYM_VIOLET
+	startbattle
+	reloadmapafterbattle
+	pause 10
+	turnobject PLAYER, LEFT
+	opentext
+	writetext DaisyIntroText
+	waitbutton
+	closetext
+	winlosstext DaisyWinLossText, DaisyLastMonText
+	loadtrainer SENSATIONAL2, DAISY
+	setlasttalked CERULEANGYM_DAISY
+	startbattle
+	reloadmapafterbattle
+	pause 10
+	turnobject PLAYER, RIGHT
+	opentext
+	writetext LilyRematchText
+	waitbutton
+	closetext
+	winlosstext LilyWinLossText, LilyLastMonText
+	loadtrainer SENSATIONAL3, LILY
+	setlasttalked CERULEANGYM_LILY
+	startbattle
+	reloadmapafterbattle
+	writetext LilyAfterRematchText
+	waitbutton
+	closetext
+	setflag ENGINE_HUEY
+	end
+
+.VioletPost:
+	writetext VioletAfterRematchText
 	waitbutton
 	closetext
 	end
 
+CeruleanGymDaisyScript:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .DaisyRematch
+	checkevent EVENT_CERULEAN_GYM_LILY
+	iftrue .CeruleanGymDaisy2
+	checkevent EVENT_BEAT_SENSATIONAL_SISTERS
+	iftrue .DaisyAfter
+	writetext CeruleanGymDaisyText3
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_DAISY, DOWN
+	end
+
+.CeruleanGymDaisy2:
+	writetext CeruleanGymDaisyText1
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_DAISY, DOWN
+	end
+
+.DaisyAfter:
+	writetext CeruleanGymDaisyText2
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_DAISY, DOWN
+	end
+
+.DaisyRematch:
+	checkflag ENGINE_HUEY
+	iffalse .DaisyPost
+	writetext CeruleanGymDaisyText4
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_DAISY, DOWN
+	end
+
+.DaisyPost:
+	writetext CeruleanGymDaisyText5
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_DAISY, DOWN
+	end
+
+CeruleanGymLilyScript:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .LilyRematch
+	checkevent EVENT_BEAT_SENSATIONAL_SISTERS
+	iftrue .LilyAfter
+	writetext CeruleanGymLilyText1
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_LILY, DOWN
+	end
+
+.LilyAfter:
+	writetext CeruleanGymLilyText2
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_LILY, DOWN
+	end
+
+.LilyRematch:
+	checkflag ENGINE_HUEY
+	iffalse .LilyPost
+	writetext CeruleanGymLilyText3
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_LILY, DOWN
+	end
+
+.LilyPost:
+	writetext CeruleanGymLilyText4
+	waitbutton
+	closetext
+	turnobject CERULEANGYM_LILY, DOWN
+	end
+
 TrainerSwimmerfDiana:
-	trainer SWIMMERF, DIANA, EVENT_BEAT_SWIMMERF_DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText, 0, .Script
+	trainer SWIMMERF, SHEILA, EVENT_BEAT_SWIMMERF_SHEILA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -95,7 +236,7 @@ TrainerSwimmerfDiana:
 	end
 
 TrainerSwimmerfBriana:
-	trainer SWIMMERF, BRIANA, EVENT_BEAT_SWIMMERF_BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, .Script
+	trainer SWIMMERF, AQUA, EVENT_BEAT_SWIMMERF_AQUA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -106,7 +247,7 @@ TrainerSwimmerfBriana:
 	end
 
 TrainerSwimmermParker:
-	trainer SWIMMERM, PARKER, EVENT_BEAT_SWIMMERM_PARKER, SwimmermParkerSeenText, SwimmermParkerBeatenText, 0, .Script
+	trainer SWIMMERM, TANNER, EVENT_BEAT_SWIMMERM_TANNER, SwimmermParkerSeenText, SwimmermParkerBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -116,264 +257,305 @@ TrainerSwimmermParker:
 	closetext
 	end
 
-CeruleanGymGuyScript:
-	faceplayer
-	opentext
-	checkevent EVENT_BEAT_MISTY
-	iftrue .CeruleanGymGuyWinScript
-	writetext CeruleanGymGuyText
-	waitbutton
-	closetext
-	end
+VioletIntroText:
+	text "Violet: You wanna"
+	line "see how strong we"
+	cont "are?"
 
-.CeruleanGymGuyWinScript:
-	writetext CeruleanGymGuyWinText
-	waitbutton
-	closetext
-	end
+	para "Alrighty!"
 
-CeruleanGymStatue1:
-	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	iffalse CeruleanGymStatue
-	opentext
-	writetext CeruleanGymNote1Text
-	waitbutton
-	closetext
-	end
+	para "You'll have to"
+	line "fight all three of"
+	cont "us in a row!"
 
-CeruleanGymStatue2:
-	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	iffalse CeruleanGymStatue
-	opentext
-	writetext CeruleanGymNote2Text
-	waitbutton
-	closetext
-	end
+	para "Lose at all, and"
+	line "you'll have to"
+	cont "start over!"
 
-CeruleanGymStatue:
-	checkflag ENGINE_CASCADEBADGE
-	iftrue .Beaten
-	jumpstd gymstatue1
-.Beaten:
-	gettrainername STRING_BUFFER_4, MISTY, MISTY1
-	jumpstd gymstatue2
-
-CeruleanGymGruntRunsDownMovement:
-	big_step DOWN
-	big_step DOWN
-	big_step DOWN
-	big_step DOWN
-	step_end
-
-CeruleanGymGruntRunsOutMovement:
-	big_step RIGHT
-	big_step DOWN
-	step_end
-
-CeruleanGymGruntRunsIntoYouMovement:
-	fix_facing
-	set_sliding
-	jump_step UP
-	remove_sliding
-	remove_fixed_facing
-	step_sleep 8
-	step_sleep 8
-	step DOWN
-	step DOWN
-	step_end
-
-CeruleanGymGruntMovesCloseMovement:
-	big_step DOWN
-	step_end
-
-CeruleanGymGruntBacksAwayMovement:
-	fix_facing
-	slow_step UP
-	remove_fixed_facing
-	step_end
-
-CeruleanGymGruntIntroText:
-	text "Oops! I so sorry!"
-	line "You not hurt,"
-	cont "okay?"
-
-	para "I very busy."
-	line "No time for talk-"
-	cont "ing with you. Not"
-	cont "good for me if"
-	cont "seen by somebody."
+	para "Are you ready to"
+	line "find out why we're"
+	cont "called the Sensa-"
+	cont "tional Sisters?"
 	done
 
-CeruleanGymGruntBigMistakeText:
-	text "Oh no! You seen"
-	line "me already! I make"
-	cont "big mistake!"
+VioletWinLossText:
+	text "Violet: Oh man…"
 	done
 
-CeruleanGymGruntByeText:
-	text "Hey, you! Forget"
-	line "you see me, okay?"
-
-	para "You see, hear,"
-	line "know nothing,"
-
-	para "okay?"
-	line "Bye, kid! Nothing!"
-
-	para "Bye-bye a go-go!"
+DaisyWinLossText:
+	text "Daisy: Well, that"
+	line "was fun!"
 	done
 
-CeruleanGymNote1Text:
-	text "Sorry, I'll be out"
-	line "for a while."
-	cont "MISTY, GYM LEADER"
-	done
-
-CeruleanGymNote2Text:
-	text "Since MISTY's out,"
-	line "we'll be away too."
-	cont "GYM TRAINERS"
-	done
-
-MistyIntroText:
-	text "MISTY: I was ex-"
-	line "pecting you, you"
-	cont "pest!"
-
-	para "You may have a"
-	line "lot of JOHTO GYM"
-
-	para "BADGES, but you'd"
-	line "better not take me"
-	cont "too lightly."
-
-	para "My water-type"
-	line "#MON are tough!"
-	done
-
-MistyWinLossText:
-	text "MISTY: You really"
-	line "are good…"
-
-	para "I'll admit that"
-	line "you are skilled…"
-
-	para "Here you go. It's"
-	line "CASCADEBADGE."
+LilyWinLossText:
+	text "Lily: …Can we"
+	line "really do this?"
 	done
 
 ReceivedCascadeBadgeText:
-	text "<PLAYER> received"
-	line "CASCADEBADGE."
+	text "The Sensational"
+	line "Sisters received"
+	cont "CascadeBadge."
 	done
 
 MistyFightDoneText:
-	text "MISTY: Are there"
-	line "many strong train-"
-	cont "ers in JOHTO? Like"
-	cont "you, I mean."
+	text "Lily: This was Mom"
+	line "and Dad's badge,"
+	cont "right?"
 
-	para "I'm going to"
-	line "travel one day, so"
+	para "…Seeing this badge"
+	line "like this…"
 
-	para "I can battle some"
-	line "skilled trainers."
+	para "…When you're ready"
+	line "for us, let us"
+	cont "know."
+
+	para "We'll kick their"
+	line "butts good!"
 	done
 
 SwimmerfDianaSeenText:
-	text "Sorry about being"
-	line "away. Let's get on"
-	cont "with it!"
+	text "The Feds like us-"
+	line "ing the pool, so"
+	cont "they just leave it"
+	cont "alone."
 	done
 
 SwimmerfDianaBeatenText:
-	text "I give up! You're"
-	line "the winner!"
+	text "At least you're"
+	line "not a Fed!"
 	done
 
 SwimmerfDianaAfterBattleText:
-	text "I'll be swimming"
-	line "quietly."
+	text "I'll be happy to"
+	line "just swim in peace"
+	cont "someday."
 	done
 
 SwimmerfBrianaSeenText:
-	text "Don't let my ele-"
-	line "gant swimming un-"
-	cont "nerve you."
+	text "You here for some"
+	line "exercise?"
 	done
 
 SwimmerfBrianaBeatenText:
-	text "Ooh, you calmly"
-	line "disposed of me…"
+	text "I guess not…"
 	done
 
 SwimmerfBrianaAfterBattleText:
-	text "Don't be too smug"
-	line "about beating me."
+	text "I exercise to keep"
+	line "healthy."
 
-	para "MISTY will destroy"
-	line "you if you get"
-	cont "complacent."
+	para "Makes running away"
+	line "from the Feds"
+	cont "easier!"
 	done
 
 SwimmermParkerSeenText:
-	text "Glub…"
-
-	para "I'm first! Come"
-	line "and get me!"
+	text "Stretch before you"
+	line "swim!"
 	done
 
 SwimmermParkerBeatenText:
-	text "This can't be…"
+	text "Ah! Cramp!"
 	done
 
 SwimmermParkerAfterBattleText:
-	text "MISTY has gotten"
-	line "much better in the"
-	cont "past few years."
+	text "Cramps can be"
+	line "deadly!"
 
-	para "Don't let your"
-	line "guard down, or"
-	cont "you'll be crushed!"
+	para "Stretch real good"
+	line "first!"
 	done
 
-CeruleanGymGuyText:
-	text "Yo! CHAMP in"
-	line "making!"
+CeruleanGymDaisyText1:
+	text "Daisy: You should"
+	line "talk to Violet in"
+	cont "the middle first!"
 
-	para "Since MISTY was"
-	line "away, I went out"
-
-	para "for some fun too."
-	line "He-he-he."
+	para "Then we can get"
+	line "started!"
 	done
 
-CeruleanGymGuyWinText:
-	text "Hoo, you showed me"
-	line "how tough you are."
+CeruleanGymDaisyText3:
+	text "Daisy: Would you"
+	line "mind finding my"
+	cont "sisters first?"
 
-	para "As always, that"
-	line "was one heck of a"
-	cont "great battle!"
+	para "I don't wanna"
+	line "start without"
+	cont "them!"
+	done
+
+CeruleanGymDaisyText2:
+	text "Daisy: When you"
+	line "call us, we'll"
+	cont "come to help!"
+	done
+
+CeruleanGymLilyText1:
+	text "Lily: …Can you"
+	line "talk with Violet"
+	cont "first?"
+
+	para "…I think she'll be"
+	line "a better first"
+	cont "match…"
+	done
+
+CeruleanGymLilyText2:
+	text "Lily: …We'll make"
+	line "those Feds pay…"
+	done
+
+FindLilyText:
+	text "Violet: Before we"
+	line "begin, can you go"
+	cont "find Lily?"
+
+	para "We don't want to"
+	line "start without her!"
+	done
+
+VioletAfterText:
+	text "Violet: Let's do"
+	line "it!"
+
+	para "Let's beat them up!"
+	done
+
+PleaseGetOnTheDockText:
+	text "Violet: Please get"
+	line "on the dock so we"
+	cont "can battle."
+	done
+
+DaisyIntroText:
+	text "Daisy: I'm up next!"
+
+	para "I'm not a pushover"
+	line "like Violet!"
+	done
+
+LilyIntroText:
+	text "Lily: You're the"
+	line "Champion, right?"
+
+	para "…I thought so."
+
+	para "…I was hoping that"
+	line "you'd come…"
+
+	para "…My sisters may"
+	line "not show it, but"
+	cont "after our parents"
+	cont "passed away…"
+
+	para "Violet:……………………"
+	
+	para "Daisy:………………………"
+
+	para "Lily: We've been"
+	line "having a hard time"
+	cont "moving on…"
+
+	para "…I think with your"
+	line "help, we can make"
+	cont "our region a"
+	cont "better place…"
+
+	para "…We can make it"
+	line "better for every-"
+	cont "one…"
+
+	para "…Alright, I think"
+	line "I'm ready."
+
+	para "Hit me with your"
+	line "best shot!"
+	done
+
+CeruleanGymDaisyText4:
+	text "Daisy: You want a"
+	line "rematch?"
+
+	para "Talk to Violet and"
+	line "we'll get started!"
+	done
+
+CeruleanGymLilyText3:
+	text "Lily: Speak with"
+	line "Violet if you want"
+	cont "to face us again."
+	done
+
+CeruleanGymDaisyText5:
+	text "Daisy: I think I'll"
+	line "go swimming today!"
+	done
+
+CeruleanGymLilyText4:
+	text "Lily: Thank you,"
+	line "<PLAYER>."
+
+	para "For everything."
+	done
+
+VioletAfterRematchText:
+	text "Violet: We beat"
+	line "those guys pretty"
+	cont "bad, huh?"
+	done
+
+VioletRematchText:
+	text "Violet: Here for a"
+	line "rematch, huh?"
+
+	para "We'll be happy to"
+	line "play with you!"
+	done
+
+LilyRematchText:
+	text "Lily: I'm feeling"
+	line "much better than"
+	cont "I was during our"
+	cont "first battle."
+
+	para "I think I'll do"
+	line "better this time!"
+	done
+
+LilyAfterRematchText:
+	text "Lily: I lost, but"
+	line "I don't feel bad"
+	cont "about it."
+
+	para "It feels good to"
+	line "have fun again."
+
+	para "Thank you <PLAYER>."
+	done
+
+LilyWinLossText2:
+	text "Lily: It's been a"
+	line "while since I've"
+	cont "felt this good."
 	done
 
 CeruleanGym_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  4, 15, CERULEAN_CITY, 5
-	warp_event  5, 15, CERULEAN_CITY, 5
+	warp_event  4, 15, CERULEAN_CITY, 4
+	warp_event  5, 15, CERULEAN_CITY, 4
 
 	db 0 ; coord events
 
-	db 2 ; bg events
-	bg_event  2, 13, BGEVENT_READ, CeruleanGymStatue1
-	bg_event  6, 13, BGEVENT_READ, CeruleanGymStatue2
+	db 0 ; bg events
 
 	db 6 ; object events
-	object_event  4, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
-	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymMistyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  3,  3, SPRITE_SENSATIONAL_BLONDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymDaisyScript, EVENT_CERULEAN_GYM_DAISY
+	object_event  5,  3, SPRITE_SENSATIONAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanGymLilyScript, EVENT_CERULEAN_GYM_LILY
 	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  1,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  8,  9, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermParker, EVENT_TRAINERS_IN_CERULEAN_GYM
-	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  4,  3, SPRITE_SENSATIONAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanGymVioletScript, EVENT_CERULEAN_GYM_VIOLET

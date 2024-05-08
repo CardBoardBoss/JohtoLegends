@@ -103,12 +103,13 @@ RuinsOfAlphResearchCenterScientist1Script:
 	writetext RuinsOfAlphResearchCenterScientist1Text_GotAllUnown
 	waitbutton
 	closetext
-	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	end
 
 RuinsOfAlphResearchCenterScientist2Script:
 	faceplayer
 	opentext
+	checkevent EVENT_DECO_UNOWN_DOLL
+	iftrue .GotUnownDoll
 	readvar VAR_UNOWNCOUNT
 	ifequal NUM_UNOWN, .GotAllUnown
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
@@ -125,7 +126,16 @@ RuinsOfAlphResearchCenterScientist2Script:
 	end
 
 .GotAllUnown:
+	setevent EVENT_DECO_UNOWN_DOLL
 	writetext RuinsOfAlphResearchCenterScientist2Text_GotAllUnown
+	buttonsound
+	waitsfx
+	writetext PlayerGotUnownDollText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+.GotUnownDoll:
+	writetext GotUnownDollText
 	waitbutton
 	closetext
 	end
@@ -336,14 +346,36 @@ RuinsOfAlphResearchCenterUnusedText2:
 	done
 
 RuinsOfAlphResearchCenterScientist2Text_GotAllUnown:
-	text "Why did those"
-	line "ancient patterns"
+	text "You caught all the"
+	line "Unown! Impressive!"
 
-	para "appear on the wall"
-	line "now?"
+	para "Here, take this"
+	line "toy I made!"
 
-	para "The mystery"
-	line "deepens…"
+	para "It'll make your"
+	line "room mysterious!"
+	done
+
+PlayerGotUnownDollText:
+	text "<PLAYER> received"
+	line "Unown Doll!"
+	done
+
+GotUnownDollText:
+	text "Liking the doll?"
+
+	para "Really brightens"
+	line "up the room!"
+	done
+
+RuinsOfAlphEarthquakeText:
+	text "What was that?"
+
+	para "An earthquake?"
+
+	para "I hope the ruins"
+	line "weren't damaged"
+	cont "at all…"
 	done
 
 RuinsOfAlphResearchCenterComputerText:

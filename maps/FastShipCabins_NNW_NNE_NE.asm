@@ -24,7 +24,7 @@ TrainerCooltrainermSean:
 	end
 
 TrainerCooltrainerfCarol:
-	trainer COOLTRAINERF, CAROL, EVENT_BEAT_COOLTRAINERF_CAROL, CooltrainerfCarolSeenText, CooltrainerfCarolBeatenText, 0, .Script
+	trainer COOLTRAINERF, SOL, EVENT_BEAT_COOLTRAINERF_SOL, CooltrainerfCarolSeenText, CooltrainerfCarolBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -68,7 +68,7 @@ TrainerGentlemanEdward:
 	end
 
 TrainerBurglarCorey:
-	trainer BURGLAR, COREY, EVENT_BEAT_BURGLAR_COREY, BurglarCoreySeenText, BurglarCoreyBeatenText, 0, .Script
+	trainer BURGLAR, HARRY, EVENT_BEAT_BURGLAR_HARRY, BurglarCoreySeenText, BurglarCoreyBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled

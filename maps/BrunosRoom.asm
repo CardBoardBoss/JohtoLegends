@@ -45,14 +45,19 @@ MarthaScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_MARTHA
 	iftrue MarthaScript_AfterBattle
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue MarthaRematch
 	writetext MarthaScript_MarthaBeforeText
 	waitbutton
 	closetext
-	winlosstext MarthaScript_MarthaBeatenText, 0
+MarthaBattle:
+	winlosstext MarthaScript_MarthaBeatenText, MarthaLastMonText
 	loadtrainer MARTHA, MARTHA1
+MarthaReconvene:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_MARTHA
+	setevent EVENT_DECO_POSTER_3
 	opentext
 	writetext MarthaScript_MarthaDefeatText
 	waitbutton
@@ -64,6 +69,19 @@ MarthaScript_Battle:
 	setevent EVENT_MARTHAS_ROOM_EXIT_OPEN
 	waitsfx
 	end
+
+Martha2:
+	winlosstext MarthaScript_MarthaBeatenText, MarthaLastMonText
+	loadtrainer MARTHA, MARTHA2
+	sjump MarthaReconvene
+
+MarthaRematch:
+	writetext MarthaScript_MarthaBeforeText2
+	waitbutton
+	closetext
+	checkevent EVENT_COMPLETED_EPILOGUE
+	iftrue Martha2
+	sjump MarthaBattle
 
 MarthaScript_AfterBattle:
 	writetext MarthaScript_MarthaDefeatText
@@ -77,6 +95,10 @@ MarthasRoom_EnterMovement:
 	step UP
 	step UP
 	step_end
+
+MarthaLastMonText:
+	text "Hold on now!"
+	done
 
 MarthaScript_MarthaBeforeText:
 	text "Howdy! Err...I"
@@ -127,7 +149,7 @@ MarthaScript_MarthaBeatenText:
 
 MarthaScript_MarthaDefeatText:
 	text "Well done there!"
-	line "my brother was"
+	line "My brother was"
 	cont "right about you!"
 
 	para "If I ever have any"
@@ -140,7 +162,28 @@ MarthaScript_MarthaDefeatText:
 	para "Go on, the last"
 	line "Elite Four member"
 	cont "is waiting."
+	done
 
+MarthaScript_MarthaBeforeText2:
+	text "Martha: Howdy"
+	line "<PLAYER>!"
+
+	para "Been keepin' up on"
+	line "yer trainin'?"
+
+	para "I've decided to be"
+	line "more true to"
+	cont "myself recently!"
+
+	para "None of that prim"
+	line "'n proper nonsense"
+	cont "like before!"
+
+	para "I bet you're gotten"
+	line "stronger!"
+
+	para "I'd like to see"
+	line "just how strong!"
 	done
 
 BrunosRoom_MapEvents:

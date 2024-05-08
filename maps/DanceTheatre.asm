@@ -18,6 +18,8 @@ DanceTheatre_MapScripts:
 TrainerKimonoGirlRui:
 	faceplayer
 	opentext
+	checkevent EVENT_BEAT_CHAMPION_LANCE
+	iftrue .CommencePassword
 	checkevent EVENT_GOT_EEVEE
 	iftrue .GotEevee
 	checkevent EVENT_BEAT_KIMONO_GIRL_RUI
@@ -32,6 +34,8 @@ TrainerKimonoGirlRui:
 	setevent EVENT_BEAT_KIMONO_GIRL_RUI
 	opentext
 .GiveEevee:
+	checkevent EVENT_PASSWORD_SINGULAR
+	iftrue .CantGetEevee
 	writetext GiveEeveeText
 	buttonsound
 	waitsfx
@@ -50,6 +54,19 @@ TrainerKimonoGirlRui:
 
 .NoRoom:
 	writetext NoRoomText
+	waitbutton
+	closetext
+	end
+
+.CantGetEevee:
+	writetext CantGetEeveeText
+	waitbutton
+	closetext
+	setevent EVENT_GOT_EEVEE
+	end
+
+.CommencePassword:
+	writetext CommencePasswordText
 	waitbutton
 	closetext
 	end
@@ -98,159 +115,25 @@ DanceTheatreGrannyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_EEVEE
-	iftrue .GiveStones
+	iftrue .AlreadyHaveEevee
 	writetext DanceTheatreGrannyText
 	waitbutton
 	closetext
 	end
 
-.GiveStones:
+.AlreadyHaveEevee:
 	checkevent EVENT_GOT_STONE_FROM_THEATRE
-	iftrue .NoStones
-	writetext YouGotAnEeveeText
-	waitbutton
-	loadmenu DanceTheatreStonesMenu
-	verticalmenu
-	closewindow
-	ifequal 1, .WaterStone
-	ifequal 2, .ThunderStone
-	ifequal 3, .FireStone
-	ifequal 4, .SunStone
-	ifequal 5, .NewMenu
-	sjump .MaybeLater
-
-.NewMenu:
-	loadmenu DanceTheatreStonesMenu2
-	verticalmenu
-	closewindow
-	ifequal 1, .MoonStone
-	ifequal 2, .LeafStone
-	ifequal 3, .IceStone
-	ifequal 4, .ShinyStone
-	ifequal 5, .MaybeLater
-	sjump .MaybeLater
-
-.NoStones:
-	writetext HowIsYourEeveeText
+	iftrue .GotStone
+	writetext SeeMySonText
 	waitbutton
 	closetext
 	end
 
-.WaterStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem WATER_STONE
-	writetext VaporeonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.ThunderStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem THUNDERSTONE
-	writetext JolteonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.FireStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem FIRE_STONE
-	writetext FlareonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.SunStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem SUN_STONE
-	writetext EspeonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.MoonStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem MOON_STONE
-	writetext UmbreonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.LeafStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem LEAF_STONE
-	writetext LeafeonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.IceStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem ICE_STONE
-	writetext GlaceonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.ShinyStone:
-	writetext HereYouGoText
-	buttonsound
-	verbosegiveitem SHINY_STONE
-	writetext SylveonText
-	waitbutton
-	closetext
-	setevent EVENT_GOT_STONE_FROM_THEATRE
-	end
-
-.MaybeLater:
-	writetext OKMaybeNextTimeText
+.GotStone:
+	writetext YouSawMySonText
 	waitbutton
 	closetext
 	end
-
-DanceTheatreStonesMenu:
-	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 15, TEXTBOX_Y - 0
-	dw .MenuData
-	db 1 ; default option
-
-.MenuData:
-	db STATICMENU_CURSOR ; flags
-	db 5 ; items
-	db "Water Stone@"
-	db "Thunderstone@"
-	db "Fire Stone@"
-	db "Sun Stone@"
-	db "Next Page@"
-
-DanceTheatreStonesMenu2:
-	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 15, TEXTBOX_Y - 0
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db STATICMENU_CURSOR ; flags
-	db 5 ; items	
-	db "Moon Stone@"
-	db "Leaf Stone@"
-	db "Ice Stone@"
-	db "Shiny Stone@"
-	db "Cancel@"
 
 DanceTheaterCynthiaScript:
 	playmusic MUSIC_CYNTHIA_ENCOUNTER
@@ -526,93 +409,14 @@ DanceTheatreGrannyText:
 	cont "and get a reward"
 	cont "from her,"
 
-	para "then I'll give"
-	line "something useful."
+	para "then I'll give you"
+	line "a useful tip."
 	done
 
 DanceTheatreFancyPanelText:
 	text "It's a fancy panel"
 	line "that's decorated"
 	cont "with flowers."
-	done
-
-YouGotAnEeveeText:
-	text "Oh, I see you have"
-	line "an Eevee."
-
-	para "The most versatile"
-	line "of #mon, Eevee"
-	cont "can evolve into"
-	cont "one of 8 forms."
-
-	para "I can give you an"
-	line "item to evolve it,"
-	cont "but only one."
-
-	para "Choose wisely."
-	done
-
-HereYouGoText:
-	text "Here you go."
-	done
-
-VaporeonText:
-	text "Vaporeon the Water"
-	line "type. An excellent"
-	cont "choice."
-	done
-
-JolteonText:
-	text "Jolteon the Elect-"
-	line "ric type. An exce-"
-	cont "llent choice."
-	done
-
-FlareonText:
-	text "Flareon the Fire"
-	line "type. An excellent"
-	cont "choice."
-	done
-
-EspeonText:
-	text "Espeon the Psychic"
-	line "type. An excellent"
-	cont "choice."
-	done
-
-UmbreonText:
-	text "Umbreon the Dark"
-	line "type. An excellent"
-	cont "choice."
-	done
-
-LeafeonText:
-	text "Leafeon the Grass"
-	line "type. An excellent"
-	cont "choice."
-	done
-
-GlaceonText:
-	text "Glaceon the Ice"
-	line "type. An excellent"
-	cont "choice."
-	done
-
-SylveonText:
-	text "Sylveon the Fairy"
-	line "type. An excellent"
-	cont "choice."
-	done
-
-HowIsYourEeveeText:
-	text "How's your Eevee?"
-
-	para "Has it evolved"
-	line "yet?"
-	done
-
-OKMaybeNextTimeText:
-	text "OK. Perhaps later."
 	done
 
 CynthiaIntroductionText:
@@ -676,6 +480,65 @@ HeadingToWildAreText:
 CynthiaDanceTheaterLastPkmnText:
 	text "Backed into a"
 	line "corner, huh?"
+	done
+
+SeeMySonText:
+	text "You defeated Rui."
+
+	para "Most impressive."
+
+	para "If you go to"
+	line "Cianwood City,"
+	cont "talk with my son."
+
+	para "He'll give you an"
+	line "item to evolve it."
+	done
+
+YouSawMySonText:
+	text "You saw my son,"
+	line "didn't you?"
+
+	para "Did you evolve"
+	line "your Eevee?"
+	done
+
+CantGetEeveeText:
+	text "Rui: Normally, I"
+	line "would give you an"
+	cont "Eevee as a reward"
+	cont "for defeating me,"
+
+	para "but since you are"
+	line "on a solo journey,"
+	cont "I cannot."
+
+	para "I truly apologize"
+	line "for that."
+	done
+
+CommencePasswordText:
+	text "Rui: Oh, hello."
+
+	para "Congratulations on"
+	line "becoming Champion."
+
+	para "Have you ever"
+	line "wondered about"
+	cont "starting your"
+	cont "journey with an"
+	cont "adorable #mon,"
+	cont "like Eevee or"
+	cont "Pikachu?"
+
+	para "Wouldn't it be"
+	line "great to COMMENCE"
+	cont "with a #mon"
+	cont "like that?"
+
+	para "It would be quite"
+	line "interesting."
+	done
 
 DanceTheatre_MapEvents:
 	db 0, 0 ; filler
@@ -693,11 +556,11 @@ DanceTheatre_MapEvents:
 	db 10 ; object events
 	object_event  5,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, TrainerKimonoGirlRui, -1
 	object_event  7, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DanceTheaterSurfGuy, -1
-	object_event  6,  8, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DanceTheaterRhydon, -1
+	object_event  6,  8, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_SILVER, OBJECTTYPE_SCRIPT, 0, DanceTheaterRhydon, -1
 	object_event  1,  8, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DanceTheatreGrannyScript, -1
-	object_event  7,  5, SPRITE_TWIN, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, QuintupletNaokoScript, -1
-	object_event  8,  6, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, QuintupletSayoScript, -1
-	object_event  9,  5, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, QuintupletZukiScript, -1
-	object_event 10,  6, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, QuintupletKuniScript, -1
-	object_event 11,  5, SPRITE_TWIN, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, QuintupletMikiScript, -1
+	object_event  7,  6, SPRITE_TWIN, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, QuintupletNaokoScript, -1
+	object_event  8,  7, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, QuintupletSayoScript, -1
+	object_event  9,  6, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, QuintupletZukiScript, -1
+	object_event 10,  7, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, QuintupletKuniScript, -1
+	object_event 11,  6, SPRITE_TWIN, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, QuintupletMikiScript, -1
 	object_event  3, 10, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, DanceTheaterCynthiaScript, EVENT_DANCE_THEATER_CYNTHIA

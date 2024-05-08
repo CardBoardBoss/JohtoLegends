@@ -150,6 +150,8 @@ HoOhTank:
 	startbattle
 	special CheckCaughtCelebi
 	iftrue .CaughtHoOh
+	checkevent EVENT_PASSWORD_SINGULAR
+	iftrue .CaughtHoOh
 	reloadmap
 	iftrue .WonHoOh
 	special HealParty
@@ -181,6 +183,7 @@ HoOhTank:
 	applymovement HOOHLUGIAROOM_RIVAL3, Rival3LeavesHoOhRoomMovement
 	disappear HOOHLUGIAROOM_RIVAL3
 	setevent EVENT_GOT_LAPRAS_CALLC
+	setmapscene VICTORY_ROAD_GATE, SCENE_VICTORY_ROAD_GATE_GUARD
 	end
 
 LugiaTank:
@@ -211,6 +214,8 @@ LugiaTank:
 	loadvar VAR_BATTLETYPE, BATTLETYPE_LUGIA
 	startbattle
 	special CheckCaughtCelebi
+	iftrue .CaughtLugia
+	checkevent EVENT_PASSWORD_SINGULAR
 	iftrue .CaughtLugia
 	reloadmap
 	iftrue .WonLugia
@@ -243,6 +248,7 @@ LugiaTank:
 	applymovement HOOHLUGIAROOM_RIVAL2, Rival2LeavesHoOhRoomMovement
 	disappear HOOHLUGIAROOM_RIVAL2
 	setevent EVENT_GOT_LAPRAS_CALLC
+	setmapscene VICTORY_ROAD_GATE, SCENE_VICTORY_ROAD_GATE_GUARD
 	end
 
 DontBattle:
@@ -437,8 +443,7 @@ MyHypothesisWasWrongText:
 	cont "more work."
 
 	para "Perhaps it has"
-	line "to do with"
-	cont "trust?"
+	line "to do with trust?"
 	done
 
 JustSawRaikouText:

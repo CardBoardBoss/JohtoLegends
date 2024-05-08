@@ -42,6 +42,9 @@ Marts:
 	dw MartAzaleaTMs
 	dw MartVioletTMs
 	dw MartLakeOfRage
+	dw MartCherrygroveTMs
+	dw MartMooMooMilk
+	dw MartCinnabarIsland
 .End
 
 MartCherrygrove:
@@ -147,7 +150,7 @@ MartGoldenrod4F:
 
 MartGoldenrod5F:
 	db 4 ; # items
-	db TM_SAFEGUARD
+	db TM_ACROBATICS
 	db TM_LIGHT_SCREEN
 	db TM_REFLECT
 	db TM_PROTECT
@@ -271,15 +274,12 @@ MartBlackthornJournal:
 	db -1 ; end
 
 MartViridian:
-	db 9 ; # items
+	db 6 ; # items
 	db ULTRA_BALL
 	db HYPER_POTION
 	db FULL_HEAL
 	db REVIVE
-	db ANTIDOTE
-	db PARLYZ_HEAL
-	db AWAKENING
-	db BURN_HEAL
+	db FULL_RESTORE
 	db FLOWER_MAIL
 	db -1 ; end
 
@@ -471,7 +471,7 @@ MartOlivineTMs:
 	db 4
 	db TM_CURSE
 	db TM_BRICK_BREAK
-	db TM_ATTRACT
+	db TM_SAFEGUARD
 	db TM_POISON_JAB
 	db -1 ; end
 
@@ -480,7 +480,7 @@ MartBlackthornTMs:
 	db TM_DOUBLE_TEAM
 	db TM_SUBSTITUTE
 	db TM_SLEEP_TALK
-	db TM_ACROBATICS
+	db TM_ATTRACT
 	db -1 ; end
 
 MartAzaleaTMs:
@@ -515,3 +515,30 @@ MartLakeOfRage:
 	db ESCAPE_ROPE
 	db REPEL
 	db -1 ; end
+
+MartCherrygroveTMs:
+	db 6 ; # items
+	db TM_PSYCHIC_M
+	db TM_STONE_EDGE
+	db TM_NASTY_PLOT
+	db TM_FOCUS_BLAST
+	db TM_TOXIC
+	db TM_ENERGY_BALL
+	db -1 ; end
+
+MartMooMooMilk:
+	db 1 ; # items
+	db MOOMOO_MILK
+	db -1 ; end
+
+MartCinnabarIsland:
+	db 8
+	db HYPER_POTION
+	db FULL_RESTORE
+	db FULL_HEAL
+	db ULTRA_BALL
+	db ESCAPE_ROPE
+	db REVIVE
+	db MAX_REPEL
+	db PP_UP
+	db -1

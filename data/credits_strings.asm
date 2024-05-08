@@ -10,7 +10,7 @@ CreditsStrings:
 	dw .BitExpansion
 	dw .Koolboyman
 	dw .PrismTeam
-	dw .SatoshiOota
+	dw .CynderQuill
 	dw .SoupPotato
 	dw .ChaosRush
 	dw .SCMidna
@@ -25,13 +25,13 @@ CreditsStrings:
 	dw .ElfinHilon
 	dw .BlueEmerald
 	dw .InternetGoblin
-	dw .Sarugakucho
-	dw .AkitoMori
+	dw .RyansTryin
+	dw .Nuuk
 	dw .Kage
 	dw .Damien
 	dw .PresentedBy
-	dw .TakehiroIzushi
-	dw .TakashiKawaguchi
+	dw .AdamShaman
+	dw .HelixChamber
 	dw .Radiation
 	dw .DragonArbock
 	dw .AzureKeys
@@ -50,10 +50,10 @@ CreditsStrings:
 	dw .Planning
 	dw .KeitaNakamura
 	dw .HirotakaUemura
-	dw .HiroakiTamura
-	dw .NoriakiSakaguchi
+	dw .FrenchOrange@
+	dw .LuigiTKO
 	dw .MiyukiSato
-	dw .GakuziNomoto
+	dw .Tetra
 	dw .AiMashima
 	dw .MikihiroIshikawa
 	dw .HideyukiHashimoto
@@ -69,7 +69,7 @@ CreditsStrings:
 	dw .Mmmmmmmmmmmmmmmmm
 	dw .TerukiMurakawa
 	dw .KazuyoshiOsawa
-	dw .KimikoNakamichi
+	dw .CrystalClearTeam
 	dw .End
 	dw .Unknown
 	dw .Staff
@@ -136,10 +136,10 @@ CreditsStrings:
 .BitExpansion:        db "  16-Bit Expansion@"        ; "ふじわら　もとふみ@"
 .Koolboyman:          db "     Koolboyman@"         ; "にしだ　あつこ@"
 .PrismTeam:           db "     Prism Team@"           ; "さいとう　むねお@"
-.SatoshiOota:         db "    SATOSHI OOTA@"          ; "おおた　さとし@"
+.CynderQuill:         db "     CynderQuill@"          ; "おおた　さとし@"
 .SoupPotato:          db "     SoupPotato@"         ; "よしかわ　れな@"
 .ChaosRush:           db "     Chaos Rush@"           ; "おくたに　じゅん@"
-.SCMidna:             db "      SCMidna@"        ; "よしだ　ひろのぶ@"
+.SCMidna:             db "    SCMidna & Mia@"        ; "よしだ　ひろのぶ@"
 .Nukkiie:             db "      Nukkiie@"         ; "いわした　あすか@"
 .Frogtoes:            db "      Frogtoes@"           ; "いちのせ　ごう@"
 .landesherr:          db "     landesherr@"          ; "あおき　もりかず@"
@@ -147,17 +147,17 @@ CreditsStrings:
 .Pikachu:             db "     Pikachu25@"        ; "まつしま　けんじ@"
 .EmiMonserrate:       db "   Emi Monserrate@"       ; "まつみや　としのぶ@"
 .Metalflygon:         db "   Metalflygon08@"          ; "いわた　さとる@"
-.TilesetDesign:       db "   Tileset Design@"          ; "せや　のぶひろ@"
+.TilesetDesign:       db "   Tileset Design &@"          ; "せや　のぶひろ@"
 .ElfinHilon:          db "    ElfinHilon10@"         ; "せきね　かずひと@"
 .BlueEmerald:         db "    Blue Emerald@"          ; "おおた　てつじ@"
 .InternetGoblin:      db "   InternetGoblin@"      ; "スーパーマりオクラブ@"
-.Sarugakucho:         db "    SARUGAKUCHO@"           ; "さるがくちょう@"
-.AkitoMori:           db "     AKITO MORI@"           ; "もり　あきと@"
-.Kage:                db "        Kage@"         ; "はらだ　たかひろ@"
+.RyansTryin:          db "     Ryans-Tryin@"           ; "さるがくちょう@"
+.Nuuk:                db "     Nuuk & Sea@"           ; "もり　あきと@"
+.Kage:                db "     Kage & Cure@"         ; "はらだ　たかひろ@"
 .Damien:              db "       Damien@"         ; "はしもと　とおる@"
 .PresentedBy:         db "    Presented By@"        ; "まつもと　のぼる@"
-.TakehiroIzushi:      db "  TAKEHIRO IZUSHI@"         ; "いずし　たけひろ@"
-.TakashiKawaguchi:    db " TAKASHI KAWAGUCHI@"        ; "かわぐち　たかし@"
+.AdamShaman:          db "    Adam Shaman@"         ; "いずし　たけひろ@"
+.HelixChamber:        db "    Helix Chamber@"        ; "かわぐち　たかし@"
 .Radiation:           db "     Radiation@"       ; "いしはら　つねかず@"
 .DragonArbock:        db "   Dragon Arbock@"        ; "やまうち　ひろし@"
 .AzureKeys:           db "     AzureKeys@"           ; "さいき　けんじ@"
@@ -178,10 +178,10 @@ CreditsStrings:
                     next " & DEVELOPMENT DEPT.@"
 .KeitaNakamura:       db "   KEITA NAKAMURA@"         ; "なかむら　けいた@"
 .HirotakaUemura:      db "  HIROTAKA UEMURA@"         ; "うえむら　ひろたか@"
-.HiroakiTamura:       db "   HIROAKI TAMURA@"         ; "たむら　ひろあき@"
-.NoriakiSakaguchi:    db " NORIAKI SAKAGUCHI@"        ; "さかぐち　のりあき@"
+.FrenchOrange@:       db "    FrenchOrange@"         ; "たむら　ひろあき@"
+.LuigiTKO:            db "      LuigiTKO@"        ; "さかぐち　のりあき@"
 .MiyukiSato:          db "    MIYUKI SATO@"           ; "さとう　みゆき@"
-.GakuziNomoto:        db "   GAKUZI NOMOTO@"          ; "のもと　がくじ@"
+.Tetra:               db "       Tetra@"          ; "のもと　がくじ@"
 .AiMashima:           db "     AI MASHIMA@"           ; "ましま　あい@"
 .MikihiroIshikawa:    db " MIKIHIRO ISHIKAWA@"        ; "いしかわ　みきひろ@"
 .HideyukiHashimoto:   db " HIDEYUKI HASHIMOTO@"       ; "はしもと　ひでゆき@"
@@ -199,7 +199,7 @@ CreditsStrings:
 .Mmmmmmmmmmmmmmmmm:   db " Mmmmmmmmmmmmmmmmm@"
 .TerukiMurakawa:      db "  TERUKI MURAKAWA@"
 .KazuyoshiOsawa:      db "  KAZUYOSHI OSAWA@"
-.KimikoNakamichi:     db "  KIMIKO NAKAMICHI@"
+.CrystalClearTeam:    db " Crystal Clear Team@"
 .Staff:               db "      #mon"                 ; "ポケットモンスター"
                     next "   Johto Legends"           ; "　　クりスタル　バージョン"
                     next "      Credits@"             ; "　　　　スタッフ@"
@@ -249,9 +249,9 @@ CreditsStrings:
 .TriteHexagon:        db "    TriteHexagon@"
 .Dannye:              db "      33Dannye@"
 .GACT:                db "        GACT@"
-.PokecrystalDiscord:  db "   Members Of The"
-                    next " Pokecrystal Discord"
-					next "       Channel@"
+.PokecrystalDiscord:  db " Members Of /pret &"
+                    next " /pret/pokecrystal"
+					next " wiki collaborators@"
 .JohtoDiscord:        db "   Members Of The"
                     next "   Johto Legends"
 					next "  Discord Channel@"

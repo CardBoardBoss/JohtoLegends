@@ -44,6 +44,7 @@ OlivineGym1FByronScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BYRON
+	setevent EVENT_DECO_CHARMANDER_DOLL
 	opentext
 	writetext Byron1F_Beaten
 	waitbutton
@@ -53,6 +54,7 @@ OlivineGym1FByronScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MINERALBADGE
+	loadmem wLevelCap, 34
 	readvar VAR_BADGES
 	setflag ENGINE_BEAT_BYRON
 .FightDone:
@@ -85,6 +87,8 @@ OlivineGym1FByronScript:
 	end
 
 .RematchByron:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .PostGameByron
 	readvar VAR_BADGES
 	ifequal 4, .ByronBattle1
 	ifequal 5, .ByronBattle2
@@ -142,6 +146,21 @@ OlivineGym1FByronScript:
 	startbattle
 	reloadmapafterbattle
 	sjump AfterByronRematch
+
+.PostGameByron:
+	writetext PostGameByronText
+	waitbutton
+	closetext
+	winlosstext Byron1F_Clang, Byron1F_SteelyDetermination
+	loadtrainer BYRON_2, BYRON6
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext BeatenByronAgainText2
+	waitbutton
+	closetext
+	setflag ENGINE_BEAT_BYRON
+	end
 
 AfterByronRematch:
 	opentext
@@ -253,20 +272,15 @@ Byron1F_FlashCannonSpeech:
 
 Byron1F_Sunnyshore:
 	text "I'll need to find"
-	line "a suitable replac-"
-	cont "ement if I want to"
+	line "a suitable"
+	cont "replacement if I"
 
-	para "return home."
-	line "There's a family"
-	cont "of strong Steel"
+	para "want to return"
+	line "home."
 
-	para "trainers in Sunny-"
-	line "shore City in"
-	cont "Sinnoh. Perhaps"
+	para "Maybe a cute girl!"
 
-	para "one of them can"
-	line "take my place som-"
-	cont "day! Hahahaha!"
+	para "Whaddya think?"
 	done
 
 ByronRematchText:
@@ -287,6 +301,28 @@ BeatenByronAgainText:
 	para "Maybe you can be"
 	line "a Gym Leader some-"
 	cont "day!"
+	done
+
+PostGameByronText:
+	text "Looks like I was"
+	line "helpful to you!"
+
+	para "You don't get to"
+	line "be Champion by"
+	cont "being soft!"
+
+	para "I toughened you up"
+	line "before, and now I"
+	cont "want to see how"
+	cont "good you are!"
+	done
+
+BeatenByronAgainText2:
+	text "You're quite the"
+	line "tough Champion!"
+
+	para "Tough as steel"
+	line "I'd say!"
 	done
 
 OlivineGym4F_MapEvents:

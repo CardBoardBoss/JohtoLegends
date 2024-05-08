@@ -1745,7 +1745,9 @@ wApricorns::
 wKeepSevenBiasChance:: ; used in the slots to handle the favoring of 7 symbol streaks
 wSuicuneFrame::
 	db
-	ds 2
+wTyranitarFrame::
+	db
+	ds 1
 wStartFlypoint:: db
 wEndFlypoint:: db
 
@@ -2707,8 +2709,14 @@ wTinTowerRoofSceneID::                            db
 wVioletGymSceneID::                               db
 wRocketLairHallwaySceneID::                       db
 wRocketLairBossRoomSceneID::                      db
+wPokemonMansionB1FSceneID::                       db
+wFedHideoutB4FSceneID::                           db
+wRoute47SceneID::                                 db
+wMtSilverSummitID::                               db
+wGoldCrystalHouseID::                             db
+wSilverCaveMewRoomID::                            db
 
-	ds 22
+	ds 16
 
 ; fight counts
 wJackFightCount::    db ; d9f2
@@ -2723,7 +2731,7 @@ wRalphFightCount::   db
 wLizFightCount::     db
 wAnthonyFightCount:: db
 wToddFightCount::    db
-wGinaFightCount::    db
+wLevelCap::          db
 wArnieFightCount::   db
 wAlanFightCount::    db
 wDanaFightCount::    db
@@ -2734,7 +2742,7 @@ wTiffanyFightCount:: db
 wVanceFightCount::   db
 wWiltonFightCount::  db
 wParryFightCount::   db
-wErinFightCount::    db
+wBattleAnimBank::    db
 ; da0e
 
 	ds 100

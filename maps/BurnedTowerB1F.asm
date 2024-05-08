@@ -151,7 +151,7 @@ EnokiMovement1:
 
 PlayerMovement1:
 	step LEFT
-	step_end
+	step_resume
 
 EnokiMovement2:
 	step UP
@@ -262,7 +262,7 @@ InTheDistantPastText:
 
 	para "They have been"
 	line "resting here for"
-	cont "200 years,"
+	cont "135 years,"
 	cont "waiting."
 
 	para "Waiting for one"

@@ -10,12 +10,12 @@ Route5SaffronGateOfficerScript:
 	jumptextfaceplayer Route5SaffronGateOfficerText
 
 Route5SaffronGateOfficerText:
-	text "You're from JOHTO,"
-	line "aren't you?"
+	text "Our city is safe"
+	line "for now,"
 
-	para "How do you like"
-	line "KANTO? It's nice,"
-	cont "don't you agree?"
+	para "but only because"
+	line "the Leader gave"
+	cont "up."
 	done
 
 Route5SaffronGate_MapEvents:
@@ -24,8 +24,8 @@ Route5SaffronGate_MapEvents:
 	db 4 ; warp events
 	warp_event  4,  0, ROUTE_5, 2
 	warp_event  5,  0, ROUTE_5, 3
-	warp_event  4,  7, SAFFRON_CITY, 9
-	warp_event  5,  7, SAFFRON_CITY, 9
+	warp_event  4,  7, SAFFRON_CITY, 8
+	warp_event  5,  7, SAFFRON_CITY, 8
 
 	db 0 ; coord events
 

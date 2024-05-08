@@ -9,13 +9,13 @@ RockTunnelB1F_MapScripts:
 	db 0 ; callbacks
 
 RockTunnelB1FIron:
-	itemball IRON
+	itemball THICK_CLUB
 
 RockTunnelB1FPPUp:
 	itemball PP_UP
 
 RockTunnelB1FRevive:
-	itemball REVIVE
+	itemball NUGGET
 
 RockTunnelB1FHiddenMaxPotion:
 	hiddenitem MAX_POTION, EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION

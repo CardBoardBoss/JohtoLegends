@@ -62,6 +62,7 @@ PokedexDataPointerTable:
 	dba GolduckPokedexEntry
 	dba MankeyPokedexEntry
 	dba PrimeapePokedexEntry
+	dba AnnihilapePokedexEntry
 	dba GrowlithePokedexEntry
 	dba ArcaninePokedexEntry
 	dba PoliwagPokedexEntry
@@ -234,9 +235,11 @@ PokedexDataPointerTable:
 	dba WynautPokedexEntry
 	dba WobbuffetPokedexEntry
 	dba GirafarigPokedexEntry
+	dba FarigirafPokedexEntry
 	dba PinecoPokedexEntry
 	dba ForretressPokedexEntry
 	dba DunsparcePokedexEntry
+	dba DudunsparsPokdexEntry
 	dba GligarPokedexEntry
 	dba GliscorPokedexEntry
 	dba SnubbullPokedexEntry
@@ -248,6 +251,7 @@ PokedexDataPointerTable:
 	dba WeavilePokedexEntry
 	dba TeddiursaPokedexEntry
 	dba UrsaringPokedexEntry
+	dba UrsalunaPokedexEntry
 	dba SlugmaPokedexEntry
 	dba MagcargoPokedexEntry
 	dba SwinubPokedexEntry
@@ -267,8 +271,12 @@ PokedexDataPointerTable:
 	dba PhanpyPokedexEntry
 	dba DonphanPokedexEntry
 	dba StantlerPokedexEntry
+	dba WyrdeerPokedexEntry
 	dba SmearglePokedexEntry
 	dba MiltankPokedexEntry
+	dba KotoraPokedexEntry
+	dba RaitoraPokedexEntry
+	dba GorotoraPokedexEntry
 	dba BudewPokedexEntry
 	dba RoseliaPokedexEntry
 	dba RoseradePokedexEntry
@@ -276,10 +284,14 @@ PokedexDataPointerTable:
 	dba ManectricPokedexEntry
 	dba CroagunkPokedexEntry
 	dba ToxicroakPokedexEntry
-;	dba SwabluPokedexEntry
+	dba SwabluPokedexEntry
+	dba AltariaPokedexEntry
 	dba DuskullPokedexEntry
 	dba DusclopsPokedexEntry
 	dba DusknoirPokedexEntry
+	dba LotadPokedexEntry
+	dba LombrePokedexEntry
+	dba LudicoloPokedexEntry
 	dba SnoruntPokedexEntry
 	dba GlaliePokedexEntry
 	dba FroslassPokedexEntry
@@ -309,4 +321,5 @@ PokedexDataPointerTable:
 	dba LugiaPokedexEntry
 	dba HoOhPokedexEntry
 	dba CelebiPokedexEntry
+	dba NownPokedexEntry
 	dba MissingnoPokedexEntry

@@ -63,12 +63,14 @@ Landmarks:
 	landmark  52, 108, PalletTownName
 	landmark  52,  92, Route1Name
 	landmark  52,  76, ViridianCityName
-	landmark  52,  64, Route2Name
+	landmark  52,  65, Route2Name
+	landmark  52,  60, ViridianForestName
 	landmark  52,  52, PewterCityName
 	landmark  64,  52, Route3Name
 	landmark  76,  52, MtMoonName
 	landmark  88,  52, Route4Name
 	landmark 100,  52, CeruleanCityName
+	landmark  92,  44, CeruleanCaveName
 	landmark 100,  44, Route24Name
 	landmark 108,  36, Route25Name
 	landmark 100,  60, Route5Name
@@ -100,6 +102,8 @@ Landmarks:
 	landmark  68, 132, SeafoamIslandsName
 	landmark  52, 132, CinnabarIslandName
 	landmark  51, 131, PokemonMansionName
+	landmark  51, 132, CinnabarVolcanoName
+	landmark  52, 132, UnknownName2
 	landmark  52, 120, Route21Name
 	landmark  36,  68, Route22Name
 	landmark  28,  52, VictoryRoadName
@@ -220,3 +224,5 @@ WildAreaName:        db "Wild Area@"
 Route47Name:         db "Route 47@"
 Route48Name:         db "Route 48@"
 CliffCaveName:       db "Cliff Cave@"
+CinnabarVolcanoName: db "Cinnabar¯Volcano@"
+UnknownName2:        db "???@"

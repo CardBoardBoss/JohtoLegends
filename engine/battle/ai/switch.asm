@@ -24,7 +24,6 @@ CheckPlayerMoveTypeMatchups:
 
 	ld hl, wEnemyMonType
 	call CheckTypeMatchup
-
 	ld a, [wTypeMatchup]
 	cp EFFECTIVE + 1 ; 1.0 + 0.1
 	jr nc, .super_effective
@@ -190,7 +189,7 @@ CheckAbleToSwitch:
 	jr nz, .not_2
 
 	ld a, [wEnemyAISwitchScore]
-	add $20 ; maximum chance
+	add $30 ; maximum chance
 	ld [wEnemySwitchMonParam], a
 	ret
 

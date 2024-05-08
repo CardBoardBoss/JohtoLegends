@@ -9,15 +9,17 @@ KDLPro for the status appearance change.
 
 Dark Zeta, Celadonk and cardboardbox for Evolution moves for Pokecrystal16.
 
+Celadonk for the Password System.
+
 Rangi, DGamers-64 and Vendily for the fourth stat page.
 
 Mountvesuvius for Strength Sap and HM Key Items.
 
 Idain, Rangi, WasabiRaptor for EVS.
 
-Rangi and Idain for Evening time.
+Rangi and Idain for Evening time and SGB palettes for maps.
 
-Idain for the Hidden Power Guru, Soothe Bell and Gen 6+ Exp. Share.
+Idain for the Hidden Power Guru, Soothe Bell and Gen 6+ Exp. Share and correctly colored Pokepics
 
 Rangi and aaaaaa123456789 for items from smashing rocks
 
@@ -51,13 +53,22 @@ Fixing Move Effects: Nayru62
 
 Rangi and ElfinHilon10: Moonblast animation
 
+60fps: Vulcandth, FIQ
+
 Unique Poke Ball sprites and animations: Idain
 
 Move Steel Slice: Mskd.
 
-Rangi and the Polished Crystal team for Route 47 and 48 maps, Cherry Tree and the Town Map expansion and many overworld sprites.
+Rangi and the Polished Crystal team for Route 47 and 48 maps, Cherry Tree and the Town Map expansion and many overworld sprites,
+Wynaut sprites and animations, Yanmega back sprite.
 
-Ambipom back sprite: ShadowOne333
+Ambipom back sprite, Annihilape sprite: ShadowOne333
+
+Annihilape sprite: Sea and ShadowOne333
+
+Ursaluna sprites and animation: Cure, ShadowOne333, Scarlax
+
+Dudunspars sprites - Mia
 
 Lickilicky sprites by Chaos Rush.
 
@@ -67,12 +78,23 @@ Skarmini design and sprite: Ferropexola
 
 Skarmini back sprite: Frogtoes
 
+Skarmini Animation: Ryans-Tryin
+
+New Ledian Sprite and Munchlax credits sprite: Rangi
+
+Azurill and Dahlia credits sprite: FrenchOrange & Ferropexola
+
+Kanto grass colors: FrenchOrange
+
+Officer Jenny sprite: FrenchOrange
+
 Beta Wooper back sprite made by 64BitWonder.
 
 Sneasel, Tyranitar, Dragonite, Moltres, Heracross,
 Teddiursa, Ursaring, Phanpy, Umbreon, Feraligatr,
 Houndoom, Slowbro, Hitmonchan, Xatu, Pidgeot,
-Nidoking, Entei, Ho-Oh, Exeggutor, Starmie- SoupPotato
+Nidoking, Entei, Ho-Oh, Exeggutor, Starmie,
+Bellossom, Kadabra Delibird back sprite- SoupPotato
 
 Korotora, Raitora graphics and game data: SoupPotato, GS 97 Reforged Team, Game Freak
 
@@ -90,8 +112,10 @@ Mime Jr. Back Sprite: lakeofdance
 
 Duskull, Dusclops, Dusknoir, Bronzor, Bronzong, Ralts, Kirlia, Gardevoir, Gallade,
 Budew, Roselia, Roserade, Electrike, Manectric, Cacnea, Cacturne, Croagunk,
-Toxicroak, Snorunt, Glalie, Froslass, Aggron sprites:
+Toxicroak, Snorunt, Glalie, Froslass, Aggron, Lotad, Lombre, Ludicolo sprites:
 Prism Team.
+
+Farigiraf sprite and animation: Nuuk.
 
 Aron and Lairon sprites: Nukkiie
 
@@ -103,19 +127,27 @@ Dragon Tamer Male sprite: JustinNuggets
 
 Dragon Tamer Female base sprite: Rangi
 
+Agatha and Oak sprites: Tetra
+
 Ariana, Archer and Giovanni trainer and overworld sprite: SirWhibbles
 
-Ampharos overworld sprite: Prism Team
+Ampharos and overworld sprite: Prism Team
 
 Gible line sprites: Blue Emerald
 
-Lance and Cynthia overworld sprites: Rangi and the Polished Crystal Team.
+Lance, Female Scientist and Cynthia overworld sprites: Rangi and the Polished Crystal Team.
 
-Clair Trainer Sprite base: Solo993
+Clair Trainer Sprite base, Gen 5 Black Belt sprite: Solo993
 
-Lance Trainer Sprite base: MegamanOmega
+Lance Trainer Sprite base and Mew overworld sprite: MegamanOmega
 
 Armored Mewtwo sprites and icon: Rangi
+
+Nown Sprite and animation: CynderQuill
+
+Sleeping bag and campfire graphics: Prism Team
+
+Happiny, Mime Jr. sprite and animation: Rangi & ShadowOne333
 
 Minisprites 1-251 and Gen 4:
 Chamber
@@ -127,9 +159,15 @@ Pikachu25
 Ryta
 Koolboyman
 Prism Team
+LuigiTKO
+
+Substitute sprite: LuigiTKO
 
 Gen 3 and 6 minisprites:
 EeVeeEe1999
+
+Gen 4, 8 and 9 minisprites:
+Rangi
 
 Missingno minisprite:
 Emi Monserrate
@@ -154,6 +192,8 @@ Water Pulse, Silver Wind, Air Slash, Avalanche,
 Aqua Tail, Calm Mind, Bulk Up, X-Scissor
 
 Charge Beam: ElfinHilon10
+
+Sour: Featherdance, some effects for Focus Blast, Aura Sphere and Fake Tears.
 
 Music:
 Pokemon Stadium 2 Anthem - ShockSlayer

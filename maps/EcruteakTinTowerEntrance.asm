@@ -60,6 +60,7 @@ EcruteakTinTowerEntrance_CoordEvent1:
 	appear ECRUTEAKTINTOWERENTRANCE_SAGE1
 	pause 5
 	disappear ECRUTEAKTINTOWERENTRANCE_SAGE2
+	callasm UpdateSprites
 	end
 
 EcruteakTinTowerEntrance_CoordEvent2:
@@ -70,6 +71,7 @@ EcruteakTinTowerEntrance_CoordEvent2:
 	appear ECRUTEAKTINTOWERENTRANCE_SAGE2
 	pause 5
 	disappear ECRUTEAKTINTOWERENTRANCE_SAGE1
+	callasm UpdateSprites
 	end
 
 EcruteakTinTowerEntrance_CoordEvent_DontMove:
@@ -206,6 +208,7 @@ EcruteakTinTowerEntranceRocketScript:
 	yesorno
 	iffalse .Refused
 	writetext YouAskedForItText
+	waitbutton
 	checkflag ENGINE_FLYPOINT_OLIVINE
 	iftrue .GruntAlternateBattle
 	winlosstext EcruteakTinTowerEntranceGruntLossText, 0
@@ -282,14 +285,14 @@ TinTowerEntranceSherlesScript:
 
 MovementData_0x980c7:
 	fix_facing
-	big_step LEFT
+	step LEFT
 	remove_fixed_facing
 	turn_head DOWN
 	step_end
 
 MovementData_0x980cc:
 	fix_facing
-	big_step RIGHT
+	step RIGHT
 	remove_fixed_facing
 	turn_head DOWN
 	step_end

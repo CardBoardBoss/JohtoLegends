@@ -1685,6 +1685,7 @@ Pokedex_PrintNumberIfOldMode:
 	ld a, [wCurDexMode]
 	cp DEXMODE_OLD
 	ret nz
+
 	push hl
 	push de
 	ld bc, -SCREEN_WIDTH
@@ -1955,6 +1956,8 @@ Pokedex_ABCMode:
 INCLUDE "data/pokemon/dex_order_alpha.asm"
 
 INCLUDE "data/pokemon/dex_order_new.asm"
+
+;INCLUDE "data/pokemon/dex_order_old.asm"
 
 Pokedex_DisplayModeDescription:
 	xor a

@@ -80,12 +80,45 @@ AreYouABoyOrAreYouAGirl:
 	farcall Mobile_AlwaysReturnNotCarry ; some mobile stuff
 	jr c, .ok
 	farcall InitGender
+	ld hl, TextJump_PasswordOption
+	call PrintText
+	call YesNoBox
+	jr c, .SecondPassword
+
+	call RotateFourPalettesLeft
+	call ClearTileMap
+
+	ld b, NAME_PASSWORD
+	ld de, wGreensName
+	farcall NamingScreen
+
+.SecondPassword:
+	ld hl, TextJump_PasswordOption2
+	call PrintText
+	call YesNoBox
+	ret c
+
+	call RotateFourPalettesLeft
+	call ClearTileMap
+
+	ld b, NAME_PASSWORD
+	ld de, wMomsName
+	farcall NamingScreen
+
 	ret
 
 .ok
 	ld c, 0
 	farcall InitMobileProfile ; mobile
 	ret
+
+TextJump_PasswordOption:
+	text_far Text_PasswordOption
+	text_end
+
+TextJump_PasswordOption2:
+	text_far Text_PasswordOption2
+	text_end
 
 ResetWRAM:
 	xor a
@@ -221,6 +254,11 @@ endc
 	ld [hl], HIGH(MOM_MONEY) ; mid
 	inc hl
 	ld [hl], LOW(MOM_MONEY)
+
+if DEF(_CHALLENGE)
+	ld a, 15
+	ld [wLevelCap], a
+endc
 
 	call InitializeNPCNames
 
@@ -640,7 +678,7 @@ Continue_DisplayGameTime:
 	ld de, wGameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld [hl], "<COLON>"
+	ld [hl], ":"
 	inc hl
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2

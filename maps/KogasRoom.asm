@@ -45,14 +45,19 @@ SurgeScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_GEN_SURGE
 	iftrue SurgeScript_AfterBattle
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue SurgeRematch
 	writetext SurgeScript_SurgeBeforeText
 	waitbutton
 	closetext
-	winlosstext SurgeScript_SurgeBeatenText, 0
+SurgeBattle:
+	winlosstext SurgeScript_SurgeBeatenText, GeneralSurgeLastMonText
 	loadtrainer GEN_SURGE, GEN_SURGE1
+SurgeReconvene:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ELITE_4_GEN_SURGE
+	setevent EVENT_DECO_PIKACHU_DOLL
 	opentext
 	writetext SurgeScript_SurgeDefeatText
 	waitbutton
@@ -65,6 +70,19 @@ SurgeScript_Battle:
 	waitsfx
 	end
 
+Surge2:
+	winlosstext SurgeScript_SurgeBeatenText, GeneralSurgeLastMonText
+	loadtrainer GEN_SURGE, GEN_SURGE2
+	sjump SurgeReconvene
+
+SurgeRematch:
+	writetext SurgeScript_SurgeBeforeText2
+	waitbutton
+	closetext
+	checkevent EVENT_COMPLETED_EPILOGUE
+	iftrue Surge2
+	sjump SurgeBattle
+
 SurgeScript_AfterBattle:
 	writetext SurgeScript_SurgeDefeatText
 	waitbutton
@@ -76,10 +94,16 @@ SurgesRoom_EnterMovement:
 	step UP
 	step UP
 	step UP
-	step_end
+	step_resume
+
+GeneralSurgeLastMonText:
+	text "Don't give up 'til"
+	line "you see the whites"
+	cont "of their eyes!"
+	done
 
 SurgeScript_SurgeBeforeText:
-	text "Attention!..."
+	text "Attention…"
 	line "At ease!"
 
 	para "I am General Surge"
@@ -119,24 +143,40 @@ SurgeScript_SurgeBeatenText:
 	done
 
 SurgeScript_SurgeDefeatText:
-	text "Surprised to see"
-	line "my Zapdos? Caught"
-	cont "it during the war."
+	text "That battle will"
+	line "go down in the"
+	cont "history books!"
 
-	para "Saved me a few"
-	line "times. You may"
-	cont "find one yourself"
-	cont "one day."
+	para "Just like the"
+	line "battle of Seafoam"
+	cont "where I…"
 
-	para "What? You think"
-	line "there's only one"
-	cont "in the world? Ha!"
+	para "…Ah, nevermind."
 
-	para "There's multiple,"
-	line "you just need to"
-	cont "look. Go on, the"
-	cont "next member is"
+	para "That's not"
+	line "important now."
+
+	para "Go on, the"
+	line "next member is"
 	cont "waiting."
+	done
+
+SurgeScript_SurgeBeforeText2:
+	text "Surge: Attention…"
+	line "At ease!"
+
+	para "You're returned,"
+	line "<PLAYER>!"
+
+	para "I knew you'd be"
+	line "back!"
+
+	para "You've got the"
+	line "heart of a warrior"
+	cont "in you!"
+
+	para "Let me see your"
+	line "war face!"
 	done
 
 KogasRoom_MapEvents:

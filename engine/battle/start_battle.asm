@@ -18,40 +18,24 @@ FindFirstAliveMonAndStartBattle:
 ;	jr z, .nightpal
 ;	cp INDOOR
 ;	jr z, .daypal
+;
 ;	ld a, [wTimeOfDay]
 ;	cp NITE_F
 ;	jr z, .nightpal
-
+;
 ;.daypal
 ;	ld a, 0
 ;	ld [wBattleTimeOfDay], a
 ;	jr .timeofdaypalset
-
+;
 ;.nightpal
 ;	ld a, 1
 ;	ld [wBattleTimeOfDay], a
-
+;
 ;.timeofdaypalset
 	xor a
 	ldh [hMapAnims], a
 	call DelayFrame
-	ld b, PARTY_LENGTH
-	ld hl, wPartyMon1HP
-	ld de, PARTYMON_STRUCT_LENGTH - 1
-
-.loop
-	ld a, [hli]
-	or [hl]
-	jr nz, .okay
-	add hl, de
-	dec b
-	jr nz, .loop
-
-.okay
-	ld de, MON_LEVEL - MON_HP
-	add hl, de
-	ld a, [hl]
-	ld [wBattleMonLevel], a
 	predef DoBattleTransition
 	farcall _LoadBattleFontsHPBar
 	ld a, 1
@@ -87,6 +71,9 @@ PlayBattleMusic:
 	cp BATTLETYPE_LUGIA
 	ld de, MUSIC_LUGIA_BATTLE
 	jp z, .done
+	cp BATTLETYPE_LEGENDARY
+	ld de, MUSIC_KANTO_LEGEND_BATTLE_XY
+	jp z, .done
 	cp BATTLETYPE_SUICUNE
 	ld de, MUSIC_SUICUNE_BATTLE
 	jp z, .done
@@ -116,15 +103,29 @@ PlayBattleMusic:
 	ld de, MUSIC_KANTO_WILD_BATTLE
 	ld a, [wTimeOfDay]
     cp NITE_F
-    jp nz, .done
+    jp c, .done ; not NITE_F or EVE_F
     ld de, MUSIC_KANTO_WILD_BATTLE_NIGHT
 	jp .done
 
 .trainermusic
+	ld de, MUSIC_MEGALOVANIA
+	cp FERROPEXOLA_TRAINER
+	jp z, .done
+
 	ld de, MUSIC_CHAMPION_BATTLE
 	cp CHAMPION_DAHLIA
 	jp z, .done
-	cp RED
+	cp CHAMPION_DRACO
+	jp z, .done
+	cp CHALLENGER_DAHLIA
+	jp z, .done
+	cp CHALLENGER_DRACO
+	jp z, .done
+	cp POKEMON_PROF
+	jp z, .done
+
+	ld de, MUSIC_CYNTHIA_BATTLE
+	cp CHALLENGER_CYNTHIA
 	jp z, .done
 
 	ld de, MUSIC_MARNIE_BATTLE

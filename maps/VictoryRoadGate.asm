@@ -5,6 +5,7 @@
 	const VICTORYROADGATE_OAK
 	const VICTORYROADGATE_RIVAL
 	const VICTORYROADGATE_RIVAL_2
+	const VICTORYROADGATE_BLACK_BELT3
 
 VictoryRoadGate_MapScripts:
 	db 4 ; scene scripts
@@ -174,9 +175,44 @@ VictoryRoadGateRivalScript:
 	turnobject VICTORYROADGATE_RIVAL, UP
 	end
 
+VictoryRoadGateRightBlackBeltEndScript:
+	faceplayer
+	opentext
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iffalse .PreElite4Guard
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iftrue .GuardDoesntMove
+	writetext VictoryRoadGateGoOnThroughText
+	waitbutton
+	closetext
+	readvar VAR_FACING
+	ifequal UP, .MoveGuardRight
+	applymovement VICTORYROADGATE_BLACK_BELT3, VictoryRoadGateStepDownMovement
+	turnobject VICTORYROADGATE_BLACK_BELT3, UP
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	end
+
+.MoveGuardRight:
+	applymovement VICTORYROADGATE_BLACK_BELT3, OakMovesRight
+	turnobject VICTORYROADGATE_BLACK_BELT3, LEFT
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	end
+
+.GuardDoesntMove:
+	writetext VictoryRoadGateGoOnThroughText
+	waitbutton
+	closetext
+	end
+
+.PreElite4Guard:
+	writetext VictoryRoadGateRightBlackBeltText
+	waitbutton
+	closetext
+	end
+
 VictoryRoadGateStepDownMovement:
 	step DOWN
-	step_end
+	step_resume
 
 PlayerWalksToOakAndRival:
 	step UP
@@ -192,10 +228,12 @@ OakLeavesGateMovement:
 	step RIGHT
 	step RIGHT
 	step RIGHT
+	step RIGHT
 	step_end
 
 RivalLeavesVictoryRoadGateMovement:
 	step UP
+	step RIGHT
 	step RIGHT
 	step RIGHT
 	step RIGHT
@@ -218,7 +256,7 @@ PlayerWalksToOakAndRival3:
 
 OakMovesRight:
 	step RIGHT
-	step_end
+	step_resume
 
 OakMovesLeft:
 	step LEFT
@@ -374,9 +412,11 @@ TheTwoOfYouText:
 
 	para "They belonged to"
 	line "the previous Gym"
-	cont "Leaders, and find"
-	cont "new Leaders to"
-	cont "take them."
+	cont "Leaders."
+
+	para "You need to find"
+	line "new Leaders and"
+	cont "give them away."
 
 	para "I believe that you"
 	line "can rebuild the"
@@ -418,14 +458,10 @@ BadgeNumberExplainText:
 
 	para "Oak: Well, being"
 	line "me has its"
-	cont "advantages."
+	cont "privileges."
 
-	para "Being a former"
-	line "Champion gives me"
-	cont "that advantage."
-
-	para "The same goes for"
-	line "you two as well."
+	para "I'd say you have"
+	line "it too!"
 
 	para "Just go through"
 	line "this gate to the"
@@ -495,6 +531,28 @@ WereFinallyHereText:
 	line "other side."
 	done
 
+VictoryRoadGateRightBlackBeltEndText:
+	text "Sorry, but this is"
+	line "the end of the"
+	cont "current version of"
+
+	para "#mon Johto"
+	line "Legends."
+
+	para "Please return for"
+	line "the next update."
+
+	para "Thank you."
+	done
+
+VictoryRoadGateGoOnThroughText:
+	text "Welcome to Kanto,"
+	line "Champion <PLAYER>."
+
+	para "Please proceed"
+	line "with caution."
+	done
+
 VictoryRoadGate_MapEvents:
 	db 0, 0 ; filler
 
@@ -518,10 +576,11 @@ VictoryRoadGate_MapEvents:
 
 	db 0 ; bg events
 
-	db 6 ; object events
+	db 7 ; object events
 	object_event  8, 11, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateOfficerScript, -1
 	object_event  7,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateLeftBlackBeltScript, EVENT_OPENED_MT_SILVER
 	object_event 12,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateRightBlackBeltScript, EVENT_VICTORY_ROAD_GATE_GUARD
 	object_event 10,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateOakScript, EVENT_VICTORY_ROAD_GATE_OAK
 	object_event  9,  6, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateRivalScript, EVENT_VICTORY_ROAD_GATE_RIVAL
 	object_event 10,  6, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateRivalScript, EVENT_VICTORY_ROAD_GATE_RIVAL_2
+	object_event 16,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VictoryRoadGateRightBlackBeltEndScript, EVENT_VICTORY_ROAD_GATE_GUARD_2

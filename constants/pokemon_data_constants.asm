@@ -136,6 +136,7 @@ NUM_HOF_TEAMS EQU 30
 	const EVOLVE_TRADE
 	const EVOLVE_HAPPINESS
 	const EVOLVE_STAT
+	const EVOLVE_HOLD
 
 ; EVOLVE_HAPPINESS triggers
 	const_def 1
@@ -176,6 +177,7 @@ NUM_ROAMMON_MAPS EQU 16 ; RoamMaps table size (see data/wild/roammon_maps.asm)
 	const TREEMON_SET_FOREST
 	const TREEMON_SET_ROCK
 	const TREEMON_SET_ROUTE_47
+	const TREEMON_SET_VIRIDIAN_FOREST
 NUM_TREEMON_SETS EQU const_value
 
 ; treemon scores

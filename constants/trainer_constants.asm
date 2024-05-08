@@ -27,17 +27,20 @@ CHRIS EQU __enum__
 	trainerclass WALKER ; 1
 	const WALKER1
 	const WALKER2
+	const WALKER3
 
 	trainerclass MILTON ; 2
 	const MILTON1
 	const MILTON2
 	const MILTON3
 	const MILTON4
+	const MILTON5
 
 	trainerclass KURT ; 3
 	const KURT1
 	const KURT2
 	const KURT3
+	const KURT4
 
 	trainerclass ENOKI ; 4
 	const ENOKI1
@@ -76,6 +79,7 @@ CHRIS EQU __enum__
 
 	trainerclass FLORINA ; b
 	const FLORINA1
+	const FLORINA2
 
 	trainerclass CAL ; c
 	const CAL1
@@ -84,9 +88,11 @@ CHRIS EQU __enum__
 
 	trainerclass MARTHA ; d
 	const MARTHA1
+	const MARTHA2
 
 	trainerclass AGATHA ; e
 	const AGATHA1
+	const AGATHA2
 
 	trainerclass KOGA ; f
 	const KOGA1
@@ -96,12 +102,14 @@ CHRIS EQU __enum__
 	const CHAMP_DAHLIA_2
 	const CHAMP_DAHLIA_3
 	const CHAMP_DAHLIA_4
+	const CHAMP_DAHLIA_5
+	const CHAMP_DAHLIA_6
 
 	trainerclass FLINT ; 11
 	const FLINT1
 
-	trainerclass MISTY ; 12
-	const MISTY1
+	trainerclass SENSATIONAL1 ; 12
+	const VIOLET1
 
 	trainerclass LT_SURGE ; 13
 	const LT_SURGE1
@@ -123,7 +131,7 @@ CHRIS EQU __enum__
 	const CALEB
 	const GORDY
 	const RANDY
-	const WARREN
+	const BARNEY_YOUNGSTER
 	const JIMMY
 	const OWEN
 	const JASON
@@ -162,15 +170,13 @@ CHRIS EQU __enum__
 	const TOBY
 	const LUCAS
 	const SAL
-	const HANK
+	const TERRY
 	const ROY
 	const BORIS
 	const BOB
-	const JOSE1
+	const CARL
 	const PEDRO
 	const JOSE2
-	const PERRY
-	const BRET
 	const JOSE3
 	const VANCE2
 	const VANCE3
@@ -182,9 +188,8 @@ CHRIS EQU __enum__
 	const CONNIE1
 	const LINDA
 	const LAURA
-	const SHANNON
+	const USAGI
 	const MICHELLE
-	const ELLEN
 	const CONNIE2
 	const CONNIE3
 
@@ -200,17 +205,12 @@ CHRIS EQU __enum__
 	const GAVEN1
 	const KOSU
 	const ROBERT1
-	const JAKE
-	const GAVEN3
-	const BLAKE
-	const BRIAN
-	const ERICK
-	const ANDY
-	const TYLER
+	const JUAN
+	const GARY
+	const COREY1
+	const ALM
+	const BUMI
 	const SEAN
-	const KEVIN
-	const STEVE
-	const ALLEN
 	const JOSEPH
 
 	trainerclass COOLTRAINERF ; 1c
@@ -221,17 +221,14 @@ CHRIS EQU __enum__
 	const TINA
 	const REESE
 	const HARLEY
-	const JOYCE
+	const MARY1
 	const BETH1
 	const REENA1
-	const MEGAN
-	const BETH2
-	const CAROL
-	const QUINN
+	const MARIA
+	const TERRA
+	const SOL
+	const CARA
 	const JESSIE
-	const CYBIL
-	const JENN
-	const BETH3
 	const REENA2
 	const REENA3
 	const ELLA
@@ -318,7 +315,7 @@ CHRIS EQU __enum__
 
 	trainerclass TEACHER ; 22
 	const ABIGAIL
-	const HILLARY
+	const ISAKO
 	const SHIRLEY
 	const CADI
 	const CADI2
@@ -339,12 +336,12 @@ CHRIS EQU __enum__
 	const BUZZY
 	const ARNIE1
 	const NAT
-	const WADE2
-	const WADE3
+	const THOR
+	const OLLY
 	const MARTY
 	const ARNIE2
 	const ARNIE3
-	const WADE4
+	const DOM
 	const WADE5
 	const ARNIE4
 	const ARNIE5
@@ -398,7 +395,7 @@ CHRIS EQU __enum__
 	const SETH
 	const JAMES
 	const LEWIS
-	const PARKER
+	const TANNER
 
 	trainerclass SWIMMERF ; 27
 	const ANGIE
@@ -413,13 +410,13 @@ CHRIS EQU __enum__
 	const MARY
 	const KATIE
 	const DAWN
-	const TARA
+	const HARLENE
 	const NICOLE
 	const LORI
 	const JODY
 	const NIKKI
-	const DIANA
-	const BRIANA
+	const AQUA
+	const SHEILA
 
 	trainerclass SAILOR ; 28
 	const EUGENE
@@ -444,9 +441,9 @@ CHRIS EQU __enum__
 	const SUPER_NERD_RICHARD
 	const HERBERT_SUPER_NERD
 	const TOM
-	const PAT
-	const SHAWN
-	const TERU
+	const ALBERT_SUPER_NERD
+	const JOSEF
+	const DAISUKE
 	const RUSS
 	const NORTON
 	const HUGH
@@ -489,23 +486,38 @@ CHRIS EQU __enum__
 	const ANTHONY5
 
 	trainerclass BIKER ; 2d
-	const BIKER_BENNY
-	const KAZU
+	const BUFORD
+	const BIKER_BRANDON
 	const DWAYNE
 	const HARRIS
 	const ZEKE
 	const CHARLES
 	const RILEY
 	const JOEL
-	const GLENN
+	const AL
+	const FOREST_BIKER
+	const CALVIN
+	const RIVER
+	const CHANCE
+	const SPIKE
+	const BLUNO
+	const ROSSO
+	const ANTONIO
+	const BIKER_KEVIN
+	const JAMIE
+	const BURGESS
+	const BLAZER
 
 	trainerclass BLAINE ; 2e
 	const BLAINE1
 
 	trainerclass BURGLAR ; 2f
 	const LOCKE
-	const EDDIE
-	const COREY
+	const MARV
+	const BURGLAR_HARRY
+	const BURGLAR_ERIK
+	const ARSENE
+	const KIDD
 
 	trainerclass FIREBREATHER ; 30
 	const CHAZ
@@ -529,9 +541,9 @@ CHRIS EQU __enum__
 	const HIDEO
 	const YOSHI
 	const SATORU
-	const LAO
+	const HIROSHI
 	const NOB
-	const KIYO
+	const TANABE
 	const LUNG
 	const KENJI3
 	const WAI
@@ -545,7 +557,7 @@ CHRIS EQU __enum__
 
 	trainerclass PSYCHIC_T ; 34
 	const JORDAN
-	const FRANKLIN
+	const CHRIS_PSYCHIC
 	const HERMAN
 	const FIDEL
 	const GREG
@@ -553,8 +565,8 @@ CHRIS EQU __enum__
 	const MARK
 	const PHIL
 	const RICHARD
-	const GILBERT
-	const JARED
+	const HOUDINI
+	const JEREMY_PSYCHIC
 	const RODNEY
 
 	trainerclass PICNICKER ; 35
@@ -564,7 +576,7 @@ CHRIS EQU __enum__
 	const LACY
 	const BARBARA
 	const VIVIAN_PICNICKER
-	const SHARON
+	const SHARON1
 	const DEBRA
 	const GINA2
 	const ERIN1
@@ -649,7 +661,7 @@ CHRIS EQU __enum__
 	const JOSHUA
 	const CARTER
 	const TREVOR
-	const BRANDON
+	const TRENTON
 	const JEREMY
 	const COLIN
 	const DEREK2
@@ -743,6 +755,8 @@ CHRIS EQU __enum__
 	const SABRINA2
 	const MAEVE
 	const EDALYN
+	const BECKY
+	const LILLITH
 
 	trainerclass CHIGUSA ; 48
 	const CHIGUSA1
@@ -750,9 +764,11 @@ CHRIS EQU __enum__
 
 	trainerclass MASTER ; 49
 	const MASTER1
+	const MASTER2
 
 	trainerclass GEN_SURGE ; 4a
 	const GEN_SURGE1
+	const GEN_SURGE2
 
 	trainerclass DRAGON_KID ; 4b
 	const LANCE1
@@ -776,6 +792,8 @@ CHRIS EQU __enum__
 	const OSWALD
 	const DANTE
 	const RUDY
+	const GABE
+	const BERNIE
 
 	trainerclass MNINJA_M ; 50
 	const MNINJA_M1
@@ -814,6 +832,7 @@ CHRIS EQU __enum__
 	const DARIA
 	const DORA
 	const DEBBY
+	const DORIS_TAMER
 
 	trainerclass DRAGON_TAMER_M
 	const DREW
@@ -821,6 +840,7 @@ CHRIS EQU __enum__
 	const DAVIS
 	const DARIUS
 	const DYLAN
+	const DARBY
 
 	trainerclass MADAME_BOSS
 	const BOSS
@@ -837,6 +857,7 @@ CHRIS EQU __enum__
 	const PRYCE6
 	const PRYCE7
 	const PRYCE8
+	const PRYCE9
 
 	trainerclass ENOKI_2
 	const ENOKI2
@@ -847,24 +868,114 @@ CHRIS EQU __enum__
 	const ENOKI5
 	const ENOKI6
 	const ENOKI7
+	const ENOKI8
 
 	trainerclass CHIGUSA_2
 	const CHIGUSA3
 	const CHIGUSA4
 	const CHIGUSA5
 	const CHIGUSA6
+	const CHIGUSA7
 
 	trainerclass BYRON_2
 	const BYRON2
 	const BYRON3
 	const BYRON4
 	const BYRON5
+	const BYRON6
 
 	trainerclass LINK_TRAINER
 	const LINK_TRAINER_1
 
 	trainerclass FED_LEADER
 	const PAXTON
+
+	trainerclass CHAMPION_DRACO
+	const CHAMP_DRACO_1
+	const CHAMP_DRACO_2
+	const CHAMP_DRACO_3
+	const CHAMP_DRACO_4
+	const CHAMP_DRACO_5
+	const CHAMP_DRACO_6
+
+	trainerclass CHALLENGER_DAHLIA
+	const CHALLENGER_DAHLIA_1
+	const CHALLENGER_DAHLIA_2
+	const CHALLENGER_DAHLIA_3
+	const CHALLENGER_DAHLIA_4
+	const CHALLENGER_DAHLIA_5
+	const CHALLENGER_DAHLIA_6
+
+	trainerclass CHALLENGER_DRACO
+	const CHALLENGER_DRACO_1
+	const CHALLENGER_DRACO_2
+	const CHALLENGER_DRACO_3
+	const CHALLENGER_DRACO_4
+	const CHALLENGER_DRACO_5
+	const CHALLENGER_DRACO_6
+
+	trainerclass CHALLENGER_CYNTHIA
+	const CHALLENGER_CYNTHIA_1
+	const CHALLENGER_CYNTHIA_2
+
+	trainerclass DELINQUENT
+	const KAREN
+	const TRACY
+	const SHARON
+	const SHERRY
+	const TABITHA
+	const JILLIAN
+	const BERTHA
+	const KATHY
+	const MARCY
+	const MAKOTO
+	const CAROL
+	const ELLY
+	const AYASE
+	const CHIE
+	const YUKARI
+
+	trainerclass SENSATIONAL2
+	const DAISY
+
+	trainerclass SENSATIONAL3
+	const LILY
+
+	trainerclass ROUGHNECK
+	const TERRANCE
+	const PHILLIP
+	const KYLE_2
+	const CAMERON_2
+	const GUIDO
+	const CURLY
+	const MOE
+	const LARRY_ROUGHNECK
+	const CARTER_ROUGHNECK
+	const KANDORI
+	const DIRK
+	const KANJI
+
+	trainerclass SOLDIER
+	const DWIGHT
+	const SHERMAN
+	const ULYSSES
+	const DOUGLAS
+	const GRANT
+	const MCCLELLAN
+
+	trainerclass KARATE_KING
+	const KOICHI
+
+	trainerclass FNINJA_M
+	const FNINJA_M_1
+	const FNINJA_M_2
+
+	trainerclass FNINJA_F
+	const FNINJA_F_1
+	const FNINJA_F_2
+
+	trainerclass FERROPEXOLA_TRAINER
+	const FERROPEXOLA1
 
 KRIS EQU __enum__
 NUM_TRAINER_CLASSES EQU __enum__

@@ -29,6 +29,9 @@ CutTreeBlockPointers:
 	db $34, $6f, 0 ; tree
 	db $35, $4c, 0 ; tree
 	db $60, $6e, 0 ; tree
+	db $9b, $b3, 0 ; tree
+	db $bb, $b4, 0 ; tree
+	db $b0, $6e, 0 ; tree
 	db -1 ; end
 
 .park:
@@ -40,13 +43,19 @@ CutTreeBlockPointers:
 .forest:
 ; facing block, replacement block, animation
 	db $0f, $17, 0
+	db $28, $01, 1
 	db -1 ; end
 
 WhirlpoolBlockPointers:
 	dbw TILESET_JOHTO, .johto
+	dbw TILESET_JOHTO_3, .johto3
 	db -1 ; end
 
 .johto:
 ; facing block, replacement block, animation
 	db $07, $36, 0
+	db -1 ; end
+
+.johto3:
+	db $2b, $5f, 0
 	db -1 ; end

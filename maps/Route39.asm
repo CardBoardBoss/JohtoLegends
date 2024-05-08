@@ -55,7 +55,15 @@ TrainerSailorSheldon:
 .Script:
 	endifjustbattled
 	opentext
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .SailorSheldonAfterBattle2
 	writetext SailorSheldonAfterBattleText
+	waitbutton
+	closetext
+	end
+
+.SailorSheldonAfterBattle2
+	writetext SailorSheldonAfterBattleText2
 	waitbutton
 	closetext
 	end
@@ -166,10 +174,10 @@ SailorSheldonAfterBattleText:
 
 	para "Unova's tariffs"
 	line "are too high, and"
-	cont "Kalos, Alola and"
-	cont "Galar are too far"
-	cont "for an average"
-	cont "haul."
+	cont "Kalos, Alola,"
+	cont "Galar and Paldea"
+	cont "are too far for an"
+	cont "average haul."
 
 	para "Orre would be"
 	line "easier if they had"
@@ -208,13 +216,13 @@ PokefanfCamillaSeenText:
 	done
 
 PokefanfCamillaBeatenText:
-	text "Totodile is"
+	text "Croconaw is"
 	line "adorable!"
 	done
 
 PokefanfCamillaAfterBattleText:
 	text "Don't you agree?"
-	line "Totodile is just"
+	line "Croconaw is just"
 	cont "cutest!"
 	done
 
@@ -231,7 +239,7 @@ BugCatcherStevieSeenText:
 
 BugCatcherStevieBeatenText:
 	text "My bugs weren't"
-	line "strong enough..."
+	line "strong enough…"
 	done
 
 BugCatcherStevieRematchText:
@@ -284,10 +292,19 @@ HexManiacSabrinaLetsDoItText:
 	done
 
 HexManiacSabrinaAfterBattleText:
-	text "Will I not fight"
-	line "in the light?"
+	text "This world has too"
+	line "much color."
 
-	para "I just might."
+	para "I would prefer it"
+	line "to be duller."
+
+	para "The world would"
+	line "look like my home."
+
+	para "I'd like everything"
+	line "to be"
+
+	para "MONOCHROME."
 	done
 
 Route39SignText:
@@ -326,6 +343,16 @@ Route39TrainerTipsText:
 	para "Use SnubbullCall"
 	line "on any tree you"
 	cont "see!"
+	done
+
+SailorSheldonAfterBattleText2:
+	text "Sounds like the"
+	line "embargo should be"
+	cont "lifted soon!"
+
+	para "I'll be sailing the"
+	line "seven seas again"
+	cont "in no time!"
 	done
 
 Route39_MapEvents:

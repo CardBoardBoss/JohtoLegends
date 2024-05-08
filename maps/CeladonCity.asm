@@ -1,13 +1,18 @@
 	object_const_def ; object_event constants
-	const CELADONCITY_FISHER
+	const CELADONCITY_YOUNGSTER1
 	const CELADONCITY_POLIWAG
-	const CELADONCITY_TEACHER1
+	const CELADONCITY_FISHER
 	const CELADONCITY_GRAMPS1
 	const CELADONCITY_GRAMPS2
-	const CELADONCITY_YOUNGSTER1
-	const CELADONCITY_YOUNGSTER2
-	const CELADONCITY_TEACHER2
-	const CELADONCITY_LASS
+	const CELADONCITY_COOLTRAINER_F
+	const CELADONCITY_TEACHER
+	const CELADONCITY_DELINQUENT
+	const CELADONCITY_BIKER
+	const CELADONCITY_ROUGHNECK
+	const CELADONCITY_BIKER2
+	const CELADONCITY_BIKER3
+	const CELADONCITY_ROUGHNECK2
+	const CELADONCITY_DELINQUENT2
 
 CeladonCity_MapScripts:
 	db 0 ; scene scripts
@@ -19,13 +24,17 @@ CeladonCity_MapScripts:
 	setflag ENGINE_FLYPOINT_CELADON
 	return
 
-CeladonCityFisherScript:
-	jumptextfaceplayer CeladonCityFisherText
+CeladonCityYoungster1Script:
+	jumptextfaceplayer CeladonCityYoungster1Text
 
 CeladonCityPoliwrath:
+	refreshscreen
+	pokepic POLIWAG
+	cry POLIWAG
+	waitbutton
+	closepokepic
 	opentext
 	writetext CeladonCityPoliwrathText
-	cry POLIWRATH
 	waitbutton
 	closetext
 	end
@@ -37,19 +46,36 @@ CeladonCityGramps1Script:
 	jumptextfaceplayer CeladonCityGramps1Text
 
 CeladonCityGramps2Script:
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .CeladonCityGramps2
 	jumptextfaceplayer CeladonCityGramps2Text
 
-CeladonCityYoungster1Script:
-	jumptextfaceplayer CeladonCityYoungster1Text
+.CeladonCityGramps2:
+	jumptextfaceplayer CeladonCityGramps3Text
 
-CeladonCityYoungster2Script:
-	jumptextfaceplayer CeladonCityYoungster2Text
+CeladonCityCooltrainerFScript:
+	jumptextfaceplayer CeladonCityCooltrainerFText
 
-CeladonCityTeacher2Script:
-	jumptextfaceplayer CeladonCityTeacher2Text
+CeladonCityDelinquentScript:
+	jumptextfaceplayer CeladonCityDelinquentText
 
-CeladonCityLassScript:
-	jumptextfaceplayer CeladonCityLassText
+CeladonCityDelinquent2Script:
+	jumptextfaceplayer CeladonCityDelinquent2Text
+
+CeladonCityBikerScript:
+	jumptextfaceplayer CeladonCityBikerText
+
+CeladonCityBiker2Script:
+	jumptextfaceplayer CeladonCityBiker2Text
+
+CeladonCityBiker3Script:
+	jumptextfaceplayer CeladonCityBiker3Text
+
+CeladonCityRoughneckScript:
+	jumptextfaceplayer CeladonCityRoughneckText
+
+CeladonCityGuardScript:
+	jumptextfaceplayer CeladonCityGuardText
 
 CeladonCitySign:
 	jumptext CeladonCitySignText
@@ -69,180 +95,226 @@ CeladonCityGameCornerSign:
 CeladonCityTrainerTips:
 	jumptext CeladonCityTrainerTipsText
 
+CeladonCityFisherScript:
+	jumptextfaceplayer CeladonCityFisherText
+
 CeladonCityPokecenterSign:
 	jumpstd pokecentersign
 
 CeladonCityHiddenPpUp:
 	hiddenitem PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
-CeladonCityFisherText:
-	text "This POLIWRATH is"
-	line "my partner."
+CeladonCityYoungster1Text:
+	text "This Poliwag is my"
+	line "partner."
 
 	para "I wonder if it'll"
 	line "ever evolve into a"
-	cont "frog #MON."
+	cont "frog #mon."
+
+	para "I've got a Water"
+	line "Stone for it."
+	done
+
+CeladonCityFisherText:
+	text "I'd like to do"
+	line "my fire-breathing"
+	cont "tricks for the"
+	cont "people,"
+
+	para "but I feel like"
+	line "that would be"
+	cont "insensitive,"
+
+	para "given the events"
+	line "of the last two"
+	cont "years…"
 	done
 
 CeladonCityPoliwrathText:
-	text "POLIWRATH: Croak!"
+	text "Poliwag: Poli!"
 	done
 
 CeladonCityTeacher1Text:
-	text "I lost at the slot"
-	line "machines again…"
-
-	para "We girls also play"
-	line "the slots now."
-
-	para "You should check"
-	line "them out too."
+	text "Since the Feds are"
+	line "gone, I hope I can"
+	cont "start teaching"
+	cont "again."
 	done
 
 CeladonCityGramps1Text:
-	text "GRIMER have been"
-	line "appearing lately."
+	text "I had hoped I"
+	line "would be safe from"
+	cont "from the Feds."
 
-	para "See that pond out"
-	line "in front of the"
-
-	para "house? GRIMER live"
-	line "there now."
-
-	para "Where did they"
-	line "come from? This is"
-	cont "a serious problem…"
+	para "Looking at my"
+	line "windows, it would"
+	cont "appear not…"
 	done
 
 CeladonCityGramps2Text:
-	text "Nihihi! This GYM"
-	line "is great! Only"
+	text "The Feds are such"
+	line "idiots!"
 
-	para "girls are allowed"
-	line "here!"
+	para "This greenhouse is"
+	line "protected by a"
+	cont "tree that those"
+	cont "morons can't seem"
+	cont "to cut down!"
 	done
 
-CeladonCityYoungster1Text:
-	text "Want to know a"
-	line "secret?"
-
-	para "CELADON MANSION"
-	line "has a hidden back"
-	cont "door."
+CeladonCityGramps3Text:
+	text "Nihihi! Now that"
+	line "those Feds are"
+	cont "gone, I can get"
+	cont "back to looking"
+	cont "at the ladies in"
+	cont "the greenhouse!"
 	done
 
-CeladonCityYoungster2Text:
-	text "They're holding an"
-	line "eating contest at"
-	cont "the restaurant."
+CeladonCityCooltrainerFText:
+	text "Our poor city was"
+	line "hit hard…"
 
-	para "Just watching them"
-	line "go at it makes me"
-	cont "feel bloated…"
+	para "It'll take a lot of"
+	line "work to get this"
+	cont "place back in good"
+	cont "shape."
 	done
 
-CeladonCityTeacher2Text:
-	text "CELADON DEPT.STORE"
-	line "has the biggest"
+CeladonCityDelinquentText:
+	text "We smashed out the"
+	line "windows in this"
+	cont "city."
 
-	para "and best selection"
-	line "of merchandise."
-
-	para "If you can't get"
-	line "it there, you"
-
-	para "can't get it any-"
-	line "where."
-
-	para "Gee… I sound like"
-	line "a sales clerk."
+	para "Get in our way,"
+	line "and we'll smash you"
+	cont "too!"
 	done
 
-CeladonCityLassText_Mobile:
-; unused
-	text "I love being"
-	line "surrounded by tall"
-	cont "buildings!"
+CeladonCityBikerText:
+	text "This city is such"
+	line "a dump!"
 
-	para "Isn't it true that"
-	line "GOLDENROD #MON"
-
-	para "CENTER was made"
-	line "much, much bigger?"
-
-	para "That is so neat!"
-	line "I wish we had a"
-
-	para "place like that in"
-	line "KANTO…"
+	para "…Oh yeah. That was"
+	line "our fault. Heh!"
 	done
 
-CeladonCityLassText:
-	text "Looking at the"
-	line "ground while I was"
+CeladonCityBiker2Text:
+	text "Whoo!"
 
-	para "walking made me"
-	line "dizzy."
+	para "Feds rule!"
+
+	para "This city is ours!"
 	done
 
 CeladonCitySignText:
-	text "CELADON CITY"
+	text "Celadon City"
 
 	para "The City of"
 	line "Rainbow Dreams"
 	done
 
 CeladonGymSignText:
-	text "CELADON CITY"
-	line "#MON GYM"
-	cont "LEADER: ERIKA"
+	text "Celadon City"
+	line "#mon Gym"
+	cont "Leader: …"
 
-	para "The Nature-Loving"
-	line "Princess"
+	para "The rest of the"
+	line "text is illegible…"
+
+	para "Looks like there's"
+	line "graffiti here…"
+
+	para "Kanto Federation"
+	line "hideout."
+
+	para "Go away!"
+
+	para "Feds rule!"
 	done
 
 CeladonCityDeptStoreSignText:
 	text "Find What You"
-	line "Need at CELADON"
-	cont "DEPT.STORE!"
+	line "Need at Celadon"
+	cont "Dept.Store!"
 	done
 
 CeladonCityMansionSignText:
-	text "CELADON MANSION"
+	text "Celadon Mansion"
 	done
 
 CeladonCityGameCornerSignText:
-	text "The Playground for"
-	line "Everybody--CELADON"
-	cont "GAME CORNER"
+	text "Celadon City"
+	line "Botanical Garden"
 	done
 
 CeladonCityTrainerTipsText:
-	text "TRAINER TIPS"
+	text "Trainer Tips"
 
-	para "GUARD SPEC."
-	line "protects #MON"
+	para "Guard Spec."
+	line "protects #mon"
 
-	para "against SPECIAL"
+	para "against Special"
 	line "attacks such as"
 	cont "fire and water."
 
 	para "Get your items at"
-	line "CELADON DEPT."
-	cont "STORE!"
+	line "Celadon Dept."
+	cont "Store!"
+	done
+
+CeladonCityGuardText:
+	text "I'll beat the tar"
+	line "outta you if you"
+	cont "don't back off!"
+	done
+
+CeladonCityBiker3Text:
+	text "Argh! That stupid"
+	line "building over"
+	cont "there is mocking"
+	cont "us!"
+
+	para "It's making me"
+	line "mad!"
+
+	para "We should smash"
+	line "its windows!"
+
+	para "If only we could"
+	line "get over there…"
+	done
+
+CeladonCityRoughneckText:
+	text "You like all the"
+	line "graffiti?"
+
+	para "I came up with the"
+	line "design!"
+
+	para "The boss loved it!"
+	done
+
+CeladonCityDelinquent2Text:
+	text "You know, it's odd"
+	line "to say, but I like"
+	cont "walking amongst"
+	cont "the dead trees."
+
+	para "It's calming."
 	done
 
 CeladonCity_MapEvents:
 	db 0, 0 ; filler
 
-	db 9 ; warp events
+	db 8 ; warp events
 	warp_event  4,  9, CELADON_DEPT_STORE_1F, 1
 	warp_event 16,  9, CELADON_MANSION_1F, 1
 	warp_event 16,  3, CELADON_MANSION_1F, 3
 	warp_event 17,  3, CELADON_MANSION_1F, 3
 	warp_event 29,  9, CELADON_POKECENTER_1F, 1
-	warp_event 18, 19, CELADON_GAME_CORNER, 1
-	warp_event 23, 19, CELADON_GAME_CORNER_PRIZE_ROOM, 1
+	warp_event 20, 19, FED_HIDEOUT_1F, 1
 	warp_event 10, 29, CELADON_GYM, 1
 	warp_event 25, 29, CELADON_CAFE, 1
 
@@ -250,21 +322,26 @@ CeladonCity_MapEvents:
 
 	db 8 ; bg events
 	bg_event 23, 21, BGEVENT_READ, CeladonCitySign
-	bg_event 11, 31, BGEVENT_READ, CeladonGymSign
+	bg_event 19, 21, BGEVENT_READ, CeladonGymSign
 	bg_event  6,  9, BGEVENT_READ, CeladonCityDeptStoreSign
 	bg_event 13,  9, BGEVENT_READ, CeladonCityMansionSign
-	bg_event 19, 21, BGEVENT_READ, CeladonCityGameCornerSign
+	bg_event 11, 31, BGEVENT_READ, CeladonCityGameCornerSign
 	bg_event 29, 21, BGEVENT_READ, CeladonCityTrainerTips
 	bg_event 30,  9, BGEVENT_READ, CeladonCityPokecenterSign
 	bg_event 37, 21, BGEVENT_ITEM, CeladonCityHiddenPpUp
 
-	db 9 ; object events
-	object_event 26, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityFisherScript, -1
-	object_event 27, 11, SPRITE_POLIWAG, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonCityPoliwrath, -1
-	object_event 20, 24, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityTeacher1Script, -1
+	db 14 ; object events
+	object_event 26, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityYoungster1Script, EVENT_SAFFRON_CITY_CIVILLIANS
+	object_event 27, 11, SPRITE_POLIWAG, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityPoliwrath, EVENT_SAFFRON_CITY_CIVILLIANS
+	object_event 20, 24, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityFisherScript, EVENT_SAFFRON_CITY_CIVILLIANS
 	object_event 14, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CeladonCityGramps1Script, -1
 	object_event  8, 31, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityGramps2Script, -1
-	object_event 18, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonCityYoungster1Script, -1
-	object_event 24, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityYoungster2Script, -1
-	object_event  6, 14, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityTeacher2Script, -1
-	object_event  7, 22, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityLassScript, -1
+	object_event  6, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonCityCooltrainerFScript, EVENT_SAFFRON_CITY_CIVILLIANS
+	object_event 24, 33, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityTeacher1Script, EVENT_SAFFRON_CITY_CIVILLIANS
+	object_event 18, 13, SPRITE_DAISY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityDelinquentScript, EVENT_SAFFRON_CITY_FEDS
+	object_event  7, 22, SPRITE_BIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCityBikerScript, EVENT_SAFFRON_CITY_FEDS
+	object_event 20, 20, SPRITE_ROUGHNECK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonCityGuardScript, EVENT_CELADON_CITY_GUARD
+	object_event 29, 24, SPRITE_BIKER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonCityBiker2Script, EVENT_SAFFRON_CITY_FEDS
+	object_event 16, 29, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CeladonCityBiker3Script, EVENT_SAFFRON_CITY_FEDS
+	object_event  9, 10, SPRITE_ROUGHNECK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonCityRoughneckScript, EVENT_SAFFRON_CITY_FEDS
+	object_event  9,  2, SPRITE_DAISY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCityDelinquent2Script, -1

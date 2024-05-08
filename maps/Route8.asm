@@ -2,7 +2,7 @@
 	const ROUTE8_BIKER1
 	const ROUTE8_BIKER2
 	const ROUTE8_BIKER3
-	const ROUTE8_SUPER_NERD1
+	const ROUTE8_DELINQUENT
 	const ROUTE8_SUPER_NERD2
 	const ROUTE8_FRUIT_TREE
 
@@ -45,7 +45,7 @@ TrainerBikerZeke:
 	end
 
 TrainerSupernerdSam:
-	trainer SUPER_NERD, HERBERT_SUPER_NERD, EVENT_BEAT_SUPER_NERD_SAM, SupernerdSamSeenText, SupernerdSamBeatenText, 0, .Script
+	trainer DELINQUENT, CAROL, EVENT_BEAT_DELINQUENT_CAROL, SupernerdSamSeenText, SupernerdSamBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -55,16 +55,24 @@ TrainerSupernerdSam:
 	closetext
 	end
 
-TrainerSupernerdTom:
-	trainer SUPER_NERD, TOM, EVENT_BEAT_SUPER_NERD_TOM, SupernerdTomSeenText, SupernerdTomBeatenText, 0, .Script
+;TrainerSupernerdTom:
+;	trainer SUPER_NERD, TOM, EVENT_BEAT_SUPER_NERD_TOM, SupernerdTomSeenText, SupernerdTomBeatenText, 0, .Script
 
-.Script:
-	endifjustbattled
-	opentext
-	writetext SupernerdTomAfterBattleText
-	waitbutton
-	closetext
-	end
+;.Script:
+;	endifjustbattled
+;	opentext
+;	writetext SupernerdTomAfterBattleText
+;	waitbutton
+;	closetext
+;	end
+
+Route8Supernerd:
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .Route8Supernerd2
+	jumptextfaceplayer Route8SupernerdText
+
+.Route8Supernerd2:
+	jumptextfaceplayer Route8SupernerdText2
 
 Route8LockedDoor:
 	jumptext Route8LockedDoorText
@@ -76,8 +84,8 @@ Route8FruitTree:
 	fruittree FRUITTREE_ROUTE_8
 
 BikerDwayneSeenText:
-	text "We're the KANTO"
-	line "#MON FEDERATION"
+	text "We're the Kanto"
+	line "#mon Federation"
 	cont "trainer group."
 
 	para "We'll drive you"
@@ -89,16 +97,16 @@ BikerDwayneBeatenText:
 	done
 
 BikerDwayneAfterBattleText:
-	text "The KANTO #MON"
-	line "FEDERATION will"
+	text "The Kanto #mon"
+	line "Federation will"
 	cont "never fall!"
 	done
 
 BikerHarrisSeenText:
 	text "The cops shut down"
-	line "our UNDERGROUND"
+	line "our Underground"
 
-	para "PATH! That really"
+	para "Path! That really"
 	line "fries me!"
 	done
 
@@ -108,13 +116,13 @@ BikerHarrisBeatenText:
 
 BikerHarrisAfterBattleText:
 	text "Wiped out by some"
-	line "punk from JOHTO…"
+	line "punk from Johto…"
 	done
 
 BikerZekeSeenText:
-	text "We're the KANTO"
-	line "#MON FEDERA-"
-	cont "TION!"
+	text "We're the Kanto"
+	line "#mon Federa-"
+	cont "tion!"
 	cont "Right on!"
 	done
 
@@ -129,35 +137,56 @@ BikerZekeAfterBattleText:
 	done
 
 SupernerdSamSeenText:
-	text "How does the MAG-"
-	line "NET TRAIN work?"
+	text "Those idiots are"
+	line "always apologizing"
+	cont "to people."
+
+	para "How are we going"
+	line "to keep up our"
+	cont "tough image?"
 	done
 
 SupernerdSamBeatenText:
-	text "I just want to see"
-	line "the MAGNET TRAIN…"
+	text "Ah! I'm so sorry!"
 	done
 
 SupernerdSamAfterBattleText:
-	text "The power of mag-"
-	line "nets is awesome!"
+	text "Great, now they"
+	line "got me doing it!"
 	done
 
-SupernerdTomSeenText:
-	text "Hm… You've got"
-	line "many GYM BADGES."
+Route8SupernerdText:
+	text "I wouldn't go any"
+	line "further west."
+
+	para "The Feds have the"
+	line "entrance to"
+	cont "Saffron City well"
+	cont "guarded."
 	done
 
-SupernerdTomBeatenText:
-	text "Just as I thought…"
-	line "You're tough!"
+Route8SupernerdText2:
+	text "With their boss"
+	line "gone, Saffron"
+	cont "City is easy to"
+	cont "get to now."
 	done
 
-SupernerdTomAfterBattleText:
-	text "GYM BADGES give"
-	line "you advantages in"
-	cont "battles."
-	done
+;SupernerdTomSeenText:
+;	text "Hm… You've got"
+;	line "many GYM BADGES."
+;	done
+
+;SupernerdTomBeatenText:
+;	text "Just as I thought…"
+;	line "You're tough!"
+;	done
+
+;SupernerdTomAfterBattleText:
+;	text "GYM BADGES give"
+;	line "you advantages in"
+;	cont "battles."
+;	done
 
 Route8LockedDoorText:
 	text "It's locked…"
@@ -184,9 +213,9 @@ Route8_MapEvents:
 	bg_event 10,  5, BGEVENT_READ, Route8LockedDoor
 
 	db 6 ; object events
-	object_event 10,  8, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 5, TrainerBikerDwayne, -1
-	object_event 10,  9, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerBikerHarris, -1
-	object_event 10, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerBikerZeke, -1
-	object_event 23,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdSam, -1
-	object_event 31, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSupernerdTom, -1
+	object_event 12, 14, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerBikerDwayne, -1
+	object_event  3, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 5, TrainerBikerHarris, -1
+	object_event 19,  7, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerBikerZeke, -1
+	object_event 26,  4, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdSam, -1
+	object_event 32, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, Route8Supernerd, -1
 	object_event 33,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route8FruitTree, -1

@@ -4,170 +4,205 @@ KantoWaterWildMons:
 
 	map_id TOHJO_FALLS
 	db 4 percent ; encounter rate
-	dbw 20, GOLDEEN
-	dbw 20, SLOWPOKE
-	dbw 20, SEAKING
-	dbw 20, SEAKING
+	dbw 45, SEADRA
+	dbw 50, SEAKING
+	dbw 45, CURSOLA
+	dbw 50, TENTACRUEL
 
 	map_id VERMILION_PORT
 	db 2 percent ; encounter rate
-	dbw 35, TENTACOOL
-	dbw 30, TENTACOOL
-	dbw 35, TENTACRUEL
-	dbw 35, TENTACRUEL
+	dbw 65, TENTACOOL
+	dbw 65, TENTACOOL
+	dbw 65, TENTACRUEL
+	dbw 65, TENTACRUEL
 
 	map_id ROUTE_4
 	db 4 percent ; encounter rate
-	dbw 10, GOLDEEN
-	dbw 5, GOLDEEN
-	dbw 10, SEAKING
-	dbw 10, SEAKING
+	dbw 64, GOLDEEN
+	dbw 64, GOLDEEN
+	dbw 64, SEAKING
+	dbw 64, SEAKING
 
 	map_id ROUTE_6
 	db 2 percent ; encounter rate
-	dbw 10, PSYDUCK
-	dbw 5, PSYDUCK
-	dbw 10, GOLDUCK
-	dbw 10, GOLDUCK
+	dbw 64, PSYDUCK
+	dbw 64, PSYDUCK
+	dbw 64, GOLDUCK
+	dbw 64, GOLDUCK
 
 	map_id ROUTE_9
 	db 4 percent ; encounter rate
-	dbw 15, GOLDEEN
-	dbw 10, GOLDEEN
-	dbw 15, SEAKING
-	dbw 15, SEAKING
+	dbw 64, GOLDEEN
+	dbw 64, GOLDEEN
+	dbw 64, SEAKING
+	dbw 64, SEAKING
 
 	map_id ROUTE_10_NORTH
 	db 4 percent ; encounter rate
-	dbw 15, GOLDEEN
-	dbw 10, GOLDEEN
-	dbw 15, SEAKING
-	dbw 15, SEAKING
+	dbw 64, GOLDEEN
+	dbw 64, GOLDEEN
+	dbw 64, SEAKING
+	dbw 64, SEAKING
 
 	map_id ROUTE_12
 	db 6 percent ; encounter rate
-	dbw 25, TENTACOOL
-	dbw 25, QUAGSIRE
-	dbw 25, TENTACRUEL
-	dbw 25, TENTACRUEL
+	dbw 64, TENTACOOL
+	dbw 64, QUAGSIRE
+	dbw 64, TENTACRUEL
+	dbw 64, TENTACRUEL
 
 	map_id ROUTE_13
 	db 6 percent ; encounter rate
-	dbw 25, TENTACOOL
-	dbw 25, QUAGSIRE
-	dbw 25, TENTACRUEL
-	dbw 25, TENTACRUEL
+	dbw 64, TENTACOOL
+	dbw 64, QUAGSIRE
+	dbw 64, TENTACRUEL
+	dbw 64, TENTACRUEL
 
 	map_id ROUTE_19
 	db 6 percent ; encounter rate
-	dbw 35, TENTACOOL
-	dbw 30, TENTACOOL
-	dbw 35, TENTACRUEL
-	dbw 25, TENTACRUEL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACRUEL
+	dbw 63, TENTACRUEL
 
 	map_id ROUTE_20
 	db 6 percent ; encounter rate
-	dbw 35, TENTACOOL
-	dbw 30, TENTACOOL
-	dbw 35, TENTACRUEL
-	dbw 25, TENTACRUEL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACRUEL
+	dbw 63, TENTACRUEL
 
 	map_id ROUTE_21
 	db 6 percent ; encounter rate
-	dbw 35, TENTACOOL
-	dbw 30, TENTACOOL
-	dbw 35, TENTACRUEL
-	dbw 25, TENTACRUEL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACRUEL
+	dbw 63, TENTACRUEL
 
 	map_id ROUTE_22
 	db 2 percent ; encounter rate
-	dbw 10, POLIWAG
-	dbw 5, POLIWAG
-	dbw 10, POLIWHIRL
-	dbw 10, POLIWHIRL
+	dbw 62, POLIWAG
+	dbw 62, POLIWAG
+	dbw 62, POLIWHIRL
+	dbw 62, POLIWHIRL
 
 	map_id ROUTE_24
 	db 4 percent ; encounter rate
-	dbw 10, GOLDEEN
-	dbw 5, GOLDEEN
-	dbw 10, SEAKING
-	dbw 10, SEAKING
+	dbw 65, POLIWHIRL
+	dbw 65, SEAKING
+	dbw 65, AZUMARILL
+	dbw 65, POLITOED
 
 	map_id ROUTE_25
 	db 4 percent ; encounter rate
-	dbw 10, GOLDEEN
-	dbw 5, GOLDEEN
-	dbw 10, SEAKING
-	dbw 10, SEAKING
+	dbw 65, POLIWHIRL
+	dbw 65, SEAKING
+	dbw 65, AZUMARILL
+	dbw 65, POLITOED
 
 	map_id ROUTE_26
 	db 6 percent ; encounter rate
-	dbw 30, TENTACOOL
-	dbw 25, TENTACOOL
-	dbw 30, TENTACRUEL
-	dbw 25, TENTACRUEL
+	dbw 45, SEADRA
+	dbw 50, SEAKING
+	dbw 45, CURSOLA
+	dbw 50, TENTACRUEL
 
 	map_id ROUTE_27
 	db 6 percent ; encounter rate
-	dbw 20, TENTACOOL
-	dbw 15, TENTACOOL
-	dbw 20, TENTACRUEL
-	dbw 25, TENTACRUEL
+	dbw 45, SEADRA
+	dbw 50, SEAKING
+	dbw 45, CURSOLA
+	dbw 50, TENTACRUEL
 
 	map_id ROUTE_28
 	db 2 percent ; encounter rate
-	dbw 40, POLIWAG
-	dbw 35, POLIWAG
-	dbw 40, POLIWHIRL
-	dbw 40, POLIWHIRL
+	dbw 72, POLIWHIRL
+	dbw 72, POLIWHIRL
+	dbw 72, POLITOED
+	dbw 72, POLIWRATH
 
 	map_id PALLET_TOWN
 	db 6 percent ; encounter rate
-	dbw 35, TENTACOOL
-	dbw 30, TENTACOOL
-	dbw 35, TENTACRUEL
-	dbw 35, TENTACRUEL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACRUEL
+	dbw 63, TENTACRUEL
 
 	map_id VIRIDIAN_CITY
 	db 2 percent ; encounter rate
-	dbw 10, POLIWAG
-	dbw 5, POLIWAG
-	dbw 10, POLIWHIRL
-	dbw 40, POLIWHIRL
+	dbw 62, POLIWAG
+	dbw 62, POLIWAG
+	dbw 62, POLIWHIRL
+	dbw 62, POLIWHIRL
 
 	map_id CERULEAN_CITY
 	db 4 percent ; encounter rate
-	dbw 10, GOLDEEN
-	dbw 5, GOLDEEN
-	dbw 10, SEAKING
-	dbw 10, SEAKING
+	dbw 65, POLIWHIRL
+	dbw 65, SEAKING
+	dbw 65, AZUMARILL
+	dbw 65, POLITOED
 
 	map_id VERMILION_CITY
 	db 6 percent ; encounter rate
-	dbw 35, TENTACOOL
-	dbw 30, TENTACOOL
-	dbw 35, TENTACRUEL
-	dbw 35, TENTACRUEL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACOOL
+	dbw 63, TENTACRUEL
+	dbw 63, TENTACRUEL
 
 	map_id CELADON_CITY
 	db 2 percent ; encounter rate
-	dbw 20, GRIMER
-	dbw 15, GRIMER
-	dbw 15, MUK
-	dbw 15, MUK
+	dbw 70, GRIMER
+	dbw 70, GRIMER
+	dbw 72, MUK
+	dbw 72, MUK
 
 	map_id FUCHSIA_CITY
 	db 2 percent ; encounter rate
-	dbw 20, MAGIKARP
-	dbw 15, MAGIKARP
-	dbw 10, MAGIKARP
-	dbw 10, MAGIKARP
+	dbw 70, MAGIKARP
+	dbw 70, MAGIKARP
+	dbw 70, MAGIKARP
+	dbw 70, MAGIKARP
 
 	map_id CINNABAR_ISLAND
 	db 6 percent ; encounter rate
-	dbw 35, TENTACOOL
-	dbw 30, TENTACOOL
-	dbw 35, TENTACRUEL
-	dbw 35, TENTACRUEL
+	dbw 62, SEADRA
+	dbw 62, GYARADOS
+	dbw 65, TENTACRUEL
+	dbw 65, KINGDRA
+
+	map_id CERULEAN_CAVE_1F
+	db 6 percent
+	dbw 65, SEAKING
+	dbw 65, GOLDUCK
+	dbw 68, SLOWBRO
+	dbw 68, SLOWKING
+
+	map_id CERULEAN_CAVE_B1F
+	db 6 percent
+	dbw 65, SEAKING
+	dbw 65, GOLDUCK
+	dbw 68, SLOWBRO
+	dbw 68, SLOWKING
+
+	map_id CERULEAN_CAVE_2F
+	db 6 percent
+	dbw 65, SEAKING
+	dbw 65, GOLDUCK
+	dbw 68, SLOWBRO
+	dbw 68, SLOWKING
+
+	map_id SEAFOAM_ISLAND_B3F
+	db 6 percent
+	dbw 65, DEWGONG
+	dbw 65, CLOYSTER
+	dbw 68, GOLDUCK
+	dbw 68, SLOWBRO
+
+	map_id SEAFOAM_ISLAND_B4F
+	db 6 percent
+	dbw 65, DEWGONG
+	dbw 65, CLOYSTER
+	dbw 68, GOLDUCK
+	dbw 68, SLOWBRO
 
 	db -1 ; end

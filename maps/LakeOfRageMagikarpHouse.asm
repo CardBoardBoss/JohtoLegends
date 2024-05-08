@@ -10,14 +10,12 @@ LakeOfRageMagikarpHouse_MapScripts:
 MagikarpLengthRaterScript:
 	faceplayer
 	opentext
-	checkevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	iftrue .GetReward
+	checkevent EVENT_DECO_MAGIKARP_DOLL
+	iftrue .GotReward
 	checkevent EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
 	iftrue .AskedForMagikarp
-	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue .ClearedRocketHideout
 	checkevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
-	iftrue .ExplainedHistory
+	iftrue .ClearedRocketHideout
 	writetext MagikarpLengthRaterText_LakeOfRageHistory
 	waitbutton
 	closetext
@@ -53,17 +51,16 @@ MagikarpLengthRaterScript:
 .GetReward:
 	writetext MagikarpLengthRaterText_Memento
 	buttonsound
-	verbosegiveitem ELIXER
-	iffalse .NoRoom
-	writetext MagikarpLengthRaterText_Bonus
+	waitsfx
+	setevent EVENT_DECO_MAGIKARP_DOLL
+	writetext PlayerGotMagikarpDollText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+.GotReward:
+	writetext MagikarpLengthRaterText_Doll
 	waitbutton
 	closetext
-	clearevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	end
-
-.NoRoom:
-	closetext
-	setevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
 	end
 
 .TooShort:
@@ -158,13 +155,7 @@ MagikarpLengthRaterText_MenInBlack:
 	done
 
 MagikarpLengthRaterText_WorldsLargestMagikarp:
-	text "Lake Of Rage is"
-	line "back to normal."
-
-	para "The Magikarp have"
-	line "returned."
-
-	para "I may yet realize"
+	text "I may yet realize"
 	line "my dream of see-"
 	cont "ing the world's"
 	cont "largest Magikarp."
@@ -275,6 +266,19 @@ OldRodText_No:
 OldRodText_After:
 	text "Yo, kid. How are"
 	line "they biting?"
+	done
+
+PlayerGotMagikarpDollText:
+	text "<PLAYER> received"
+	line "Magikarp Doll!"
+	done
+
+MagikarpLengthRaterText_Doll:
+	text "That's a Magikarp"
+	line "Doll!"
+
+	para "Display it with"
+	line "pride!"
 	done
 
 LakeOfRageMagikarpHouse_MapEvents:

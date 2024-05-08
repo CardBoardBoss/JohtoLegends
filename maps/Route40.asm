@@ -44,8 +44,19 @@ TrainerSwimmerfAngie:
 	trainer SWIMMERF, ANGIE, EVENT_BEAT_SWIMMERF_ANGIE, SwimmerfAngieSeenText, SwimmerfAngieBeatenText, 0, .Script
 
 .Script:
-	endifjustbattled
 	opentext
+	checkevent EVENT_DECO_STARMIE_DOLL
+	iftrue .GotStarmieDoll
+	setevent EVENT_DECO_STARMIE_DOLL
+	writetext GiveStarmieDollText
+	buttonsound
+	waitsfx
+	writetext PlayerGotStarmieDollText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	buttonsound
+	pause 15
+.GotStarmieDoll:
 	writetext SwimmerfAngieAfterBattleText
 	waitbutton
 	closetext
@@ -178,9 +189,10 @@ SwimmermDerrickBeatenText:
 SwimmermDerrickAfterBattleText:
 	text "I hear in other"
 	line "regions, some"
-	cont "people are attack-"
+	cont "people are"
 
-	para "ed by Sharpedo!"
+	para "attacked by"
+	line "Sharpedo!"
 	done
 
 BugCatcherArthurSeenText:
@@ -211,7 +223,8 @@ BugCatcherArthurAfterBattleText2: ; unused
 	para "Just keep swim-"
 	line "ming. Usually in"
 	cont "a sing-songy"
-	cont "voice."
+
+	para "voice."
 	done
 
 LassArielleSeenText:
@@ -251,7 +264,8 @@ SwimmerfAngieAfterBattleText:
 	text "Pollution caused"
 	line "them to lose their"
 	cont "beautiful pink"
-	cont "color."
+
+	para "color."
 
 	para "There have been"
 	line "efforts in the"
@@ -287,7 +301,8 @@ Route40PokefanMText_Mobile:
 	text "Hm! Look at all"
 	line "those serious-"
 	cont "looking trainers"
-	cont "streaming in."
+
+	para "streaming in."
 
 	para "What? What?"
 	done
@@ -378,6 +393,19 @@ Route40SignText:
 	line "Olivine City"
 	done
 
+GiveStarmieDollText:
+	text "Here, take this"
+	line "doll!"
+
+	para "It's Starmie, my"
+	line "favorite #mon!"
+	done
+
+PlayerGotStarmieDollText:
+	text "<PLAYER> received"
+	line "Starmie Doll!"
+	done
+
 Route40_MapEvents:
 	db 0, 0 ; filler
 
@@ -399,7 +427,7 @@ Route40_MapEvents:
 	object_event  6,  9, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
 	object_event  7,  8, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Rock, -1
 	object_event 11, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40Lass1Script, -1
-	object_event  8, 10, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
+	object_event  8, 10, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
 	object_event  7,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route40PokefanMScript, -1
 	object_event 13,  4, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route40Lass2Script, -1
 	object_event 16,  9, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route40StandingYoungsterScript, EVENT_BATTLE_TOWER_OUTSIDE_SAILOR

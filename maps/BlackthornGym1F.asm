@@ -56,6 +56,7 @@ BlackthornGymMasterScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MASTER
+	setevent EVENT_DECO_BIG_SALAMENCE_DOLL
 	opentext
 	writetext MasterText_Complete
 	waitbutton
@@ -65,10 +66,12 @@ BlackthornGymMasterScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_RISINGBADGE
+	setflag ENGINE_BEAT_MASTER
+	loadmem wLevelCap, 60
 	readvar VAR_BADGES
 .FightDone:
 	checkflag ENGINE_BEAT_MASTER
-	iftrue .Rematch
+	iffalse .Rematch
 	checkevent EVENT_GOT_TM24_DRAGONBREATH
 	iftrue .GotTM24
 	setevent EVENT_BEAT_DRAGON_TAMER_M_DEVIN
@@ -98,12 +101,26 @@ BlackthornGymMasterScript:
 	end
 
 .Rematch:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .PostGameMaster
 	writetext MasterRematchText
 	waitbutton
 	closetext
 	winlosstext MasterWinText, MasterLastMonText
 	loadtrainer MASTER, MASTER1
+	startbattle
 	reloadmapafterbattle
+	sjump .AfterMasterRematch
+
+.PostGameMaster:
+	writetext MasterPostGameText
+	waitbutton
+	closetext
+	winlosstext MasterWinText, MasterLastMonText
+	loadtrainer MASTER, MASTER2
+	startbattle
+	reloadmapafterbattle
+.AfterMasterRematch:
 	opentext
 	writetext MasterBeatenAgainText
 	waitbutton
@@ -398,6 +415,25 @@ MasterBeatenAgainText:
 	text "Perhaps you are an"
 	line "even greater"
 	cont "master than I!"
+	done
+
+MasterPostGameText:
+	text "I am so proud of"
+	line "you, <PLAYER>."
+
+	para "You conquered the"
+	line "#mon League,"
+
+	para "and returned a"
+	line "Champion."
+
+	para "Please do me the"
+	line "honor and battle"
+	cont "me."
+
+	para "Give your old"
+	line "master a good"
+	cont "battle."
 	done
 
 BlackthornGym1F_MapEvents:

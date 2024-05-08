@@ -9,6 +9,7 @@ TreeMons:
 	dw TreeMonSet_Forest
 	dw TreeMonSet_Rock
 	dw TreeMonSet_Route_47
+	dw TreeMonSet_Viridian_Forest
 
 ; Two tables each (common, rare).
 ; Structure:
@@ -56,8 +57,7 @@ TreeMonSet_Route:
 	dbbw 50, 10, HOOTHOOT
 	dbbw 15, 10, PINECO
 	dbbw 15, 10, PINECO
-;	dbbw 10, 10, SWABLU
-	dbbw 10, 10, PINECO
+	dbbw 10, 10, SWABLU
 	dbbw  5, 10, EXEGGCUTE
 	dbbw  5, 10, EXEGGCUTE
 	db -1
@@ -65,8 +65,7 @@ TreeMonSet_Route:
 	dbbw 50, 10, HOOTHOOT
 	dbbw 15, 10, PINECO
 	dbbw 15, 10, PINECO
-;	dbbw 10, 10, SWABLU
-	dbbw 10, 10, PINECO
+	dbbw 10, 10, SWABLU
 	dbbw  5, 10, EXEGGCUTE
 	dbbw  5, 10, EXEGGCUTE
 	db -1
@@ -95,7 +94,7 @@ TreeMonSet_Lake:
 	dbbw 15, 10, VENONAT
 	dbbw 15, 10, PINECO
 	dbbw 10, 10, EXEGGCUTE
-	dbbw  5, 10, MUNCHLAX
+	dbbw  5, 10, SWABLU
 	dbbw  5, 10, MUNCHLAX
 	db -1
 ; rare
@@ -103,7 +102,7 @@ TreeMonSet_Lake:
 	dbbw 15, 10, PINECO
 	dbbw 15, 10, PINECO
 	dbbw 10, 10, EXEGGCUTE
-	dbbw  5, 10, MUNCHLAX
+	dbbw  5, 10, SWABLU
 	dbbw  5, 10, MUNCHLAX
 	db -1
 
@@ -148,4 +147,22 @@ TreeMonSet_Route_47:
 	dbbw 10, 20, PINSIR
 	dbbw  5, 20, AIPOM
 	dbbw  5, 20, AIPOM
+	db -1
+
+TreeMonSet_Viridian_Forest:
+; common
+	dbbw 50, 60, PIDGEOT
+	dbbw 15, 60, BEEDRILL
+	dbbw 15, 60, BUTTERFREE
+	dbbw 10, 60, VENOMOTH
+	dbbw  5, 60, PINSIR
+	dbbw  5, 60, HERACROSS
+	db -1
+; rare
+	dbbw 50, 60, PIDGEOT
+	dbbw 15, 60, BEEDRILL
+	dbbw 15, 60, BUTTERFREE
+	dbbw 10, 60, VENOMOTH
+	dbbw  5, 60, PINSIR
+	dbbw  5, 60, HERACROSS
 	db -1

@@ -141,7 +141,6 @@ ROMX $32
 	"bank32"
 ROMX $33
 	"Move Animations"
-	"Extra Songs 2"
 ROMX $34
 	"Pic Animations 1"
 ROMX $35
@@ -197,19 +196,13 @@ ROMX $47
 	"Battle Tower"
 ROMX $48
 	"Pic Pointers"
-	"Pics 1"
 ROMX $49
 	"Unown Pic Pointers"
-	"Pics 2"
 ROMX $4a
 	"Trainer Pic Pointers"
-	"Pics 3"
 ROMX $4b
-	"Pics 4"
 ROMX $4c
-	"Pics 5"
 ROMX $4d
-	"Pics 6"
 ROMX $4e
 	"Pics 7"
 ROMX $4f
@@ -310,8 +303,6 @@ ROMX $7d
 ROMX $7e
 	"Crystal Events"
 ROMX $7f
-	org $7de0
-	"Mobile Stadium 2"
 WRAM0
 	"Stack"
 	"Audio RAM"

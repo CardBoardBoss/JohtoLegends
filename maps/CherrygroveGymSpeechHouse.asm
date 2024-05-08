@@ -3,8 +3,8 @@
 
 CherrygroveGymSpeechHouse_MapScripts:
 	db 2 ; scene scripts
-	scene_script .CynthiaMeetsYou ; SCENE_CHERRYGROVECITYHOUSE_NOTHING
-	scene_script .DummyScene1 ; SCENE_CHERRYGROVECITYHOUSE_MEET_CYNTHIA
+	scene_script .DummyScene1 ; SCENE_CHERRYGROVECITYHOUSE_NOTHING
+	scene_script .CynthiaMeetsYou ; SCENE_CHERRYGROVECITYHOUSE_MEET_CYNTHIA
 
 	db 0 ; callbacks
 
@@ -79,6 +79,8 @@ CherrygroveGymSpeechHouse_MapScripts:
 CherrygroveGymSpeechHouseCynthiaScript:
 	faceplayer
 	opentext
+	checkevent EVENT_BEAT_CHALLENGER_CYNTHIA
+	iftrue .PsuedoPassword
 	checkevent EVENT_BEAT_CHERRYGROVE_CYNTHIA
 	iftrue .BeatenCherrygroveCynthia
 	playmusic MUSIC_CYNTHIA_ENCOUNTER
@@ -127,6 +129,15 @@ CherrygroveGymSpeechHouseCynthiaScript:
 	waitbutton
 	closetext
 	end
+
+.PsuedoPassword:
+	writetext PsuedoPasswordText
+	waitbutton
+	closetext
+	end
+
+CherrygroveTelevision:
+	jumpstd televisionscript
 
 CherrygroveCynthiaMovement:
 	big_step DOWN
@@ -214,6 +225,43 @@ CherrygroveCynthiaMeetingText:
 	line "again?"
 	done
 
+PsuedoPasswordText:
+	text "Cynthia: Hello,"
+	line "<PLAYER>."
+
+	para "Our battle at the"
+	line "League was quite"
+	cont "the experience,"
+	cont "wasn't it?"
+
+	para "Tell me, do you"
+	line "ever think about"
+	cont "what it would be"
+	cont "like if you had"
+	cont "started your"
+	cont "journey with a"
+	cont "different #mon?"
+
+	para "I think about it"
+	line "sometimes."
+
+	para "What if you had"
+	line "started with a"
+	cont "Bagon or Gible?"
+
+	para "Is that something"
+	line "you think about at"
+	cont "all?"
+
+	para "To start with a"
+	line "different #mon,"
+	cont "like a PSUEDO"
+	cont "start."
+
+	para "It's interesting,"
+	line "isn't it?"
+	done
+
 CherrygroveGymSpeechHouse_MapEvents:
 	db 0, 0 ; filler
 
@@ -223,9 +271,10 @@ CherrygroveGymSpeechHouse_MapEvents:
 
 	db 0 ; coord events
 
-	db 2 ; bg events
+	db 3 ; bg events
 	bg_event  0,  1, BGEVENT_READ, CherrygroveGymSpeechHouseBookshelf
 	bg_event  1,  1, BGEVENT_READ, CherrygroveGymSpeechHouseBookshelf
+	bg_event  2,  1, BGEVENT_READ, CherrygroveTelevision
 
 	db 1 ; object events
 	object_event  2,  4, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveGymSpeechHouseCynthiaScript, EVENT_CHERRYGROVE_CYNTHIA

@@ -63,6 +63,7 @@ EggMovePointers1:
 	dw NoEggMoves1
 	dw MankeyEggMoves
 	dw NoEggMoves1
+	dw NoEggMoves1
 	dw GrowlitheEggMoves
 	dw NoEggMoves1
 	dw PoliwagEggMoves
@@ -183,6 +184,7 @@ SquirtleEggMoves:
 	dw AQUA_JET
 	dw MUDDY_WATER
 	dw AQUA_RING
+	dw FAKE_OUT
 	dw -1 ; end
 
 PidgeyEggMoves:
@@ -239,6 +241,7 @@ PichuEggMoves:
 	dw THUNDERPUNCH
 	dw VOLT_TACKLE
 	dw ECHOED_VOICE
+	dw FAKE_OUT
 	dw -1 ; end
 
 SandshrewEggMoves:
@@ -526,6 +529,7 @@ SeelEggMoves:
 	dw HORN_DRILL
 	dw SIGNAL_BEAM
 	dw WATER_PULSE
+	dw FAKE_OUT
 	dw -1 ; end
 
 GrimerEggMoves:
@@ -653,6 +657,7 @@ HappinyEggMoves:
 	dw PRESENT
 	dw METRONOME
 	dw HEAL_BELL
+	dw SEISMIC_TOSS
 	dw -1 ; end
 
 TangelaEggMoves:
@@ -700,6 +705,7 @@ MimeJrEggMoves:
 	dw FUTURE_SIGHT
 	dw HYPNOSIS
 	dw MIMIC
+	dw FAKE_OUT
 	dw -1 ; end
 
 ScytherEggMoves:
@@ -716,6 +722,7 @@ ScytherEggMoves:
 SmoochumEggMoves:
 	dw MEDITATE
 	dw ICE_PUNCH
+	dw FAKE_OUT
 	dw -1 ; end
 
 ElekidEggMoves:

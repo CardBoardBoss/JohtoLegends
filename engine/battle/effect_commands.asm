@@ -1571,6 +1571,8 @@ BattleCommand_CheckHit:
 	call GetBattleVar
 	cp EFFECT_ALWAYS_HIT
 	ret z
+	cp EFFECT_VITAL_THROW
+	ret z
 
 	call .StatModifiers
 
@@ -1723,7 +1725,7 @@ BattleCommand_CheckHit:
 
 	bit SUBSTATUS_FLYING, a
 	ld hl, .FlyMoves
-	jr z, .check_move_in_list
+	jr nz, .check_move_in_list
 	ld hl, .DigMoves
 .check_move_in_list
 	; returns z (and a = 0) if the current move is in a given list, or nz (and a = 1) if not
@@ -2805,6 +2807,12 @@ LightBallBoost:
 	ld bc, PIKACHU
 	ld d, LIGHT_BALL
 	call SpeciesItemBoost
+	if RAICHU == (PIKACHU + 1)
+		inc bc
+	else
+		ld bc, RAICHU
+	endc
+	call DoubleStatIfSpeciesHoldingItem
 	pop de
 	pop bc
 	ret
@@ -5746,25 +5754,29 @@ BattleCommand_EndLoop:
 	ret
 
 BattleCommand_FakeOut:
-	ld a, [wAttackMissed]
+	; Only allow this move on the first turn.
+	ldh a, [hBattleTurn]
 	and a
-	ret nz
+	ld hl, wPlayerTurnsTaken
+	ld b, 0
+	jr z, .got_turns_taken
+	ld hl, wEnemyTurnsTaken
+	inc b
+.got_turns_taken
+	; Fail if we didn't move first.
+	ld a, [wEnemyGoesFirst]
+	xor b
+	jr nz, .failed
 
-	call CheckSubstituteOpp
-	jr nz, .fail
+	; Only allow on the first turn.
+	ld a, [hl]
+	dec a
+	ret z
 
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and 1 << FRZ | SLP
-	jr nz, .fail
-
-	call CheckOpponentWentFirst
-	jr z, FlinchTarget
-
-.fail
-	ld a, 1
-	ld [wAttackMissed], a
-	ret
+.failed
+	call AnimateFailedMove
+	call PrintButItFailed
+	jp EndMoveEffect
 
 BattleCommand_FlinchTarget:
 	call CheckSubstituteOpp
@@ -6059,8 +6071,6 @@ BattleCommand_Charge:
 
 INCLUDE "engine/battle/move_effects/focus_energy.asm"
 
-INCLUDE "engine/battle/move_effects/grass_knot.asm"
-
 ;INCLUDE "engine/battle/move_effects/wake_up_slap.asm"
 
 BattleCommand_ConfuseTarget:
@@ -6265,8 +6275,6 @@ EndRechargeOpp:
 	res SUBSTATUS_RECHARGE, [hl]
 	pop hl
 	ret
-
-INCLUDE "engine/battle/move_effects/rage.asm"
 
 INCLUDE "engine/battle/move_effects/mimic.asm"
 
@@ -6820,8 +6828,13 @@ GetUserItem:
 	jr z, .go
 	ld hl, wEnemyMonItem
 .go
+	push hl
+	call IsOpponentItemUsable
+	pop hl
 	ld b, [hl]
-	jp GetItemHeldEffect
+	jr z, GetItemHeldEffect
+	ld bc, 0
+	ret
 
 GetOpponentItem:
 ; Return the effect of the opponent's item in bc, and its id at hl.
@@ -6832,7 +6845,14 @@ GetOpponentItem:
 	ld hl, wBattleMonItem
 .go
 	ld b, [hl]
-	jp GetItemHeldEffect
+
+	; Check if item is usable
+	push hl
+	call IsOpponentItemUsable
+	pop hl
+	jr z, GetItemHeldEffect
+	ld bc, 0
+	ret
 
 GetItemHeldEffect:
 ; Return the effect of item b in bc.

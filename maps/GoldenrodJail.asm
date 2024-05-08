@@ -114,6 +114,8 @@ RocketInJailTalk:
 	opentext
 	checkevent EVENT_ACCEPTED_GRUNTS_REQUEST
 	iftrue .ThanksMan
+	checkevent EVENT_PASSWORD_SINGULAR
+	iftrue .RocketJailSingular
 	writetext GetMeOuttaHereText
 	yesorno
 	iffalse .ComeOnMan
@@ -142,10 +144,28 @@ RocketInJailTalk:
 	closetext
 	end
 
+.RocketJailSingular:
+	writetext GetMeOuttaHereSingularText
+	yesorno
+	iffalse .ComeOnMan
+	writetext ThanksManText
+	waitbutton
+	closetext
+	setevent EVENT_ACCEPTED_GRUNTS_REQUEST
+	end
+
 SecondJailCellTalk:
 	turnobject GOLDENRODJAIL_BURGLAR, DOWN
 	opentext
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .CheaterPassword
 	writetext DangGotCaughtText
+	waitbutton
+	closetext
+	end
+
+.CheaterPassword:
+	writetext CheaterPasswordText
 	waitbutton
 	closetext
 	end
@@ -251,7 +271,7 @@ OfficerGetsBackInPlaceMovement:
 	step LEFT
 	step LEFT
 	step UP
-	step_end
+	step_resume
 
 OfficerGetsInPlaceMovement:
 	step DOWN
@@ -543,6 +563,59 @@ HopeIDidTheRightThingText:
 	cont "letting him go."
 	done
 
+GetMeOuttaHereSingularText:
+	text "Hey, you!"
+
+	para "Remember me?"
+
+	para "I tried to give"
+	line "you a Porygon!"
+
+	para "C'mon, you gotta"
+	line "get me outta here!"
+
+	para "You can vouch for"
+	line "me, right?"
+
+	para "If you testify in"
+	line "my favor, I'll"
+	cont "give you another"
+	cont "gift!"
+
+	para "I swiped this rare"
+	line "thing before I"
+	cont "left."
+
+	para "I was going to"
+	line "pawn it off, but"
+	cont "if it can buy my"
+	cont "freedom, I'll give"
+	cont "it to you!"
+	done
+
+CheaterPasswordText:
+	text "I've heard that"
+	line "somewhere, there's"
+	cont "a mystic Candy"
+	cont "Pouch."
+
+	para "It lets you give"
+	line "your #mon an"
+	cont "unlimited number"
+	cont "of Rare Candies!"
+
+	para "I have no idea how"
+	line "to find it."
+
+	para "Probably not a"
+	line "good idea for me."
+
+	para "I'm already branded"
+	line "a thief, I don't"
+	cont "need to be called"
+	cont "a CHEATER as well."
+	done
+
 GoldenrodJail_MapEvents:
 	db 0, 0 ; filler
 
@@ -572,5 +645,5 @@ GoldenrodJail_MapEvents:
 	object_event 18, 10, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodJailCooltrainerFScript, -1
 	object_event 20,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event 20, 10, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodJailPokefanFScript, -1
-	object_event 17,  5, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodJailOfficer2Script, -1
+	object_event 17,  5, SPRITE_OFFICER_JENNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodJailOfficer2Script, -1
 	object_event  4, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodJailOfficerScript, -1

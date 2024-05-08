@@ -1,6 +1,7 @@
 	object_const_def ; object_event constants
-	const VIRIDIANGYM_BLUE
-	const VIRIDIANGYM_GYM_GUY
+	const VIRIDIANGYM_GIOVANNI
+	const VIRIDIANGYM_COOLTRAINERF
+	const VIRIDIANGYM_COOLTRAINERM
 
 ViridianGym_MapScripts:
 	db 0 ; scene scripts
@@ -10,16 +11,20 @@ ViridianGym_MapScripts:
 ViridianGymBlueScript:
 	faceplayer
 	opentext
+	checkevent EVENT_BEAT_BIKER_BOSS
+	iftrue .GiovanniPost
 	checkflag ENGINE_EARTHBADGE
 	iftrue .FightDone
 	writetext LeaderBlueBeforeText
 	waitbutton
 	closetext
-	winlosstext LeaderBlueWinText, 0
+	winlosstext LeaderBlueWinText, GiovanniLastMonText
 	loadtrainer GIOVANNI, GIOVANNI1
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_BLUE
+	setevent EVENT_BEAT_GIOVANNI
+	setevent EVENT_BEAT_COOLTRAINERF_SOL
+	setevent EVENT_BEAT_COOLTRAINERM_BUMI
 	opentext
 	writetext Text_ReceivedEarthBadge
 	playsound SFX_GET_BADGE
@@ -28,6 +33,24 @@ ViridianGymBlueScript:
 	writetext LeaderBlueAfterText
 	waitbutton
 	closetext
+	setevent EVENT_CERULEAN_GYM_DAISY
+	setevent EVENT_CERULEAN_GYM_LILY
+	setevent EVENT_CERULEAN_GYM_VIOLET
+	setevent EVENT_PEWTER_GYM_FLINT
+	setevent EVENT_CELADON_GYM_ERIKA
+	setevent EVENT_VERMILION_GYM_SURGE
+	setevent EVENT_FUCHSIA_GYM_KOGA
+	setevent EVENT_SAFFRON_GYM_SABRINA
+	setevent EVENT_FIGHTING_DOJO_MASTER
+	setevent EVENT_CINNABAR_GYM_BLAINE
+	setevent EVENT_CELADON_CITY_GUARD
+	setevent EVENT_DECO_CARPET_4
+	setevent EVENT_KANTO_POKECENTER_RIVAL
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	disappear VIRIDIANGYM_GIOVANNI
+	pause 15
+	special FadeInQuickly
 	end
 
 .FightDone:
@@ -36,135 +59,221 @@ ViridianGymBlueScript:
 	closetext
 	end
 
-ViridianGymGuyScript:
-	faceplayer
+.GiovanniPost:
+	checkflag ENGINE_WADE
+	iffalse .GiovanniRematch
+	writetext GiovanniPostText
+	waitbutton
+	closetext
+	end
+
+.GiovanniRematch:
+	writetext GiovanniRematchText
+	waitbutton
+	closetext
+	winlosstext LeaderBlueWinText, GiovanniLastMonText
+	loadtrainer GIOVANNI, GIOVANNI1
+	startbattle
+	reloadmapafterbattle
 	opentext
-	checkevent EVENT_BEAT_BLUE
-	iftrue .ViridianGymGuyWinScript
-	writetext ViridianGymGuyText
+	writetext GiovanniAfterRematchText
+	waitbutton
+	closetext
+	setflag ENGINE_WADE
+	end
+
+GiovanniLastMonText:
+	text "This raw strength…"
+
+	para "I see…"
+	done
+
+TrainerCooltrainerFSol:
+	trainer COOLTRAINERF, SOL, EVENT_BEAT_COOLTRAINERF_SOL, CooltrainerFSolSeenText, CooltrainerFSolBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainerFSolAfterText
 	waitbutton
 	closetext
 	end
 
-.ViridianGymGuyWinScript:
-	writetext ViridianGymGuyWinText
+TrainerCooltrainerMBumi:
+	trainer COOLTRAINERM, BUMI, EVENT_BEAT_COOLTRAINERM_BUMI, CooltrainerMBumiSeenText, CooltrainerMBumiBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext CooltrainerMBumiAfterText
 	waitbutton
 	closetext
 	end
-
-ViridianGymStatue:
-	checkflag ENGINE_EARTHBADGE
-	iftrue .Beaten
-	jumpstd gymstatue1
-
-.Beaten:
-	gettrainername STRING_BUFFER_4, GIOVANNI, GIOVANNI1
-	jumpstd gymstatue2
 
 LeaderBlueBeforeText:
-	text "BLUE: Yo! Finally"
-	line "got here, huh?"
+	text "Giovanni: I must"
+	line "apologize for the"
+	cont "lack of room."
 
-	para "I wasn't in the"
-	line "mood at CINNABAR,"
+	para "This is the best"
+	line "place in the city"
+	cont "to battle."
 
-	para "but now I'm ready"
-	line "to battle you."
+	para "So, you want me to"
+	line "be a Gym Leader?"
 
-	para "…"
+	para "…Heh."
 
-	para "You're telling me"
-	line "you conquered all"
-	cont "the GYMS in JOHTO?"
+	para "Very well then."
 
-	para "Heh! JOHTO's GYMS"
-	line "must be pretty"
-	cont "pathetic then."
+	para "I must say, it's"
+	line "been a while since"
+	cont "I've been excited"
+	cont "to battle."
 
-	para "Hey, don't worry"
-	line "about it."
+	para "Yes, quite a while"
+	line "indeed…"
 
-	para "I'll know if you"
-	line "are good or not by"
+	para "…Sorry, lost in a"
+	line "memory there for a"
+	cont "second."
 
-	para "battling you right"
-	line "now."
-
-	para "Ready, JOHTO"
-	line "CHAMP?"
+	para "I, Giovanni,"
+	line "accept this test!"
 	done
 
 LeaderBlueWinText:
-	text "BLUE: What?"
-
-	para "How the heck did I"
-	line "lose to you?"
-
-	para "…"
-
-	para "Tch, all right…"
-	line "Here, take this--"
-	cont "it's EARTHBADGE."
+	text "Giovanni: I see"
+	line "how you became a"
+	cont "Champion!"
 	done
 
 Text_ReceivedEarthBadge:
-	text "<PLAYER> received"
-	line "EARTHBADGE."
+	text "Giovanni received"
+	line "Earthbadge."
 	done
 
 LeaderBlueAfterText:
-	text "BLUE: …"
+	text "Giovanni: …So this"
+	line "was the badge of"
+	cont "my predecessor…"
 
-	para "All right, I was"
-	line "wrong. You're the"
+	para "I like it."
 
-	para "real deal. You are"
-	line "a good trainer."
+	para "Green, like the"
+	line "plants that grow"
+	cont "upon the earth."
 
-	para "But I'm going to"
-	line "beat you someday."
+	para "Alright, you've"
+	line "assembled the"
+	cont "strongest trainers"
+	cont "in Kanto."
 
-	para "Don't you forget"
-	line "it!"
+	para "It's time we ended"
+	line "this little war."
+
+	para "I will gather the"
+	line "rest and meet you"
+	cont "their hideout in"
+	cont "Celadon City."
+
+	para "Don't be late!"
 	done
 
 LeaderBlueEpilogueText:
-	text "BLUE: Listen, you."
+	text "Giovanni: The Fed"
+	line "hideout has been"
+	cont "cleaned up of any"
+	cont "vermin."
 
-	para "You'd better not"
-	line "lose until I beat"
-	cont "you. Got it?"
+	para "I decided to buy"
+	line "it and renovate it"
+	cont "into a casino."
+
+	para "After the cities"
+	line "are restored, of"
+	cont "course."
+
+	para "I figured people"
+	line "could use some"
+	cont "levity in their"
+	cont "lives after this"
+	cont "whole ordeal."
 	done
 
-ViridianGymGuyText:
-	text "Yo, CHAMP in"
-	line "making!"
+CooltrainerFSolSeenText:
+	text "I work here part-"
+	line "time just moving"
+	cont "boxes around."
 
-	para "How's it going?"
-	line "Looks like you're"
-	cont "on a roll."
-
-	para "The GYM LEADER is"
-	line "a guy who battled"
-
-	para "the CHAMPION three"
-	line "years ago."
-
-	para "He's no pushover."
-
-	para "Give it everything"
-	line "you've got!"
+	para "It's not glamorous,"
+	line "but hey, money is"
+	cont "money."
 	done
 
-ViridianGymGuyWinText:
-	text "Man, you are truly"
-	line "tough…"
+CooltrainerFSolBeatenText:
+	text "My money!"
+	done
 
-	para "That was a heck of"
-	line "an inspirational"
+CooltrainerFSolAfterText:
+	text "That's why I don't"
+	line "like losing."
 
-	para "battle. It brought"
-	line "tears to my eyes."
+	para "It's a waste of"
+	line "money!"
+	done
+
+CooltrainerMBumiSeenText:
+	text "I'm strengthening"
+	line "my body by moving"
+	cont "these boxes."
+
+	para "Gotta be strong in"
+	line "body and #mon!"
+	done
+
+CooltrainerMBumiBeatenText:
+	text "Or was it strong"
+	line "in body and mind?"
+	done
+
+CooltrainerMBumiAfterText:
+	text "I guess my mind's"
+	line "another thing I"
+	cont "gotta work on."
+	done
+
+GiovanniPostText:
+	text "Giovanni: I just"
+	line "bought the old"
+	cont "Federation lair"
+	cont "from Celadon City."
+
+	para "I plan on opening"
+	line "a Game Corner once"
+	cont "the city recovers."
+
+	para "I figured that the"
+	line "people could use"
+	cont "some levity in"
+	cont "their lives."
+	done
+
+GiovanniRematchText:
+	text "Giovanni: Here for"
+	line "a rematch?"
+
+	para "Don't hold back!"
+	done
+
+GiovanniAfterRematchText:
+	text "Giovanni: You"
+	line "really didn't hold"
+	cont "back!"
+
+	para "Perhaps someday, I"
+	line "can be compared to"
+	cont "you!"
 	done
 
 ViridianGym_MapEvents:
@@ -176,10 +285,9 @@ ViridianGym_MapEvents:
 
 	db 0 ; coord events
 
-	db 2 ; bg events
-	bg_event  3, 13, BGEVENT_READ, ViridianGymStatue
-	bg_event  6, 13, BGEVENT_READ, ViridianGymStatue
+	db 0 ; bg events
 
-	db 2 ; object events
-	object_event  5,  3, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianGymBlueScript, EVENT_VIRIDIAN_GYM_BLUE
-	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
+	db 3 ; object events
+	object_event  5,  3, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianGymBlueScript, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  5, 12, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerFSol, EVENT_VIRIDIAN_GYM_TRAINERS
+	object_event  4,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerMBumi, EVENT_VIRIDIAN_GYM_TRAINERS

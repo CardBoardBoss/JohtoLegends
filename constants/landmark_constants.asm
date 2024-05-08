@@ -62,11 +62,13 @@ KANTO_LANDMARK EQU const_value
 	const ROUTE_1           ; 30
 	const VIRIDIAN_CITY     ; 31
 	const ROUTE_2           ; 32
+	const VIRIDIAN_FOREST
 	const PEWTER_CITY       ; 33
 	const ROUTE_3           ; 34
 	const MT_MOON           ; 35
 	const ROUTE_4           ; 36
 	const CERULEAN_CITY     ; 37
+	const CERULEAN_CAVE
 	const ROUTE_24          ; 38
 	const ROUTE_25          ; 39
 	const ROUTE_5           ; 3a
@@ -98,6 +100,8 @@ KANTO_LANDMARK EQU const_value
 	const SEAFOAM_ISLANDS   ; 54
 	const CINNABAR_ISLAND   ; 55
 	const POKEMON_MANSION
+	const CINNABAR_VOLCANO
+	const UNKNOWN_2
 	const ROUTE_21          ; 56
 	const ROUTE_22          ; 57
 	const VICTORY_ROAD      ; 58

@@ -404,6 +404,12 @@ MoveDescriptions1:
 	dw BubblebeamDescription
 	dw SignalWaveDescription
 	dw DoubleEdgeDescription
+	dw FakeOutDescription
+	dw CloseCombatDescription
+	dw DoubleHitMDescription
+	dw DoubleHitMDescription
+	dw CatastropheDescription
+	dw PsyshieldDescription
 ;	dw WakeUpSlapDescription
 
 InvalidMoveDescription:
@@ -458,8 +464,8 @@ GuillotineDescription:
 	next "pincer attack.@"
 
 RazorWindDescription:
-	db   "1st turn: Prepare"
-	next "2nd turn: Attack@"
+	db   "Has a high criti-"
+	next "cal hit ratio.@"
 
 SwordsDanceDescription:
 	db   "A dance that in-"
@@ -1956,3 +1962,15 @@ PincirFlurryDescription:
 SignalWaveDescription:
 	db   "Signals that can"
 	line "cause confusion.@"
+
+FakeOutDescription:
+	db   "Foe flinches if"
+	line "used first turn.@"
+
+CatastropheDescription:
+	db	 "A disaster that"
+	line "confuses the foe.@"
+
+PsyshieldDescription:
+	db	 "A barrier attack"
+	line "that raises Def.@"

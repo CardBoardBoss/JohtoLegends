@@ -35,15 +35,19 @@ MastersHouse2F_MapScripts:
 	return
 
 TrainerDragonKidClair:
+	faceplayer
+	opentext
+	checkevent EVENT_LOST_FIRST_BATTLE
+	iftrue .ClairLost
 	checkevent EVENT_BEAT_DRAGON_KID_CLAIR
 	iftrue .ClairBeaten
 	checkevent EVENT_GOT_LARVITAR_FROM_MASTER
 	iftrue .LarvitarScript
-	faceplayer
-	opentext
 	writetext DragonKidClairSeenText
 	waitbutton
 	closetext
+	checkevent EVENT_PASSWORD_STUPID
+	iftrue .CanLoseToClair
 	winlosstext DragonKidClairBeatenText, 0
 	loadtrainer CLAIR, CLAIR1
 	startbattle
@@ -58,31 +62,61 @@ TrainerDragonKidClair:
 	sjump Rival1
 
 .LarvitarScript:
-	faceplayer
-	opentext
 	writetext ClairHiText
 	waitbutton
 	closetext
 	end
 
 .ClairBeaten:
-	faceplayer
-	opentext
 	writetext ClairIWontLoseText
 	waitbutton
 	closetext
 	end
 
+.ClairLost:
+	writetext LostToClairText
+	waitbutton
+	closetext
+	end
+
+.CanLoseToClair
+	winlosstext DragonKidClairBeatenText, 0
+	loadtrainer CLAIR, CLAIR1
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	startbattle
+	reloadmap
+	ifequal LOSE, .AfterLosingToClair
+	setevent EVENT_BEAT_DRAGON_KID_CLAIR
+	setevent EVENT_BEAT_DRAGON_KID_LANCE
+	opentext
+	writetext DragonKidClairAfterBattleText
+	waitbutton
+	closetext
+	special HealParty
+	sjump Rival1
+
+.AfterLosingToClair:
+	opentext
+	writetext LostToClairText
+	waitbutton
+	closetext
+	setevent EVENT_LOST_FIRST_BATTLE
+	sjump Rival1
+
 TrainerDragonKidLance:
+	faceplayer
+	opentext
+	checkevent EVENT_LOST_FIRST_BATTLE
+	iftrue .LanceLost
 	checkevent EVENT_BEAT_DRAGON_KID_LANCE
 	iftrue .LanceBeaten
 	checkevent EVENT_GOT_DRATINI_FROM_MASTER
 	iftrue .DratiniScript
-	faceplayer
-	opentext
 	writetext DragonKidLanceSeenText
 	waitbutton
 	closetext
+	checkevent EVENT_PASSWORD_STUPID
+	iftrue .CanLoseToLance
 	winlosstext DragonKidLanceBeatenText, 0
 	loadtrainer DRAGON_KID, LANCE1
 	startbattle
@@ -97,20 +131,46 @@ TrainerDragonKidLance:
 	sjump Rival2
 
 .DratiniScript:
-	faceplayer
-	opentext
 	writetext LanceHiText
 	waitbutton
 	closetext
 	end
 
 .LanceBeaten:
-	faceplayer
-	opentext
 	writetext LanceNextTimeText
 	waitbutton
 	closetext
 	end
+
+.LanceLost:
+	writetext LostToLanceText
+	waitbutton
+	closetext
+	end
+
+.CanLoseToLance:
+	winlosstext DragonKidLanceBeatenText, 0
+	loadtrainer DRAGON_KID, LANCE1
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	startbattle
+	reloadmap
+	ifequal LOSE, .AfterLosingToLance
+	setevent EVENT_BEAT_DRAGON_KID_LANCE
+	setevent EVENT_BEAT_DRAGON_KID_CLAIR
+	opentext
+	writetext DragonKidLanceAfterBattleText
+	waitbutton
+	closetext
+	special HealParty
+	sjump Rival2
+
+.AfterLosingToLance:
+	opentext
+	writetext LostToLanceText
+	waitbutton
+	closetext
+	setevent EVENT_LOST_FIRST_BATTLE
+	sjump Rival2
 
 MastersHouse2FRival1Script:
 	faceplayer
@@ -172,7 +232,7 @@ AfterBattleMovement1:
 	step LEFT
 	step LEFT
 	step LEFT
-	step_end
+	step_resume
 
 AfterBattleMovement2:
 	step DOWN
@@ -181,7 +241,7 @@ AfterBattleMovement2:
 	step RIGHT
 	step RIGHT
 	step RIGHT
-	step_end
+	step_resume
 
 LeavingRoomMovement1:
 	step RIGHT
@@ -191,7 +251,7 @@ LeavingRoomMovement1:
 	step UP
 	step UP
 	step UP
-	step_end
+	step_resume
 
 LeavingRoomMovement2:
 	step LEFT
@@ -201,7 +261,7 @@ LeavingRoomMovement2:
 	step UP
 	step UP
 	step UP
-	step_end
+	step_resume
 
 ClairHiText:
 	text "Hi <PLAYER>!"
@@ -279,7 +339,8 @@ DahliaTheyWereToughText:
 	text "<RIVAL>: Master"
 	line "wasn't joking"
 	cont "about his"
-	cont "grandchildren!"
+
+	para "grandchildren!"
 
 	para "But, we won, so"
 	line "let's go back to"
@@ -290,6 +351,22 @@ DahliaTheyWereToughText:
 
 MastersHouseDratiniText:
 	text "Dratini: Draa!"
+	done
+
+LostToClairText:
+	text "Clair: Wow, you're"
+	line "not that good!"
+
+	para "No wonder I beat"
+	line "you so easily!"
+	done
+
+LostToLanceText:
+	text "Lance: Train up a"
+	line "bit and maybe it'll"
+	cont "be different next"
+
+	para "time!"
 	done
 
 MastersHouse2F_MapEvents:

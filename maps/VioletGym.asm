@@ -49,6 +49,7 @@ VioletGymWalkerScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_WALKER
+	setevent EVENT_DECO_SQUIRTLE_DOLL
 	opentext
 	writetext BeatenWalkerText
 	waitbutton
@@ -58,6 +59,7 @@ VioletGymWalkerScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_ZEPHYRBADGE
+	loadmem wLevelCap, 55
 	setflag ENGINE_BEAT_WALKER
 .FightDone:
 	checkflag ENGINE_BEAT_WALKER
@@ -85,6 +87,8 @@ VioletGymWalkerScript:
 	end
 
 .WalkerRematch:
+	checkevent EVENT_BEAT_ELITE_FOUR
+	iftrue .PostGameWalker
 	readvar VAR_BADGES
 	ifequal 7, .WalkerBattle1
 	ifequal 8, .WalkerBattle2
@@ -110,6 +114,14 @@ VioletGymWalkerScript:
 	reloadmapafterbattle
 	sjump AfterWalkerRematch
 
+.PostGameWalker:
+	writetext PostGameWalkerText
+	waitbutton
+	closetext
+	winlosstext WalkerWinLossText, WalkerLossText
+	loadtrainer WALKER, WALKER3
+	startbattle
+	reloadmapafterbattle
 AfterWalkerRematch:
 	opentext
 	writetext BeatenWalkerAgainText
@@ -117,6 +129,11 @@ AfterWalkerRematch:
 	closetext
 	setflag ENGINE_BEAT_WALKER
 	end
+
+WalkerLossText:
+	text "We can't fall just"
+	line "yet!"
+	done
 
 TrainerBirdKeeperRodney:
 	trainer BIRD_KEEPER, RODNEY1, EVENT_BEAT_BIRD_KEEPER_RODNEY, BirdKeeperRodneySeenText, BirdKeeperRodneyBeatenText, 0, .Script
@@ -239,11 +256,6 @@ VioletGymRivalLeavesMovement2:
 	step DOWN
 	step DOWN
 	step_end
-
-WalkerLossText:
-	text "We can't fall just"
-	line "yet!"
-	done
 
 WalkerIntroText:
 	text "I am Walker, "
@@ -449,6 +461,15 @@ VioletGymRivalText:
 	para "…………<PLAYER>………"
 
 	para "………I'm sorry……"
+	done
+
+PostGameWalkerText:
+	text "Here to soar yet"
+	line "again, Champion?"
+
+	para "Let us meet in"
+	line "battle among the"
+	cont "clouds!"
 	done
 
 VioletGym_MapEvents:

@@ -2,7 +2,7 @@ NAMINGSCREEN_CURSOR     EQU $7e
 
 NAMINGSCREEN_BORDER     EQU "■" ; $d7
 NAMINGSCREEN_MIDDLELINE EQU "→" ; $eb
-NAMINGSCREEN_UNDERLINE  EQU "☎" ; $d9
+NAMINGSCREEN_UNDERLINE  EQU "▲" ; $d9
 
 _NamingScreen:
 	call DisableSpriteUpdates
@@ -82,6 +82,7 @@ NamingScreen:
 	dw .Tomodachi
 	dw .RivalFemale
 	dw .Pokemon
+	dw .Password
 
 .Pokemon:
 	ld a, [wCurPartySpecies]
@@ -189,6 +190,16 @@ NamingScreen:
 
 .oTomodachi_no_namae_sutoringu
 	db "おともだち　の　なまえは？@"
+
+.Password:
+	hlcoord 5, 2
+	ld de, .PasswordString
+	call PlaceString
+	call .StoreMonIconParams
+	ret
+
+.PasswordString:
+	db "Password?@"
 
 .LoadSprite:
 	push de

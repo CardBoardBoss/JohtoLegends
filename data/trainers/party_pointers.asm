@@ -19,7 +19,7 @@ TrainerGroups:
 	dba KogaGroup
 	dba ChampionDahliaGroup
 	dba FlintGroup
-	dba MistyGroup
+	dba Sensational1Group
 	dba LtSurgeGroup
 	dba ScientistGroup
 	dba ErikaGroup
@@ -98,3 +98,16 @@ TrainerGroups:
 	dba ByronGroup2
 	dba LinkTrainerGroup
 	dba FedLeaderGroup
+	dba ChampionDracoGroup
+	dba ChampionDahliaGroup
+	dba ChampionDahliaGroup
+	dba ChallengerCynthiaGroup
+	dba DelinquentGroup
+	dba Sensational2Group
+	dba Sensational3Group
+	dba RoughneckGroup
+	dba SoldierGroup
+	dba KarateKingGroup
+	dba FuchsiaNinjaMGroup
+	dba FuchsiaNinjaFGroup
+	dba FerropexolaGroup

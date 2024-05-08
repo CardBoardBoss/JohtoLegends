@@ -107,6 +107,8 @@ TrainerPokemaniacJarvis:
 TogepiEggGiver:
 	faceplayer
 	opentext
+	checkevent EVENT_PASSWORD_SINGULAR
+	iftrue .NoTogepiEgg
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	iftrue .TakeCareOfIt
 	writetext AskEggText
@@ -141,6 +143,12 @@ TogepiEggGiver:
 
 .GivenTogepiEgg:
 	jumpstd receivetogepiegg
+	end
+
+.NoTogepiEgg:
+	writetext NoTogepiEggText
+	waitbutton
+	closetext
 	end
 
 Route43Sign1:
@@ -360,7 +368,7 @@ AskEggText:
 	line "Care on Route 34,"
 
 	para "but hatching eggs"
-	line "isn't something"
+	line "isn't something I'm"
 	cont "good at…"
 	done
 
@@ -378,6 +386,18 @@ NoEggForYouText:
 	text "Fine then!"
 
 	para "No egg for you!"
+	done
+
+NoTogepiEggText:
+	text "I'd like to offer"
+	line "you a nice egg in"
+	cont "these tryin'"
+	cont "times,"
+
+	para "but I can't do that"
+	line "in a solo run."
+
+	para "Sorry."
 	done
 
 Route43_MapEvents:
@@ -401,7 +421,7 @@ Route43_MapEvents:
 	object_event 10,  5, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperGarret, -1
 	object_event 15, 14, SPRITE_JUGGLER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerJugglerPercy, -1
 	object_event 15,  6, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerPicnickerChloe, -1
-	object_event  4, 17, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerFisherShane, -1
+	object_event  4, 17, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerFisherShane, -1
 	object_event 12, 21, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacJarvis, -1
 	object_event  8, 29, SPRITE_FIREBREATHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerFirebreatherChaz, -1
 	object_event  1, 26, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route43FruitTree, -1

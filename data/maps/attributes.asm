@@ -372,10 +372,10 @@ ENDM
 	connection north, Route10North, ROUTE_10_NORTH, 0
 	connection south, LavenderTown, LAVENDER_TOWN, 0
 
-	map_attributes Route47, ROUTE_47, $35, NORTH
+	map_attributes Route47, ROUTE_47, $03, NORTH
 	connection north, Route48, ROUTE_48, -1
 
-	map_attributes Route48, ROUTE_48, $35, NORTH | SOUTH
+	map_attributes Route48, ROUTE_48, $03, NORTH | SOUTH
 	connection north, WildAreaOutside, WILD_AREA_OUTSIDE, 2
 	connection south, Route47, ROUTE_47, 1
 
@@ -722,3 +722,37 @@ ENDM
 	map_attributes RocketLairHallway2, ROCKET_LAIR_HALLWAY_2, $00, 0
 	map_attributes RocketLairHallway3, ROCKET_LAIR_HALLWAY_3, $00, 0
 	map_attributes RocketLairBossRoom, ROCKET_LAIR_BOSS_ROOM, $00, 0
+	map_attributes NownRoom, NOWN_ROOM, $00, 0
+	map_attributes NownPuzzleRoom, NOWN_PUZZLE_ROOM, $00, 0
+	map_attributes ViridianForest, VIRIDIAN_FOREST, $00, 0
+	map_attributes CeruleanBikeShop, CERULEAN_BIKE_SHOP, $00, 0
+	map_attributes PokemonMansion2F, POKEMON_MANSION_2F, $00, 0
+	map_attributes PokemonMansion3F, POKEMON_MANSION_3F, $00, 0
+	map_attributes PokemonMansionB1F, POKEMON_MANSION_B1F, $00, 0
+	map_attributes CinnabarVolcano1F, CINNABAR_VOLCANO_1F, $00, 0
+	map_attributes CinnabarVolcanoB1F, CINNABAR_VOLCANO_B1F, $00, 0
+	map_attributes CinnabarVolcanoB2F, CINNABAR_VOLCANO_B2F, $00, 0
+	map_attributes CinnabarIslandMart, CINNABAR_ISLAND_MART, $00, 0
+	map_attributes CinnabarIslandGym, CINNABAR_ISLAND_GYM, $00, 0
+	map_attributes GlitchCity, GLITCH_CITY, $00, 0
+	map_attributes SeafoamIsland1F, SEAFOAM_ISLAND_1F, $00, 0
+	map_attributes SeafoamIslandB1F, SEAFOAM_ISLAND_B1F, $00, 0
+	map_attributes SeafoamIslandB2F, SEAFOAM_ISLAND_B2F, $00, 0
+	map_attributes SeafoamIslandB3F, SEAFOAM_ISLAND_B3F, $00, 0
+	map_attributes SeafoamIslandB4F, SEAFOAM_ISLAND_B4F, $00, 0
+	map_attributes CeruleanCave1F, CERULEAN_CAVE_1F, $00, 0
+	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $00, 0
+	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $00, 0
+	map_attributes FedHideout1F, FED_HIDEOUT_1F, $00, 0
+	map_attributes FedHideoutB1F, FED_HIDEOUT_B1F, $00, 0
+	map_attributes FedHideoutB2F, FED_HIDEOUT_B2F, $00, 0
+	map_attributes FedHideoutB3F, FED_HIDEOUT_B3F, $00, 0
+	map_attributes FedHideoutB4F, FED_HIDEOUT_B4F, $00, 0
+	map_attributes FedHideoutElevator, FED_HIDEOUT_ELEVATOR, $00, 0
+	map_attributes EmbeddedTower, EMBEDDED_TOWER, $00, 0
+	map_attributes CliffCaveB1F, CLIFF_CAVE_B1F, $00, 0
+	map_attributes SilverCaveRestRoom, SILVER_CAVE_REST_ROOM, $00, 0
+	map_attributes SilverCaveSummitOutside, SILVER_CAVE_SUMMIT_OUTSIDE, $00, 0
+	map_attributes MtSilverSummit, MT_SILVER_SUMMIT, $00, 0
+	map_attributes GoldCrystalHouse, GOLD_CRYSTAL_HOUSE, $00, 0
+	map_attributes SilverCaveMewRoom, SILVER_CAVE_MEW_ROOM, $00, 0
