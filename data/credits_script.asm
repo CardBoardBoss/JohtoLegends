@@ -38,6 +38,7 @@ CreditsScript:
 	db            DARK_ZETA, 2
 	db             CELADONK, 3
 	db            PIACARROT, 4
+	db              RAJA239, 5
 
 	db CREDITS_WAIT, 12
 
@@ -46,6 +47,7 @@ CreditsScript:
 	db                IDAIN, 2
 	db               KDLPRO, 3
 	db            VULCANDTH, 4
+	db             TOM_WANG, 5
 
 	db CREDITS_WAIT, 12
 
@@ -54,6 +56,7 @@ CreditsScript:
 	db              VENDILY, 2
 	db       CHATTY_CRYSTAL, 3
 	db        DRAGON_ARBOCK, 4
+	db     VICTORIA_LACROIX, 5
 
 	db CREDITS_WAIT, 12
 
@@ -61,6 +64,8 @@ CreditsScript:
 	db            AZUREKEYS, 1
 	db        DAMIEN_CREDIT, 2
 	db           LANDESHERR, 3
+	db   GRATE_ORACLE_LEWOT, 4
+	db            RODMCOSTA, 5
 
 	db CREDITS_WAIT, 12
 
@@ -103,6 +108,7 @@ CreditsScript:
 	db          FERROPEXOLA, 2
 	db             FROGTOES, 3
 	db       INTERNETGOBLIN, 4
+	db         SAGE_CREDITS, 5
 
 	db CREDITS_WAIT, 12
 
@@ -144,7 +150,6 @@ CreditsScript:
 	db          SIRWHIBBLES, 2
 	db                RANGI, 3
 	db         MEGAMANOMEGA, 4
-	db                TETRA, 5
 
 	db CREDITS_WAIT, 12
 
@@ -152,14 +157,15 @@ CreditsScript:
 	db        JUSTINNUGGETS, 1
 	db            SINDORMAN, 2
 	db                 KAGE, 3
-	db          FERROPEXOLA, 4
+	db                TETRA, 4
 
 	db CREDITS_WAIT, 12
 
-	db    OVERWORLD_SPRITES, 0
-	db           GAME_FREAK, 1
-	db          SIRWHIBBLES, 2
-	db                RANGI, 3
+	db      TRAINER_SPRITES, 0
+	db         FRENCHORANGE, 1
+	db          RAMEN_PIXEL, 2
+	db               CDRX73, 3
+	db          FERROPEXOLA, 4
 
 	db CREDITS_WAIT, 12
 
@@ -172,9 +178,18 @@ CreditsScript:
 	db CREDITS_SCENE, 2 ; Ditto
 
 	db    OVERWORLD_SPRITES, 0
+	db           GAME_FREAK, 1
+	db          SIRWHIBBLES, 2
+	db                RANGI, 3
+	db              SEASICK, 4
+
+	db CREDITS_WAIT, 12
+
+	db    OVERWORLD_SPRITES, 0
 	db          FERROPEXOLA, 1
 	db         MEGAMANOMEGA, 2
 	db         FRENCHORANGE, 3
+	db             TOM_WANG, 4
 
 	db CREDITS_WAIT, 12
 
@@ -206,13 +221,6 @@ CreditsScript:
 
 	db CREDITS_WAIT, 12
 
-	db      MOVE_ANIMATIONS, 0
-	db          FERROPEXOLA, 1
-	db       CHATTY_CRYSTAL, 2
-	db           SOUPPOTATO, 3
-
-	db CREDITS_WAIT, 12
-
 ; Clear the banner.
 	db CREDITS_CLEAR
 
@@ -220,6 +228,13 @@ CreditsScript:
 
 ; Update the banner.
 	db CREDITS_SCENE, 3 ; Igglybuff
+
+	db      MOVE_ANIMATIONS, 0
+	db          FERROPEXOLA, 1
+	db       CHATTY_CRYSTAL, 2
+	db           SOUPPOTATO, 3
+
+	db CREDITS_WAIT, 12
 
 	db         CREDIT_MUSIC, 0
 	db           GAME_FREAK, 1
@@ -292,11 +307,6 @@ CreditsScript:
 
 	db       SPECIAL_THANKS, 0
 	db     ROM_HACKS_REDDIT, 1
-
-	db CREDITS_WAIT, 12
-
-	db       SPECIAL_THANKS, 0
-	db         TO_ALL_THOSE, 1
 
 	db CREDITS_WAIT, 12
 

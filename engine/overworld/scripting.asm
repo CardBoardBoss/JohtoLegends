@@ -237,6 +237,7 @@ ScriptCommandTable:
 	dw Script_checkmaplockedmons         ; ab
 	dw Script_loadmoveindex              ; ac
 	dw Script_partyselect
+	dw Script_StarterPokepic
 
 StartScript:
 	ld hl, wScriptFlags
@@ -894,6 +895,9 @@ Script_waitsfx:
 Script_warpsound:
 ; script command 0x87
 
+	ld a, [wPlayerStandingTile]
+	cp COLL_SILENT_WARP
+	ret z
 	farcall GetWarpSFX
 	call PlaySFX
 	ret
@@ -1834,13 +1838,7 @@ GetVarAction:
 
 Script_checkver:
 ; script command 0x18
-
-	ld a, [.gs_version]
-	ld [wScriptVar], a
 	ret
-
-.gs_version:
-	db GS_VERSION
 
 Script_getmonname:
 ; script command 0x40
@@ -2918,3 +2916,13 @@ AppendTMHMMoveName::
 	inc hl
 	ld de, wStringBuffer1
 	jp CopyName2
+
+Script_StarterPokepic:
+;	call LoadScriptPokemonID
+;	ld [wCurPartySpecies], a
+	ld hl, wPartySpecies
+	ld a, [hl]
+	call GetPokemonIndexFromID
+	ld [wCurPartySpecies], a
+	farcall StarterPokepic
+	ret

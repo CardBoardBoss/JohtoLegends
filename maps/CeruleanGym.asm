@@ -100,7 +100,7 @@ CeruleanGymVioletScript:
 
 .SensationalRematch:
 	checkflag ENGINE_HUEY
-	iffalse .VioletPost
+	iftrue .VioletPost
 	writetext VioletRematchText
 	waitbutton
 	closetext
@@ -131,6 +131,7 @@ CeruleanGymVioletScript:
 	setlasttalked CERULEANGYM_LILY
 	startbattle
 	reloadmapafterbattle
+	opentext
 	writetext LilyAfterRematchText
 	waitbutton
 	closetext

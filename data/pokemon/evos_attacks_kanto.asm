@@ -310,6 +310,7 @@ BlastoiseEvosAttacks:
 	db 0 ; no more evolutions
 	dbw LEARN_EVO_MOVE, FLASH_CANNON
 	dbw 1, FLASH_CANNON
+	dbw 1, AURA_SPHERE
 	dbw 1, TACKLE
 	dbw 4, TAIL_WHIP
 	dbw 7, WATER_GUN
@@ -1003,10 +1004,14 @@ BellossomEvosAttacks:
 	db 0 ; no more evolutions
 if DEF(_FAITHFUL)
 	dbw LEARN_EVO_MOVE, MAGICAL_LEAF
+elif DEF(_NOPSS)
+	dbw LEARN_EVO_MOVE, MAGICAL_LEAF
 else
 	dbw LEARN_EVO_MOVE, MOONBLAST
 endc
 if DEF(_FAITHFUL)
+	dbw 1, MAGICAL_LEAF
+elif DEF(_NOPSS)
 	dbw 1, MAGICAL_LEAF
 else
 	dbw 1, MOONBLAST
@@ -1094,11 +1099,15 @@ VenomothEvosAttacks:
 	dbw 41, ZEN_HEADBUTT
 if DEF(_FAITHFUL)
 	dbw 47, POISON_FANG
+elif DEF(_NOPSS)
+	dbw 47, POISON_FANG
 else
 	dbw 47, BUG_BUZZ
 endc
 	dbw 55, PSYCHIC_M
 if DEF(_FAITHFUL)
+	dbw 59, BUG_BUZZ
+elif DEF(_NOPSS)
 	dbw 59, BUG_BUZZ
 else
 	dbw 59, SIGNAL_WAVE
@@ -1717,8 +1726,8 @@ RapidashEvosAttacks:
 	db 0 ; no more level-up moves
 
 SlowpokeEvosAttacks:
-	dbbw EVOLVE_LEVEL, 37, SLOWBRO
 	dbbw EVOLVE_ITEM, ROYAL_ROCK, SLOWKING
+	dbbw EVOLVE_LEVEL, 37, SLOWBRO
 	db 0 ; no more evolutions
 	dbw 1, CURSE
 	dbw 1, TACKLE
@@ -3092,6 +3101,8 @@ MagmortarEvosAttacks:
 	dbw 49, FLAMETHROWER
 	dbw 55, FIRE_BLAST
 if DEF(_FAITHFUL)
+	dbw 62, HYPER_BEAM
+elif DEF(_NOPSS)
 	dbw 62, HYPER_BEAM
 else
 	dbw 62, BELCH

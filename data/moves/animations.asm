@@ -430,6 +430,8 @@ BattleAnimations::
 	dw BattleAnim_TwinBeam
 	dw BattleAnim_Catastrophe
 	dw BattleAnim_Psyshield
+	dw BattleAnim_MeteorMash
+	dw BattleAnim_ForcePalm
 ;	dw BattleAnim_WakeUpSlap
 
 BattleAnim_0:
@@ -782,6 +784,7 @@ BattleAnim_Shake:
 	anim_wait 40
 	anim_ret
 
+BattleAnim_ForcePalm:
 BattleAnim_Pound:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_POUND
@@ -2791,6 +2794,12 @@ BattleAnim_Bonemerang:
 	anim_sound 0, 1, SFX_MOVE_PUZZLE_PIECE
 	anim_obj ANIM_OBJ_01, 136, 56, $0
 	anim_wait 24
+	anim_ret
+
+BattleAnim_MeteorMash:
+	anim_2gfx ANIM_GFX_OBJECTS, ANIM_GFX_HIT
+	anim_call BattleAnim_Swift
+	anim_call BattleAnim_MegaPunch
 	anim_ret
 
 BattleAnim_Swift:
@@ -6080,26 +6089,8 @@ BattleAnim_Hail:
 
 BattleAnim_RockWrecker:
 	anim_2gfx ANIM_GFX_ROCKS, ANIM_GFX_HIT
-	anim_bgeffect ANIM_BG_20, $10, $1, $20
-	anim_sound 0, 0, SFX_STRENGTH
-	anim_obj ANIM_OBJ_STRENGTH, 64, 104, $1
-	anim_wait 128
-	anim_incobj 1
-	anim_wait 20
-	anim_sound 0, 1, SFX_MEGA_PUNCH
-	anim_obj ANIM_OBJ_00, 132, 40, $0
-	anim_wait 16
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $10
-	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
-	anim_wait 3
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_00, 128, 48, $0
-	anim_wait 6
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_00, 144, 48, $0
-	anim_wait 3
-	anim_call BattleAnim_ShowMon_0
+	anim_call BattleAnim_Strength
+	anim_call BattleAnim_DoubleEdge
 	anim_ret
 
 BattleAnim_BulletSeed:
@@ -6206,17 +6197,7 @@ BattleAnim_Superpower:
 	anim_incbgeffect ANIM_BG_1A
 	anim_call BattleAnim_ShowMon_0
 	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_TargetObj_1Row
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $10
-	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
-	anim_wait 3
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_00, 128, 48, $0
-	anim_wait 6
-	anim_sound 0, 1, SFX_TACKLE
-	anim_obj ANIM_OBJ_00, 144, 48, $0
-	anim_wait 3
-	anim_call BattleAnim_ShowMon_0
+	anim_call BattleAnim_DoubleEdge
 	anim_ret
 
 BattleAnim_DragonDance:
@@ -6271,7 +6252,7 @@ BattleAnim_ShellSmash:
 	anim_ret
 
 BattleAnim_HoneClaws:
-		anim_2gfx ANIM_GFX_CUT, ANIM_GFX_SHINE
+	anim_2gfx ANIM_GFX_CUT, ANIM_GFX_SHINE
 .loop
 	anim_sound 0, 1, SFX_SCRATCH
 	anim_obj ANIM_OBJ_HONE_CLAWS_R, 80, 92, $1

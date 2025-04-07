@@ -66,7 +66,6 @@ WalkUpToRival:
 	setscene SCENE_CANT_LEAVE_HOUSE
 	closetext
 	scall MasterPasswordCheck
-	scall MasterPasswordCheck2
 	end
 
 TryToLeaveHouseScript:
@@ -705,57 +704,6 @@ Rival_ReceiveTheBalls:
 	jumpstd receiveitem
 	end
 
-MasterPasswordCheck2:
-	checkevent EVENT_PASSWORD_SET_2
-	iftrue .stop
-	setevent EVENT_PASSWORD_SET_2
-	callasm .candypouch
-	iftrue .candypouch2
-	callasm .singular
-	iftrue .singular2
-.stop
-	end
-
-.candypouch:
-	xor a
-	ld [wScriptVar], a
-	ld de, CandyPouchPassword
-	ld hl, wMomsName ; check inputted password
-	ld c, 4
-	call CompareBytes
-	ret nz
-	ld a, 1
-	ld [wScriptVar], a
-	ret
-
-.candypouch2:
-	setevent EVENT_PASSWORD_CHEATER
-	setevent EVENT_STRONGEST_PASSWORD
-	setflag ENGINE_ACTIVATED_MAX_DVS
-	end
-
-.singular:
-	xor a
-	ld [wScriptVar], a
-	ld de, SingularPassword
-	ld hl, wMomsName ; check inputted password
-	ld c, 4
-	call CompareBytes
-	ret nz
-	ld a, 1
-	ld [wScriptVar], a
-	ret
-
-.singular2:
-	setevent EVENT_PASSWORD_SINGULAR
-	end
-
-CandyPouchPassword:
-	db "CHEATER"
-
-SingularPassword:
-	db "SINGULAR"
-
 MasterPasswordCheck:
 	checkevent EVENT_PASSWORD_SET
 	iftrue .stop
@@ -1054,7 +1002,7 @@ TakeLarvitarText:
 	done
 
 DidntChooseDratiniText:
-	text "Master: are you"
+	text "Master: Are you"
 	line "sure? It is of"
 	cont "great importance"
 
@@ -1237,171 +1185,6 @@ MasterBeatenText:
 
 	para "I am proud of you."
 	done
-
-;MasterPryceText:
-;	text "Ah, I see you have"
-;	line "battled Pryce."
-
-;	para "He can be quite"
-;	line "the cold man."
-
-;	para "He has a soft"
-;	line "spot for children"
-;	cont "and Ice-types."
-
-;	para "You might find him"
-;	line "in Ice Path on"
-;	cont "Mondays."
-
-;	para "He claims it's"
-;	line "good for his body."
-
-;	para "I'll have to take"
-;	line "his word for it."
-
-;	para "I don't care for"
-;	line "the cold."
-;	done
-
-;MasterEnokiText:
-;	text "Ah, I see you have"
-;	line "battled Enoki."
-
-;	para "He's an old friend"
-;	line "of mine."
-
-;	para "He always had a"
-;	line "knack for the"
-;	cont "ethereal."
-	
-;	para "He would always"
-;	line "act like there"
-;	cont "were ghosts"
-;	cont "around."
-
-;	para "I used to think"
-;	line "he was just"
-;	cont "joking."
-
-;	para "Maybe he was,"
-;	line "maybe he wasn't."
-
-;	para "On Thursdays, he"
-;	line "can be found on"
-;	cont "Bellchime Path."
-;	done
-
-;MasterChigusaText:
-;	text "Ah, I see you have"
-;	line "battled Chigusa."
-
-;	para "She happens to be"
-;	line "the youngest Gym"
-;	cont "Leader in Johto."
-
-;	para "She's the only"
-;	line "woman Leader as"
-;	cont "well."
-
-;	para "I commend her."
-
-;	para "Some older folks"
-;	line "may not like it,"
-
-;	para "but I think it's"
-;	line "great."
-
-;	para "The old ways"
-;	line "aren't always the"
-;	cont "best."
-
-;	para "On Tuesdays, you"
-;	line "can find her in"
-;	cont "the cave in the"
-;	cont "Wild Area."
-;	done
-
-;MasterByronText:
-;	text "Ah, I see you have"
-;	line "battled Byron."
-
-;	para "He's a native of"
-;	line "Canalave City in"
-;	cont "Sinnoh."
-
-;	para "He filled a"
-;	line "vacancy that"
-;	cont "few could fill."
-
-;	para "Perhaps someday"
-;	line "he will find a"
-;	cont "successor to"
-;	cont "replace him."
-
-;	para "On Wednesday, you"
-;	line "can find him at"
-;	cont "the Lighthouse."
-;	done
-
-;MasterMiltonText:
-;	text "Ah, I see you have"
-;	line "battled Milton."
-
-;	para "His wrangling"
-;	line "skills were second"
-;	cont "to none."
-
-;	para "His battling"
-;	line "skills aren't half"
-;	cont "bad either."
-
-;	para "He's fell on hard"
-;	line "times lately."
-
-;	para "The embargo has"
-;	line "been a problem."
-
-;	para "On Sundays, you"
-;	line "can find him back"
-;	cont "on his farm."
-;	done
-
-;MasterKurtText:
-;	text "Ah, I see you have"
-;	line "battled Kurt."
-
-;	para "His ability to"
-;	line "make balls was"
-;	cont "truly incredible."
-
-;	para "It's a shame that"
-;	line "Silph has put him"
-;	cont "out of business."
-
-;	para "His son still"
-;	line "sells his old"
-;	cont "work in Ecruteak."
-
-;	para "On Saturdays, you"
-;	line "can find him at"
-;	cont "his house."
-;	done
-
-;MasterWalkerText:
-;	text "Ah, I see you have"
-;	line "battled Walker."
-
-;	para "He wishes to"
-;	line "wander the world,"
-
-;	para "but he adheres to"
-;	line "his duties as a"
-;	cont "Gym Leader."
-
-;	para "On Fridays, you"
-;	line "can find him at"
-;	cont "Sprout Tower."
-;	done
 
 TakeBagonText:
 	text "Master: Will you"

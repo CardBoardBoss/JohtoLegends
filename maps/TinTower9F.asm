@@ -17,6 +17,8 @@ TinTower9FArcher:
 	waitbutton
 	closetext
 	setevent EVENT_TIN_TOWER_ROOF_ROCKET_BALL
+	setevent EVENT_TIN_TOWER_ROOF_PLAYER
+	setevent EVENT_TIN_TOWER_ROOF_HO_OH_2
 	end
 
 TinTower9FHPUp:

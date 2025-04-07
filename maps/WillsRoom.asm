@@ -45,7 +45,7 @@ FlorinaScript_Battle:
 	opentext
 	checkevent EVENT_BEAT_ELITE_4_FLORINA
 	iftrue FlorinaScript_AfterBattle
-	checkevent EVENT_BEAT_ELITE_FOUR
+	checkevent EVENT_COMPLETED_EPILOGUE
 	iftrue RematchFlorina
 	writetext FlorinaScript_FlorinaBeforeText
 	waitbutton
@@ -74,11 +74,6 @@ RematchFlorina:
 	writetext FlorinaScript_FlorinaBeforeText2
 	waitbutton
 	closetext
-	checkevent EVENT_COMPLETED_EPILOGUE
-	iftrue Florina2
-	sjump BattleFlorina
-
-Florina2:
 	winlosstext FlorinaScript_FlorinaBeatenText, FlorinaLastMonText
 	loadtrainer FLORINA, FLORINA2
 	sjump FlorinaReconvene
@@ -164,10 +159,11 @@ FlorinaScript_FlorinaBeforeText2:
 WillsRoom_MapEvents:
 	db 0, 0 ; filler
 
-	db 3 ; warp events
+	db 4 ; warp events
 	warp_event  5, 17, INDIGO_PLATEAU_POKECENTER_1F, 4
 	warp_event  4,  2, KOGAS_ROOM, 1
 	warp_event  5,  2, KOGAS_ROOM, 2
+	warp_event  4, 17, INDIGO_PLATEAU_POKECENTER_1F, 5
 
 	db 0 ; coord events
 

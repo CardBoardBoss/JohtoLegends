@@ -188,7 +188,7 @@ SwarmGrassWildMons:
 	dbw 2, SMOOCHUM
 	dbw 2, SNEASEL
 
-; Magcargo swarm
+; Misdreavus swarm
 	map_id BURNED_TOWER_1F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
@@ -528,6 +528,7 @@ SwarmGrassWildMons:
 	dbw 27, KADABRA
 	dbw 27, KADABRA
 
+;Slowpoke swarm
 	map_id ROUTE_44
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
@@ -558,6 +559,7 @@ SwarmGrassWildMons:
 	dbw 5, CHIKORITA
 	dbw 5, CHIKORITA
 
+;Ponyta swarm
 	map_id ROUTE_42
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
@@ -587,5 +589,35 @@ SwarmGrassWildMons:
 	dbw  7, HOUNDOUR
 	dbw  7, ELEKID
 	dbw  7, ELEKID
+
+	map_id ROUTE_47
+	db 5 percent, 5 percent, 5 percent ; encounter rates: morn/day/nite
+	; morn
+	dbw 60, CHANSEY
+	dbw 60, BLISSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	; day
+	dbw 60, CHANSEY
+	dbw 60, BLISSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	; nite
+	dbw 60, CHANSEY
+	dbw 60, BLISSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
+	dbw 60, CHANSEY
 
 	db -1 ; end

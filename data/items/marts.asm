@@ -140,12 +140,13 @@ MartGoldenrod3F:
 	db -1 ; end
 
 MartGoldenrod4F:
-	db 5 ; # items
+	db 6 ; # items
 	db PROTEIN
 	db IRON
 	db CARBOS
 	db CALCIUM
 	db HP_UP
+	db ZINC
 	db -1 ; end
 
 MartGoldenrod5F:
@@ -295,7 +296,7 @@ MartPewter:
 	db -1 ; end
 
 MartCerulean:
-	db 9 ; # items
+	db 8 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
 	db SUPER_POTION
@@ -304,7 +305,6 @@ MartCerulean:
 	db X_DEFEND
 	db X_ATTACK
 	db DIRE_HIT
-	db SURF_MAIL
 	db -1 ; end
 
 MartLavender:
@@ -320,7 +320,7 @@ MartLavender:
 	db -1 ; end
 
 MartVermilion:
-	db 8 ; # items
+	db 7 ; # items
 	db ULTRA_BALL
 	db SUPER_POTION
 	db HYPER_POTION
@@ -328,7 +328,6 @@ MartVermilion:
 	db PARLYZ_HEAL
 	db AWAKENING
 	db BURN_HEAL
-	db LITEBLUEMAIL
 	db -1 ; end
 
 MartCeladon2F1:
@@ -364,19 +363,18 @@ MartCeladon3F:
 	db -1 ; end
 
 MartCeladon4F:
-	db 3 ; # items
+	db 1 ; # items
 	db POKE_DOLL
-	db LOVELY_MAIL
-	db SURF_MAIL
 	db -1 ; end
 
 MartCeladon5F1:
-	db 5 ; # items
+	db 6 ; # items
 	db HP_UP
 	db PROTEIN
 	db IRON
 	db CARBOS
 	db CALCIUM
+	db ZINC
 	db -1 ; end
 
 MartCeladon5F2:
@@ -414,13 +412,12 @@ MartSaffron:
 	db -1 ; end
 
 MartMtMoon:
-	db 6 ; # items
+	db 5 ; # items
 	db POKE_DOLL
 	db FRESH_WATER
 	db SODA_POP
 	db LEMONADE
 	db REPEL
-	db PORTRAITMAIL
 	db -1 ; end
 
 MartIndigoPlateau:

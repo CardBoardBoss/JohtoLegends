@@ -363,12 +363,6 @@ SECTION "Miscellaneous", WRAM0
 
 ; This union spans 480 bytes from c608 to c7e8.
 UNION ; c608
-; surrounding tiles
-; This buffer determines the size for the rest of the union;
-; it uses exactly 480 bytes.
-wSurroundingTiles:: ds SURROUNDING_WIDTH * SURROUNDING_HEIGHT
-
-NEXTU ; c608
 ; box save buffer
 ; SaveBoxAddress uses this buffer in three steps because it
 ; needs more space than the buffer can hold.
@@ -389,6 +383,16 @@ wEnemyMonNick::  ds MON_NAME_LENGTH ; c616
 wBattleMonNick:: ds MON_NAME_LENGTH ; c621
 
 wBattleMon:: battle_struct wBattleMon ; c62c
+
+	ds 4
+wIntroJumptableIndex:: db
+wIntroBGMapPointer:: dw
+wIntroTilemapPointer:: dw
+wIntroTilesPointer:: dw
+wIntroFrameCounter1:: db
+wIntroFrameCounter2:: db
+wIntroSpriteStateFlag:: db
+
 
 	ds 2
 
@@ -682,9 +686,10 @@ wEnemyFutureSightCount:: db ; c71e
 
 wGivingExperienceToExpShareHolders:: db ; c71f
 
-wBackupEnemyMonBaseStats:: ds 5 ; c720
-wBackupEnemyMonCatchRate:: db ; c725
-wBackupEnemyMonBaseExp:: db ; c726
+wExpShare:: db
+wExpShareText:: db
+
+	ds 7
 
 wPlayerFutureSightDamage:: dw ; c727
 wEnemyFutureSightDamage:: dw ; c729
@@ -787,18 +792,20 @@ wBackupDexListingCursor:: db
 wBackupDexListingPage:: dw
 wDexCurLocation:: db
 wPokedexStatus:: db
+wPokedexShinyToggle:: db
 wPokedexDisplayNumber:: dw
 wDexLastSeenIndex:: db ; index into wPokedexSeen containing the last non-zero value
 wDexLastSeenValue:: db ; value at index
 wDexTempCounter:: dw
 wPokedexDataEnd::
 
+
 wPrevDexEntry:: dw
 wPrevDexEntryBackup:: dw
 wPrevDexEntryJumptableIndex:: db
 
 wPokedexNameBuffer:: ds MON_NAME_LENGTH
-	ds 231
+	ds 230
 
 NEXTU ; c6d0
 wMoveRelearnerSpecies:: dw ; c6d0
@@ -1398,7 +1405,7 @@ NEXTU ; cf64
 ; trainer card badges
 wTrainerCardBadgeFrameCounter:: db
 wTrainerCardBadgeTileID:: db
-wTrainerCardBadgeAttributes:: db
+wTrainerCardBadgePaletteAddr:: dw
 
 NEXTU ; cf64
 ; card flip data
@@ -1521,7 +1528,7 @@ wMenuCursorX:: db ; cfaa
 wCursorOffCharacter:: db ; cfab
 wCursorCurrentTile:: dw ; cfac
 
-	ds 3
+	ds 2
 
 wOverworldDelay:: db ; cfb1
 wTextDelayFrames:: db ; cfb2
@@ -2109,9 +2116,9 @@ wTilesetBlocksBank:: db ; d1dc
 wTilesetBlocksAddress:: dw ; d1dd
 wTilesetCollisionBank:: db ; d1df
 wTilesetCollisionAddress:: dw ; d1e0
+wTilesetAttributesBank:: db
+wTilesetAttributesAddress:: dw
 wTilesetAnim:: dw ; bank 3f ; d1e2
-	ds 2 ; unused ; d1e4
-wTilesetPalettes:: dw ; bank 3f ; d1e6
 wTilesetEnd::
 
 wEvolvableFlags:: flag_array PARTY_LENGTH ; d1e8
@@ -2401,7 +2408,7 @@ wBugContestSecsRemaining:: db ; d46d
 	ds 2
 wMapStatusEnd:: ; d470
 
-	ds 2
+wTilesetDataAddress:: dw
 
 wCrystalData::
 wPlayerGender:: ; d472
@@ -2715,8 +2722,11 @@ wRoute47SceneID::                                 db
 wMtSilverSummitID::                               db
 wGoldCrystalHouseID::                             db
 wSilverCaveMewRoomID::                            db
+wDracoSceneID::                                   db
+wDahliaSceneID::                                  db
+wHoOhTowerSceneID::                               db
 
-	ds 16
+	ds 13
 
 ; fight counts
 wJackFightCount::    db ; d9f2
@@ -3088,6 +3098,11 @@ w3_dd68:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 w3_dfec:: ds $10
 w3_dffc:: ds 4
 
+SECTION "Surrounding Data", WRAMX
+
+wSurroundingTiles:: ds SURROUNDING_WIDTH * SURROUNDING_HEIGHT
+wSurroundingAttributes:: ds SURROUNDING_WIDTH * SURROUNDING_HEIGHT
+
 
 SECTION "GBC Video", WRAMX
 
@@ -3101,8 +3116,6 @@ wOBPals2:: ds 8 palettes ; d0c0
 wLYOverrides:: ds SCREEN_HEIGHT_PX ; d100
 wLYOverridesEnd:: ; d190
 
-	ds 1
-
 wMagnetTrain:: ; used only for BANK(wMagnetTrain)
 wMagnetTrainDirection:: db
 wMagnetTrainInitPosition:: db
@@ -3110,9 +3123,11 @@ wMagnetTrainHoldPosition:: db
 wMagnetTrainFinalPosition:: db
 wMagnetTrainPlayerSpriteInitX:: db
 
-	ds 106
+	ds 11
 
-wLYOverridesBackup:: ds SCREEN_HEIGHT_PX ; d200
+wLYOverrides2:: ds SCREEN_HEIGHT_PX - 48
+wLYOverridesBackup:: ds SCREEN_HEIGHT_PX - 96
+wLYOverrides2End:: ds SCREEN_HEIGHT_PX - 48
 wLYOverridesBackupEnd::
 
 

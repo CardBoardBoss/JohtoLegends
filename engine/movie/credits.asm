@@ -488,11 +488,17 @@ endr
 	ret
 
 GetCreditsPalette:
-	push hl
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_SAFARI_GAME_F, [hl]
-	jr nz, .GetMtSilverPalettes
-	pop hl
+;	push hl
+;	ld hl, wStatusFlags2
+;	bit STATUSFLAGS2_SAFARI_GAME_F, [hl]
+;	jr nz, .GetMtSilverPalettes
+;	pop hl
+;	ld de, EVENT_SET_PLAYER_CREDITS
+;	ld b, CHECK_FLAG
+;	call EventFlagAction
+;	ld a, c
+;	and a
+;	jr z, .GetMtSilverPalettes
 	call .GetPalAddress
 
 	push hl
@@ -502,7 +508,7 @@ GetCreditsPalette:
 	ret
 
 .GetMtSilverPalettes:
-	pop hl
+;	pop hl
 	call .MtSilverPalettes
 
 	push hl
@@ -570,11 +576,17 @@ CreditsMtSilverPalettes:
 INCLUDE "gfx/credits/creditsmtsilver.pal"
 
 Credits_LoadBorderGFX:
-	push hl
-	ld hl, wStatusFlags2
-	bit STATUSFLAGS2_SAFARI_GAME_F, [hl]
-	jr nz, .MtSilverFrames
-	pop hl
+;	push hl
+;	ld hl, wStatusFlags2
+;	bit STATUSFLAGS2_SAFARI_GAME_F, [hl]
+;	jr nz, .MtSilverFrames
+;	pop hl
+;	ld de, EVENT_SET_PLAYER_CREDITS
+;	ld b, CHECK_FLAG
+;	call EventFlagAction
+;	ld a, c
+;	and a
+;	jr z, .MtSilverFrames
 	ld hl, wCreditsBorderFrame
 	ld a, [hl]
 	cp $ff
@@ -605,7 +617,7 @@ Credits_LoadBorderGFX:
 	ret
 
 .MtSilverFrames
-	pop hl
+;	pop hl
 	ld hl, wCreditsBorderFrame
 	ld a, [hl]
 	cp $ff

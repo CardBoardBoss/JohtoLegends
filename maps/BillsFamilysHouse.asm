@@ -11,6 +11,22 @@ BillsFamilysHouse_MapScripts:
 BillScript:
 	faceplayer
 	opentext
+	checkevent EVENT_BILL_GIVES_YOU_SPRINTMAN
+	iftrue .GaveSprintman
+	writetext GiveSprintmanText
+	buttonsound
+	waitsfx
+	writetext GotMusicPlayerText
+	playsound SFX_ITEM
+	waitsfx
+	setflag ENGINE_RADIO_CARD
+	setevent EVENT_BILL_GIVES_YOU_SPRINTMAN
+	writetext GaveSprintmanText
+	waitbutton
+	closetext
+	end
+
+.GaveSprintman:
 	writetext BillText
 	waitbutton
 	closetext
@@ -41,14 +57,84 @@ BillsHouseBookshelf2:
 GoldenrodBillsTelevision:
 	jumpstd televisionscript
 
-BillText:
+BillsFamilyComputer:
+	opentext
+	readvar VAR_FACING
+	ifequal RIGHT, .CantReadComputer
+	writetext BillsFamilyComputerText
+	waitbutton
+	closetext
+	end
+
+.CantReadComputer:
+	writetext CantReadComputerText
+	waitbutton
+	closetext
+	end
+
+GiveSprintmanText:
 	text "Howdy! My name is"
 	line "Bill!"
 
 	para "I'm great with"
 	line "technology!"
 
-	para "My grandfather"
+	para "I recently made a"
+	line "new upgrade for"
+	cont "watches that lets"
+	cont "you listen to"
+	cont "music!"
+
+	para "Let me see your"
+	line "watch for a bit!"
+
+	para "………Just need to"
+	line "put that there……"
+
+	para "……Solder that part"
+	line "to here………"
+
+	para "…Almost done! I"
+	line "just have to load"
+	cont "in the cassette"
+
+	para "tape aaaaaaand……"
+	line "done!"
+
+	para "Here you go!"
+	done
+
+GotMusicPlayerText:
+	text "Your watch now"
+	line "can play music!"
+	done
+
+GaveSprintmanText:
+	text "Bill: I call it"
+	line "the Sprintman!"
+
+	para "That cassette"
+	line "tape comes loaded"
+	cont "with 81 songs!"
+
+	para "There's some great"
+	line "ones in there, if"
+	cont "I do say so!"
+
+	para "Just press right"
+	line "on the map screen"
+	cont "and press up or"
+	cont "down to find the"
+	cont "song you like."
+
+	para "Press A and the"
+	line "music starts up!"
+
+	para "Pretty neat, huh?"
+	done
+
+BillText:
+	text "Bill: My grandpa"
 	line "runs the Abra"
 	cont "Delivery System!"
 
@@ -106,6 +192,27 @@ BillsSecretText:
 	line "told you!"
 	done
 
+CantReadComputerText:
+	text "You can't read the"
+	line "screen from here!"
+	done
+
+BillsFamilyComputerText:
+	text "Personal computers"
+	line "are pretty rare"
+	cont "right now."
+
+	para "What's on the"
+	line "screen?"
+
+	para "#mon Digital"
+	line "Storage System"
+
+	para "Looks like it's"
+	line "pretty early in"
+	cont "development."
+	done
+
 BillsFamilysHouse_MapEvents:
 	db 0, 0 ; filler
 
@@ -115,10 +222,11 @@ BillsFamilysHouse_MapEvents:
 
 	db 0 ; coord events
 
-	db 3 ; bg events
+	db 4 ; bg events
 	bg_event  0,  1, BGEVENT_READ, BillsHouseBookshelf2
 	bg_event  1,  1, BGEVENT_READ, BillsHouseBookshelf1
 	bg_event  2,  1, BGEVENT_READ, GoldenrodBillsTelevision
+	bg_event  7,  1, BGEVENT_READ, BillsFamilyComputer
 
 	db 3 ; object events
 	object_event  2,  3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BillScript, -1

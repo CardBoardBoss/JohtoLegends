@@ -35,9 +35,9 @@ CreditsStrings:
 	dw .Radiation
 	dw .DragonArbock
 	dw .AzureKeys
-	dw .AtsushiTada
-	dw .NaokoKawakami
-	dw .HiroyukiZinnai
+	dw .Seasick
+	dw .TomWang
+	dw .VictoriaLacroix
 	dw .KunimiKawamura
 	dw .DarkZeta
 	dw .Celadonk
@@ -48,15 +48,15 @@ CreditsStrings:
 	dw .YuichiroIto
 	dw .TakaoShimizu
 	dw .Planning
-	dw .KeitaNakamura
-	dw .HirotakaUemura
+	dw .Sage
+	dw .RaJa239
 	dw .FrenchOrange@
 	dw .LuigiTKO
-	dw .MiyukiSato
+	dw .rodmcosta
 	dw .Tetra
 	dw .AiMashima
-	dw .MikihiroIshikawa
-	dw .HideyukiHashimoto
+	dw .RamenPixel
+	dw .CDRX73
 	dw .Shockslayer
 	dw .MoveAnimations
 	dw .Pigu
@@ -68,7 +68,7 @@ CreditsStrings:
 	dw .ErikJohnson
 	dw .Mmmmmmmmmmmmmmmmm
 	dw .TerukiMurakawa
-	dw .KazuyoshiOsawa
+	dw .GreatOracleLewot
 	dw .CrystalClearTeam
 	dw .End
 	dw .Unknown
@@ -161,9 +161,9 @@ CreditsStrings:
 .Radiation:           db "     Radiation@"       ; "いしはら　つねかず@"
 .DragonArbock:        db "   Dragon Arbock@"        ; "やまうち　ひろし@"
 .AzureKeys:           db "     AzureKeys@"           ; "さいき　けんじ@"
-.AtsushiTada:         db "    ATSUSHI TADA@"          ; "ただ　あつし@"
-.NaokoKawakami:       db "   NAOKO KAWAKAMI@"         ; "かわかみ　なおこ@"
-.HiroyukiZinnai:      db "  HIROYUKI ZINNAI@"         ; "じんない　ひろゆき@"
+.Seasick:             db "      Seasick@"          ; "ただ　あつし@"
+.TomWang:             db "      Tom Wang@"         ; "かわかみ　なおこ@"
+.VictoriaLacroix:     db "  Victoria Lacroix@"         ; "じんない　ひろゆき@"
 .KunimiKawamura:      db "  KUNIMI KAWAMURA@"         ; "かわむら　くにみ@"
 .DarkZeta:            db "     Dark Zeta@"            ; "そがべ　ひさし@"
 .Celadonk:            db "     Celadonk@"             ; "かがや　けいた@"
@@ -176,15 +176,15 @@ CreditsStrings:
 .Planning:            db " SPECIAL PRODUCTION"
                     next "      PLANNING"             ; "きかくかいはつぶ@"
                     next " & DEVELOPMENT DEPT.@"
-.KeitaNakamura:       db "   KEITA NAKAMURA@"         ; "なかむら　けいた@"
-.HirotakaUemura:      db "  HIROTAKA UEMURA@"         ; "うえむら　ひろたか@"
+.Sage:                db "        Sage@"         ; "なかむら　けいた@"
+.RaJa239:             db "       RaJa239@"         ; "うえむら　ひろたか@"
 .FrenchOrange@:       db "    FrenchOrange@"         ; "たむら　ひろあき@"
 .LuigiTKO:            db "      LuigiTKO@"        ; "さかぐち　のりあき@"
-.MiyukiSato:          db "    MIYUKI SATO@"           ; "さとう　みゆき@"
+.rodmcosta:           db "      rodmcosta@"           ; "さとう　みゆき@"
 .Tetra:               db "       Tetra@"          ; "のもと　がくじ@"
 .AiMashima:           db "     AI MASHIMA@"           ; "ましま　あい@"
-.MikihiroIshikawa:    db " MIKIHIRO ISHIKAWA@"        ; "いしかわ　みきひろ@"
-.HideyukiHashimoto:   db " HIDEYUKI HASHIMOTO@"       ; "はしもと　ひでゆき@"
+.RamenPixel:          db "     Ramen Pixel@"        ; "いしかわ　みきひろ@"
+.CDRX73:              db "       CDRX73@"       ; "はしもと　ひでゆき@"
 .Shockslayer:         db "    Shockslayer@"         ; "やまと　さとし@"
 .MoveAnimations:      db "  Move Animations@"        ; "みやもと　しげる@"
 .End:                 db "        END@"               ; "おしまい@"
@@ -198,7 +198,7 @@ CreditsStrings:
 .ErikJohnson:         db "    ERIK JOHNSON@"
 .Mmmmmmmmmmmmmmmmm:   db " Mmmmmmmmmmmmmmmmm@"
 .TerukiMurakawa:      db "  TERUKI MURAKAWA@"
-.KazuyoshiOsawa:      db "  KAZUYOSHI OSAWA@"
+.GreatOracleLewot:    db " Grate Oracle Lewot@"
 .CrystalClearTeam:    db " Crystal Clear Team@"
 .Staff:               db "      #mon"                 ; "ポケットモンスター"
                     next "   Johto Legends"           ; "　　クりスタル　バージョン"

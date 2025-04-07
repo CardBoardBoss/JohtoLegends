@@ -210,10 +210,10 @@ ENDM
 	map_const CINNABAR_ISLAND_GYM,                         10,  9 ; 17
 	map_const GLITCH_CITY,                                 10, 10 ; 18
 	map_const SEAFOAM_ISLAND_1F,                           17, 12 ; 19
-	map_const SEAFOAM_ISLAND_B1F,                          17, 12 ; 20
+	map_const SEAFOAM_ISLAND_B1F,                          17, 11 ; 20
 	map_const SEAFOAM_ISLAND_B2F,                          17, 11 ; 21
-	map_const SEAFOAM_ISLAND_B3F,                          15, 10 ; 22
-	map_const SEAFOAM_ISLAND_B4F,                          17,  9 ; 23
+	map_const SEAFOAM_ISLAND_B3F,                          17, 13 ; 22
+	map_const SEAFOAM_ISLAND_B4F,                          17, 12 ; 23
 
 	newgroup                                                      ;  7
 
@@ -233,9 +233,9 @@ ENDM
 	map_const ROUTE_25,                                    30,  9 ; 16
 	map_const CERULEAN_CITY,                               20, 18 ; 17
 	map_const CERULEAN_BIKE_SHOP,                           4,  4 ; 18
-	map_const CERULEAN_CAVE_1F,                            15, 10 ; 19
-	map_const CERULEAN_CAVE_B1F,                           15,  9 ; 20
-	map_const CERULEAN_CAVE_2F,                           15,  9 ; 21
+	map_const CERULEAN_CAVE_1F,                            17, 11 ; 19
+	map_const CERULEAN_CAVE_B1F,                           17, 11 ; 20
+	map_const CERULEAN_CAVE_2F,                            17, 11 ; 21
 
 	newgroup                                                      ;  8
 
@@ -359,7 +359,7 @@ ENDM
 	newgroup                                                      ; 16
 
 	map_const ROUTE_23,                                    10,  9 ;  1
-	map_const INDIGO_PLATEAU_POKECENTER_1F,                 9,  7 ;  2
+	map_const INDIGO_PLATEAU_POKECENTER_1F,                 9,  9 ;  2
 	map_const WILLS_ROOM,                                   5,  9 ;  3
 	map_const KOGAS_ROOM,                                   5,  9 ;  4
 	map_const BRUNOS_ROOM,                                  5,  9 ;  5
@@ -404,8 +404,11 @@ ENDM
 	map_const SILVER_CAVE_OUTSIDE,                         20, 18 ;  2
 	map_const SILVER_CAVE_POKECENTER_1F,                    5,  4 ;  3
 	map_const ROUTE_28_STEEL_WING_HOUSE,                    4,  4 ;  4
-	map_const TIN_TOWER_ROOF,                              10, 11 ; 12
-	map_const RADIO_TOWER_5F,                               9,  4 ; 21
+	map_const TIN_TOWER_ROOF,                              10, 11 ;  5
+	map_const RADIO_TOWER_5F,                               9,  4 ;  6
+	map_const DRACO_SCENE,                                  6,  7 ;  7
+	map_const DAHLIA_SCENE,                                 6,  7 ;  8
+	map_const HO_OH_TOWER_SCENE,                            5,  9 ;  9      
 
 	newgroup                                                      ; 20
 
@@ -466,7 +469,7 @@ ENDM
 	map_const BATTLE_TOWER_HALLWAY,                        11,  2 ; 14
 	map_const ROUTE_40_BATTLE_TOWER_GATE,                   5,  4 ; 15
 	map_const BATTLE_TOWER_OUTSIDE,                        10, 14 ; 16
-	map_const CLIFFS_EDGE_GATE,                            13, 12 ; 17
+	map_const CLIFFS_EDGE_GATE,                            12, 11 ; 17
 
 	newgroup                                                      ; 23
 

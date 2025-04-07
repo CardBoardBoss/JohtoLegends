@@ -1330,18 +1330,18 @@ JohtoGrassWildMons:
 	dbw 27, WEEPINBELL
 	dbw 27, GLOOM
 	dbw 27, DODUO
-	dbw 27, DODUO
 	dbw 27, EKANS
 	dbw 27, ARBOK
+	dbw 27, SUDOWOODO
 	; day
 	dbw 27, DROWZEE
 	dbw 27, PIDGEOTTO
 	dbw 27, WEEPINBELL
 	dbw 27, GLOOM
 	dbw 27, DODUO
-	dbw 27, DODUO
 	dbw 27, EKANS
 	dbw 27, ARBOK
+	dbw 27, SUDOWOODO
 	; nite
 	dbw 27, DROWZEE
 	dbw 27, PIDGEOTTO
@@ -1498,7 +1498,7 @@ JohtoGrassWildMons:
 	dbw  7, RATTATA
 	dbw  7, LOTAD
 	dbw  7, PSYDUCK
-	dbw  7, RALTS
+	dbw  7, GASTLY
 	dbw  7, TOTODILE
 	dbw  7, TOTODILE
 

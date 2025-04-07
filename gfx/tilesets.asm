@@ -187,7 +187,6 @@ TilesetGateColl:
 INCLUDE "data/tilesets/gate_collision.asm"
 
 TilesetJohtoModernGFX:
-TilesetBattleTowerOutsideGFX:
 INCBIN "gfx/tilesets/johto_modern.2bpp.lz"
 
 TilesetJohtoModernMeta:
@@ -395,3 +394,180 @@ INCBIN "data/tilesets/summit_metatiles.bin"
 
 TilesetSummitColl:
 INCLUDE "data/tilesets/summit_collision.asm"
+
+SECTION "Tileset Data 12", ROMX
+
+Tileset0Attr::
+TilesetJohtoAttr::
+INCBIN "data/tilesets/johto_attributes.bin"
+
+TilesetAerodactylWordRoomAttr::
+INCBIN "data/tilesets/aerodactyl_word_room_attributes.bin"
+
+TilesetBattleTowerAttr::
+INCBIN "data/tilesets/battle_tower_attributes.bin"
+
+TilesetBattleTowerOutsideAttr::
+INCBIN "data/tilesets/battle_tower_outside_attributes.bin"
+
+TilesetBetaWordRoomAttr::
+INCBIN "data/tilesets/beta_word_room_attributes.bin"
+
+TilesetCaveAttr::
+TilesetDarkCaveAttr::
+INCBIN "data/tilesets/cave_attributes.bin"
+
+TilesetChampionsRoomAttr::
+INCBIN "data/tilesets/champions_room_attributes.bin"
+
+SECTION "Tileset Data 13", ROMX
+
+TilesetEliteFourRoomAttr::
+INCBIN "data/tilesets/elite_four_room_attributes.bin"
+
+TilesetFedHideoutAttr::
+INCBIN "data/tilesets/fed_hideout_attributes.bin"
+
+TilesetForestAttr::
+INCBIN "data/tilesets/forest_attributes.bin"
+
+TilesetGameCornerAttr::
+INCBIN "data/tilesets/game_corner_attributes.bin"
+
+TilesetGateAttr::
+INCBIN "data/tilesets/gate_attributes.bin"
+
+TilesetHoOhWordRoomAttr::
+INCBIN "data/tilesets/ho_oh_word_room_attributes.bin"
+
+TilesetHouseAttr::
+INCBIN "data/tilesets/house_attributes.bin"
+
+TilesetIcePathAttr::
+INCBIN "data/tilesets/ice_path_attributes.bin"
+
+TilesetJohto3Attr::
+INCBIN "data/tilesets/johto_3_attributes.bin"
+
+SECTION "Tileset Data 14", ROMX
+
+TilesetJohtoModernAttr::
+INCBIN "data/tilesets/johto_modern_attributes.bin"
+
+TilesetKabutoWordRoomAttr::
+INCBIN "data/tilesets/kabuto_word_room_attributes.bin"
+
+TilesetKanto2Attr::
+INCBIN "data/tilesets/kanto_2_attributes.bin"
+
+TilesetKantoAttr::
+INCBIN "data/tilesets/kanto_attributes.bin"
+
+TilesetLabAttr::
+INCBIN "data/tilesets/lab_attributes.bin"
+
+TilesetLighthouseAttr::
+INCBIN "data/tilesets/lighthouse_attributes.bin"
+
+TilesetMansionAttr::
+INCBIN "data/tilesets/mansion_attributes.bin"
+
+TilesetMartAttr::
+INCBIN "data/tilesets/mart_attributes.bin"
+
+TilesetOmanyteWordRoomAttr::
+INCBIN "data/tilesets/omanyte_word_room_attributes.bin"
+
+TilesetParkAttr::
+INCBIN "data/tilesets/park_attributes.bin"
+
+SECTION "Tileset Data 15", ROMX
+
+TilesetPlayersHouseAttr::
+INCBIN "data/tilesets/players_house_attributes.bin"
+
+TilesetPokecenterAttr::
+INCBIN "data/tilesets/pokecenter_attributes.bin"
+
+TilesetPokeComCenterAttr::
+INCBIN "data/tilesets/pokecom_center_attributes.bin"
+
+TilesetPokemonMansionAttr::
+INCBIN "data/tilesets/pokemon_mansion_attributes.bin"
+
+TilesetPortAttr::
+INCBIN "data/tilesets/port_attributes.bin"
+
+TilesetRadioTowerAttr::
+INCBIN "data/tilesets/radio_tower_attributes.bin"
+
+TilesetRoute47Attr::
+INCBIN "data/tilesets/route_47_attributes.bin"
+
+TilesetRuinsOfAlphAttr::
+INCBIN "data/tilesets/ruins_of_alph_attributes.bin"
+
+TilesetSummitAttr::
+INCBIN "data/tilesets/summit_attributes.bin"
+
+TilesetTowerAttr::
+INCBIN "data/tilesets/tower_attributes.bin"
+
+SECTION "Tileset Data 16", ROMX
+
+TilesetTraditionalHouseAttr::
+INCBIN "data/tilesets/traditional_house_attributes.bin"
+
+TilesetTrainStationAttr::
+INCBIN "data/tilesets/train_station_attributes.bin"
+
+TilesetUndergroundAttr::
+INCBIN "data/tilesets/underground_attributes.bin"
+
+TilesetPlayersRoomAttr::
+INCBIN "data/tilesets/players_room_attributes.bin"
+
+TilesetFacilityAttr::
+INCBIN "data/tilesets/facility_attributes.bin"
+
+TilesetTowerRoofAttr::
+INCBIN "data/tilesets/tower_roof_attributes.bin"
+
+TilesetTowerRoofGFX:
+INCBIN "gfx/tilesets/tower_roof.2bpp.lz"
+
+TilesetTowerRoofMeta:
+INCBIN "data/tilesets/tower_roof_metatiles.bin"
+
+TilesetTowerRoofColl:
+INCLUDE "data/tilesets/tower_roof_collision.asm"
+
+SECTION "Tileset Data 17", ROMX
+
+TilesetDracoSceneAttr::
+INCBIN "data/tilesets/draco_scene_attributes.bin"
+
+TilesetDracoSceneGFX:
+INCBIN "gfx/tilesets/draco_scene.2bpp.lz"
+
+TilesetDracoSceneMeta:
+INCBIN "data/tilesets/draco_scene_metatiles.bin"
+
+TilesetDracoSceneColl:
+INCLUDE "data/tilesets/draco_scene_collision.asm"
+
+TilesetDahliaSceneAttr::
+INCBIN "data/tilesets/dahlia_scene_attributes.bin"
+
+TilesetDahliaSceneGFX:
+INCBIN "gfx/tilesets/dahlia_scene.2bpp.lz"
+
+TilesetDahliaSceneMeta:
+INCBIN "data/tilesets/dahlia_scene_metatiles.bin"
+
+TilesetDahliaSceneColl:
+INCLUDE "data/tilesets/dahlia_scene_collision.asm"
+
+
+TilesetBattleTowerOutsideGFX:
+INCBIN "gfx/tilesets/battle_tower_outside.2bpp.lz"

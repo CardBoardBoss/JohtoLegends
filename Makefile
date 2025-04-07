@@ -1,4 +1,4 @@
-roms := johtolegendsv0.1.gbc johtolegendsfaithful.gbc johtolegendschallenge.gbc johtolegendsfr.gbc johtolegendsfaithfulfr.gbc johtolegendschallengefr.gbc
+roms := johtolegendsv0.1.gbc johtolegendsfaithful.gbc johtolegendschallenge.gbc johtolegendsnopss.gbc johtolegendsfr.gbc johtolegendsfaithfulfr.gbc johtolegendschallengefr.gbc
 
 crystal_obj := \
 audio.o \
@@ -18,6 +18,7 @@ lib/mobile/main.o
 
 johtolegendsfaithful_obj := $(crystal_obj:.o=faithful.o)
 johtolegendschallenge_obj := $(crystal_obj:.o=challenge.o)
+johtolegendsnopss_obj := $(crystal_obj:.o=nopss.o)
 johtolegendsfr_obj := $(crystal_obj:.o=french.o)
 johtolegendsfaithfulfr_obj := $(crystal_obj:.o=faithfulfr.o)
 johtolegendschallengefr_obj := $(crystal_obj:.o=challengefr.o)
@@ -48,6 +49,7 @@ RGBLINK ?= $(RGBDS)rgblink
 all: johtolegendsv0.1.gbc
 faithful: johtolegendsfaithful.gbc
 challenge: johtolegendschallenge.gbc
+nopss: johtolegendsnopss.gbc
 french: johtolegendsfr.gbc
 faithfulfrench: johtolegendsfaithfulfr.gbc
 challengefrench: johtolegendschallengefr.gbc
@@ -71,6 +73,7 @@ tools:
 $(crystal_obj): RGBASMFLAGS = -D _NORMAL
 $(johtolegendsfaithful_obj): RGBASMFLAGS = -D _FAITHFUL
 $(johtolegendschallenge_obj): RGBASMFLAGS = -D _CHALLENGE
+$(johtolegendsnopss_obj): RGBASMFLAGS = -D_NOPSS
 $(johtolegendsfr_obj): RGBASMFLAGS = -D _FRENCH
 $(johtolegendsfaithfulfr_obj): RGBASMFLAGS = -D _FAITHFULFRENCH -D _FAITHFUL -D _FRENCH
 $(johtolegendschallengefr_obj): RGBASMFLAGS = -D _CHALLENGEFRENCH -D _CHALLENGE -D _FRENCH
@@ -91,6 +94,7 @@ $(info $(shell $(MAKE) -C tools))
 
 $(foreach obj, $(johtolegendsfaithful_obj), $(eval $(call DEP,$(obj),$(obj:faithful.o=.asm))))
 $(foreach obj, $(johtolegendschallenge_obj), $(eval $(call DEP,$(obj),$(obj:challenge.o=.asm))))
+$(foreach obj, $(johtolegendsnopss_obj), $(eval $(call DEP,$(obj),$(obj:nopss.o=.asm))))
 $(foreach obj, $(johtolegendsfr_obj), $(eval $(call DEP,$(obj),$(obj:french.o=.asm))))
 $(foreach obj, $(johtolegendsfaithfulfr_obj), $(eval $(call DEP,$(obj),$(obj:faithfulfr.o=.asm))))
 $(foreach obj, $(johtolegendschallengefr_obj), $(eval $(call DEP,$(obj),$(obj:challengefr.o=.asm))))
@@ -113,6 +117,11 @@ johtolegendschallenge.gbc: $(johtolegendschallenge_obj) pokecrystal.link
 	$(RGBLINK) -n johtolegendschallenge.sym -m johtolegendschallenge.map -l pokecrystal.link -o $@ $(johtolegendschallenge_obj)
 	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
 	tools/sort_symfile.sh johtolegendschallenge.sym
+
+johtolegendsnopss.gbc: $(johtolegendsnopss_obj) pokecrystal.link
+	$(RGBLINK) -n johtolegendsnopss.sym -m johtolegendsnopss.map -l pokecrystal.link -o $@ $(johtolegendsnopss_obj)
+	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
+	tools/sort_symfile.sh johtolegendsnopss.sym
 
 johtolegendsfr.gbc: $(johtolegendsfr_obj) pokecrystal.link
 	$(RGBLINK) -n johtolegendsfr.sym -m johtolegendsfr.map -l pokecrystal.link -o $@ $(johtolegendsfr_obj)
@@ -245,6 +254,10 @@ gfx/mobile/pichu_animated.2bpp: tools/gfx += --trim-whitespace
 
 gfx/unknown/unknown_egg.2bpp: rgbgfx += -h
 
+### Misc from Gold/Silver
+gfx/intro/fire1.2bpp: gfx/intro/charizard1.2bpp gfx/intro/charizard2_top.2bpp gfx/intro/space.2bpp ; cat $^ > $@
+gfx/intro/fire2.2bpp: gfx/intro/charizard2_bottom.2bpp gfx/intro/charizard3.2bpp ; cat $^ > $@
+gfx/intro/fire3.2bpp: gfx/intro/fire.2bpp gfx/intro/unused_blastoise_venusaur.2bpp ; cat $^ > $@
 
 ### Catch-all graphics rules
 

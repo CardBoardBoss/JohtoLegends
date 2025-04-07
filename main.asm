@@ -67,8 +67,11 @@ INCLUDE "engine/events/misc_scripts_2.asm"
 INCLUDE "engine/events/std_collision.asm"
 INCLUDE "engine/events/bug_contest/judging.asm"
 INCLUDE "engine/events/pokerus/apply_pokerus_tick.asm"
-INCLUDE "engine/events/bug_contest/contest_2.asm"
 INCLUDE "engine/pokemon/correct_party_errors.asm"
+
+SECTION "Bug Contest", ROMX
+
+INCLUDE "engine/events/bug_contest/contest_2.asm"
 
 
 SECTION "bank5", ROMX
@@ -104,7 +107,6 @@ INCLUDE "engine/rtc/restart_clock.asm"
 
 SECTION "bank9", ROMX
 
-INCLUDE "data/text_buffers.asm"
 INCLUDE "engine/menus/menu.asm"
 INCLUDE "engine/items/update_item_description.asm"
 INCLUDE "engine/events/pokepic.asm"
@@ -115,7 +117,6 @@ INCLUDE "engine/menus/menu_2.asm"
 INCLUDE "engine/pokemon/mon_submenu.asm"
 INCLUDE "engine/battle/menu.asm"
 INCLUDE "engine/items/buy_sell_toss.asm"
-INCLUDE "engine/menus/trainer_card.asm"
 INCLUDE "engine/events/prof_oaks_pc.asm"
 INCLUDE "engine/overworld/decorations.asm"
 INCLUDE "engine/pokemon/level_up_happiness.asm"
@@ -123,7 +124,12 @@ INCLUDE "engine/battle/read_trainer_dvs.asm"
 INCLUDE "engine/battle/returntobattle_useball.asm"
 INCLUDE "engine/battle/consume_held_item.asm"
 INCLUDE "data/moves/effects.asm"
+
+SECTION "Kurt Event", ROMX
+
 INCLUDE "engine/events/kurt_selectquantity_interpretjoypad.asm"
+INCLUDE "data/text_buffers.asm"
+INCLUDE "engine/menus/trainer_card.asm"
 
 
 SECTION "bankA", ROMX
@@ -203,8 +209,6 @@ INCLUDE "engine/gfx/crystal_layouts.asm"
 
 SECTION "Tileset Palettes", ROMX
 
-INCLUDE "engine/tilesets/map_palettes.asm"
-INCLUDE "gfx/tileset_palette_maps.asm"
 INCLUDE "engine/events/move_tutor.asm"
 
 SECTION "bank13", ROMX
@@ -334,6 +338,9 @@ SECTION "bank24", ROMX
 INCLUDE "engine/phone/phone.asm"
 INCLUDE "engine/rtc/timeset.asm"
 INCLUDE "engine/pokegear/pokegear.asm"
+
+SECTION "bank24-2",ROMX
+
 INCLUDE "engine/events/fish.asm"
 INCLUDE "engine/games/slot_machine.asm"
 INCLUDE "data/pokemon/previous_stages.asm"
@@ -497,10 +504,15 @@ SECTION "bank39", ROMX
 CopyrightGFX::
 INCBIN "gfx/splash/copyright.2bpp"
 
-INCLUDE "engine/menus/options_menu.asm"
 INCLUDE "engine/movie/crystal_intro.asm"
+
+SECTION "BG Effects", ROMX
+
 INCLUDE "engine/battle_anims/bg_effects.asm"
 
+
+SECTION "Options Menu", ROMX
+INCLUDE "engine/menus/options_menu.asm"
 
 SECTION "bank3E", ROMX
 
@@ -509,9 +521,12 @@ INCLUDE "engine/events/play_slow_cry.asm"
 INCLUDE "engine/pokedex/new_pokedex_entry.asm"
 INCLUDE "engine/link/time_capsule_2.asm"
 INCLUDE "engine/pokedex/unown_dex.asm"
-INCLUDE "engine/events/magikarp.asm"
 INCLUDE "engine/battle/hidden_power.asm"
 INCLUDE "engine/battle/misc.asm"
+
+SECTION "Magikarp Event", ROMX
+
+INCLUDE "engine/events/magikarp.asm"
 
 
 SECTION "bank3F", ROMX
@@ -565,7 +580,6 @@ INCLUDE "engine/events/battle_tower/trainer_text.asm"
 
 SECTION "bank5B", ROMX
 
-INCLUDE "mobile/mobile_5b.asm"
 INCLUDE "engine/link/link_trade.asm"
 INCLUDE "engine/link/link.asm"
 INCLUDE "engine/battle/link_result.asm"
